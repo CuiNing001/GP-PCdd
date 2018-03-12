@@ -1,0 +1,6 @@
+framework module Pods_GPLottery {
+  umbrella header "Pods-GPLottery-umbrella.h"
+
+  export *
+  module * { export * }
+}

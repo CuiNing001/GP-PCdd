@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F90FE0BA344AE64F77D2A5B /* Pods_GPLottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -28,6 +29,13 @@
 		42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5352054C70300119CB0 /* bar_pay_normal.png */; };
 		42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E53A2054D05C00119CB0 /* MNAssistiveBtn.m */; };
 		42E7E5412054D4C200119CB0 /* global_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5402054D4C200119CB0 /* global_btn.png */; };
+		42E7E545205615C200119CB0 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E544205615C100119CB0 /* user_icon.png */; };
+		42E7E5482056177000119CB0 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5462056176F00119CB0 /* sign.png */; };
+		42E7E5492056177000119CB0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5472056177000119CB0 /* arrow.png */; };
+		42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E54C20564F9B00119CB0 /* RegexPattern.m */; };
+		42E7E55720564F9C00119CB0 /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E54E20564F9B00119CB0 /* ToastView.m */; };
+		42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E55120564F9B00119CB0 /* AFNetManager.m */; };
+		42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E55420564F9C00119CB0 /* UserDefaults.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.release.xcconfig"; sourceTree = "<group>"; };
+		37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.debug.xcconfig"; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +91,19 @@
 		42E7E5392054D05C00119CB0 /* MNAssistiveBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAssistiveBtn.h; sourceTree = "<group>"; };
 		42E7E53A2054D05C00119CB0 /* MNAssistiveBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAssistiveBtn.m; sourceTree = "<group>"; };
 		42E7E5402054D4C200119CB0 /* global_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = global_btn.png; sourceTree = "<group>"; };
+		42E7E544205615C100119CB0 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_icon.png; sourceTree = "<group>"; };
+		42E7E5462056176F00119CB0 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
+		42E7E5472056177000119CB0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		42E7E54B20564F9B00119CB0 /* RegexPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexPattern.h; sourceTree = "<group>"; };
+		42E7E54C20564F9B00119CB0 /* RegexPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexPattern.m; sourceTree = "<group>"; };
+		42E7E54E20564F9B00119CB0 /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
+		42E7E54F20564F9B00119CB0 /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
+		42E7E55120564F9B00119CB0 /* AFNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetManager.m; sourceTree = "<group>"; };
+		42E7E55220564F9B00119CB0 /* AFNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetManager.h; sourceTree = "<group>"; };
+		42E7E55420564F9C00119CB0 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
+		42E7E55520564F9C00119CB0 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
+		42E7E55A20564FF900119CB0 /* GPPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPrefix.pch; sourceTree = "<group>"; };
+		DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPLottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F90FE0BA344AE64F77D2A5B /* Pods_GPLottery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40C8359C121E69F1F42B062F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		42E7E4C42054B7BE00119CB0 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +147,8 @@
 				42E7E4E82054B7BE00119CB0 /* GPLotteryTests */,
 				42E7E4F32054B7BE00119CB0 /* GPLotteryUITests */,
 				42E7E4CE2054B7BE00119CB0 /* Products */,
+				9920A9B192A2CA8F25BC2837 /* Pods */,
+				40C8359C121E69F1F42B062F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +203,11 @@
 		42E7E5022054BD9B00119CB0 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				42E7E55A20564FF900119CB0 /* GPPrefix.pch */,
+				42E7E55020564F9B00119CB0 /* AFNetManager */,
+				42E7E54A20564F9B00119CB0 /* RegexPatter */,
+				42E7E54D20564F9B00119CB0 /* ToastView */,
+				42E7E55320564F9C00119CB0 /* UserDefaults */,
 				42E7E5382054D05C00119CB0 /* MNAssistiveBtn */,
 			);
 			path = Tool;
@@ -323,6 +362,9 @@
 			children = (
 				42E7E52D2054C6F100119CB0 /* bar_mine_choose.png */,
 				42E7E52C2054C6F100119CB0 /* bar_mine_normal.png */,
+				42E7E544205615C100119CB0 /* user_icon.png */,
+				42E7E5472056177000119CB0 /* arrow.png */,
+				42E7E5462056176F00119CB0 /* sign.png */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -363,6 +405,51 @@
 			path = MNAssistiveBtn;
 			sourceTree = "<group>";
 		};
+		42E7E54A20564F9B00119CB0 /* RegexPatter */ = {
+			isa = PBXGroup;
+			children = (
+				42E7E54B20564F9B00119CB0 /* RegexPattern.h */,
+				42E7E54C20564F9B00119CB0 /* RegexPattern.m */,
+			);
+			path = RegexPatter;
+			sourceTree = "<group>";
+		};
+		42E7E54D20564F9B00119CB0 /* ToastView */ = {
+			isa = PBXGroup;
+			children = (
+				42E7E54E20564F9B00119CB0 /* ToastView.m */,
+				42E7E54F20564F9B00119CB0 /* ToastView.h */,
+			);
+			path = ToastView;
+			sourceTree = "<group>";
+		};
+		42E7E55020564F9B00119CB0 /* AFNetManager */ = {
+			isa = PBXGroup;
+			children = (
+				42E7E55120564F9B00119CB0 /* AFNetManager.m */,
+				42E7E55220564F9B00119CB0 /* AFNetManager.h */,
+			);
+			path = AFNetManager;
+			sourceTree = "<group>";
+		};
+		42E7E55320564F9C00119CB0 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				42E7E55420564F9C00119CB0 /* UserDefaults.m */,
+				42E7E55520564F9C00119CB0 /* UserDefaults.h */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		9920A9B192A2CA8F25BC2837 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */,
+				03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -370,9 +457,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42E7E4F92054B7BE00119CB0 /* Build configuration list for PBXNativeTarget "GPLottery" */;
 			buildPhases = (
+				796516663C5523D0CD76FCAA /* [CP] Check Pods Manifest.lock */,
 				42E7E4C92054B7BE00119CB0 /* Sources */,
 				42E7E4CA2054B7BE00119CB0 /* Frameworks */,
 				42E7E4CB2054B7BE00119CB0 /* Resources */,
+				CDFF653140C00C7D48C7C354 /* [CP] Embed Pods Frameworks */,
+				4DCE0ED880EB86EB15BE8AB6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -471,15 +561,18 @@
 			files = (
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
 				42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */,
+				42E7E5482056177000119CB0 /* sign.png in Resources */,
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
 				42E7E5412054D4C200119CB0 /* global_btn.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
+				42E7E545205615C200119CB0 /* user_icon.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
+				42E7E5492056177000119CB0 /* arrow.png in Resources */,
 				42E7E5332054C6FB00119CB0 /* bar_notice_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +593,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DCE0ED880EB86EB15BE8AB6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		796516663C5523D0CD76FCAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPLottery-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDFF653140C00C7D48C7C354 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		42E7E4C92054B7BE00119CB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -507,7 +664,11 @@
 			files = (
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
+				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
+				42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */,
+				42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */,
+				42E7E55720564F9C00119CB0 /* ToastView.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
@@ -672,10 +833,12 @@
 		};
 		42E7E4FA2054B7BE00119CB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YGFHD343SK;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.GPLottery;
@@ -686,10 +849,12 @@
 		};
 		42E7E4FB2054B7BE00119CB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YGFHD343SK;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.GPLottery;
