@@ -8,9 +8,23 @@
 
 #import "GPPayViewController.h"
 
+/*
+ * indexNum==0  QQ支付    ==>默认状态
+ * indexNum==1  QQ钱包支付
+ * indexNum==2  QQ钱包支付2
+ * indexNum==3  支付宝支付
+ */
+static NSInteger indexNum;
 @interface GPPayViewController ()
 
-@property (strong, nonatomic) UIView *coverView;  // 遮罩view
+@property (weak, nonatomic) IBOutlet UIImageView *indexZeroImg;  // index0图片
+@property (weak, nonatomic) IBOutlet UIImageView *indexOneImg;   // index1图片
+@property (weak, nonatomic) IBOutlet UIImageView *indexTwoImg;   // index2图片
+@property (weak, nonatomic) IBOutlet UIImageView *indexThreeImg; // index3图片
+@property (strong, nonatomic) UIView   *coverView;            // 遮罩view
+@property (strong, nonatomic) NSString *normalImageName;      // 单选框正常状态
+@property (strong, nonatomic) NSString *selectedImageName;    // 单选框选中状态
+
 
 @end
 
@@ -40,7 +54,110 @@
 #pragma mark - 加载数据
 - (void)loadData{
     
+    // 单选框图片
+    self.normalImageName   = @"check_normal";
+    self.selectedImageName = @"check_seleced";
+    
+    // 设置默认选项
+    indexNum = 0;
+    
 }
+
+#pragma mark - section one check-box 单选框点击事件
+- (IBAction)indexZeroTap:(UITapGestureRecognizer *)sender {
+    
+    // 修改单选框图片状态
+    self.indexZeroImg.image  = [UIImage imageNamed:self.selectedImageName];
+    self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
+    
+    // 设置选中按钮
+    indexNum = 0;
+    
+}
+
+- (IBAction)indexOneTap:(UITapGestureRecognizer *)sender {
+    
+    // 修改单选框图片状态
+    self.indexOneImg.image   = [UIImage imageNamed:self.selectedImageName];
+    self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
+    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
+    
+    // 设置选中按钮
+    indexNum = 1;
+}
+
+- (IBAction)indexTwoTap:(UITapGestureRecognizer *)sender {
+    
+    // 修改单选框图片状态
+    self.indexTwoImg.image   = [UIImage imageNamed:self.selectedImageName];
+    self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
+    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
+    
+    // 设置选中按钮
+    indexNum = 2;
+    
+}
+- (IBAction)indexThreeTap:(UITapGestureRecognizer *)sender {
+    
+    // 修改单选框图片状态
+    self.indexThreeImg.image = [UIImage imageNamed:self.selectedImageName];
+    self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
+    self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
+    
+    // 设置选中按钮
+    indexNum = 3;
+    
+}
+
+// 去支付
+- (IBAction)payforButton:(UIButton *)sender {
+    
+    if (indexNum==0) {
+        
+        NSLog(@"QQ支付");
+        
+    }else if (indexNum==1){
+        
+        NSLog(@"QQ钱包支付");
+        
+    }else if (indexNum==2){
+        
+        NSLog(@"QQ钱包支付2");
+        
+    }else if (indexNum==3){
+        
+        NSLog(@"跳转支付宝支付");
+        
+    }
+   
+}
+
+
+#pragma mark - section two 点击事件
+- (IBAction)sectionTwoRowZeroTap:(UITapGestureRecognizer *)sender {
+    
+   
+}
+
+- (IBAction)sectionTwoRowOneTap:(UITapGestureRecognizer *)sender {
+    
+    
+}
+
+// 查看转账记录
+- (IBAction)viewTransferRecord:(UIButton *)sender {
+}
+
+// 联系在线客服
+- (IBAction)contactCustomerService:(UIButton *)sender {
+}
+
+
 
 #pragma mark - 遮罩层view
 - (void)initCoverView{

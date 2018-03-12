@@ -36,6 +36,11 @@
 		42E7E55720564F9C00119CB0 /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E54E20564F9B00119CB0 /* ToastView.m */; };
 		42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E55120564F9B00119CB0 /* AFNetManager.m */; };
 		42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E55420564F9C00119CB0 /* UserDefaults.m */; };
+		42E7E55D2056659300119CB0 /* check_seleced.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55B2056659200119CB0 /* check_seleced.png */; };
+		42E7E55E2056659300119CB0 /* check_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55C2056659200119CB0 /* check_normal.png */; };
+		42E7E562205668C500119CB0 /* pay_ali.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55F205668C400119CB0 /* pay_ali.png */; };
+		42E7E563205668C500119CB0 /* pay_bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E560205668C500119CB0 /* pay_bank.png */; };
+		42E7E564205668C500119CB0 /* pay_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E561205668C500119CB0 /* pay_qq.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +108,11 @@
 		42E7E55420564F9C00119CB0 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
 		42E7E55520564F9C00119CB0 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
 		42E7E55A20564FF900119CB0 /* GPPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPrefix.pch; sourceTree = "<group>"; };
+		42E7E55B2056659200119CB0 /* check_seleced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_seleced.png; sourceTree = "<group>"; };
+		42E7E55C2056659200119CB0 /* check_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_normal.png; sourceTree = "<group>"; };
+		42E7E55F205668C400119CB0 /* pay_ali.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_ali.png; sourceTree = "<group>"; };
+		42E7E560205668C500119CB0 /* pay_bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_bank.png; sourceTree = "<group>"; };
+		42E7E561205668C500119CB0 /* pay_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_qq.png; sourceTree = "<group>"; };
 		DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPLottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -392,6 +402,11 @@
 			children = (
 				42E7E5342054C70300119CB0 /* bar_pay_choosr.png */,
 				42E7E5352054C70300119CB0 /* bar_pay_normal.png */,
+				42E7E55C2056659200119CB0 /* check_normal.png */,
+				42E7E55B2056659200119CB0 /* check_seleced.png */,
+				42E7E55F205668C400119CB0 /* pay_ali.png */,
+				42E7E560205668C500119CB0 /* pay_bank.png */,
+				42E7E561205668C500119CB0 /* pay_qq.png */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -560,16 +575,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
+				42E7E55E2056659300119CB0 /* check_normal.png in Resources */,
 				42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */,
 				42E7E5482056177000119CB0 /* sign.png in Resources */,
+				42E7E564205668C500119CB0 /* pay_qq.png in Resources */,
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
+				42E7E563205668C500119CB0 /* pay_bank.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
+				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
 				42E7E5412054D4C200119CB0 /* global_btn.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
 				42E7E545205615C200119CB0 /* user_icon.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
+				42E7E562205668C500119CB0 /* pay_ali.png in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
 				42E7E5492056177000119CB0 /* arrow.png in Resources */,
