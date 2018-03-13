@@ -7,8 +7,13 @@
 //
 
 #import "GPLoginViewController.h"
+#import "GPRegistViewController.h"
 
 @interface GPLoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *usernameTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
+
 
 @end
 
@@ -17,6 +22,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - 返回按钮
+- (IBAction)backTohomePage:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 登录按钮
+- (IBAction)loginButton:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 注册按钮
+- (IBAction)goToRegistPage:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 忘记密码
+- (IBAction)forgetPassword:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 三方登录
+- (IBAction)loginByQQ:(UIButton *)sender {
+    
+    
+}
+
+- (IBAction)loginByWeChat:(UIButton *)sender {
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

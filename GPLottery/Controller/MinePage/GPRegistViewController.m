@@ -9,6 +9,10 @@
 #import "GPRegistViewController.h"
 
 @interface GPRegistViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameTF;      // 用户名
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;      // 密码
+@property (weak, nonatomic) IBOutlet UITextField *passwordAgainTF; // 密码again
+@property (weak, nonatomic) IBOutlet UITextField *refereeTF;       // 推荐人
 
 @end
 
@@ -19,6 +23,17 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - 返回界面
+- (IBAction)backToLoginPage:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 注册按钮
+- (IBAction)registButton:(UIButton *)sender {
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
