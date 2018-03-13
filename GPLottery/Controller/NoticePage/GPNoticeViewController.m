@@ -7,8 +7,9 @@
 //
 
 #import "GPNoticeViewController.h"
+#import <SDCycleScrollView/SDCycleScrollView.h>
 
-@interface GPNoticeViewController ()
+@interface GPNoticeViewController ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *headerView;     // 轮播图
 @property (weak, nonatomic) IBOutlet UIView *noticeBtnView;  // 公告底部view
 @property (weak, nonatomic) IBOutlet UIView *msgBtnView;     // 消息底部view
@@ -35,6 +36,17 @@
     self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.headerView.layer.borderWidth = 1;
 
+    // 设置轮播图
+    CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height);
+    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
+                                                                       delegate:self
+                                                               placeholderImage:[UIImage imageNamed:@"1.jpg"]];
+    //    scrollView.imageURLStringsGroup = self.bannerListArrya;                            // 轮播图网络图片
+    scrollView.localizationImageNamesGroup = @[@"1.jpg",@"2.jpg"];                       // 轮播图本地图片
+    scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
+    scrollView.autoScrollTimeInterval      = 3.0;                                        // 轮播图滚动时间间隔
+    scrollView.contentMode = UIViewContentModeScaleAspectFit;                            // 设置图片模式
+    [self.headerView addSubview:scrollView];
     
 }
 
@@ -66,6 +78,11 @@
     
     self.msgBtnView.backgroundColor = [UIColor orangeColor];
     [self.msgBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    
+}
+
+#pragma mark - 轮播图点击事件
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
 }
 

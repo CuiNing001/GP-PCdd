@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="87" id="KGk-i7-Jjw" customClass="GPMineListCell">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="87"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="86.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-Df-xUm">
+                        <rect key="frame" x="10" y="5" width="310" height="76.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_wallet.png" translatesAutoresizingMaskIntoConstraints="NO" id="ilr-uJ-y3O">
+                                <rect key="frame" x="10" y="22.5" width="32" height="32"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVw-dp-48w">
+                                <rect key="frame" x="52" y="29.5" width="31" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00元宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whO-Zd-3uq">
+                                <rect key="frame" x="200" y="30.5" width="54" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-En-QTx">
+                                <rect key="frame" x="274" y="30.5" width="16" height="16"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ilr-uJ-y3O" firstAttribute="leading" secondItem="H9C-Df-xUm" secondAttribute="leading" constant="10" id="D0E-9a-i63"/>
+                            <constraint firstItem="HVw-dp-48w" firstAttribute="leading" secondItem="ilr-uJ-y3O" secondAttribute="trailing" constant="10" id="Fyj-3B-bsM"/>
+                            <constraint firstItem="ilr-uJ-y3O" firstAttribute="centerY" secondItem="H9C-Df-xUm" secondAttribute="centerY" id="LmN-yI-KkW"/>
+                            <constraint firstAttribute="trailing" secondItem="hOL-En-QTx" secondAttribute="trailing" constant="20" id="Zgs-qC-UnJ"/>
+                            <constraint firstItem="HVw-dp-48w" firstAttribute="centerY" secondItem="ilr-uJ-y3O" secondAttribute="centerY" id="hLI-0c-LqS"/>
+                            <constraint firstItem="hOL-En-QTx" firstAttribute="centerY" secondItem="HVw-dp-48w" secondAttribute="centerY" id="mHc-hP-TQs"/>
+                            <constraint firstItem="hOL-En-QTx" firstAttribute="leading" secondItem="whO-Zd-3uq" secondAttribute="trailing" constant="20" id="mPm-CW-J2W"/>
+                            <constraint firstItem="whO-Zd-3uq" firstAttribute="centerY" secondItem="HVw-dp-48w" secondAttribute="centerY" id="wUQ-mZ-uih"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="H9C-Df-xUm" secondAttribute="bottom" constant="5" id="4k1-6L-v1S"/>
+                    <constraint firstItem="H9C-Df-xUm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="K5G-bK-dow"/>
+                    <constraint firstItem="H9C-Df-xUm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PiD-ud-mbB"/>
+                    <constraint firstAttribute="trailing" secondItem="H9C-Df-xUm" secondAttribute="trailing" constant="10" id="idi-KS-dZ0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="mineListImage" destination="ilr-uJ-y3O" id="1SA-92-hae"/>
+                <outlet property="mineListMoney" destination="whO-Zd-3uq" id="x7s-6G-FTc"/>
+                <outlet property="mineListText" destination="HVw-dp-48w" id="JqB-Rc-duN"/>
+            </connections>
+            <point key="canvasLocation" x="30" y="73.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow_black.png" width="16" height="16"/>
+        <image name="mine_wallet.png" width="32" height="32"/>
+    </resources>
+</document>
