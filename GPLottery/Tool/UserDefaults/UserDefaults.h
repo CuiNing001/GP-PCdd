@@ -19,8 +19,8 @@
                       token:(NSString *)token
                    nickname:(NSString *)nickname
                     islogin:(NSString *)islogin
-                       type:(NSString *)type
-                       xhID:(NSString *)xhID
+                   moneyNum:(NSString *)moneyNum
+                     userID:(NSString *)userID
                       level:(NSString *)level;
 /*
  * 查询数据

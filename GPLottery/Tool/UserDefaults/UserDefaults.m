@@ -27,8 +27,8 @@
                       token:(NSString *)token
                    nickname:(NSString *)nickname
                     islogin:(NSString *)islogin
-                       type:(NSString *)type
-                       xhID:(NSString *)xhID
+                   moneyNum:(NSString *)moneyNum
+                     userID:(NSString *)userID
                       level:(NSString *)level
 {
 
@@ -38,11 +38,11 @@
     [userDefault setObject:token    forKey:@"token"];
     [userDefault setObject:nickname forKey:@"nickname"];
     [userDefault setObject:islogin  forKey:@"islogin"];
-    [userDefault setObject:type     forKey:@"type"];
-    [userDefault setObject:xhID     forKey:@"xhID"];
+    [userDefault setObject:moneyNum forKey:@"moneyNum"];
+    [userDefault setObject:userID   forKey:@"userID"];
     [userDefault setObject:level    forKey:@"level"];
     [userDefault synchronize];
-    NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--type:%@--hxID%@--level%@",username,password,token,nickname,islogin,type,xhID,level);
+    NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@",username,password,token,nickname,islogin,moneyNum,userID,level);
 }
 /*
  * 修改昵称
@@ -103,18 +103,18 @@
     NSString *nickname = [userDefaults objectForKey:@"nickname"];
     NSString *islogin  = [userDefaults objectForKey:@"islogin"];
     NSString *token    = [userDefaults objectForKey:@"token"];
-    NSString *type     = [userDefaults objectForKey:@"type"];
-    NSString *xhID     = [userDefaults objectForKey:@"xhID"];
+    NSString *moneyNum = [userDefaults objectForKey:@"moneyNum"];
+    NSString *userID   = [userDefaults objectForKey:@"userID"];
     NSString *level    = [userDefaults objectForKey:@"level"];
     
-    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && type!=nil && xhID!=nil && level!=nil) {
+    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil) {
         userDic = @{@"loginName":username,
                     @"password":password,
                     @"nickname":nickname,
                     @"islogin":islogin,
                     @"token":token,
-                    @"type":type,
-                    @"xhID":xhID,
+                    @"moneyNum":moneyNum,
+                    @"userID":userID,
                     @"level":level
                     }.mutableCopy;
     }
@@ -141,8 +141,8 @@
     [userDefaults removeObjectForKey:@"token"];
     [userDefaults removeObjectForKey:@"nickname"];
     [userDefaults removeObjectForKey:@"islogin"];
-    [userDefaults removeObjectForKey:@"type"];
-    [userDefaults removeObjectForKey:@"xhID"];
+    [userDefaults removeObjectForKey:@"moneyNum"];
+    [userDefaults removeObjectForKey:@"userID"];
     [userDefaults removeObjectForKey:@"level"];
     [userDefaults synchronize];
 

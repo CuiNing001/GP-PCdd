@@ -8,6 +8,7 @@
 
 #import "GPMineViewController.h"
 #import "GPMineListCell.h"
+#import "GPChangeDataViewController.h"
 
 @interface GPMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView      *headerView;      // headerView
@@ -19,7 +20,7 @@
 @property (strong, nonatomic) NSMutableArray     *listImageArray;  // 图标数据
 @property (strong, nonatomic) NSMutableArray     *listTextArray;   // 文字数据
 @property (strong, nonatomic) NSString           *money;           // 元宝金额
-
+@property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
 
 
 @end
@@ -32,6 +33,11 @@
     [self loadData];
     [self loadSubView];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self loadUserDefaultsData];
 }
 
 #pragma mark - 加载子控件
@@ -60,22 +66,51 @@
     self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
     self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"VIP分享",@"我的收益",@"设置",@"关于"].mutableCopy;
     
-    // 初始化钱包金额
-    self.money = @"123.12";
-    
-    
 }
 
 #pragma mark - 修改头像
 - (IBAction)changeUserImageBtn:(UIButton *)sender {
     
+    // 退出登陆
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        // 删除本地数据
+        [UserDefaults deleateData];
+        
+        NSLog(@"退出登陆");
+        
+    });
 }
 
 #pragma mark - 修改资料
 - (void)changeData{
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    GPChangeDataViewController *changeDataVC = [storyboard instantiateViewControllerWithIdentifier:@"changeDataVC"];
+    
+    changeDataVC.username = self.infoModel.loginName;
+    
+    changeDataVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:changeDataVC animated:YES];
 }
+
+#pragma mark - 加载本地数据
+- (void)loadUserDefaultsData{
+    
+    NSMutableDictionary *infoDic = [UserDefaults searchData];
+    
+    self.infoModel               = [[GPInfoModel alloc]init];
+    
+    [self.infoModel setValuesForKeysWithDictionary:infoDic];
+    
+    // 初始化钱包金额
+    self.money = self.infoModel.moneyNum;
+    
+    NSLog(@"|MINE-VC|-[token]:%@-[username]:%@",self.infoModel.token,self.infoModel.loginName);
+}
+
 
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -109,6 +144,45 @@
     
     // 点击后取消cell的点击状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // cell点击事件
+    
+}
+
+#pragma mark - storyboard controller
+- (void)getControllerFromStoryboardWithIdentifier:(NSString *)identifier myVC:(UIViewController *)myVC{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    myVC = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    
+    myVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:myVC animated:YES];
+    
+}
+
+#pragma mark - 提醒框
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           
+                                                           [self dismissViewControllerAnimated:YES
+                                                                                    completion:nil];
+                                                       }];
+    
+    [alert addAction:action];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
+    
 }
 
 

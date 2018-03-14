@@ -19,7 +19,6 @@
 		4263B9EB2057BD3700103919 /* mine_about.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9E32057BD3700103919 /* mine_about.png */; };
 		4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9ED2057BEBF00103919 /* GPLoginViewController.m */; };
 		4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9F02057BECE00103919 /* GPRegistViewController.m */; };
-		4263B9FA2057BF4F00103919 /* GPInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9F92057BF4F00103919 /* GPInfoModel.m */; };
 		4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9FC2057C0DC00103919 /* GPRespondModel.m */; };
 		4263BA002057C33400103919 /* GPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9FF2057C33400103919 /* GPLoginModel.m */; };
 		4263BA032057C55800103919 /* GPShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA022057C55800103919 /* GPShareModel.m */; };
@@ -28,6 +27,11 @@
 		4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA082057CCD700103919 /* login_qq_btn.png */; };
 		4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA092057CCD700103919 /* login_bg_img.png */; };
 		4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA0A2057CCD700103919 /* login_back_arrows.png */; };
+		4263BA112058F25E00103919 /* GPRegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA102058F25E00103919 /* GPRegistModel.m */; };
+		4263BA142059024100103919 /* GPInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA132059024100103919 /* GPInfoModel.m */; };
+		4263BA162059121B00103919 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA152059121A00103919 /* user_icon.png */; };
+		4263BA182059126F00103919 /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA172059126F00103919 /* header_bg.png */; };
+		4263BA1B20591A5600103919 /* GPChangeDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA1A20591A5600103919 /* GPChangeDataViewController.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -49,7 +53,6 @@
 		42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5352054C70300119CB0 /* bar_pay_normal.png */; };
 		42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E53A2054D05C00119CB0 /* MNAssistiveBtn.m */; };
 		42E7E5412054D4C200119CB0 /* global_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5402054D4C200119CB0 /* global_btn.png */; };
-		42E7E545205615C200119CB0 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E544205615C100119CB0 /* user_icon.png */; };
 		42E7E5482056177000119CB0 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5462056176F00119CB0 /* sign.png */; };
 		42E7E5492056177000119CB0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E5472056177000119CB0 /* arrow.png */; };
 		42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E54C20564F9B00119CB0 /* RegexPattern.m */; };
@@ -104,8 +107,6 @@
 		4263B9ED2057BEBF00103919 /* GPLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLoginViewController.m; sourceTree = "<group>"; };
 		4263B9EF2057BECE00103919 /* GPRegistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRegistViewController.h; sourceTree = "<group>"; };
 		4263B9F02057BECE00103919 /* GPRegistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRegistViewController.m; sourceTree = "<group>"; };
-		4263B9F82057BF4F00103919 /* GPInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPInfoModel.h; sourceTree = "<group>"; };
-		4263B9F92057BF4F00103919 /* GPInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPInfoModel.m; sourceTree = "<group>"; };
 		4263B9FB2057C0DC00103919 /* GPRespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRespondModel.h; sourceTree = "<group>"; };
 		4263B9FC2057C0DC00103919 /* GPRespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRespondModel.m; sourceTree = "<group>"; };
 		4263B9FE2057C33400103919 /* GPLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLoginModel.h; sourceTree = "<group>"; };
@@ -118,6 +119,14 @@
 		4263BA082057CCD700103919 /* login_qq_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_qq_btn.png; sourceTree = "<group>"; };
 		4263BA092057CCD700103919 /* login_bg_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bg_img.png; sourceTree = "<group>"; };
 		4263BA0A2057CCD700103919 /* login_back_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_back_arrows.png; sourceTree = "<group>"; };
+		4263BA0F2058F25E00103919 /* GPRegistModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRegistModel.h; sourceTree = "<group>"; };
+		4263BA102058F25E00103919 /* GPRegistModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRegistModel.m; sourceTree = "<group>"; };
+		4263BA122059024100103919 /* GPInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPInfoModel.h; sourceTree = "<group>"; };
+		4263BA132059024100103919 /* GPInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPInfoModel.m; sourceTree = "<group>"; };
+		4263BA152059121A00103919 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_icon.png; sourceTree = "<group>"; };
+		4263BA172059126F00103919 /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
+		4263BA1920591A5600103919 /* GPChangeDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPChangeDataViewController.h; sourceTree = "<group>"; };
+		4263BA1A20591A5600103919 /* GPChangeDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPChangeDataViewController.m; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -151,7 +160,6 @@
 		42E7E5392054D05C00119CB0 /* MNAssistiveBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAssistiveBtn.h; sourceTree = "<group>"; };
 		42E7E53A2054D05C00119CB0 /* MNAssistiveBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAssistiveBtn.m; sourceTree = "<group>"; };
 		42E7E5402054D4C200119CB0 /* global_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = global_btn.png; sourceTree = "<group>"; };
-		42E7E544205615C100119CB0 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_icon.png; sourceTree = "<group>"; };
 		42E7E5462056176F00119CB0 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
 		42E7E5472056177000119CB0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		42E7E54B20564F9B00119CB0 /* RegexPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexPattern.h; sourceTree = "<group>"; };
@@ -308,6 +316,8 @@
 				4263B9ED2057BEBF00103919 /* GPLoginViewController.m */,
 				4263B9EF2057BECE00103919 /* GPRegistViewController.h */,
 				4263B9F02057BECE00103919 /* GPRegistViewController.m */,
+				4263BA1920591A5600103919 /* GPChangeDataViewController.h */,
+				4263BA1A20591A5600103919 /* GPChangeDataViewController.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -342,6 +352,8 @@
 		42E7E5082054BD9B00119CB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4263BA122059024100103919 /* GPInfoModel.h */,
+				4263BA132059024100103919 /* GPInfoModel.m */,
 				42E7E50A2054BD9B00119CB0 /* HomePage */,
 				42E7E50C2054BD9B00119CB0 /* PayPage */,
 				42E7E50B2054BD9B00119CB0 /* NoticePage */,
@@ -355,6 +367,8 @@
 			children = (
 				4263B9FB2057C0DC00103919 /* GPRespondModel.h */,
 				4263B9FC2057C0DC00103919 /* GPRespondModel.m */,
+				4263BA0F2058F25E00103919 /* GPRegistModel.h */,
+				4263BA102058F25E00103919 /* GPRegistModel.m */,
 				4263B9FE2057C33400103919 /* GPLoginModel.h */,
 				4263B9FF2057C33400103919 /* GPLoginModel.m */,
 				4263BA012057C55800103919 /* GPShareModel.h */,
@@ -368,8 +382,6 @@
 		42E7E50A2054BD9B00119CB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				4263B9F82057BF4F00103919 /* GPInfoModel.h */,
-				4263B9F92057BF4F00103919 /* GPInfoModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -456,10 +468,11 @@
 			children = (
 				42E7E52D2054C6F100119CB0 /* bar_mine_choose.png */,
 				42E7E52C2054C6F100119CB0 /* bar_mine_normal.png */,
-				42E7E544205615C100119CB0 /* user_icon.png */,
 				42E7E5472056177000119CB0 /* arrow.png */,
 				42E7E58420576EED00119CB0 /* arrow_black.png */,
 				42E7E5462056176F00119CB0 /* sign.png */,
+				4263BA172059126F00103919 /* header_bg.png */,
+				4263BA152059121A00103919 /* user_icon.png */,
 				4263B9DA2057BBFF00103919 /* mine_wallet.png */,
 				4263B9E32057BD3700103919 /* mine_about.png */,
 				4263B9DF2057BD3600103919 /* mine_backwater.png */,
@@ -552,8 +565,8 @@
 		42E7E55320564F9C00119CB0 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				42E7E55420564F9C00119CB0 /* UserDefaults.m */,
 				42E7E55520564F9C00119CB0 /* UserDefaults.h */,
+				42E7E55420564F9C00119CB0 /* UserDefaults.m */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -677,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
+				4263BA182059126F00103919 /* header_bg.png in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
 				42E7E55E2056659300119CB0 /* check_normal.png in Resources */,
@@ -698,7 +712,6 @@
 				42E7E5412054D4C200119CB0 /* global_btn.png in Resources */,
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
-				42E7E545205615C200119CB0 /* user_icon.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
@@ -710,6 +723,7 @@
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
+				4263BA162059121B00103919 /* user_icon.png in Resources */,
 				42E7E5492056177000119CB0 /* arrow.png in Resources */,
 				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
@@ -804,12 +818,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
-				4263B9FA2057BF4F00103919 /* GPInfoModel.m in Sources */,
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
+				4263BA112058F25E00103919 /* GPRegistModel.m in Sources */,
+				4263BA1B20591A5600103919 /* GPChangeDataViewController.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
 				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
 				4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
+				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
 				4263BA002057C33400103919 /* GPLoginModel.m in Sources */,
 				42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */,

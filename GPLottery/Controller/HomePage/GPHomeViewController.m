@@ -8,9 +8,9 @@
 
 #import "GPHomeViewController.h"
 #import <SDCycleScrollView/SDCycleScrollView.h>
+#import "GPLoginViewController.h"
 
-
-@interface GPHomeViewController ()<SDCycleScrollViewDelegate>
+@interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bgView;                    // 背景view
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;  // 背景view的高度
 @property (weak, nonatomic) IBOutlet UIView *headerView;                // 轮播图
@@ -19,7 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *moneyLab;                 // 已赚元宝
 @property (weak, nonatomic) IBOutlet UILabel *personLab;                // 已注册人数
 @property (weak, nonatomic) IBOutlet UILabel *ratioLab;                 // 赚钱率
-
+@property (assign, nonatomic) NSString *isLogin;                        // 登陆状态
+@property (strong, nonatomic) GPLoginViewController *loginVC;
+@property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
 
 @end
 
@@ -32,8 +34,17 @@
     [self loadSubView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    // 加载本地数据
+    [self loadUserDefaultsData];
+}
+
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    // 添加tabbar代理
+    self.tabBarController.delegate = self;
     
     // 轮播图view添加边框
     self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
@@ -56,12 +67,86 @@
 #pragma mark - 加载数据
 - (void)loadData{
     
-    
-    
+    // 设置登陆状态
+    self.isLogin = self.infoModel.islogin;
 }
+
+#pragma mark - 加载本地数据
+- (void)loadUserDefaultsData{
+    
+    NSMutableDictionary *infoDic = [UserDefaults searchData];
+    
+    self.infoModel               = [[GPInfoModel alloc]init];
+    
+    [self.infoModel setValuesForKeysWithDictionary:infoDic];
+    
+    // 设置登陆状态
+    self.isLogin = self.infoModel.islogin;
+    
+    NSLog(@"|HOME-VC|-[登陆状态]:%@-[token]:%@",self.isLogin,self.infoModel.token);
+
+}
+
+#pragma mark - tab bar controller代理方法
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+
+    // 未登陆状态点击其他页面跳转到登陆页面
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        if (![viewController.tabBarItem.title isEqualToString:@"首页"]) {
+            
+            [self getControllerFromStoryboardWithIdentifier:@"loginVC" myVC:self.loginVC];
+            
+            return NO;
+        }else{
+            
+            return YES;
+        }
+        
+    }else{
+        
+       return YES;
+    }
+}
+
+
 
 #pragma mark - 轮播图点击事件
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    
+}
+
+#pragma mark - storyboard controller
+- (void)getControllerFromStoryboardWithIdentifier:(NSString *)identifier myVC:(UIViewController *)myVC{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    myVC = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    
+    [self presentViewController:myVC animated:YES completion:nil];
+    
+}
+
+#pragma mark - 提醒框
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           
+                                                           [self dismissViewControllerAnimated:YES
+                                                                                    completion:nil];
+                                                       }];
+    
+    [alert addAction:action];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
     
 }
 
