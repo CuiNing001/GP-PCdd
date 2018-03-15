@@ -77,6 +77,13 @@
             
             [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
             
+            // 修改成功后修改本地数据
+            [UserDefaults upDataWithNickname:self.nickName];
+            [UserDefaults upDataWithAutograph:self.autograph];
+            
+            // 返回个人中心
+            [self.navigationController popViewControllerAnimated:YES];
+            
         }else{
             
             [ToastView toastViewWithMessage:respondModel.msg timer:3.5];

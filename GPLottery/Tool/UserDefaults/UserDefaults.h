@@ -21,7 +21,8 @@
                     islogin:(NSString *)islogin
                    moneyNum:(NSString *)moneyNum
                      userID:(NSString *)userID
-                      level:(NSString *)level;
+                      level:(NSString *)level
+                  autograph:(NSString *)autograph;
 /*
  * 查询数据
  */
@@ -35,6 +36,10 @@
  * 修改昵称
  */
 + (void)upDataWithNickname:(NSString *)nickname;
+/*
+ * 修改签名
+ */
++ (void)upDataWithAutograph:(NSString *)autograph;
 /*
  * 修改密码
  */

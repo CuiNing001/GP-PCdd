@@ -100,7 +100,8 @@
                                       islogin:@"1"
                                      moneyNum:loginModel.moneyNum
                                        userID:loginModel.id
-                                        level:loginModel.level];
+                                        level:loginModel.level
+                                    autograph:loginModel.autograph];
             
             // 关闭登陆界面
             [self dismissViewControllerAnimated:YES completion:nil];

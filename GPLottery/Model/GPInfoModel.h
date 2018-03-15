@@ -10,13 +10,14 @@
 
 @interface GPInfoModel : BaseModel
 
-@property (strong, nonatomic) NSString *loginName;
-@property (strong, nonatomic) NSString *password;
-@property (strong, nonatomic) NSString *token;
-@property (strong, nonatomic) NSString *nickname;
-@property (strong, nonatomic) NSString *islogin;
-@property (strong, nonatomic) NSString *moneyNum;
-@property (strong, nonatomic) NSString *userID;
-@property (strong, nonatomic) NSString *level;
+@property (strong, nonatomic) NSString *loginName;  // 登录名
+@property (strong, nonatomic) NSString *password;   // 密码
+@property (strong, nonatomic) NSString *token;      // token
+@property (strong, nonatomic) NSString *nickname;   // 昵称
+@property (strong, nonatomic) NSString *islogin;    // 登录状态
+@property (strong, nonatomic) NSString *moneyNum;   // 玩家金币
+@property (strong, nonatomic) NSString *userID;     // 玩家ID
+@property (strong, nonatomic) NSString *level;      // 等级
+@property (strong, nonatomic) NSString *autograph;  // 签名
 
 @end

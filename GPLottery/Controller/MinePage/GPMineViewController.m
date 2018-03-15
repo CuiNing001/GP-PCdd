@@ -9,6 +9,15 @@
 #import "GPMineViewController.h"
 #import "GPMineListCell.h"
 #import "GPChangeDataViewController.h"
+#import "GPWalletViewController.h"
+#import "GPBackWaterViewController.h"
+#import "GPGameViewController.h"
+#import "GPGameListViewController.h"
+#import "GPHistoryViewController.h"
+#import "GPShareViewController.h"
+#import "GPSettingViewController.h"
+#import "GPEarningsViewController.h"
+#import "GPAboutViewController.h"
 
 @interface GPMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView      *headerView;      // headerView
@@ -21,6 +30,7 @@
 @property (strong, nonatomic) NSMutableArray     *listTextArray;   // 文字数据
 @property (strong, nonatomic) NSString           *money;           // 元宝金额
 @property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
+@property (assign, nonatomic) NSString           *isLogin;         // 登陆状态
 
 
 @end
@@ -38,6 +48,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        self.tabBarController.selectedIndex = 0;
+    }
 }
 
 #pragma mark - 加载子控件
@@ -64,35 +80,23 @@
     
     // 初始化list数据
     self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
-    self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"VIP分享",@"我的收益",@"设置",@"关于"].mutableCopy;
+    self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"我要分享",@"我的收益",@"设置",@"关于"].mutableCopy;
     
 }
 
 #pragma mark - 修改头像
 - (IBAction)changeUserImageBtn:(UIButton *)sender {
     
-    // 退出登陆
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        // 删除本地数据
-        [UserDefaults deleateData];
-        
-        NSLog(@"退出登陆");
-        
-    });
+    
 }
 
 #pragma mark - 修改资料
 - (void)changeData{
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
+    UIStoryboard *storyboard                 = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     GPChangeDataViewController *changeDataVC = [storyboard instantiateViewControllerWithIdentifier:@"changeDataVC"];
-    
-    changeDataVC.username = self.infoModel.loginName;
-    
-    changeDataVC.hidesBottomBarWhenPushed = YES;
-    
+    changeDataVC.username                    = self.infoModel.loginName;
+    changeDataVC.hidesBottomBarWhenPushed    = YES;
     [self.navigationController pushViewController:changeDataVC animated:YES];
 }
 
@@ -108,7 +112,22 @@
     // 初始化钱包金额
     self.money = self.infoModel.moneyNum;
     
-    NSLog(@"|MINE-VC|-[token]:%@-[username]:%@",self.infoModel.token,self.infoModel.loginName);
+    // 登录状态
+    self.isLogin = self.infoModel.islogin;
+    
+    // 昵称
+    if (![self.infoModel.nickname isEqualToString:@""]) {
+        
+        self.nickNameLab.text = self.infoModel.nickname;
+    }
+    
+    // 签名
+    if (![self.infoModel.autograph isEqualToString:@""]) {
+        
+        self.signatureLabel.text = self.infoModel.autograph;
+    }
+    
+    NSLog(@"|MINE-VC|-[token]:%@-[username]:%@-[nickname]:%@-[autograph]:%@",self.infoModel.token,self.infoModel.loginName,self.infoModel.nickname,self.infoModel.autograph);
 }
 
 
@@ -146,21 +165,71 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // cell点击事件
-    
+    if (indexPath.row == 0) {       // 钱包
+        
+        UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPWalletViewController *walletVC      = [storyboard instantiateViewControllerWithIdentifier:@"walletVC"];
+        walletVC.hidesBottomBarWhenPushed     = YES;
+        [self.navigationController pushViewController:walletVC animated:YES];
+        
+    }else if (indexPath.row == 1){  // 我的回水
+        
+        UIStoryboard *storyboard                = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPBackWaterViewController *backWaterVC  = [storyboard instantiateViewControllerWithIdentifier:@"backWaterVC"];
+        backWaterVC.hidesBottomBarWhenPushed    = YES;
+        [self.navigationController pushViewController:backWaterVC animated:YES];
+        
+    }else if (indexPath.row == 2){  // 幸运抽奖
+        
+        UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPGameViewController *gameVC    = [storyboard instantiateViewControllerWithIdentifier:@"gameVC"];
+        gameVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:gameVC animated:YES];
+        
+    }else if (indexPath.row == 3){  // 帐变记录
+        
+        UIStoryboard *storyboard           = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPHistoryViewController *historyVC = [storyboard instantiateViewControllerWithIdentifier:@"historyVC"];
+        historyVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:historyVC animated:YES];
+        
+    }else if (indexPath.row == 4){  // 游戏记录
+        
+        UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPGameListViewController *gameListVC = [storyboard instantiateViewControllerWithIdentifier:@"gameListVC"];
+        gameListVC.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:gameListVC animated:YES];
+        
+    }else if (indexPath.row == 5){  // VIP分享
+        
+        UIStoryboard *storyboard         = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPShareViewController *shareVC   = [storyboard instantiateViewControllerWithIdentifier:@"shareVC"];
+        shareVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:shareVC animated:YES];
+        
+    }else if (indexPath.row == 6){  //  我的收益
+        
+        UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPEarningsViewController *earningsVC = [storyboard instantiateViewControllerWithIdentifier:@"earningsVC"];
+        earningsVC.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:earningsVC animated:YES];
+        
+    }else if (indexPath.row == 7){  //  设置
+        
+        UIStoryboard *storyboard           = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPSettingViewController *settingVC = [storyboard instantiateViewControllerWithIdentifier:@"settingVC"];
+        settingVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:settingVC animated:YES];
+        
+    }else if (indexPath.row == 8){  //  关于
+        
+        UIStoryboard *storyboard         = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPAboutViewController *aboutVC   = [storyboard instantiateViewControllerWithIdentifier:@"aboutVC"];
+        aboutVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:aboutVC animated:YES];
+    }
 }
 
-#pragma mark - storyboard controller
-- (void)getControllerFromStoryboardWithIdentifier:(NSString *)identifier myVC:(UIViewController *)myVC{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    myVC = [storyboard instantiateViewControllerWithIdentifier:identifier];
-    
-    myVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:myVC animated:YES];
-    
-}
 
 #pragma mark - 提醒框
 - (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{

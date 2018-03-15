@@ -21,6 +21,7 @@
  * type    :充值渠道
  * type    :环信登录ID
  * level   :等级
+ * autograph:签名
  */
 + (void)addDataWithUsername:(NSString *)username
                    password:(NSString *)password
@@ -30,6 +31,7 @@
                    moneyNum:(NSString *)moneyNum
                      userID:(NSString *)userID
                       level:(NSString *)level
+                  autograph:(NSString *)autograph
 {
 
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -41,8 +43,9 @@
     [userDefault setObject:moneyNum forKey:@"moneyNum"];
     [userDefault setObject:userID   forKey:@"userID"];
     [userDefault setObject:level    forKey:@"level"];
+    [userDefault setObject:autograph forKey:@"autograph"];
     [userDefault synchronize];
-    NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@",username,password,token,nickname,islogin,moneyNum,userID,level);
+    NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@--autograph:%@",username,password,token,nickname,islogin,moneyNum,userID,level,autograph);
 }
 /*
  * 修改昵称
@@ -55,6 +58,17 @@
     [userDefault setObject:nickname forKey:@"nickname"];
     [userDefault synchronize];
     
+}
+
+/*
+ * 修改签名
+ * autograph:签名
+ */
++ (void)upDataWithAutograph:(NSString *)autograph{
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:autograph forKey:@"autograph"];
+    [userDefault synchronize];
 }
 
 /*
@@ -92,6 +106,7 @@
  * type    :充值渠道
  * type    :环信登录ID
  * level   :等级
+ * autograph:签名
  */
 + (NSMutableDictionary *)searchData
 {
@@ -106,8 +121,9 @@
     NSString *moneyNum = [userDefaults objectForKey:@"moneyNum"];
     NSString *userID   = [userDefaults objectForKey:@"userID"];
     NSString *level    = [userDefaults objectForKey:@"level"];
+    NSString *autograph = [userDefaults objectForKey:@"autograph"];
     
-    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil) {
+    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil) {
         userDic = @{@"loginName":username,
                     @"password":password,
                     @"nickname":nickname,
@@ -115,7 +131,8 @@
                     @"token":token,
                     @"moneyNum":moneyNum,
                     @"userID":userID,
-                    @"level":level
+                    @"level":level,
+                    @"autograph":autograph
                     }.mutableCopy;
     }
      return userDic;
@@ -144,6 +161,7 @@
     [userDefaults removeObjectForKey:@"moneyNum"];
     [userDefaults removeObjectForKey:@"userID"];
     [userDefaults removeObjectForKey:@"level"];
+    [userDefaults removeObjectForKey:@"autograph"];
     [userDefaults synchronize];
 
 
