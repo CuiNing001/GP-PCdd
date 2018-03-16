@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"VIP分享";
+    self.title = @"我要分享";
 }
 
 - (void)didReceiveMemoryWarning {

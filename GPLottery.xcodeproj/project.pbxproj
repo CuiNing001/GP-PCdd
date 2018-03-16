@@ -69,6 +69,8 @@
 		4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA79205BBA8000103919 /* GPBetDetailModel.m */; };
 		4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */; };
 		4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */; };
+		4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA8B205BDE0F00103919 /* GPLinkOpenAccuoutView.m */; };
+		4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA8D205BDE1C00103919 /* GPLinkOpenAccuoutView.xib */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -221,6 +223,9 @@
 		4263BA7B205BBC9D00103919 /* GPBetDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetDetailCell.h; sourceTree = "<group>"; };
 		4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetDetailCell.m; sourceTree = "<group>"; };
 		4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetDetailCell.xib; sourceTree = "<group>"; };
+		4263BA8A205BDE0F00103919 /* GPLinkOpenAccuoutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLinkOpenAccuoutView.h; sourceTree = "<group>"; };
+		4263BA8B205BDE0F00103919 /* GPLinkOpenAccuoutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLinkOpenAccuoutView.m; sourceTree = "<group>"; };
+		4263BA8D205BDE1C00103919 /* GPLinkOpenAccuoutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPLinkOpenAccuoutView.xib; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -564,6 +569,9 @@
 				4263BA7B205BBC9D00103919 /* GPBetDetailCell.h */,
 				4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */,
 				4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */,
+				4263BA8A205BDE0F00103919 /* GPLinkOpenAccuoutView.h */,
+				4263BA8B205BDE0F00103919 /* GPLinkOpenAccuoutView.m */,
+				4263BA8D205BDE1C00103919 /* GPLinkOpenAccuoutView.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -880,6 +888,7 @@
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42E7E58F20579F6E00119CB0 /* home_person.png in Resources */,
+				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
 				4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */,
 				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
 				42E7E562205668C500119CB0 /* pay_ali.png in Resources */,
@@ -1001,6 +1010,7 @@
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
+				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
 				4263BA2A20595C9900103919 /* GPGameListViewController.m in Sources */,
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
