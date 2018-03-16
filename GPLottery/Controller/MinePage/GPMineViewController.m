@@ -15,6 +15,8 @@
 #import "GPGameListViewController.h"
 #import "GPHistoryViewController.h"
 #import "GPShareViewController.h"
+#import "GPAgentOpenViewController.h"
+#import "GPAgentBgViewController.h"
 #import "GPSettingViewController.h"
 #import "GPEarningsViewController.h"
 #import "GPAboutViewController.h"
@@ -79,8 +81,8 @@
 - (void)loadData{
     
     // 初始化list数据
-    self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
-    self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"我要分享",@"我的收益",@"设置",@"关于"].mutableCopy;
+    self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_agent_open",@"mine_agent_background",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
+    self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"我要分享",@"代理开户",@"代理后台",@"我的收益",@"设置",@"关于"].mutableCopy;
     
 }
 
@@ -207,21 +209,35 @@
         shareVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:shareVC animated:YES];
         
-    }else if (indexPath.row == 6){  //  我的收益
+    }else if (indexPath.row == 6){  //  代理开户
+        
+        UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPAgentOpenViewController *agentOpenVC = [storyboard instantiateViewControllerWithIdentifier:@"agentOpenVC"];
+        agentOpenVC.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:agentOpenVC animated:YES];
+        
+    }else if (indexPath.row == 7){  // 代理后台
+        
+        UIStoryboard *storyboard         = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPAgentBgViewController *agentBgVC   = [storyboard instantiateViewControllerWithIdentifier:@"agentBgVC"];
+        agentBgVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:agentBgVC animated:YES];
+        
+    }else if (indexPath.row == 8){  //  我的收益
         
         UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         GPEarningsViewController *earningsVC = [storyboard instantiateViewControllerWithIdentifier:@"earningsVC"];
         earningsVC.hidesBottomBarWhenPushed  = YES;
         [self.navigationController pushViewController:earningsVC animated:YES];
         
-    }else if (indexPath.row == 7){  //  设置
+    }else if (indexPath.row == 9){  //  设置
         
         UIStoryboard *storyboard           = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         GPSettingViewController *settingVC = [storyboard instantiateViewControllerWithIdentifier:@"settingVC"];
         settingVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:settingVC animated:YES];
         
-    }else if (indexPath.row == 8){  //  关于
+    }else if (indexPath.row == 10){  //  关于
         
         UIStoryboard *storyboard         = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         GPAboutViewController *aboutVC   = [storyboard instantiateViewControllerWithIdentifier:@"aboutVC"];

@@ -84,8 +84,14 @@
                 
                 [historyModel setValuesForKeysWithDictionary:dataDic];
                     
-                    [weakSelf.dataArray addObject:historyModel];
+                [weakSelf.dataArray addObject:historyModel];
+            }
+            // 空数据显示默认空页面
+            if (weakSelf.dataArray.count>0) {
                 
+                self.emptyPage.hidden = YES;
+            }else{
+                self.emptyPage.hidden = NO;
             }
             
             [weakSelf.tableView reloadData];

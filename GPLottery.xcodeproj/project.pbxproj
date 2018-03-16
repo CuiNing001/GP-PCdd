@@ -57,6 +57,18 @@
 		4263BA56205A78BA00103919 /* GPHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA54205A78BA00103919 /* GPHistoryCell.m */; };
 		4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA55205A78BA00103919 /* GPHistoryCell.xib */; };
 		4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA59205A7F9F00103919 /* GPHistoryModel.m */; };
+		4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA5B205AA6F000103919 /* mine_agent_background.png */; };
+		4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA5C205AA6F000103919 /* mine_agent_open.png */; };
+		4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA60205AA78D00103919 /* GPAgentOpenViewController.m */; };
+		4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA63205AA7AC00103919 /* GPAgentBgViewController.m */; };
+		4263BA66205AA9B400103919 /* game_triangle_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA65205AA9B300103919 /* game_triangle_btn.png */; };
+		4263BA69205B5F8000103919 /* GPBetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA68205B5F8000103919 /* GPBetModel.m */; };
+		4263BA70205B627C00103919 /* GPBetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA6E205B627C00103919 /* GPBetCell.m */; };
+		4263BA71205B627C00103919 /* GPBetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA6F205B627C00103919 /* GPBetCell.xib */; };
+		4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA73205BB30600103919 /* GPGameDetailViewController.m */; };
+		4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA79205BBA8000103919 /* GPBetDetailModel.m */; };
+		4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */; };
+		4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -190,6 +202,25 @@
 		4263BA55205A78BA00103919 /* GPHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPHistoryCell.xib; sourceTree = "<group>"; };
 		4263BA58205A7F9F00103919 /* GPHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPHistoryModel.h; sourceTree = "<group>"; };
 		4263BA59205A7F9F00103919 /* GPHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPHistoryModel.m; sourceTree = "<group>"; };
+		4263BA5B205AA6F000103919 /* mine_agent_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_agent_background.png; sourceTree = "<group>"; };
+		4263BA5C205AA6F000103919 /* mine_agent_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_agent_open.png; sourceTree = "<group>"; };
+		4263BA5F205AA78D00103919 /* GPAgentOpenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentOpenViewController.h; sourceTree = "<group>"; };
+		4263BA60205AA78D00103919 /* GPAgentOpenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentOpenViewController.m; sourceTree = "<group>"; };
+		4263BA62205AA7AC00103919 /* GPAgentBgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentBgViewController.h; sourceTree = "<group>"; };
+		4263BA63205AA7AC00103919 /* GPAgentBgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentBgViewController.m; sourceTree = "<group>"; };
+		4263BA65205AA9B300103919 /* game_triangle_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_triangle_btn.png; sourceTree = "<group>"; };
+		4263BA67205B5F8000103919 /* GPBetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetModel.h; sourceTree = "<group>"; };
+		4263BA68205B5F8000103919 /* GPBetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetModel.m; sourceTree = "<group>"; };
+		4263BA6D205B627C00103919 /* GPBetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetCell.h; sourceTree = "<group>"; };
+		4263BA6E205B627C00103919 /* GPBetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetCell.m; sourceTree = "<group>"; };
+		4263BA6F205B627C00103919 /* GPBetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetCell.xib; sourceTree = "<group>"; };
+		4263BA72205BB30500103919 /* GPGameDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPGameDetailViewController.h; sourceTree = "<group>"; };
+		4263BA73205BB30600103919 /* GPGameDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPGameDetailViewController.m; sourceTree = "<group>"; };
+		4263BA78205BBA8000103919 /* GPBetDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetDetailModel.h; sourceTree = "<group>"; };
+		4263BA79205BBA8000103919 /* GPBetDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetDetailModel.m; sourceTree = "<group>"; };
+		4263BA7B205BBC9D00103919 /* GPBetDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetDetailCell.h; sourceTree = "<group>"; };
+		4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetDetailCell.m; sourceTree = "<group>"; };
+		4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetDetailCell.xib; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -391,8 +422,14 @@
 				4263BA2620595C8100103919 /* GPHistoryViewController.m */,
 				4263BA2820595C9900103919 /* GPGameListViewController.h */,
 				4263BA2920595C9900103919 /* GPGameListViewController.m */,
+				4263BA72205BB30500103919 /* GPGameDetailViewController.h */,
+				4263BA73205BB30600103919 /* GPGameDetailViewController.m */,
 				4263BA2B20595CA700103919 /* GPShareViewController.h */,
 				4263BA2C20595CA700103919 /* GPShareViewController.m */,
+				4263BA5F205AA78D00103919 /* GPAgentOpenViewController.h */,
+				4263BA60205AA78D00103919 /* GPAgentOpenViewController.m */,
+				4263BA62205AA7AC00103919 /* GPAgentBgViewController.h */,
+				4263BA63205AA7AC00103919 /* GPAgentBgViewController.m */,
 				4263BA2E20595CD400103919 /* GPEarningsViewController.h */,
 				4263BA2F20595CD400103919 /* GPEarningsViewController.m */,
 				4263BA3120595CE100103919 /* GPSettingViewController.h */,
@@ -460,6 +497,10 @@
 				4263BA51205A583000103919 /* GPBackWaterModel.m */,
 				4263BA58205A7F9F00103919 /* GPHistoryModel.h */,
 				4263BA59205A7F9F00103919 /* GPHistoryModel.m */,
+				4263BA67205B5F8000103919 /* GPBetModel.h */,
+				4263BA68205B5F8000103919 /* GPBetModel.m */,
+				4263BA78205BBA8000103919 /* GPBetDetailModel.h */,
+				4263BA79205BBA8000103919 /* GPBetDetailModel.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -517,6 +558,12 @@
 				4263BA53205A78BA00103919 /* GPHistoryCell.h */,
 				4263BA54205A78BA00103919 /* GPHistoryCell.m */,
 				4263BA55205A78BA00103919 /* GPHistoryCell.xib */,
+				4263BA6D205B627C00103919 /* GPBetCell.h */,
+				4263BA6E205B627C00103919 /* GPBetCell.m */,
+				4263BA6F205B627C00103919 /* GPBetCell.xib */,
+				4263BA7B205BBC9D00103919 /* GPBetDetailCell.h */,
+				4263BA7C205BBC9D00103919 /* GPBetDetailCell.m */,
+				4263BA7D205BBC9D00103919 /* GPBetDetailCell.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -576,6 +623,8 @@
 				4263B9DE2057BD3600103919 /* mine_game.png */,
 				4263B9E12057BD3700103919 /* mine_get.png */,
 				4263B9E02057BD3700103919 /* mine_history.png */,
+				4263BA5B205AA6F000103919 /* mine_agent_background.png */,
+				4263BA5C205AA6F000103919 /* mine_agent_open.png */,
 				4263B9DD2057BD3600103919 /* mine_setting.png */,
 				4263B9DC2057BD3600103919 /* mine_share.png */,
 				4263BA0A2057CCD700103919 /* login_back_arrows.png */,
@@ -587,6 +636,7 @@
 				4263BA392059629D00103919 /* setting_password_change.png */,
 				4263BA382059629C00103919 /* setting_phone.png */,
 				4263BA3A2059629D00103919 /* setting_withdraw_password.png */,
+				4263BA65205AA9B300103919 /* game_triangle_btn.png */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -804,6 +854,7 @@
 				4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */,
 				4263BA0B2057CCD700103919 /* login_weChat_btn.png in Resources */,
 				42E7E58520576EED00119CB0 /* arrow_black.png in Resources */,
+				4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */,
 				42E7E563205668C500119CB0 /* pay_bank.png in Resources */,
 				4263BA402059629D00103919 /* setting_card.png in Resources */,
 				4263B9EA2057BD3700103919 /* mine_game_list.png in Resources */,
@@ -816,9 +867,11 @@
 				4263BA3F2059629D00103919 /* setting_withdraw_password.png in Resources */,
 				4263BA3D2059629D00103919 /* setting_phone.png in Resources */,
 				4263BA4F205A546800103919 /* GPBackWaterCell.xib in Resources */,
+				4263BA66205AA9B400103919 /* game_triangle_btn.png in Resources */,
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
 				4263BA3E2059629D00103919 /* setting_password_change.png in Resources */,
+				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
 				4263BA47205A103E00103919 /* bar_home.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
@@ -827,6 +880,8 @@
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42E7E58F20579F6E00119CB0 /* home_person.png in Resources */,
+				4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */,
+				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
 				42E7E562205668C500119CB0 /* pay_ali.png in Resources */,
 				4263BA46205A103E00103919 /* bar_mine.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
@@ -931,6 +986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
+				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
 				4263BA112058F25E00103919 /* GPRegistModel.m in Sources */,
@@ -948,19 +1004,25 @@
 				4263BA2A20595C9900103919 /* GPGameListViewController.m in Sources */,
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
+				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,
 				4263BA52205A583000103919 /* GPBackWaterModel.m in Sources */,
 				4263BA002057C33400103919 /* GPLoginModel.m in Sources */,
 				4263BA3320595CE100103919 /* GPSettingViewController.m in Sources */,
 				4263BA2D20595CA700103919 /* GPShareViewController.m in Sources */,
+				4263BA69205B5F8000103919 /* GPBetModel.m in Sources */,
 				42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */,
 				42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */,
 				42E7E55720564F9C00119CB0 /* ToastView.m in Sources */,
 				42E7E5802057646400119CB0 /* BaseModel.m in Sources */,
 				4263BA4E205A546800103919 /* GPBackWaterCell.m in Sources */,
+				4263BA70205B627C00103919 /* GPBetCell.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
+				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
+				4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */,
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
+				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
@@ -1129,12 +1191,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YGFHD343SK;
+				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cc.GPLottery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guanpukeji.GPLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1146,12 +1208,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YGFHD343SK;
+				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cc.GPLottery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guanpukeji.GPLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

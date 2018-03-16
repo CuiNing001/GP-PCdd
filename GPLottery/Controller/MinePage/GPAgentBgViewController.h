@@ -1,0 +1,13 @@
+//
+//  GPAgentBgViewController.h
+//  GPLottery
+//
+//  Created by cc on 2018/3/15.
+//  Copyright © 2018年 cc. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface GPAgentBgViewController : UIViewController
+
+@end

@@ -44,14 +44,6 @@
     self.playingMerchantId = @"1";
     [self loadNetData];
     
-    if (self.dataArray.count==0) {
-        
-        self.emptyPage.hidden = NO;
-    }else{
-        
-        self.emptyPage.hidden = YES;
-    }
-    
 }
 
 #pragma mark - 加载子控件
@@ -110,6 +102,13 @@
                     [weakSelf.dataArray addObject:backWaterModel];
                 }
             }
+            // 空数据显示默认空页面
+            if (weakSelf.dataArray.count>0) {
+                
+                self.emptyPage.hidden = YES;
+            }else{
+                self.emptyPage.hidden = NO;
+            }
             
             [weakSelf.tableView reloadData];
             
@@ -148,13 +147,7 @@
     // 刷新数据
     self.playingMerchantId = @"1";
     [self loadNetData];
-    if (self.dataArray.count==0) {
-        
-        self.emptyPage.hidden = NO;
-    }else{
-        
-        self.emptyPage.hidden = YES;
-    }
+    
 }
 
 #pragma mark - 玩法二
@@ -171,13 +164,7 @@
     // 刷新数据
     self.playingMerchantId = @"1";
     [self loadNetData];
-    if (self.dataArray.count==0) {
-        
-        self.emptyPage.hidden = NO;
-    }else{
-        
-        self.emptyPage.hidden = YES;
-    }
+   
 }
 
 #pragma mark - 玩法三
@@ -194,13 +181,7 @@
     // 刷新数据
     self.playingMerchantId = @"1";
     [self loadNetData];
-    if (self.dataArray.count==0) {
-        
-        self.emptyPage.hidden = NO;
-    }else{
-        
-        self.emptyPage.hidden = YES;
-    }
+    
 }
 
 #pragma mark - 加载本地数据
