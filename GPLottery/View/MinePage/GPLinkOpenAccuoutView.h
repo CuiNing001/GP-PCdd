@@ -14,10 +14,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *urlLab;
 @property (weak, nonatomic) IBOutlet UIButton *buttonOfCopy;
 @property (weak, nonatomic) IBOutlet UILabel *contentLab;
+@property (weak, nonatomic) IBOutlet UIImageView *qrCardImage;
+@property (strong, nonatomic) NSString *qrImageStr;
 
 // 复制按钮点击事件
-@property (copy, nonatomic) void(^copyBlock)();
+@property (copy, nonatomic) void(^copyBlock)(void);
+
+// 图片长按手势
+@property (copy, nonatomic) void(^longPressBlock)(void);
 
 - (instancetype)initWithFrame:(CGRect)frame;
+- (void)loadQRCardWithLoc;
 
 @end

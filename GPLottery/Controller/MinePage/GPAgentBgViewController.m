@@ -10,6 +10,10 @@
 
 @interface GPAgentBgViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *totalNumberLab;
+@property (weak, nonatomic) IBOutlet UILabel *addNewNumberLab;
+
+
 @end
 
 @implementation GPAgentBgViewController
@@ -18,8 +22,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"代理后台";
+    [self loadData];
+    [self loadSubView];
 }
+
+#pragma mark - 加载数据
+- (void)loadData{
+    
+    self.title = @"代理后台";
+    
+}
+
+#pragma mark - 加载子控件
+- (void)loadSubView{
+    
+    
+}
+
+#pragma mark - 加载网络数据
+- (void)loadNetData{
+    
+    
+}
+
+#pragma mark - 收益分析
+- (IBAction)analysisButton:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 用户信息
+- (IBAction)userInfoButton:(UIButton *)sender {
+    
+    
+}
+
+#pragma mark - 代理协议
+- (IBAction)protocolButton:(UIButton *)sender {
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
