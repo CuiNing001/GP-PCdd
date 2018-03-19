@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F90FE0BA344AE64F77D2A5B /* Pods_GPLottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */; };
+		423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */; };
+		423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */; };
 		4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DA2057BBFF00103919 /* mine_wallet.png */; };
 		4263B9E42057BD3700103919 /* mine_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DC2057BD3600103919 /* mine_share.png */; };
 		4263B9E52057BD3700103919 /* mine_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DD2057BD3600103919 /* mine_setting.png */; };
@@ -81,6 +83,12 @@
 		4263BA9F205CFD4700103919 /* GPAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA9E205CFD4700103919 /* GPAnalysisViewController.m */; };
 		4263BAA2205CFD5D00103919 /* GPUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAA1205CFD5D00103919 /* GPUserInfoViewController.m */; };
 		4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAA4205CFD7D00103919 /* GPProtocolViewController.m */; };
+		4263BAA8205F4B2100103919 /* GPBinfPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAA7205F4B2100103919 /* GPBinfPhoneViewController.m */; };
+		4263BAAB205F4B4D00103919 /* GPBindBancCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAAA205F4B4D00103919 /* GPBindBancCardViewController.m */; };
+		4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAAD205F4B7400103919 /* GPBankPasswordViewController.m */; };
+		4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */; };
+		4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */; };
+		4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB6205F688200103919 /* GPUserStatusModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -143,6 +151,9 @@
 /* Begin PBXFileReference section */
 		03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.release.xcconfig"; sourceTree = "<group>"; };
 		37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.debug.xcconfig"; sourceTree = "<group>"; };
+		423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPChooseBankCell.h; sourceTree = "<group>"; };
+		423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPChooseBankCell.m; sourceTree = "<group>"; };
+		423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPChooseBankCell.xib; sourceTree = "<group>"; };
 		4263B9DA2057BBFF00103919 /* mine_wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_wallet.png; sourceTree = "<group>"; };
 		4263B9DC2057BD3600103919 /* mine_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_share.png; sourceTree = "<group>"; };
 		4263B9DD2057BD3600103919 /* mine_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_setting.png; sourceTree = "<group>"; };
@@ -249,6 +260,18 @@
 		4263BAA1205CFD5D00103919 /* GPUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUserInfoViewController.m; sourceTree = "<group>"; };
 		4263BAA3205CFD7D00103919 /* GPProtocolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPProtocolViewController.h; sourceTree = "<group>"; };
 		4263BAA4205CFD7D00103919 /* GPProtocolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPProtocolViewController.m; sourceTree = "<group>"; };
+		4263BAA6205F4B2100103919 /* GPBinfPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBinfPhoneViewController.h; sourceTree = "<group>"; };
+		4263BAA7205F4B2100103919 /* GPBinfPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBinfPhoneViewController.m; sourceTree = "<group>"; };
+		4263BAA9205F4B4D00103919 /* GPBindBancCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBindBancCardViewController.h; sourceTree = "<group>"; };
+		4263BAAA205F4B4D00103919 /* GPBindBancCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBindBancCardViewController.m; sourceTree = "<group>"; };
+		4263BAAC205F4B7400103919 /* GPBankPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankPasswordViewController.h; sourceTree = "<group>"; };
+		4263BAAD205F4B7400103919 /* GPBankPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankPasswordViewController.m; sourceTree = "<group>"; };
+		4263BAAF205F4BE100103919 /* GPUpdatePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUpdatePasswordViewController.h; sourceTree = "<group>"; };
+		4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUpdatePasswordViewController.m; sourceTree = "<group>"; };
+		4263BAB2205F4C1200103919 /* GPCleanDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPCleanDataViewController.h; sourceTree = "<group>"; };
+		4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCleanDataViewController.m; sourceTree = "<group>"; };
+		4263BAB5205F688200103919 /* GPUserStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUserStatusModel.h; sourceTree = "<group>"; };
+		4263BAB6205F688200103919 /* GPUserStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUserStatusModel.m; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -468,6 +491,16 @@
 				4263BA2F20595CD400103919 /* GPEarningsViewController.m */,
 				4263BA3120595CE100103919 /* GPSettingViewController.h */,
 				4263BA3220595CE100103919 /* GPSettingViewController.m */,
+				4263BAA6205F4B2100103919 /* GPBinfPhoneViewController.h */,
+				4263BAA7205F4B2100103919 /* GPBinfPhoneViewController.m */,
+				4263BAA9205F4B4D00103919 /* GPBindBancCardViewController.h */,
+				4263BAAA205F4B4D00103919 /* GPBindBancCardViewController.m */,
+				4263BAAC205F4B7400103919 /* GPBankPasswordViewController.h */,
+				4263BAAD205F4B7400103919 /* GPBankPasswordViewController.m */,
+				4263BAAF205F4BE100103919 /* GPUpdatePasswordViewController.h */,
+				4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */,
+				4263BAB2205F4C1200103919 /* GPCleanDataViewController.h */,
+				4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */,
 				4263BA3420595CEF00103919 /* GPAboutViewController.h */,
 				4263BA3520595CEF00103919 /* GPAboutViewController.m */,
 			);
@@ -535,6 +568,8 @@
 				4263BA68205B5F8000103919 /* GPBetModel.m */,
 				4263BA78205BBA8000103919 /* GPBetDetailModel.h */,
 				4263BA79205BBA8000103919 /* GPBetDetailModel.m */,
+				4263BAB5205F688200103919 /* GPUserStatusModel.h */,
+				4263BAB6205F688200103919 /* GPUserStatusModel.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -601,6 +636,9 @@
 				4263BA8A205BDE0F00103919 /* GPLinkOpenAccuoutView.h */,
 				4263BA8B205BDE0F00103919 /* GPLinkOpenAccuoutView.m */,
 				4263BA8D205BDE1C00103919 /* GPLinkOpenAccuoutView.xib */,
+				423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */,
+				423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */,
+				423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -887,6 +925,7 @@
 				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
 				4263BA182059126F00103919 /* header_bg.png in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
+				423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */,
 				4263BA45205A103E00103919 /* bar_notice.png in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
 				42E7E55E2056659300119CB0 /* check_normal.png in Resources */,
@@ -1038,6 +1077,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
+				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
@@ -1047,11 +1087,14 @@
 				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
 				4263BAA2205CFD5D00103919 /* GPUserInfoViewController.m in Sources */,
 				4263BA56205A78BA00103919 /* GPHistoryCell.m in Sources */,
+				4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */,
+				4263BAAB205F4B4D00103919 /* GPBindBancCardViewController.m in Sources */,
 				4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */,
 				4263BA2120595C5500103919 /* GPBackWaterViewController.m in Sources */,
 				4263BA3620595CEF00103919 /* GPAboutViewController.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
+				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
 				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
@@ -1060,7 +1103,9 @@
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
 				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,
 				4263BA52205A583000103919 /* GPBackWaterModel.m in Sources */,
+				423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */,
 				4263BA002057C33400103919 /* GPLoginModel.m in Sources */,
+				4263BAA8205F4B2100103919 /* GPBinfPhoneViewController.m in Sources */,
 				4263BA3320595CE100103919 /* GPSettingViewController.m in Sources */,
 				4263BA2D20595CA700103919 /* GPShareViewController.m in Sources */,
 				4263BA69205B5F8000103919 /* GPBetModel.m in Sources */,
@@ -1079,6 +1124,7 @@
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
 				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
+				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,

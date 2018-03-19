@@ -20,7 +20,10 @@
 @property (strong, nonatomic) NSString           *backWaterLoc;  // 回水数据地址
 @property (strong, nonatomic) GPInfoModel        *infoModel;     // 本地数据
 @property (strong, nonatomic) NSString           *token;
-@property (strong, nonatomic) NSMutableArray     *dataArray;     // 玩法数据
+//@property (strong, nonatomic) NSMutableArray     *statusOneArray;       // 玩法二数据
+//@property (strong, nonatomic) NSMutableArray     *statusTwoArray;       // 玩法二数据
+//@property (strong, nonatomic) NSMutableArray     *statusThreeArray;     // 玩法三数据
+@property (strong, nonatomic) NSMutableArray     *dataArray;  // 玩法数据
 @property (strong, nonatomic) NSString           *playingMerchantId; // 玩法分类
 @property (weak, nonatomic) IBOutlet UIView *emptyPage;
 
@@ -85,23 +88,51 @@
         
         NSString *code = [NSString stringWithFormat:@"%@",[responserObject objectForKey:@"code"]];
         NSString *msg = [responserObject objectForKey:@"msg"];
-        NSMutableArray *gameArray = [responserObject objectForKey:@"data"];
+        NSDictionary *gameDic = [responserObject objectForKey:@"data"];
         
         if (code.integerValue == 9200) {
             
             [ToastView toastViewWithMessage:msg timer:1.5];
             
-            for (NSDictionary *dataDic in gameArray) {
+            NSArray *statusOne   = [gameDic objectForKey:@"1"];  // 玩法一
+            NSArray *statusTwo   = [gameDic objectForKey:@"2"];  // 玩法二
+            NSArray *statusThree = [gameDic objectForKey:@"3"];  // 玩法三
+            
+            if ([self.playingMerchantId isEqualToString:@"1"]) {
                 
-                GPBackWaterModel *backWaterModel = [GPBackWaterModel new];
-                
-                [backWaterModel setValuesForKeysWithDictionary:dataDic];
-                
-                if ([backWaterModel.playingMerchantId isEqualToString:self.playingMerchantId]) {
+                for (NSDictionary *oneData in statusOne) {  // 玩法一数据
                     
-                    [weakSelf.dataArray addObject:backWaterModel];
+                    GPBackWaterModel *backwaterModel = [GPBackWaterModel new];
+                    
+                    [backwaterModel setValuesForKeysWithDictionary:oneData];
+                    
+                    [self.dataArray addObject:backwaterModel];
                 }
+            }else if ([self.playingMerchantId isEqualToString:@"2"]){
+                
+                
+                for (NSDictionary *twoData in statusTwo) {  // 玩法二数据
+                    
+                    GPBackWaterModel *backwaterModel = [GPBackWaterModel new];
+                    
+                    [backwaterModel setValuesForKeysWithDictionary:twoData];
+                    
+                    [self.dataArray addObject:backwaterModel];
+                }
+                
+            }else if ([self.playingMerchantId isEqualToString:@"3"]){
+                
+                for (NSDictionary *threeData in statusThree) {  // 玩法三数据
+                    
+                    GPBackWaterModel *backwaterModel = [GPBackWaterModel new];
+                    
+                    [backwaterModel setValuesForKeysWithDictionary:threeData];
+                    
+                    [self.dataArray addObject:backwaterModel];
+                }
+                
             }
+ 
             // 空数据显示默认空页面
             if (weakSelf.dataArray.count>0) {
                 
@@ -162,7 +193,7 @@
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     // 刷新数据
-    self.playingMerchantId = @"1";
+    self.playingMerchantId = @"2";
     [self loadNetData];
    
 }
@@ -179,7 +210,7 @@
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     // 刷新数据
-    self.playingMerchantId = @"1";
+    self.playingMerchantId = @"3";
     [self loadNetData];
     
 }
@@ -237,6 +268,33 @@
     }
     return _dataArray;
 }
+
+//- (NSMutableArray *)statusOneArray{
+//
+//    if (!_statusOneArray) {
+//
+//        self.statusOneArray = [NSMutableArray array];
+//    }
+//    return _statusOneArray;
+//}
+//
+//- (NSMutableArray *)statusTwoArray{
+//
+//    if (!_statusTwoArray) {
+//
+//        self.statusTwoArray = [NSMutableArray array];
+//    }
+//    return _statusTwoArray;
+//}
+//
+//- (NSMutableArray *)statusThreeArray{
+//
+//    if (!_statusThreeArray) {
+//
+//        self.statusThreeArray = [NSMutableArray array];
+//    }
+//    return _statusThreeArray;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

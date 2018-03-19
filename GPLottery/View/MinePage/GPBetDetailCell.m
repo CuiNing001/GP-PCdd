@@ -24,7 +24,7 @@
     self.betAmoutLab.text     = model.betAmout;
     self.rewardNumLAb.text    = model.rewardNum;
     self.openTimeLab.text     = model.openTime;
-    self.topRewardNumLab.text = model.rewardNum;
+    self.topRewardNumLab.text = [NSString stringWithFormat:@"%ld",model.rewardNum.integerValue-model.betAmout.integerValue];  // 中奖金额-下注金额
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
