@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="KGk-i7-Jjw" customClass="GPRechargeListCell">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="72.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhh-rJ-Gwn">
+                        <rect key="frame" x="25" y="1" width="100" height="70.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-2-21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ6-BA-0Pa">
+                        <rect key="frame" x="126" y="1" width="100" height="70.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线下充值" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FML-yy-54T">
+                        <rect key="frame" x="227" y="1" width="100" height="70.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FML-yy-54T" secondAttribute="trailing" constant="25" id="1U2-Pb-udq"/>
+                    <constraint firstItem="FML-yy-54T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="2P5-Ie-0Id"/>
+                    <constraint firstAttribute="bottom" secondItem="dhh-rJ-Gwn" secondAttribute="bottom" constant="1" id="3MO-5w-FUN"/>
+                    <constraint firstItem="FML-yy-54T" firstAttribute="leading" secondItem="sQ6-BA-0Pa" secondAttribute="trailing" constant="1" id="90A-n8-eIP"/>
+                    <constraint firstItem="dhh-rJ-Gwn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="Dft-Di-6eL"/>
+                    <constraint firstItem="sQ6-BA-0Pa" firstAttribute="height" secondItem="dhh-rJ-Gwn" secondAttribute="height" id="G5D-wz-Y7N"/>
+                    <constraint firstAttribute="bottom" secondItem="FML-yy-54T" secondAttribute="bottom" constant="1" id="JHA-1c-qzG"/>
+                    <constraint firstItem="sQ6-BA-0Pa" firstAttribute="leading" secondItem="dhh-rJ-Gwn" secondAttribute="trailing" constant="1" id="K3Q-1h-Il1"/>
+                    <constraint firstItem="sQ6-BA-0Pa" firstAttribute="centerY" secondItem="dhh-rJ-Gwn" secondAttribute="centerY" id="QZM-WL-oon"/>
+                    <constraint firstItem="sQ6-BA-0Pa" firstAttribute="width" secondItem="dhh-rJ-Gwn" secondAttribute="width" id="SAs-KB-3Yl"/>
+                    <constraint firstItem="dhh-rJ-Gwn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="bwL-Tc-YIi"/>
+                    <constraint firstItem="FML-yy-54T" firstAttribute="width" secondItem="dhh-rJ-Gwn" secondAttribute="width" id="ff3-pV-g9R"/>
+                    <constraint firstItem="FML-yy-54T" firstAttribute="height" secondItem="dhh-rJ-Gwn" secondAttribute="height" id="pb0-lK-Pge"/>
+                    <constraint firstItem="FML-yy-54T" firstAttribute="centerY" secondItem="dhh-rJ-Gwn" secondAttribute="centerY" id="tMM-UD-p4l"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="amountLab" destination="dhh-rJ-Gwn" id="nIe-k1-i8Q"/>
+                <outlet property="timeLab" destination="sQ6-BA-0Pa" id="GiY-Xz-qHn"/>
+                <outlet property="typeLab" destination="FML-yy-54T" id="euu-Er-KdW"/>
+            </connections>
+            <point key="canvasLocation" x="41" y="66.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -33,6 +33,7 @@
 @property (strong, nonatomic) NSString           *money;           // 元宝金额
 @property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
 @property (assign, nonatomic) NSString           *isLogin;         // 登陆状态
+@property (strong, nonatomic) MBProgressHUD      *progressHUD;
 
 
 @end
@@ -58,6 +59,7 @@
     }
 }
 
+
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
@@ -75,6 +77,10 @@
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPMineListCell" bundle:nil] forCellReuseIdentifier:@"mineListCell"];
+    
+    // 初始化加载框
+    self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    [self.view addSubview:_progressHUD];
 }
 
 #pragma mark - 加载数据

@@ -1,5 +1,5 @@
 //
-//  GPBindBancCardViewController.h
+//  GPRechargeViewController.h
 //  GPLottery
 //
 //  Created by cc on 2018/3/19.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPBindBancCardViewController : UIViewController
-
+@interface GPRechargeViewController : UIViewController
 
 @end

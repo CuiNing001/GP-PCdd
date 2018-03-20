@@ -8,8 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2F90FE0BA344AE64F77D2A5B /* Pods_GPLottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */; };
+		42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA22060FA10007D44E8 /* GPRechargeModel.m */; };
+		42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */; };
+		42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */; };
 		423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */; };
 		423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */; };
+		423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE4A205FFF90006E80ED /* GPWithdrawViewController.m */; };
+		423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE4D205FFFD7006E80ED /* GPRechargeViewController.m */; };
+		423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE5020600036006E80ED /* GPWithdrawListViewController.m */; };
+		423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE5320609FF8006E80ED /* GPBankCardView.m */; };
+		423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE552060A005006E80ED /* GPBankCardView.xib */; };
+		423EBE592060A632006E80ED /* GPBankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE582060A632006E80ED /* GPBankInfoModel.m */; };
 		4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DA2057BBFF00103919 /* mine_wallet.png */; };
 		4263B9E42057BD3700103919 /* mine_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DC2057BD3600103919 /* mine_share.png */; };
 		4263B9E52057BD3700103919 /* mine_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DD2057BD3600103919 /* mine_setting.png */; };
@@ -89,6 +98,8 @@
 		4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */; };
 		4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */; };
 		4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB6205F688200103919 /* GPUserStatusModel.m */; };
+		42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */; };
+		42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
 		42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D62054B7BE00119CB0 /* Main.storyboard */; };
 		42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E4D92054B7BE00119CB0 /* Assets.xcassets */; };
@@ -151,9 +162,25 @@
 /* Begin PBXFileReference section */
 		03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.release.xcconfig"; sourceTree = "<group>"; };
 		37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPLottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPLottery/Pods-GPLottery.debug.xcconfig"; sourceTree = "<group>"; };
+		42148AA12060FA10007D44E8 /* GPRechargeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeModel.h; sourceTree = "<group>"; };
+		42148AA22060FA10007D44E8 /* GPRechargeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeModel.m; sourceTree = "<group>"; };
+		42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeListCell.h; sourceTree = "<group>"; };
+		42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeListCell.m; sourceTree = "<group>"; };
+		42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRechargeListCell.xib; sourceTree = "<group>"; };
 		423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPChooseBankCell.h; sourceTree = "<group>"; };
 		423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPChooseBankCell.m; sourceTree = "<group>"; };
 		423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPChooseBankCell.xib; sourceTree = "<group>"; };
+		423EBE49205FFF90006E80ED /* GPWithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawViewController.h; sourceTree = "<group>"; };
+		423EBE4A205FFF90006E80ED /* GPWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPWithdrawViewController.m; sourceTree = "<group>"; };
+		423EBE4C205FFFD7006E80ED /* GPRechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeViewController.h; sourceTree = "<group>"; };
+		423EBE4D205FFFD7006E80ED /* GPRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeViewController.m; sourceTree = "<group>"; };
+		423EBE4F20600036006E80ED /* GPWithdrawListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawListViewController.h; sourceTree = "<group>"; };
+		423EBE5020600036006E80ED /* GPWithdrawListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPWithdrawListViewController.m; sourceTree = "<group>"; };
+		423EBE5220609FF8006E80ED /* GPBankCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankCardView.h; sourceTree = "<group>"; };
+		423EBE5320609FF8006E80ED /* GPBankCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankCardView.m; sourceTree = "<group>"; };
+		423EBE552060A005006E80ED /* GPBankCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBankCardView.xib; sourceTree = "<group>"; };
+		423EBE572060A632006E80ED /* GPBankInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoModel.h; sourceTree = "<group>"; };
+		423EBE582060A632006E80ED /* GPBankInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoModel.m; sourceTree = "<group>"; };
 		4263B9DA2057BBFF00103919 /* mine_wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_wallet.png; sourceTree = "<group>"; };
 		4263B9DC2057BD3600103919 /* mine_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_share.png; sourceTree = "<group>"; };
 		4263B9DD2057BD3600103919 /* mine_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_setting.png; sourceTree = "<group>"; };
@@ -272,6 +299,10 @@
 		4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCleanDataViewController.m; sourceTree = "<group>"; };
 		4263BAB5205F688200103919 /* GPUserStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUserStatusModel.h; sourceTree = "<group>"; };
 		4263BAB6205F688200103919 /* GPUserStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUserStatusModel.m; sourceTree = "<group>"; };
+		42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoViewController.h; sourceTree = "<group>"; };
+		42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoViewController.m; sourceTree = "<group>"; };
+		42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawInfoModel.h; sourceTree = "<group>"; };
+		42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPWithdrawInfoModel.m; sourceTree = "<group>"; };
 		42E7E4CD2054B7BE00119CB0 /* GPLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42E7E4D02054B7BE00119CB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		42E7E4D12054B7BE00119CB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -465,6 +496,14 @@
 				4263BA1A20591A5600103919 /* GPChangeDataViewController.m */,
 				4263BA1C20595C3600103919 /* GPWalletViewController.h */,
 				4263BA1D20595C3600103919 /* GPWalletViewController.m */,
+				42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */,
+				42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */,
+				423EBE49205FFF90006E80ED /* GPWithdrawViewController.h */,
+				423EBE4A205FFF90006E80ED /* GPWithdrawViewController.m */,
+				423EBE4C205FFFD7006E80ED /* GPRechargeViewController.h */,
+				423EBE4D205FFFD7006E80ED /* GPRechargeViewController.m */,
+				423EBE4F20600036006E80ED /* GPWithdrawListViewController.h */,
+				423EBE5020600036006E80ED /* GPWithdrawListViewController.m */,
 				4263BA1F20595C5500103919 /* GPBackWaterViewController.h */,
 				4263BA2020595C5500103919 /* GPBackWaterViewController.m */,
 				4263BA2220595C6600103919 /* GPGameViewController.h */,
@@ -570,6 +609,12 @@
 				4263BA79205BBA8000103919 /* GPBetDetailModel.m */,
 				4263BAB5205F688200103919 /* GPUserStatusModel.h */,
 				4263BAB6205F688200103919 /* GPUserStatusModel.m */,
+				423EBE572060A632006E80ED /* GPBankInfoModel.h */,
+				423EBE582060A632006E80ED /* GPBankInfoModel.m */,
+				42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */,
+				42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */,
+				42148AA12060FA10007D44E8 /* GPRechargeModel.h */,
+				42148AA22060FA10007D44E8 /* GPRechargeModel.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -639,6 +684,12 @@
 				423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */,
 				423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */,
 				423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */,
+				423EBE5220609FF8006E80ED /* GPBankCardView.h */,
+				423EBE5320609FF8006E80ED /* GPBankCardView.m */,
+				423EBE552060A005006E80ED /* GPBankCardView.xib */,
+				42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */,
+				42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */,
+				42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -929,6 +980,7 @@
 				4263BA45205A103E00103919 /* bar_notice.png in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
 				42E7E55E2056659300119CB0 /* check_normal.png in Resources */,
+				42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */,
 				4263BA9C205CF92900103919 /* agent_analysis_btn.png in Resources */,
 				42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */,
 				42E7E5482056177000119CB0 /* sign.png in Resources */,
@@ -958,6 +1010,7 @@
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
 				4263BA3E2059629D00103919 /* setting_password_change.png in Resources */,
+				423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */,
 				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
 				4263BA47205A103E00103919 /* bar_home.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
@@ -1076,6 +1129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423EBE592060A632006E80ED /* GPBankInfoModel.m in Sources */,
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
 				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
@@ -1083,6 +1137,8 @@
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
 				4263BA112058F25E00103919 /* GPRegistModel.m in Sources */,
 				4263BA1B20591A5600103919 /* GPChangeDataViewController.m in Sources */,
+				423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */,
+				423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
 				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
 				4263BAA2205CFD5D00103919 /* GPUserInfoViewController.m in Sources */,
@@ -1092,9 +1148,11 @@
 				4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */,
 				4263BA2120595C5500103919 /* GPBackWaterViewController.m in Sources */,
 				4263BA3620595CEF00103919 /* GPAboutViewController.m in Sources */,
+				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
+				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
 				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
@@ -1119,12 +1177,16 @@
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
+				423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */,
 				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
 				4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */,
+				42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */,
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
+				42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */,
 				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
+				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,

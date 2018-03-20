@@ -9,6 +9,15 @@
 #import "GPWalletViewController.h"
 #import "GPMineListCell.h"
 #import "GPWalletModel.h"
+#import "GPBindBancCardViewController.h"
+#import "GPPayViewController.h"
+#import "GPWithdrawViewController.h"
+#import "GPRechargeViewController.h"
+#import "GPWithdrawListViewController.h"
+#import "GPUserStatusModel.h"
+#import "GPBinfPhoneViewController.h"
+#import "GPBankPasswordViewController.h"
+#import "GPBankInfoViewController.h"
 
 @interface GPWalletViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel     *myMoneyLab;
@@ -19,6 +28,7 @@
 @property (strong, nonatomic) NSString           *walletLoc;       // 钱包数据地址
 @property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
 @property (strong, nonatomic) NSString           *token;
+@property (strong, nonatomic) GPUserStatusModel  *userStatusModel;
 
 @end
 
@@ -31,6 +41,12 @@
     
     [self loadSubView];
     [self loadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    // 获取用户状态信息
+    [self loadUserStatus];
 }
 
 - (void)loadData{
@@ -108,6 +124,56 @@
     }];
     
 }
+#pragma mark - 获取用户公共信息
+/*
+ * @param phoneStatus:手机绑定状态  // 0:未绑定，1:已绑定
+ * @param luckTurntableStatus:转盘抽奖次数
+ * @param userExchange:提现密码绑定状态
+ * @param bankStatus:银行卡绑定状态
+ */
+- (void)loadUserStatus{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *userStatusLoc = [NSString stringWithFormat:@"%@user/1/userCommon",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:userStatusLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|WALLET-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            self.userStatusModel = [GPUserStatusModel new];
+            
+            [self.userStatusModel setValuesForKeysWithDictionary:respondModel.data];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+}
+
+
 #pragma mark - 加载本地数据
 - (void)loadUserDefaultsData{
     
@@ -147,9 +213,133 @@
     // 点击后取消cell的点击状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    if (indexPath.row == 0) {        // 我的银行卡
+       
+        if (self.userStatusModel.phoneStatus.integerValue == 0) {
+            
+            // 手机号未绑定跳转绑定手机号
+            [self alertViewWithTitle:@"提醒" message:@"请先绑定手机号"];
+            
+        }else{
+            
+            // 未设置提现密码先设置提现密码
+            if (self.userStatusModel.userExchange.integerValue == 0) {
+                
+                [self bankPasswordVCAlertViewWithTitle:@"提醒" message:@"请先设置提现密码"];
+                
+            }else{
+                
+                // 未绑定银行卡跳转到绑定银行卡页面
+                if (self.userStatusModel.bankStatus.integerValue == 0) {
+                    
+                    UIStoryboard *storyboard                     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    GPBindBancCardViewController *bindBankCardVC = [storyboard instantiateViewControllerWithIdentifier:@"bindBankCardVC"];
+                    bindBankCardVC.hidesBottomBarWhenPushed      = YES;
+                    [self.navigationController pushViewController:bindBankCardVC animated:YES];
+                    
+                }else{
+                    // 已绑定跳转银行信息页面
+                    GPBankInfoViewController *bankInfoVC = [[GPBankInfoViewController alloc]init];
+                    bankInfoVC.pageTitle = @"我的银行卡";
+                    [self.navigationController pushViewController:bankInfoVC animated:YES];
+                    
+                }
+                
+            }
+        }
+    }else if (indexPath.row == 1){   // 充值
+        
+        UIStoryboard *storyboard       = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPPayViewController *payVC     = [storyboard instantiateViewControllerWithIdentifier:@"payVC"];
+        payVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:payVC animated:YES];
+        
+    }else if (indexPath.row == 2){   // 提现
+        
+        // 未绑定银行卡提醒先绑定银行卡
+        if (self.userStatusModel.bankStatus.integerValue == 0) {
+            
+            [ToastView toastViewWithMessage:@"请先绑定银行卡" timer:3.0];
+            
+        }else{
+            
+            // 已绑定跳转到提现页面
+            UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPWithdrawViewController *withdrawVC = [storyboard instantiateViewControllerWithIdentifier:@"withdrawVC"];
+            withdrawVC.hidesBottomBarWhenPushed  = YES;
+            [self.navigationController pushViewController:withdrawVC animated:YES];
+        }
+
+    }else if (indexPath.row == 3){   // 充值记录
+        
+        UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPRechargeViewController *rechargeVC = [storyboard instantiateViewControllerWithIdentifier:@"rechargeListVC"];
+        rechargeVC.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:rechargeVC animated:YES];
+        
+    }else if (indexPath.row == 4){   // 提现记录
+        
+        UIStoryboard *storyboard                     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPWithdrawListViewController *withdrawListVC = [storyboard instantiateViewControllerWithIdentifier:@"withdrawListVC"];
+        withdrawListVC.hidesBottomBarWhenPushed      = YES;
+        [self.navigationController pushViewController:withdrawListVC animated:YES];
+    }
     
 }
+    
+#pragma mark - 提醒框
+// 跳转到绑定手机号
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+        
+        UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                        message:message
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               
+                                                               // 跳转到绑定手机号
+                                                               UIStoryboard *storyboard               = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                               GPBinfPhoneViewController *bindPhoneVC = [storyboard instantiateViewControllerWithIdentifier:@"bindPhoneVC"];
+                                                               bindPhoneVC.hidesBottomBarWhenPushed   = YES;
+                                                               [self.navigationController pushViewController:bindPhoneVC animated:YES];
+                                                           }];
+        
+        [alert addAction:action];
+        
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
+        
+    }
+    
+// 跳转到设置提现密码
+- (void)bankPasswordVCAlertViewWithTitle:(NSString *)title message:(NSString *)message{
+        
+        UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                        message:message
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               
+                                                               // 跳转到设置提现密码
+                                                               UIStoryboard *storyboard                     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                               GPBankPasswordViewController *bankPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"bankPasswordVC"];
+                                                               bankPasswordVC.hidesBottomBarWhenPushed      = YES;
+                                                               [self.navigationController pushViewController:bankPasswordVC animated:YES];
+                                                               
+                                                           }];
+        
+        [alert addAction:action];
+        
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
+        
+    }
 
 #pragma mark - 懒加载
 - (NSMutableArray *)listImageArray{

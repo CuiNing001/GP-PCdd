@@ -134,7 +134,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     // 点击后取消cell的点击状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

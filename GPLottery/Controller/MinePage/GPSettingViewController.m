@@ -244,7 +244,7 @@
             }];
         }
         [fileManager removeItemAtPath:cachePath error:nil];
-        NSString *msg = [NSString stringWithFormat:@"清除了%.2fKB",(float)size/(1000*1000)];
+        NSString *msg = [NSString stringWithFormat:@"清除了%.2fMB",(float)size/(1000*1000)];
         [ToastView toastViewWithMessage:msg timer:3.0];
         
     }else if (indexPath.row == 4){  // 绑定手机
@@ -271,9 +271,9 @@
                                                        handler:^(UIAlertAction * _Nonnull action) {
                                                            
                                                            // 跳转到绑定手机号
-                                                           UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                           UIStoryboard *storyboard               = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                                            GPBinfPhoneViewController *bindPhoneVC = [storyboard instantiateViewControllerWithIdentifier:@"bindPhoneVC"];
-                                                           bindPhoneVC.hidesBottomBarWhenPushed  = YES;
+                                                           bindPhoneVC.hidesBottomBarWhenPushed   = YES;
                                                            [self.navigationController pushViewController:bindPhoneVC animated:YES];
                                                        }];
     
@@ -297,9 +297,9 @@
                                                        handler:^(UIAlertAction * _Nonnull action) {
                                                            
                                                            // 跳转到设置提现密码
-                                                           UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                           GPBankPasswordViewController *bankPasswordVC    = [storyboard instantiateViewControllerWithIdentifier:@"bankPasswordVC"];
-                                                           bankPasswordVC.hidesBottomBarWhenPushed = YES;
+                                                           UIStoryboard *storyboard                     = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                           GPBankPasswordViewController *bankPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"bankPasswordVC"];
+                                                           bankPasswordVC.hidesBottomBarWhenPushed      = YES;
                                                            [self.navigationController pushViewController:bankPasswordVC animated:YES];
                                                            
                                                        }];

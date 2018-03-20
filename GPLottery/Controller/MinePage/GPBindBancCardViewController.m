@@ -63,9 +63,9 @@ static int chooseNum = 0;
     
     // 注册cell
     [self.bankTypeTableView registerNib:[UINib nibWithNibName:@"GPChooseBankCell" bundle:nil] forCellReuseIdentifier:@"chooseBankCell"];
-    
-    
+
 }
+
 
 #pragma mark - 可用银行信息
 - (void)bankTypeData{
