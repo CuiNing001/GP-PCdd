@@ -11,6 +11,10 @@
 		42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA22060FA10007D44E8 /* GPRechargeModel.m */; };
 		42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */; };
 		42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */; };
+		42148AAB2061EF66007D44E8 /* GPLuckyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AAA2061EF66007D44E8 /* GPLuckyListViewController.m */; };
+		42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */; };
+		42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AB02061FD65007D44E8 /* GPLuckyCell.m */; };
+		42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AB12061FD65007D44E8 /* GPLuckyCell.xib */; };
 		423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */; };
 		423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */; };
 		423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE4A205FFF90006E80ED /* GPWithdrawViewController.m */; };
@@ -167,6 +171,13 @@
 		42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeListCell.h; sourceTree = "<group>"; };
 		42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeListCell.m; sourceTree = "<group>"; };
 		42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRechargeListCell.xib; sourceTree = "<group>"; };
+		42148AA92061EF66007D44E8 /* GPLuckyListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLuckyListViewController.h; sourceTree = "<group>"; };
+		42148AAA2061EF66007D44E8 /* GPLuckyListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLuckyListViewController.m; sourceTree = "<group>"; };
+		42148AAC2061FD0C007D44E8 /* GPLuckyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLuckyModel.h; sourceTree = "<group>"; };
+		42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLuckyModel.m; sourceTree = "<group>"; };
+		42148AAF2061FD65007D44E8 /* GPLuckyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLuckyCell.h; sourceTree = "<group>"; };
+		42148AB02061FD65007D44E8 /* GPLuckyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLuckyCell.m; sourceTree = "<group>"; };
+		42148AB12061FD65007D44E8 /* GPLuckyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPLuckyCell.xib; sourceTree = "<group>"; };
 		423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPChooseBankCell.h; sourceTree = "<group>"; };
 		423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPChooseBankCell.m; sourceTree = "<group>"; };
 		423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPChooseBankCell.xib; sourceTree = "<group>"; };
@@ -508,6 +519,8 @@
 				4263BA2020595C5500103919 /* GPBackWaterViewController.m */,
 				4263BA2220595C6600103919 /* GPGameViewController.h */,
 				4263BA2320595C6600103919 /* GPGameViewController.m */,
+				42148AA92061EF66007D44E8 /* GPLuckyListViewController.h */,
+				42148AAA2061EF66007D44E8 /* GPLuckyListViewController.m */,
 				4263BA2520595C8100103919 /* GPHistoryViewController.h */,
 				4263BA2620595C8100103919 /* GPHistoryViewController.m */,
 				4263BA2820595C9900103919 /* GPGameListViewController.h */,
@@ -615,6 +628,8 @@
 				42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */,
 				42148AA12060FA10007D44E8 /* GPRechargeModel.h */,
 				42148AA22060FA10007D44E8 /* GPRechargeModel.m */,
+				42148AAC2061FD0C007D44E8 /* GPLuckyModel.h */,
+				42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -690,6 +705,9 @@
 				42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */,
 				42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */,
 				42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */,
+				42148AAF2061FD65007D44E8 /* GPLuckyCell.h */,
+				42148AB02061FD65007D44E8 /* GPLuckyCell.m */,
+				42148AB12061FD65007D44E8 /* GPLuckyCell.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -1016,6 +1034,7 @@
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
+				42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */,
 				4263BA3C2059629D00103919 /* setting_clean.png in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
@@ -1132,6 +1151,7 @@
 				423EBE592060A632006E80ED /* GPBankInfoModel.m in Sources */,
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
 				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,
+				42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
@@ -1179,12 +1199,14 @@
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
 				423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */,
 				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
+				42148AAB2061EF66007D44E8 /* GPLuckyListViewController.m in Sources */,
 				4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */,
 				42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */,
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
 				42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */,
 				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
+				42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */,
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
 				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,

@@ -140,7 +140,7 @@ static int chooseNum = 0;
         NSDictionary *paramDic = @{@"accountName":self.accountNameTF.text,
                                    @"bankName":self.bankNameLab.text,
                                    @"bankAddress":self.bankAddressTF.text,
-                                   @"bankCardAccount":self.bankAddressTF.text,
+                                   @"bankCardAccount":self.bankNumberTF.text,
                                    @"withdrawalsPassword":self.bankPasswordTF.text};
         
         // 请求登陆接口

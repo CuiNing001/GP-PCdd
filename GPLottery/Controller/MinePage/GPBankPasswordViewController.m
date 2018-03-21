@@ -62,19 +62,7 @@
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
     
-    // 根据用户设置提现密码状态修改UI
-    if ([self.userStatusModel.userExchange isEqualToString:@"0"]) {
-        // 提现密码未绑定
-        self.lastPasswordLab.hidden  = YES;
-        self.lastPasswordView.hidden = YES;
-        [self.setPasswordBtn setTitle:@"设置" forState:UIControlStateNormal];
-        
-    }else{
-        // 提现密码已绑定
-        self.lastPasswordLab.hidden  = NO;
-        self.lastPasswordView.hidden = NO;
-        [self.setPasswordBtn setTitle:@"修改" forState:UIControlStateNormal];
-    }
+   
 }
 
 #pragma mark - 获取用户公共信息
@@ -111,6 +99,20 @@
             self.userStatusModel = [GPUserStatusModel new];
             
             [self.userStatusModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 根据用户设置提现密码状态修改UI
+            if (self.userStatusModel.userExchange.integerValue == 0) {
+                // 提现密码未绑定
+                self.lastPasswordLab.hidden  = YES;
+                self.lastPasswordView.hidden = YES;
+                [self.setPasswordBtn setTitle:@"设置" forState:UIControlStateNormal];
+                
+            }else{
+                // 提现密码已绑定
+                self.lastPasswordLab.hidden  = NO;
+                self.lastPasswordView.hidden = NO;
+                [self.setPasswordBtn setTitle:@"修改" forState:UIControlStateNormal];
+            }
             
         }else{
             
