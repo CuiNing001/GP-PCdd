@@ -102,6 +102,17 @@
 		4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */; };
 		4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */; };
 		4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB6205F688200103919 /* GPUserStatusModel.m */; };
+		42715A7820620E2E000A79FC /* GPIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7720620E2E000A79FC /* GPIndexModel.m */; };
+		42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7A20620E41000A79FC /* GPBannerListModel.m */; };
+		42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7D20620E56000A79FC /* GPProductListModel.m */; };
+		42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A8020624877000A79FC /* GPPlayListViewController.m */; };
+		42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A83206248A2000A79FC /* GPGameInstroctionViewController.m */; };
+		42715A87206248D3000A79FC /* GPRoomListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A86206248D3000A79FC /* GPRoomListViewController.m */; };
+		42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A89206257E7000A79FC /* GPPlayListCell.m */; };
+		42715A8C206257E7000A79FC /* GPPlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42715A8A206257E7000A79FC /* GPPlayListCell.xib */; };
+		42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715A8D20625B77000A79FC /* playlist_person_icon.png */; };
+		42715A9020625CA9000A79FC /* playlist_bottom_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715A8F20625CA9000A79FC /* playlist_bottom_cell.png */; };
+		42715A93206263E3000A79FC /* GPPlayListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A92206263E3000A79FC /* GPPlayListModel.m */; };
 		42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */; };
 		42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
@@ -310,6 +321,25 @@
 		4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCleanDataViewController.m; sourceTree = "<group>"; };
 		4263BAB5205F688200103919 /* GPUserStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUserStatusModel.h; sourceTree = "<group>"; };
 		4263BAB6205F688200103919 /* GPUserStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUserStatusModel.m; sourceTree = "<group>"; };
+		42715A7620620E2E000A79FC /* GPIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPIndexModel.h; sourceTree = "<group>"; };
+		42715A7720620E2E000A79FC /* GPIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPIndexModel.m; sourceTree = "<group>"; };
+		42715A7920620E41000A79FC /* GPBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBannerListModel.h; sourceTree = "<group>"; };
+		42715A7A20620E41000A79FC /* GPBannerListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBannerListModel.m; sourceTree = "<group>"; };
+		42715A7C20620E56000A79FC /* GPProductListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPProductListModel.h; sourceTree = "<group>"; };
+		42715A7D20620E56000A79FC /* GPProductListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPProductListModel.m; sourceTree = "<group>"; };
+		42715A7F20624877000A79FC /* GPPlayListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPlayListViewController.h; sourceTree = "<group>"; };
+		42715A8020624877000A79FC /* GPPlayListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPPlayListViewController.m; sourceTree = "<group>"; };
+		42715A82206248A2000A79FC /* GPGameInstroctionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPGameInstroctionViewController.h; sourceTree = "<group>"; };
+		42715A83206248A2000A79FC /* GPGameInstroctionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPGameInstroctionViewController.m; sourceTree = "<group>"; };
+		42715A85206248D3000A79FC /* GPRoomListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomListViewController.h; sourceTree = "<group>"; };
+		42715A86206248D3000A79FC /* GPRoomListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomListViewController.m; sourceTree = "<group>"; };
+		42715A88206257E7000A79FC /* GPPlayListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPlayListCell.h; sourceTree = "<group>"; };
+		42715A89206257E7000A79FC /* GPPlayListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPPlayListCell.m; sourceTree = "<group>"; };
+		42715A8A206257E7000A79FC /* GPPlayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPPlayListCell.xib; sourceTree = "<group>"; };
+		42715A8D20625B77000A79FC /* playlist_person_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist_person_icon.png; sourceTree = "<group>"; };
+		42715A8F20625CA9000A79FC /* playlist_bottom_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist_bottom_cell.png; sourceTree = "<group>"; };
+		42715A91206263E3000A79FC /* GPPlayListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPlayListModel.h; sourceTree = "<group>"; };
+		42715A92206263E3000A79FC /* GPPlayListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPPlayListModel.m; sourceTree = "<group>"; };
 		42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoViewController.h; sourceTree = "<group>"; };
 		42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoViewController.m; sourceTree = "<group>"; };
 		42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawInfoModel.h; sourceTree = "<group>"; };
@@ -564,6 +594,12 @@
 			children = (
 				42E7E5132054BE3B00119CB0 /* GPHomeViewController.h */,
 				42E7E5142054BE3B00119CB0 /* GPHomeViewController.m */,
+				42715A82206248A2000A79FC /* GPGameInstroctionViewController.h */,
+				42715A83206248A2000A79FC /* GPGameInstroctionViewController.m */,
+				42715A7F20624877000A79FC /* GPPlayListViewController.h */,
+				42715A8020624877000A79FC /* GPPlayListViewController.m */,
+				42715A85206248D3000A79FC /* GPRoomListViewController.h */,
+				42715A86206248D3000A79FC /* GPRoomListViewController.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -637,6 +673,14 @@
 		42E7E50A2054BD9B00119CB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				42715A7620620E2E000A79FC /* GPIndexModel.h */,
+				42715A7720620E2E000A79FC /* GPIndexModel.m */,
+				42715A7920620E41000A79FC /* GPBannerListModel.h */,
+				42715A7A20620E41000A79FC /* GPBannerListModel.m */,
+				42715A7C20620E56000A79FC /* GPProductListModel.h */,
+				42715A7D20620E56000A79FC /* GPProductListModel.m */,
+				42715A91206263E3000A79FC /* GPPlayListModel.h */,
+				42715A92206263E3000A79FC /* GPPlayListModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -715,6 +759,9 @@
 		42E7E5102054BD9B00119CB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				42715A88206257E7000A79FC /* GPPlayListCell.h */,
+				42715A89206257E7000A79FC /* GPPlayListCell.m */,
+				42715A8A206257E7000A79FC /* GPPlayListCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -801,6 +848,8 @@
 				42E7E5882057772E00119CB0 /* 2.jpg */,
 				42E7E58C20579F6D00119CB0 /* home_money.png */,
 				42E7E58D20579F6E00119CB0 /* home_person.png */,
+				42715A8D20625B77000A79FC /* playlist_person_icon.png */,
+				42715A8F20625CA9000A79FC /* playlist_bottom_cell.png */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -993,6 +1042,7 @@
 			files = (
 				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
 				4263BA182059126F00103919 /* header_bg.png in Resources */,
+				42715A8C206257E7000A79FC /* GPPlayListCell.xib in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
 				423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */,
 				4263BA45205A103E00103919 /* bar_notice.png in Resources */,
@@ -1035,8 +1085,10 @@
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
 				42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */,
+				42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */,
 				4263BA3C2059629D00103919 /* setting_clean.png in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
+				42715A9020625CA9000A79FC /* playlist_bottom_cell.png in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42E7E58F20579F6E00119CB0 /* home_person.png in Resources */,
 				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
@@ -1152,6 +1204,8 @@
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
 				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,
 				42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */,
+				42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */,
+				42715A87206248D3000A79FC /* GPRoomListViewController.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
 				42E7E5182054BE4F00119CB0 /* GPPayViewController.m in Sources */,
@@ -1169,20 +1223,24 @@
 				4263BA2120595C5500103919 /* GPBackWaterViewController.m in Sources */,
 				4263BA3620595CEF00103919 /* GPAboutViewController.m in Sources */,
 				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
+				42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
 				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
+				42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
 				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
 				4263BA2A20595C9900103919 /* GPGameListViewController.m in Sources */,
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
+				42715A93206263E3000A79FC /* GPPlayListModel.m in Sources */,
 				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,
 				4263BA52205A583000103919 /* GPBackWaterModel.m in Sources */,
 				423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */,
 				4263BA002057C33400103919 /* GPLoginModel.m in Sources */,
+				42715A7820620E2E000A79FC /* GPIndexModel.m in Sources */,
 				4263BAA8205F4B2100103919 /* GPBinfPhoneViewController.m in Sources */,
 				4263BA3320595CE100103919 /* GPSettingViewController.m in Sources */,
 				4263BA2D20595CA700103919 /* GPShareViewController.m in Sources */,
@@ -1198,6 +1256,7 @@
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
 				423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */,
+				42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */,
 				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
 				42148AAB2061EF66007D44E8 /* GPLuckyListViewController.m in Sources */,
 				4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */,
@@ -1211,6 +1270,7 @@
 				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
+				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
 				4263BA062057C5B500103919 /* GPWalletModel.m in Sources */,
 			);

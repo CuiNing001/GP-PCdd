@@ -94,9 +94,9 @@
             
             [ToastView toastViewWithMessage:msg timer:1.5];
             
-            NSArray *statusOne   = [gameDic objectForKey:@"1"];  // 玩法一
-            NSArray *statusTwo   = [gameDic objectForKey:@"2"];  // 玩法二
-            NSArray *statusThree = [gameDic objectForKey:@"3"];  // 玩法三
+            NSArray *statusOne   = [gameDic objectForKey:@"data1"];  // 玩法一
+            NSArray *statusTwo   = [gameDic objectForKey:@"data2"];  // 玩法二
+            NSArray *statusThree = [gameDic objectForKey:@"data3"];  // 玩法三
             
             if ([self.playingMerchantId isEqualToString:@"1"]) {
                 

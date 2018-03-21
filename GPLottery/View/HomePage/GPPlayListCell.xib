@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="156" id="KGk-i7-Jjw" customClass="GPPlayListCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="156"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="155.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7v-MB-fHe">
+                        <rect key="frame" x="10" y="10" width="345" height="135"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_bottom_cell.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ezh-GA-pn8">
+                                <rect key="frame" x="0.0" y="95" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4ew-Ps-v7h"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="玩法一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmz-mL-Quc">
+                                <rect key="frame" x="15" y="112" width="46" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（最高回水28%）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00B-H1-1yC">
+                                <rect key="frame" x="71" y="113" width="106" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-tW-1ag">
+                                <rect key="frame" x="299.5" y="113" width="35.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_person_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9rS-1n-u4F">
+                                <rect key="frame" x="273.5" y="113" width="16" height="16"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XU9-kq-NF8">
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="95"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-3S-U0N">
+                                <rect key="frame" x="245" y="10" width="90" height="30"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.94901960784313721" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BfX-LE-sLY"/>
+                                    <constraint firstAttribute="width" constant="90" id="QN9-SV-icR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="赔率说明">
+                                    <color key="titleColor" red="0.63921568627450975" green="0.38823529411764707" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="oddsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xs2-vt-Jeq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XU9-kq-NF8" firstAttribute="top" secondItem="F7v-MB-fHe" secondAttribute="top" id="4VN-QM-9F4"/>
+                            <constraint firstAttribute="trailing" secondItem="hEy-tW-1ag" secondAttribute="trailing" constant="10" id="64D-kF-376"/>
+                            <constraint firstItem="Ezh-GA-pn8" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" id="CyK-wu-USS"/>
+                            <constraint firstItem="hEy-tW-1ag" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="Dyy-js-M5G"/>
+                            <constraint firstItem="Ezh-GA-pn8" firstAttribute="top" secondItem="XU9-kq-NF8" secondAttribute="bottom" id="EZM-7d-4qI"/>
+                            <constraint firstItem="00B-H1-1yC" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="GQe-f5-9Zw"/>
+                            <constraint firstItem="hEy-tW-1ag" firstAttribute="leading" secondItem="9rS-1n-u4F" secondAttribute="trailing" constant="10" id="JYg-iT-ief"/>
+                            <constraint firstItem="00B-H1-1yC" firstAttribute="leading" secondItem="Zmz-mL-Quc" secondAttribute="trailing" constant="10" id="LVt-kA-akT"/>
+                            <constraint firstAttribute="bottom" secondItem="Zmz-mL-Quc" secondAttribute="bottom" constant="5" id="Lfh-gy-ZQp"/>
+                            <constraint firstItem="XU9-kq-NF8" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" id="Lig-c5-paF"/>
+                            <constraint firstAttribute="trailing" secondItem="SDH-3S-U0N" secondAttribute="trailing" constant="10" id="Oc8-uJ-Kg1"/>
+                            <constraint firstItem="Zmz-mL-Quc" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" constant="15" id="kAm-Jg-krH"/>
+                            <constraint firstAttribute="trailing" secondItem="Ezh-GA-pn8" secondAttribute="trailing" id="mS7-1N-WFD"/>
+                            <constraint firstAttribute="trailing" secondItem="XU9-kq-NF8" secondAttribute="trailing" id="vXB-X2-OaR"/>
+                            <constraint firstAttribute="bottom" secondItem="Ezh-GA-pn8" secondAttribute="bottom" id="w9g-bK-nRK"/>
+                            <constraint firstItem="9rS-1n-u4F" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="x0N-7J-KM7"/>
+                            <constraint firstItem="SDH-3S-U0N" firstAttribute="top" secondItem="F7v-MB-fHe" secondAttribute="top" constant="10" id="xHl-WD-K2y"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="F7v-MB-fHe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="EN1-Mg-cqW"/>
+                    <constraint firstAttribute="bottom" secondItem="F7v-MB-fHe" secondAttribute="bottom" constant="10" id="Hmu-q5-ROw"/>
+                    <constraint firstAttribute="trailing" secondItem="F7v-MB-fHe" secondAttribute="trailing" constant="10" id="jUA-PJ-uhJ"/>
+                    <constraint firstItem="F7v-MB-fHe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pji-Ca-BAt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="bgImage" destination="XU9-kq-NF8" id="llh-VA-A3H"/>
+                <outlet property="onlineNumLab" destination="hEy-tW-1ag" id="puK-Kf-Qbu"/>
+                <outlet property="playTypeLab" destination="Zmz-mL-Quc" id="NJf-xK-X8d"/>
+                <outlet property="remarkLab" destination="00B-H1-1yC" id="QPf-zH-6h9"/>
+            </connections>
+            <point key="canvasLocation" x="-123.5" y="-21"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="playlist_bottom_cell.png" width="355" height="40"/>
+        <image name="playlist_person_icon.png" width="16" height="16"/>
+    </resources>
+</document>
