@@ -124,6 +124,7 @@
     NSString *autograph = [userDefaults objectForKey:@"autograph"];
     
     if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil) {
+        
         userDic = @{@"loginName":username,
                     @"password":password,
                     @"nickname":nickname,

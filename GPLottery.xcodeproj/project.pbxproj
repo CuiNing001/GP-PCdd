@@ -116,6 +116,9 @@
 		42715A9720633D6E000A79FC /* GPRoomListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A9520633D6E000A79FC /* GPRoomListCell.m */; };
 		42715A9820633D6E000A79FC /* GPRoomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42715A9620633D6E000A79FC /* GPRoomListCell.xib */; };
 		42715A9B206345AF000A79FC /* GPRoonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A9A206345AF000A79FC /* GPRoonListModel.m */; };
+		42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A9D20637ABF000A79FC /* GPRoomViewController.m */; };
+		42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AA020637AD4000A79FC /* GPServiceViewController.m */; };
+		42715AA52063825F000A79FC /* home_history_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AA42063825E000A79FC /* home_history_btn.png */; };
 		42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */; };
 		42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
@@ -348,6 +351,11 @@
 		42715A9620633D6E000A79FC /* GPRoomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRoomListCell.xib; sourceTree = "<group>"; };
 		42715A99206345AF000A79FC /* GPRoonListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoonListModel.h; sourceTree = "<group>"; };
 		42715A9A206345AF000A79FC /* GPRoonListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoonListModel.m; sourceTree = "<group>"; };
+		42715A9C20637ABF000A79FC /* GPRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomViewController.h; sourceTree = "<group>"; };
+		42715A9D20637ABF000A79FC /* GPRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomViewController.m; sourceTree = "<group>"; };
+		42715A9F20637AD4000A79FC /* GPServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceViewController.h; sourceTree = "<group>"; };
+		42715AA020637AD4000A79FC /* GPServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceViewController.m; sourceTree = "<group>"; };
+		42715AA42063825E000A79FC /* home_history_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_history_btn.png; sourceTree = "<group>"; };
 		42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoViewController.h; sourceTree = "<group>"; };
 		42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoViewController.m; sourceTree = "<group>"; };
 		42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawInfoModel.h; sourceTree = "<group>"; };
@@ -608,6 +616,10 @@
 				42715A8020624877000A79FC /* GPPlayListViewController.m */,
 				42715A85206248D3000A79FC /* GPRoomListViewController.h */,
 				42715A86206248D3000A79FC /* GPRoomListViewController.m */,
+				42715A9C20637ABF000A79FC /* GPRoomViewController.h */,
+				42715A9D20637ABF000A79FC /* GPRoomViewController.m */,
+				42715A9F20637AD4000A79FC /* GPServiceViewController.h */,
+				42715AA020637AD4000A79FC /* GPServiceViewController.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -863,6 +875,7 @@
 				42E7E58D20579F6E00119CB0 /* home_person.png */,
 				42715A8D20625B77000A79FC /* playlist_person_icon.png */,
 				42715A8F20625CA9000A79FC /* playlist_bottom_cell.png */,
+				42715AA42063825E000A79FC /* home_history_btn.png */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1112,6 +1125,7 @@
 				4263BA46205A103E00103919 /* bar_mine.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
 				4263BA48205A103E00103919 /* bar_pay.png in Resources */,
+				42715AA52063825F000A79FC /* home_history_btn.png in Resources */,
 				4263BA92205CB79400103919 /* game_title_img.png in Resources */,
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
@@ -1242,6 +1256,7 @@
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
+				42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */,
 				42715A9720633D6E000A79FC /* GPRoomListCell.m in Sources */,
 				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
 				42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */,
@@ -1250,6 +1265,7 @@
 				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
 				4263BA2A20595C9900103919 /* GPGameListViewController.m in Sources */,
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
+				42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
 				42715A93206263E3000A79FC /* GPPlayListModel.m in Sources */,
 				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,

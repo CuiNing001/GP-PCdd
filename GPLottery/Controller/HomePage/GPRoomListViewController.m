@@ -9,6 +9,7 @@
 #import "GPRoomListViewController.h"
 #import "GPRoonListModel.h"
 #import "GPRoomListCell.h"
+#import "GPRoomViewController.h"
 
 @interface GPRoomListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -146,6 +147,15 @@
     }
     
     return roomListCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
+    
+    [self.navigationController pushViewController:roomVC animated:YES];
 }
 
 #pragma mark - 懒加载

@@ -92,6 +92,16 @@
             
             [loginModel setValuesForKeysWithDictionary:respondModel.data];
             
+            if (loginModel.nickname == nil) {
+                
+                loginModel.nickname = @"用户昵称";
+            }
+            
+            if (loginModel.autograph == nil) {
+                
+                loginModel.autograph = @"个性签名";
+            }
+            
             // 存储数据
             [UserDefaults addDataWithUsername:self.username
                                      password:self.password
