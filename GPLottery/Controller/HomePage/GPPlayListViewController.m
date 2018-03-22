@@ -9,6 +9,7 @@
 #import "GPPlayListViewController.h"
 #import "GPPlayListModel.h"
 #import "GPPlayListCell.h"
+#import "GPRoomListViewController.h"
 
 @interface GPPlayListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -152,6 +153,22 @@
     }
     
     return playListCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPRoomListViewController *roomListVC = [storyboard instantiateViewControllerWithIdentifier:@"roomListVC"];
+    
+    if (self.dataArray.count>0) {
+        
+        GPPlayListModel *playListModel = self.dataArray[indexPath.row];
+        
+        roomListVC.playID = playListModel.id;
+    }
+
+    [self.navigationController pushViewController:roomListVC animated:YES];
 }
 
 #pragma mark - 懒加载

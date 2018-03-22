@@ -10,4 +10,6 @@
 
 @interface GPRoomListViewController : UIViewController
 
+@property (strong, nonatomic) NSString *playID;  // 玩法id
+
 @end

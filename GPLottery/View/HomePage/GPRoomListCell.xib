@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GPRoomListCell">
+            <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-vf-TKu">
+                        <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-ZV-bNw">
+                                <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
+                            </imageView>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rx-IG-BaH">
+                                <rect key="frame" x="0.0" y="268" width="249" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房间名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29h-io-jfq">
+                                        <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Atb-Zf-il5"/>
+                                    <constraint firstAttribute="bottom" secondItem="29h-io-jfq" secondAttribute="bottom" id="FCU-qk-QeV"/>
+                                    <constraint firstItem="29h-io-jfq" firstAttribute="top" secondItem="2rx-IG-BaH" secondAttribute="top" id="nXi-El-GkY"/>
+                                    <constraint firstAttribute="trailing" secondItem="29h-io-jfq" secondAttribute="trailing" id="o65-Rq-mI8"/>
+                                    <constraint firstItem="29h-io-jfq" firstAttribute="leading" secondItem="2rx-IG-BaH" secondAttribute="leading" id="zhh-vn-z7x"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线人数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K5-gn-wGz">
+                                <rect key="frame" x="0.0" y="10" width="249" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2eG-ZV-bNw" firstAttribute="leading" secondItem="hc3-vf-TKu" secondAttribute="leading" id="Ocm-xS-u0p"/>
+                            <constraint firstItem="2rx-IG-BaH" firstAttribute="leading" secondItem="hc3-vf-TKu" secondAttribute="leading" id="UaC-iB-bbE"/>
+                            <constraint firstItem="3K5-gn-wGz" firstAttribute="leading" secondItem="hc3-vf-TKu" secondAttribute="leading" id="Y6y-Zy-hTk"/>
+                            <constraint firstItem="3K5-gn-wGz" firstAttribute="top" secondItem="hc3-vf-TKu" secondAttribute="top" constant="10" id="ag1-uP-Fec"/>
+                            <constraint firstAttribute="trailing" secondItem="3K5-gn-wGz" secondAttribute="trailing" id="alQ-gO-9zJ"/>
+                            <constraint firstItem="2eG-ZV-bNw" firstAttribute="top" secondItem="hc3-vf-TKu" secondAttribute="top" id="cG3-RH-gGA"/>
+                            <constraint firstAttribute="bottom" secondItem="2eG-ZV-bNw" secondAttribute="bottom" id="eYY-NP-HLo"/>
+                            <constraint firstAttribute="bottom" secondItem="2rx-IG-BaH" secondAttribute="bottom" constant="5" id="qhF-B4-Rl7"/>
+                            <constraint firstAttribute="trailing" secondItem="2rx-IG-BaH" secondAttribute="trailing" id="wqn-L6-5pQ"/>
+                            <constraint firstAttribute="trailing" secondItem="2eG-ZV-bNw" secondAttribute="trailing" id="xRJ-CU-Aa1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hc3-vf-TKu" secondAttribute="bottom" id="8as-2N-hwB"/>
+                <constraint firstAttribute="trailing" secondItem="hc3-vf-TKu" secondAttribute="trailing" id="IxZ-Mw-oQD"/>
+                <constraint firstItem="hc3-vf-TKu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uee-PC-Pdv"/>
+                <constraint firstItem="hc3-vf-TKu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="u87-rU-uRm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="249" height="303"/>
+            <connections>
+                <outlet property="bgImageView" destination="2eG-ZV-bNw" id="uPc-Kd-bAP"/>
+                <outlet property="onlineNumRoomLab" destination="3K5-gn-wGz" id="xPX-Ag-JFc"/>
+                <outlet property="roomNameLab" destination="29h-io-jfq" id="OH4-Uk-TJV"/>
+            </connections>
+            <point key="canvasLocation" x="-54" y="-10"/>
+        </collectionViewCell>
+    </objects>
+</document>
