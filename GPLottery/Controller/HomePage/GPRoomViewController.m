@@ -8,6 +8,7 @@
 
 #import "GPRoomViewController.h"
 #import "sys/utsname.h"
+#import "GPRoomBetView.h"
 
 
 @interface GPRoomViewController ()<UITextViewDelegate>
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancleBtn;
 @property (weak, nonatomic) IBOutlet UIView *chatView;  // 聊天view（列表+输入框view）
 @property (assign, nonatomic) CGFloat keyBoardHeight;  // 键盘高度
+@property (strong, nonatomic) GPRoomBetView *roomBetView;  // 下注view
 
 @end
 
@@ -52,6 +54,64 @@
                                                object:nil];
   
     self.inputTextView.delegate = self;
+    
+    // 添加betView
+    self.roomBetView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.roomBetView];
+    self.roomBetView.hidden = YES;
+    
+    // bet view 方法
+    __weak typeof(self)weakSelf = self;
+    // 关闭betview
+    self.roomBetView.dissmissBtnBlock = ^{
+      
+        [weakSelf.roomBetView.betTextField resignFirstResponder];
+        weakSelf.roomBetView.betBottom.constant = 10;
+        weakSelf.roomBetView.hidden = YES;
+        
+        [weakSelf.inputTextView resignFirstResponder];
+        weakSelf.chatViewBottom.constant = 0;
+    };
+    
+    
+    // 右切换页面
+    self.roomBetView.pageRightBtnBlock = ^{
+      
+        NSLog(@"右切换页面");
+    };
+    
+    // 左切换页面
+    self.roomBetView.pageLeftBtnBlock = ^{
+      
+        NSLog(@"左切换页面");
+    };
+    
+    // 双倍投注
+    self.roomBetView.doubleBetBtnBlock = ^{
+      
+        NSLog(@"双倍投注");
+    };
+    
+    // 最小下注
+    self.roomBetView.minBetBtnBlock = ^{
+      
+        NSLog(@"最小下注");
+    };
+    
+    // 赔率说明
+    self.roomBetView.oddsBtnBlock = ^{
+      
+        NSLog(@"赔率说明");
+    };
+    
+    // 确定投注
+    self.roomBetView.betBtnBlock = ^{
+      
+        NSLog(@"确定投注");
+    };
+    
+    
+    
 }
 
 // 键盘出现时修改chatView底部约束
@@ -96,6 +156,8 @@
     [UIView animateWithDuration:1 animations:^{
         
         self.chatViewBottom.constant = 0;
+        
+        self.roomBetView.betBottom.constant = 10;
     }];
 }
 
@@ -108,6 +170,7 @@
         [UIView animateWithDuration:0.5 animations:^{
 
             self.chatViewBottom.constant = 0;
+            self.roomBetView.betBottom.constant = 10;
         }];
         return NO;
     }
@@ -118,7 +181,11 @@
 #pragma mark - 投注按钮
 - (IBAction)betButton:(UIButton *)sender {
     
-    
+    [UIView animateWithDuration:1 animations:^{
+        
+        self.roomBetView.hidden = NO;
+
+    }];
 }
 
 

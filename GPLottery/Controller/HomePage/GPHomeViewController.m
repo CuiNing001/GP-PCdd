@@ -15,6 +15,7 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #import "GPGameInstroctionViewController.h"
 #import "GPPlayListViewController.h"
+#import "GPRoomBetView.h"
 
 
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
@@ -56,6 +57,9 @@
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    GPRoomBetView *betView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:betView];
     
     // 添加tabbar代理
     self.tabBarController.delegate = self;

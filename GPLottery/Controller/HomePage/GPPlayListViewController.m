@@ -58,6 +58,8 @@
 #pragma mark - 加载网络数据
 - (void)loadNetData{
     
+    NSLog(@"|PLAYLIST-VC|ID=%@;NAME=%@",self.productID,self.productName);
+    
     [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];

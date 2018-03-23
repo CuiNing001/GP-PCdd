@@ -124,13 +124,13 @@
     self.isLogin = self.infoModel.islogin;
     
     // 昵称
-    if (![self.infoModel.nickname isEqualToString:@""]) {
+    if (![self.infoModel.nickname isEqualToString:@"用户昵称"]) {
         
         self.nickNameLab.text = self.infoModel.nickname;
     }
     
     // 签名
-    if (![self.infoModel.autograph isEqualToString:@""]) {
+    if (![self.infoModel.autograph isEqualToString:@"个性签名"]) {
         
         self.signatureLabel.text = self.infoModel.autograph;
     }

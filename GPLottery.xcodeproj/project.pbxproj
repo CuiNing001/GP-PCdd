@@ -119,6 +119,13 @@
 		42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A9D20637ABF000A79FC /* GPRoomViewController.m */; };
 		42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AA020637AD4000A79FC /* GPServiceViewController.m */; };
 		42715AA52063825F000A79FC /* home_history_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AA42063825E000A79FC /* home_history_btn.png */; };
+		42715AA8206490B5000A79FC /* GPRoomBetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AA7206490B5000A79FC /* GPRoomBetView.m */; };
+		42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42715AA9206490C5000A79FC /* GPRoomBetView.xib */; };
+		42715AAD20649699000A79FC /* bet_right_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AAB20649698000A79FC /* bet_right_btn.png */; };
+		42715AAE20649699000A79FC /* bet_left_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AAC20649698000A79FC /* bet_left_btn.png */; };
+		42715AB22064D173000A79FC /* GPBetContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AB02064D173000A79FC /* GPBetContentCell.m */; };
+		42715AB32064D173000A79FC /* GPBetContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42715AB12064D173000A79FC /* GPBetContentCell.xib */; };
+		42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AB62064E862000A79FC /* bet_dissmiss_btn.png */; };
 		42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */; };
 		42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
@@ -356,6 +363,15 @@
 		42715A9F20637AD4000A79FC /* GPServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceViewController.h; sourceTree = "<group>"; };
 		42715AA020637AD4000A79FC /* GPServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceViewController.m; sourceTree = "<group>"; };
 		42715AA42063825E000A79FC /* home_history_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_history_btn.png; sourceTree = "<group>"; };
+		42715AA6206490B5000A79FC /* GPRoomBetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomBetView.h; sourceTree = "<group>"; };
+		42715AA7206490B5000A79FC /* GPRoomBetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomBetView.m; sourceTree = "<group>"; };
+		42715AA9206490C5000A79FC /* GPRoomBetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRoomBetView.xib; sourceTree = "<group>"; };
+		42715AAB20649698000A79FC /* bet_right_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet_right_btn.png; sourceTree = "<group>"; };
+		42715AAC20649698000A79FC /* bet_left_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet_left_btn.png; sourceTree = "<group>"; };
+		42715AAF2064D173000A79FC /* GPBetContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetContentCell.h; sourceTree = "<group>"; };
+		42715AB02064D173000A79FC /* GPBetContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetContentCell.m; sourceTree = "<group>"; };
+		42715AB12064D173000A79FC /* GPBetContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetContentCell.xib; sourceTree = "<group>"; };
+		42715AB62064E862000A79FC /* bet_dissmiss_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet_dissmiss_btn.png; sourceTree = "<group>"; };
 		42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoViewController.h; sourceTree = "<group>"; };
 		42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoViewController.m; sourceTree = "<group>"; };
 		42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawInfoModel.h; sourceTree = "<group>"; };
@@ -787,6 +803,12 @@
 				42715A9420633D6E000A79FC /* GPRoomListCell.h */,
 				42715A9520633D6E000A79FC /* GPRoomListCell.m */,
 				42715A9620633D6E000A79FC /* GPRoomListCell.xib */,
+				42715AA6206490B5000A79FC /* GPRoomBetView.h */,
+				42715AA7206490B5000A79FC /* GPRoomBetView.m */,
+				42715AA9206490C5000A79FC /* GPRoomBetView.xib */,
+				42715AAF2064D173000A79FC /* GPBetContentCell.h */,
+				42715AB02064D173000A79FC /* GPBetContentCell.m */,
+				42715AB12064D173000A79FC /* GPBetContentCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -876,6 +898,9 @@
 				42715A8D20625B77000A79FC /* playlist_person_icon.png */,
 				42715A8F20625CA9000A79FC /* playlist_bottom_cell.png */,
 				42715AA42063825E000A79FC /* home_history_btn.png */,
+				42715AAC20649698000A79FC /* bet_left_btn.png */,
+				42715AAB20649698000A79FC /* bet_right_btn.png */,
+				42715AB62064E862000A79FC /* bet_dissmiss_btn.png */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1070,6 +1095,7 @@
 				4263BA182059126F00103919 /* header_bg.png in Resources */,
 				42715A8C206257E7000A79FC /* GPPlayListCell.xib in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
+				42715AB32064D173000A79FC /* GPBetContentCell.xib in Resources */,
 				423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */,
 				4263BA45205A103E00103919 /* bar_notice.png in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
@@ -1077,6 +1103,7 @@
 				42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */,
 				4263BA9C205CF92900103919 /* agent_analysis_btn.png in Resources */,
 				42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */,
+				42715AAD20649699000A79FC /* bet_right_btn.png in Resources */,
 				42E7E5482056177000119CB0 /* sign.png in Resources */,
 				42E7E564205668C500119CB0 /* pay_qq.png in Resources */,
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
@@ -1093,6 +1120,7 @@
 				4263B9E62057BD3700103919 /* mine_game.png in Resources */,
 				4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
+				42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
 				4263B9E92057BD3700103919 /* mine_get.png in Resources */,
 				42E7E5412054D4C200119CB0 /* global_btn.png in Resources */,
@@ -1103,6 +1131,7 @@
 				4263BA91205CB79400103919 /* game_bg_img.png in Resources */,
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
+				42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */,
 				4263BA3E2059629D00103919 /* setting_password_change.png in Resources */,
 				423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */,
 				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
@@ -1119,6 +1148,7 @@
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42E7E58F20579F6E00119CB0 /* home_person.png in Resources */,
 				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
+				42715AAE20649699000A79FC /* bet_left_btn.png in Resources */,
 				4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */,
 				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
 				42E7E562205668C500119CB0 /* pay_ali.png in Resources */,
@@ -1244,6 +1274,7 @@
 				423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
 				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
+				42715AA8206490B5000A79FC /* GPRoomBetView.m in Sources */,
 				4263BAA2205CFD5D00103919 /* GPUserInfoViewController.m in Sources */,
 				4263BA56205A78BA00103919 /* GPHistoryCell.m in Sources */,
 				4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */,
@@ -1305,6 +1336,7 @@
 				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
 				4263BA062057C5B500103919 /* GPWalletModel.m in Sources */,
+				42715AB22064D173000A79FC /* GPBetContentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
