@@ -126,6 +126,8 @@
 		42715AB22064D173000A79FC /* GPBetContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AB02064D173000A79FC /* GPBetContentCell.m */; };
 		42715AB32064D173000A79FC /* GPBetContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42715AB12064D173000A79FC /* GPBetContentCell.xib */; };
 		42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42715AB62064E862000A79FC /* bet_dissmiss_btn.png */; };
+		42715ABA2065E24E000A79FC /* GPOddsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715AB92065E24E000A79FC /* GPOddsInfoModel.m */; };
+		42715ABD2065EA0F000A79FC /* GPEnterRoomInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715ABC2065EA0F000A79FC /* GPEnterRoomInfoModel.m */; };
 		42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */; };
 		42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A6FF3B2060E58D00977BCD /* GPWithdrawInfoModel.m */; };
 		42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E4D12054B7BE00119CB0 /* AppDelegate.m */; };
@@ -372,6 +374,10 @@
 		42715AB02064D173000A79FC /* GPBetContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetContentCell.m; sourceTree = "<group>"; };
 		42715AB12064D173000A79FC /* GPBetContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetContentCell.xib; sourceTree = "<group>"; };
 		42715AB62064E862000A79FC /* bet_dissmiss_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet_dissmiss_btn.png; sourceTree = "<group>"; };
+		42715AB82065E24E000A79FC /* GPOddsInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPOddsInfoModel.h; sourceTree = "<group>"; };
+		42715AB92065E24E000A79FC /* GPOddsInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOddsInfoModel.m; sourceTree = "<group>"; };
+		42715ABB2065EA0F000A79FC /* GPEnterRoomInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEnterRoomInfoModel.h; sourceTree = "<group>"; };
+		42715ABC2065EA0F000A79FC /* GPEnterRoomInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPEnterRoomInfoModel.m; sourceTree = "<group>"; };
 		42A6FF372060AE5B00977BCD /* GPBankInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoViewController.h; sourceTree = "<group>"; };
 		42A6FF382060AE5B00977BCD /* GPBankInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoViewController.m; sourceTree = "<group>"; };
 		42A6FF3A2060E58D00977BCD /* GPWithdrawInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPWithdrawInfoModel.h; sourceTree = "<group>"; };
@@ -719,6 +725,10 @@
 				42715A92206263E3000A79FC /* GPPlayListModel.m */,
 				42715A99206345AF000A79FC /* GPRoonListModel.h */,
 				42715A9A206345AF000A79FC /* GPRoonListModel.m */,
+				42715AB82065E24E000A79FC /* GPOddsInfoModel.h */,
+				42715AB92065E24E000A79FC /* GPOddsInfoModel.m */,
+				42715ABB2065EA0F000A79FC /* GPEnterRoomInfoModel.h */,
+				42715ABC2065EA0F000A79FC /* GPEnterRoomInfoModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1315,6 +1325,7 @@
 				42E7E5802057646400119CB0 /* BaseModel.m in Sources */,
 				4263BA4E205A546800103919 /* GPBackWaterCell.m in Sources */,
 				4263BA70205B627C00103919 /* GPBetCell.m in Sources */,
+				42715ABD2065EA0F000A79FC /* GPEnterRoomInfoModel.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
@@ -1332,6 +1343,7 @@
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
 				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
+				42715ABA2065E24E000A79FC /* GPOddsInfoModel.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,

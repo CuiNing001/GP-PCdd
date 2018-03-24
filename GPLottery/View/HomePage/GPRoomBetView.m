@@ -9,11 +9,14 @@
 #import "GPRoomBetView.h"
 #import "GPBetContentCell.h"
 #import "sys/utsname.h"
+#import "GPOddsInfoModel.h"
 
 static int page = 1;
 @interface GPRoomBetView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UIScrollViewDelegate>
 
 @property (assign, nonatomic) CGFloat pageWidth;
+@property (strong, nonatomic) NSString *cellIdentifier;
+
 
 @end
 @implementation GPRoomBetView
@@ -36,6 +39,8 @@ static int page = 1;
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    self.cellIdentifierDic = [NSMutableDictionary new];
     
     self.pageWidth = kSize_width-20;
     
@@ -64,6 +69,10 @@ static int page = 1;
     // 添加tap手势，回收键盘
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dissMissKeyBoard:)];
 //    [self addGestureRecognizer:tap];
+    
+    self.pageOneDataArray = [NSMutableArray array];
+    self.pageTwoDataArray = [NSMutableArray array];
+    self.pageThreeDataArray = [NSMutableArray array];
 }
 
 #pragma mark - 右切换页面按钮
@@ -182,7 +191,7 @@ static int page = 1;
     
     if (self.betBtnBlock) {
         
-        self.betBtnBlock();
+        self.betBtnBlock(self.betTextField.text);
     }
 }
 
@@ -220,6 +229,7 @@ static int page = 1;
     leftFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-60)/5, 50);
     leftFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.leftCollectionView.collectionViewLayout = leftFlowLayout;
+//    self.leftCollectionView.delaysContentTouches = false;
     
     // middleCollectionView布局
     UICollectionViewFlowLayout *middleFlowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -229,6 +239,8 @@ static int page = 1;
     middleFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-60)/5, 50);
     middleFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.middleCollectionView.collectionViewLayout = middleFlowLayout;
+//    self.middleCollectionView.delaysContentTouches = false;
+    self.middleCollectionView.allowsMultipleSelection = NO;
     
     // rightCollectionView布局
     UICollectionViewFlowLayout *rightFlowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -238,12 +250,13 @@ static int page = 1;
     rightFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-30)/2, 50);
     rightFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.rightCollectionView.collectionViewLayout = rightFlowLayout;
+//    self.rightCollectionView.delaysContentTouches = false;
     
-
-    // 注册cell
-    [self.leftCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:@"betContentCell"];
-    [self.middleCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:@"betContentCell"];
-    [self.rightCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:@"betContentCell"];
+//    self.cellIdentifier = [NSString stringWithFormat:@"betContentCell"];
+//    // 注册cell
+//    [self.leftCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:self.cellIdentifier];
+//    [self.middleCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:self.cellIdentifier];
+//    [self.rightCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:self.cellIdentifier];
 
     
     
@@ -252,26 +265,160 @@ static int page = 1;
 #pragma mark - collection view 代理方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 15;
+    if (collectionView.tag == 999) { // page1
+        
+        return self.pageOneDataArray.count;
+        
+    }else if (collectionView.tag == 998){ // page2
+        
+        return self.pageTwoDataArray.count;
+        
+    }else if (collectionView.tag == 997){ // page3
+        
+        return self.pageThreeDataArray.count;
+    }
+    
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    if (collectionView.tag == 999) { // page1
+        
+        NSString *pageOneIdentifier = [NSString stringWithFormat:@"one%ld",indexPath.row];
+        
+        [self.leftCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:pageOneIdentifier];
+        
+        GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:pageOneIdentifier forIndexPath:indexPath];
+        
+        GPOddsInfoModel *oddsModel = self.pageOneDataArray[indexPath.row];
+        
+        [betContentCell setDataWithMode:oddsModel];
+        
+        return betContentCell;
+        
+    }else if (collectionView.tag == 998){ // page2
+        
+        NSString *pageTwoIdentifier = [NSString stringWithFormat:@"two%ld",indexPath.row];
+        
+        [self.middleCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:pageTwoIdentifier];
+        
+        GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:pageTwoIdentifier forIndexPath:indexPath];
+        
+        GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
+        
+        [betContentCell setDataWithMode:oddsModel];
+        
+        return betContentCell;
+        
+    }else{ // page3
+        
+        NSString *pageThreeIdentifier = [NSString stringWithFormat:@"three%ld",indexPath.row];
+        
+        [self.rightCollectionView registerNib:[UINib nibWithNibName:@"GPBetContentCell" bundle:nil] forCellWithReuseIdentifier:pageThreeIdentifier];
+        
+        GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:pageThreeIdentifier forIndexPath:indexPath];
+        
+        GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
+        
+        [betContentCell setDataWithMode:oddsModel];
+        
+        return betContentCell;
+    }
     
-    GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"betContentCell" forIndexPath:indexPath];
     
-    return betContentCell;
 }
 
+// 是否允许选中
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return YES;
+}
+
+
+// 点击事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"+++++++%ld",indexPath.row);
     
-//    self.betContentCell.bgView.layer.borderWidth = 0.5;
-//    self.betContentCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+    if (collectionView.tag == 999) { // page1
+        
+        // 获取当前选中的item
+        GPBetContentCell *betCell = (GPBetContentCell *)[self.leftCollectionView cellForItemAtIndexPath:indexPath];
+        
+        // 修改选中item的UI
+        betCell.bgView.layer.borderWidth = 0.5;
+        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        GPOddsInfoModel *oddsModel = self.pageOneDataArray[indexPath.row];
+        self.leftViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
+        self.nameStr = oddsModel.name;
+        self.oddsStr = oddsModel.odds;
+        
+        if (self.selecetItemBlock) {
+            
+            self.selecetItemBlock(oddsModel.playingId);
+        }
+        
+        NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
+        
+        
+    }else if (collectionView.tag == 998){ // page2
+        
+        // 获取当前选中的item
+        GPBetContentCell *betCell = (GPBetContentCell *)[self.middleCollectionView cellForItemAtIndexPath:indexPath];
+
+        // 修改选中item的UI
+        betCell.bgView.layer.borderWidth = 0.5;
+        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
+        self.middleViewResultLab.text = [NSString stringWithFormat:@"中奖号码[%@]",oddsModel.winNumber];
+        self.nameStr = oddsModel.name;
+        self.oddsStr = oddsModel.odds;
+        
+        if (self.selecetItemBlock) {
+            
+            self.selecetItemBlock(oddsModel.playingId);
+        }
+
+        NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
+        
+    }else if (collectionView.tag == 997){ // page3
+        
+        // 获取当前选中的item
+        GPBetContentCell *betCell = (GPBetContentCell *)[self.rightCollectionView cellForItemAtIndexPath:indexPath];
+
+        // 修改选中item的UI
+        betCell.bgView.layer.borderWidth = 0.5;
+        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
+        self.rightViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
+        self.nameStr = oddsModel.name;
+        self.oddsStr = oddsModel.odds;
+        
+        if (self.selecetItemBlock) {
+            
+            self.selecetItemBlock(oddsModel.playingId);
+        }
+        
+        NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
+    }
     
     
+}
+
+// 取消未选中item的点击状态
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    
+    GPBetContentCell *betCell = (GPBetContentCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    betCell.bgView.layer.borderWidth = 0;
+    betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+
 }
 
 #pragma mark - textfield代理方法
@@ -319,8 +466,24 @@ static int page = 1;
 #pragma mark - scroll view 代理方法
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    // 根据scrollview偏移量绑定相对应的page
+    CGPoint page1 = CGPointMake(0, 0);
+    CGPoint page2 = CGPointMake(self.pageWidth, 0);
+    CGPoint page3 = CGPointMake(self.pageWidth*2, 0);
+    
+    if (scrollView.contentOffset.x == page1.x) {
+        
+        page = 1;
+    }else if (scrollView.contentOffset.x == page2.x){
+        
+        page = 2;
+    }else if (scrollView.contentOffset.x == page3.x){
+        
+        page = 3;
+    }
     
 }
+
 
 
 /*

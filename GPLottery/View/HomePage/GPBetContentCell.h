@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GPOddsInfoModel.h"
 
 @interface GPBetContentCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *oddsLab;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+
+- (void)setDataWithMode:(GPOddsInfoModel *)model;
 
 
 @end

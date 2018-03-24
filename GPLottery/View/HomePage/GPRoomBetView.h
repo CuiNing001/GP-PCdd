@@ -35,8 +35,18 @@
 @property (copy, nonatomic) void(^oddsBtnBlock)(void);       // 赔率说明按钮
 @property (copy, nonatomic) void(^minBetBtnBlock)(void);     // 最小投注按钮
 @property (copy, nonatomic) void(^doubleBetBtnBlock)(void);  // 双倍投注按钮
-@property (copy, nonatomic) void(^betBtnBlock)(void);        // 投注按钮
+@property (copy, nonatomic) void(^betBtnBlock)(NSString *);        // 投注按钮
 @property (copy, nonatomic) void(^dissmissBtnBlock)(void);   // 关闭页面按钮
+@property (copy, nonatomic) void(^selecetItemBlock)(NSString *); // cell点击
+
+@property (strong, nonatomic) NSMutableArray *pageOneDataArray;   // page1数据源
+@property (strong, nonatomic) NSMutableArray *pageTwoDataArray;   // page2数据源
+@property (strong, nonatomic) NSMutableArray *pageThreeDataArray; // page3数据源
+
+@property (strong, nonatomic) NSString *nameStr;
+@property (strong, nonatomic) NSString *oddsStr;
+
+@property (strong, nonatomic) NSMutableDictionary *cellIdentifierDic;
 
 
 - (instancetype)initWithFrame:(CGRect)frame;

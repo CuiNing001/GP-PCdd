@@ -151,9 +151,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
+    
+    roomVC.roomIdStr = roomListModel.roomId;
+    
+    roomVC.productIdStr = self.productIdStr;
     
     [self.navigationController pushViewController:roomVC animated:YES];
 }

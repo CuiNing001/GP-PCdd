@@ -10,4 +10,7 @@
 
 @interface GPRoomViewController : UIViewController
 
+@property (strong, nonatomic) NSString *roomIdStr;    // 房间id
+@property (strong, nonatomic) NSString *productIdStr; // 产品id
+
 @end

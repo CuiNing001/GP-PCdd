@@ -58,8 +58,8 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
-    GPRoomBetView *betView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:betView];
+//    GPRoomBetView *betView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
+//    [self.view addSubview:betView];
     
     // 添加tabbar代理
     self.tabBarController.delegate = self;

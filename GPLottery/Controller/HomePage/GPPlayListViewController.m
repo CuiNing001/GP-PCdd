@@ -168,6 +168,8 @@
         GPPlayListModel *playListModel = self.dataArray[indexPath.row];
         
         roomListVC.playID = playListModel.id;
+        
+        roomListVC.productIdStr = self.productID;
     }
 
     [self.navigationController pushViewController:roomListVC animated:YES];

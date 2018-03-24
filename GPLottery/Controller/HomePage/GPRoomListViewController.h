@@ -10,6 +10,7 @@
 
 @interface GPRoomListViewController : UIViewController
 
-@property (strong, nonatomic) NSString *playID;  // 玩法id
+@property (strong, nonatomic) NSString *playID;       // 玩法id
+@property (strong, nonatomic) NSString *productIdStr; // 产品id
 
 @end

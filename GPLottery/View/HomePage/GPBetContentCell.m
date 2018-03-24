@@ -17,4 +17,11 @@
     
 }
 
+- (void)setDataWithMode:(GPOddsInfoModel *)model{
+    
+    self.nameLab.text = model.name;
+    self.oddsLab.text = model.odds;
+
+}
+
 @end
