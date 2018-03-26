@@ -11,9 +11,14 @@
 #import "GPRoomBetView.h"
 #import "GPOddsInfoModel.h"
 #import "GPEnterRoomInfoModel.h"
+#import "GPMsgEnterRoomCell.h"
+#import "GPMessageModel.h"
+#import "GPMsgSystemCell.h"
+#import "GPMsgReceiveCell.h"
+#import "GPMsgSenderCell.h"
 
 
-@interface GPRoomViewController ()<UITextViewDelegate>
+@interface GPRoomViewController ()<UITextViewDelegate,JMSGConversationDelegate,JMessageDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatViewBottom;  // chatview距离底部的距离
 
@@ -21,27 +26,28 @@
 @property (weak, nonatomic) IBOutlet UILabel *expectLab;  // 当前期数
 @property (weak, nonatomic) IBOutlet UILabel *timerLab;   // 倒计时
 @property (weak, nonatomic) IBOutlet UILabel *moneyLab;   // 账户余额
-@property (weak, nonatomic) IBOutlet UILabel *historyExpectLab;  // 开奖记录期数
-@property (weak, nonatomic) IBOutlet UILabel *historyCodeLab;  // 开奖记录
+@property (weak, nonatomic) IBOutlet UILabel *historyExpectLab;    // 开奖记录期数
+@property (weak, nonatomic) IBOutlet UILabel *historyCodeLab;      // 开奖记录
 @property (weak, nonatomic) IBOutlet UILabel *historyCodeTextLab;  // 开奖记录（大小单双）
-@property (weak, nonatomic) IBOutlet UIButton *historyMoreBtn;   // 开奖记录更多按钮
-@property (weak, nonatomic) IBOutlet UITextView *inputTextView;   // 输入框
-@property (weak, nonatomic) IBOutlet UIView *inputView;  // 底部输入view
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *cancleBtn;
-@property (weak, nonatomic) IBOutlet UIView *chatView;  // 聊天view（列表+输入框view）
-@property (assign, nonatomic) CGFloat keyBoardHeight;  // 键盘高度
+@property (weak, nonatomic) IBOutlet UIButton *historyMoreBtn;     // 开奖记录更多按钮
+@property (weak, nonatomic) IBOutlet UITextView *inputTextView;    // 输入框
+@property (weak, nonatomic) IBOutlet UIView *inputView;            // 底部输入view
+@property (weak, nonatomic) IBOutlet UITableView *tableView;       // 聊天详情列表
+@property (weak, nonatomic) IBOutlet UIButton *cancleBtn;  // 取消（回收键盘）
+@property (weak, nonatomic) IBOutlet UIView *chatView;     // 聊天view（列表+输入框view）
+@property (assign, nonatomic) CGFloat keyBoardHeight;      // 键盘高度
 @property (strong, nonatomic) GPRoomBetView *roomBetView;  // 下注view
-@property (strong, nonatomic) GPInfoModel *infoModel;  // 本地数据
+@property (strong, nonatomic) GPInfoModel *infoModel;      // 本地数据
 @property (strong, nonatomic) MBProgressHUD *progressHUD;
 @property (strong, nonatomic) NSString *token;
 @property (strong, nonatomic) GPEnterRoomInfoModel *roomInfoModel;  // 房间数据
-@property (strong, nonatomic) NSMutableArray *pageOneDataArray;   // page1数据源
-@property (strong, nonatomic) NSMutableArray *pageTwoDataArray;   // page2数据源
-@property (strong, nonatomic) NSMutableArray *pageThreeDataArray; // page3数据源
+@property (strong, nonatomic) NSMutableArray *pageOneDataArray;     // page1数据源
+@property (strong, nonatomic) NSMutableArray *pageTwoDataArray;     // page2数据源
+@property (strong, nonatomic) NSMutableArray *pageThreeDataArray;   // page3数据源
 
 @property (strong, nonatomic) NSString *betAmountStr;  // 下注金额
 @property (strong, nonatomic) NSString *playingId;     // 玩法id
+@property (strong, nonatomic) NSMutableArray *receiveMessageArray;  // 接收聊天室消息
 
 @end
 
@@ -59,7 +65,45 @@
     [self loadOddsContentData];
 }
 
+#pragma mark - 关闭页面退出聊天室
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [JMSGChatRoom leaveChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
+       
+        if (!error) {
+            
+            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|SUCCESS|%@",resultObject);
+            
+        }else{
+            
+            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|error|%@",error);
+        }
+    }];
+}
+
 - (void)loadSubView{
+    
+    // 添加极光监听事件通知
+    [JMessage addDelegate:self withConversation:nil];
+    
+    // tableView代理
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    // tableView样式
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    // 注册进入房间cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgEnterRoomCell" bundle:nil] forCellReuseIdentifier:@"enterRoomCell"];
+    
+    // 注册接收方cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgReceiveCell" bundle:nil] forCellReuseIdentifier:@"receiveCell"];
+    
+    // 注册系统消息cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgSystemCell" bundle:nil] forCellReuseIdentifier:@"systemCell"];
+    
+    // 注册接收方cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgSenderCell" bundle:nil] forCellReuseIdentifier:@"secderCell"];
     
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -369,6 +413,17 @@
 
             NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",self.roomIdStr,betAmount,self.playingId,self.productIdStr);
             
+            // 投注成功发送消息
+            NSDictionary *contentDic = @{@"playingType":self.roomBetView.nameStr,@"betAmount":betAmount,@"name":self.infoModel.nickname,@"level":self.infoModel.level};
+            JMSGCustomContent *content = [[JMSGCustomContent alloc]initWithCustomDictionary:contentDic];
+            JMSGMessage *sendMessage = [JMSGMessage createChatRoomMessageWithContent:content chatRoomId:self.roomIdStr];
+            [JMSGMessage sendMessage:sendMessage];
+            GPMessageModel *messageModel = [GPMessageModel new];
+            [messageModel setValuesForKeysWithDictionary:contentDic];
+            [weakSelf.receiveMessageArray addObject:messageModel];
+            NSLog(@"|JMSENDMESSAGE|-|SEND|%@",sendMessage);
+            [weakSelf.tableView reloadData];
+            
             // 投注成功关闭betContentView
             [weakSelf.roomBetView.betTextField resignFirstResponder];
             weakSelf.roomBetView.betBottom.constant = 10;
@@ -392,6 +447,133 @@
         
     }];
 }
+
+
+#pragma mark - 极光代理方法
+// 接收聊天室消息
+- (void)onReceiveChatRoomConversation:(JMSGConversation *)conversation
+                             messages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)messages{
+    
+    JMSGTextContent *textContent = (JMSGTextContent *)messages.lastObject.content;
+    
+    NSString *msgText = textContent.text;
+    
+    JMSGUser *fromName = (JMSGUser *)messages.lastObject.fromUser;
+    
+    NSLog(@"|CHATROOM|-|fromname|%@",fromName);
+    
+    NSString *nickname;
+    
+    if (fromName.nickname != nil) {
+        
+        nickname = fromName.nickname;
+        
+        NSLog(@"|CHATROOM|-|nickname|%@",nickname);
+    }else{
+        
+        nickname = fromName.username;
+        
+        NSLog(@"|CHATROOM|-|username|%@",nickname);
+    }
+    
+    
+    NSDictionary *messageDic = [ToastView dictionaryWithJsonString:msgText];
+    
+    NSLog(@"========^^diction^^========%@",messageDic);
+    
+    GPMessageModel *messageModel = [GPMessageModel new];
+    
+    [messageModel setValuesForKeysWithDictionary:messageDic];
+    
+    [messageModel setValue:nickname forKey:@"fromName"];
+    
+    [self.receiveMessageArray addObject:messageModel];
+    
+    [self.tableView reloadData];
+    
+    NSLog(@"========^^text^^========%@",msgText);
+}
+
+
+
+#pragma mark - table view 代理方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.receiveMessageArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
+    
+    if ([messageModel.type isEqualToString:@"0"]) {
+        
+        return 50;
+        
+    }else if ([messageModel.type isEqualToString:@"1"]){
+        
+        return 120;
+        
+    }else if ([messageModel.type isEqualToString:@"2"]){
+        
+        return 50;
+        
+    }else if([messageModel.type isEqualToString:@"3"]){
+        
+        return 50;
+    }else{
+        
+        return 120;
+    }
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
+    
+    if ([messageModel.type isEqualToString:@"0"]) {  // 进入房间的消息
+        
+        GPMsgEnterRoomCell *enterRoomCell = [tableView dequeueReusableCellWithIdentifier:@"enterRoomCell" forIndexPath:indexPath];
+        
+        [enterRoomCell setDataWithModel:messageModel];
+        
+        return enterRoomCell;
+        
+    }else if ([messageModel.type isEqualToString:@"3"]){  // 推送开奖信息
+        
+        GPMsgSystemCell *systemCell = [tableView dequeueReusableCellWithIdentifier:@"systemCell" forIndexPath:indexPath];
+        
+        [systemCell setDataWithModel:messageModel];
+        
+        return systemCell;
+        
+    }else if ([messageModel.type isEqualToString:@"1"]){  // 下注成功后的推送
+        
+        GPMsgReceiveCell *receiveCell = [tableView dequeueReusableCellWithIdentifier:@"receiveCell" forIndexPath:indexPath];
+        
+        [receiveCell setDataWithModel:messageModel];
+        
+        return receiveCell;
+        
+    }else if ([messageModel.type isEqualToString:@"2"]){   // 拉取用户余额
+        
+        return [[UITableViewCell alloc]init];
+        
+    }else{   // 发送方cell
+        
+        GPMsgSenderCell *secderCell = [tableView dequeueReusableCellWithIdentifier:@"secderCell" forIndexPath:indexPath];
+        
+        [secderCell setDataWithModel:messageModel];
+        
+        return secderCell;
+    }
+
+}
+
+
 
 #pragma mark - 懒加载
 - (NSMutableArray *)pageOneDataArray{
@@ -419,6 +601,15 @@
         self.pageThreeDataArray = [NSMutableArray array];
     }
     return _pageThreeDataArray;
+}
+
+- (NSMutableArray *)receiveMessageArray{
+    
+    if (!_receiveMessageArray) {
+        
+        self.receiveMessageArray = [NSMutableArray array];
+    }
+    return _receiveMessageArray;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -138,13 +138,28 @@
 - (IBAction)singoutButton:(UIButton *)sender {
     
     [self.progressHUD showAnimated:YES];
-    
-    // 删除本地数据
-    [UserDefaults deleateData];
+
+    // 退出极光
+    [JMSGUser logout:^(id resultObject, NSError *error) {
+       
+        if (!error) {
+            
+            // 退出成功
+            // 删除本地数据
+            [UserDefaults deleateData];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }else{
+            
+            // 退出失败
+            
+            [ToastView toastViewWithMessage:@"链接出错，请稍后再试" timer:3.0];
+        }
+    }];
     
     [self.progressHUD hideAnimated:YES];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
     
 }
 

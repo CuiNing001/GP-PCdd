@@ -102,6 +102,24 @@
 		4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB0205F4BE100103919 /* GPUpdatePasswordViewController.m */; };
 		4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */; };
 		4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BAB6205F688200103919 /* GPUserStatusModel.m */; };
+		427122B92068BDE00080A50F /* GPMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122B82068BDE00080A50F /* GPMessageModel.m */; };
+		427122C22068CA620080A50F /* GPMsgEnterRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122C02068CA620080A50F /* GPMsgEnterRoomCell.m */; };
+		427122C32068CA620080A50F /* GPMsgEnterRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122C12068CA620080A50F /* GPMsgEnterRoomCell.xib */; };
+		427122CC2068CAD30080A50F /* GPMsgSystemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122CA2068CAD30080A50F /* GPMsgSystemCell.m */; };
+		427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122CB2068CAD30080A50F /* GPMsgSystemCell.xib */; };
+		427122D12068CAEC0080A50F /* GPMsgReceiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122CF2068CAEC0080A50F /* GPMsgReceiveCell.m */; };
+		427122D22068CAEC0080A50F /* GPMsgReceiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122D02068CAEC0080A50F /* GPMsgReceiveCell.xib */; };
+		427122DB2068CEC70080A50F /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D42068CEC70080A50F /* 4.png */; };
+		427122DC2068CEC70080A50F /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D52068CEC70080A50F /* 5.png */; };
+		427122DD2068CEC70080A50F /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D62068CEC70080A50F /* 6.png */; };
+		427122DE2068CEC70080A50F /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D72068CEC70080A50F /* 2.png */; };
+		427122DF2068CEC70080A50F /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D82068CEC70080A50F /* 3.png */; };
+		427122E02068CEC70080A50F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122D92068CEC70080A50F /* 1.png */; };
+		427122E12068CEC70080A50F /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122DA2068CEC70080A50F /* 0.png */; };
+		427122E82068F7620080A50F /* input_send_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122E62068F7620080A50F /* input_send_bg.png */; };
+		427122E92068F7620080A50F /* input_receive_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122E72068F7620080A50F /* input_receive_bg.png */; };
+		427122ED2069146F0080A50F /* GPMsgSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122EB2069146F0080A50F /* GPMsgSenderCell.m */; };
+		427122EE2069146F0080A50F /* GPMsgSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122EC2069146F0080A50F /* GPMsgSenderCell.xib */; };
 		42715A7820620E2E000A79FC /* GPIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7720620E2E000A79FC /* GPIndexModel.m */; };
 		42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7A20620E41000A79FC /* GPBannerListModel.m */; };
 		42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7D20620E56000A79FC /* GPProductListModel.m */; };
@@ -336,6 +354,30 @@
 		4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCleanDataViewController.m; sourceTree = "<group>"; };
 		4263BAB5205F688200103919 /* GPUserStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUserStatusModel.h; sourceTree = "<group>"; };
 		4263BAB6205F688200103919 /* GPUserStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUserStatusModel.m; sourceTree = "<group>"; };
+		427122B62068A4570080A50F /* GPLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPLottery.entitlements; sourceTree = "<group>"; };
+		427122B72068BDE00080A50F /* GPMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMessageModel.h; sourceTree = "<group>"; };
+		427122B82068BDE00080A50F /* GPMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMessageModel.m; sourceTree = "<group>"; };
+		427122BF2068CA620080A50F /* GPMsgEnterRoomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgEnterRoomCell.h; sourceTree = "<group>"; };
+		427122C02068CA620080A50F /* GPMsgEnterRoomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgEnterRoomCell.m; sourceTree = "<group>"; };
+		427122C12068CA620080A50F /* GPMsgEnterRoomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgEnterRoomCell.xib; sourceTree = "<group>"; };
+		427122C92068CAD30080A50F /* GPMsgSystemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgSystemCell.h; sourceTree = "<group>"; };
+		427122CA2068CAD30080A50F /* GPMsgSystemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgSystemCell.m; sourceTree = "<group>"; };
+		427122CB2068CAD30080A50F /* GPMsgSystemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgSystemCell.xib; sourceTree = "<group>"; };
+		427122CE2068CAEC0080A50F /* GPMsgReceiveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgReceiveCell.h; sourceTree = "<group>"; };
+		427122CF2068CAEC0080A50F /* GPMsgReceiveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgReceiveCell.m; sourceTree = "<group>"; };
+		427122D02068CAEC0080A50F /* GPMsgReceiveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgReceiveCell.xib; sourceTree = "<group>"; };
+		427122D42068CEC70080A50F /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		427122D52068CEC70080A50F /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		427122D62068CEC70080A50F /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		427122D72068CEC70080A50F /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		427122D82068CEC70080A50F /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		427122D92068CEC70080A50F /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		427122DA2068CEC70080A50F /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		427122E62068F7620080A50F /* input_send_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input_send_bg.png; sourceTree = "<group>"; };
+		427122E72068F7620080A50F /* input_receive_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input_receive_bg.png; sourceTree = "<group>"; };
+		427122EA2069146F0080A50F /* GPMsgSenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgSenderCell.h; sourceTree = "<group>"; };
+		427122EB2069146F0080A50F /* GPMsgSenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgSenderCell.m; sourceTree = "<group>"; };
+		427122EC2069146F0080A50F /* GPMsgSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgSenderCell.xib; sourceTree = "<group>"; };
 		42715A7620620E2E000A79FC /* GPIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPIndexModel.h; sourceTree = "<group>"; };
 		42715A7720620E2E000A79FC /* GPIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPIndexModel.m; sourceTree = "<group>"; };
 		42715A7920620E41000A79FC /* GPBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBannerListModel.h; sourceTree = "<group>"; };
@@ -478,6 +520,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		427122D32068CEC70080A50F /* MembersIcon */ = {
+			isa = PBXGroup;
+			children = (
+				427122D42068CEC70080A50F /* 4.png */,
+				427122D52068CEC70080A50F /* 5.png */,
+				427122D62068CEC70080A50F /* 6.png */,
+				427122D72068CEC70080A50F /* 2.png */,
+				427122D82068CEC70080A50F /* 3.png */,
+				427122D92068CEC70080A50F /* 1.png */,
+				427122DA2068CEC70080A50F /* 0.png */,
+			);
+			path = MembersIcon;
+			sourceTree = "<group>";
+		};
 		42E7E4C42054B7BE00119CB0 = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +559,7 @@
 		42E7E4CF2054B7BE00119CB0 /* GPLottery */ = {
 			isa = PBXGroup;
 			children = (
+				427122B62068A4570080A50F /* GPLottery.entitlements */,
 				42E7E4D02054B7BE00119CB0 /* AppDelegate.h */,
 				42E7E4D12054B7BE00119CB0 /* AppDelegate.m */,
 				42E7E5022054BD9B00119CB0 /* Tool */,
@@ -729,6 +786,8 @@
 				42715AB92065E24E000A79FC /* GPOddsInfoModel.m */,
 				42715ABB2065EA0F000A79FC /* GPEnterRoomInfoModel.h */,
 				42715ABC2065EA0F000A79FC /* GPEnterRoomInfoModel.m */,
+				427122B72068BDE00080A50F /* GPMessageModel.h */,
+				427122B82068BDE00080A50F /* GPMessageModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -819,6 +878,18 @@
 				42715AAF2064D173000A79FC /* GPBetContentCell.h */,
 				42715AB02064D173000A79FC /* GPBetContentCell.m */,
 				42715AB12064D173000A79FC /* GPBetContentCell.xib */,
+				427122BF2068CA620080A50F /* GPMsgEnterRoomCell.h */,
+				427122C02068CA620080A50F /* GPMsgEnterRoomCell.m */,
+				427122C12068CA620080A50F /* GPMsgEnterRoomCell.xib */,
+				427122C92068CAD30080A50F /* GPMsgSystemCell.h */,
+				427122CA2068CAD30080A50F /* GPMsgSystemCell.m */,
+				427122CB2068CAD30080A50F /* GPMsgSystemCell.xib */,
+				427122CE2068CAEC0080A50F /* GPMsgReceiveCell.h */,
+				427122CF2068CAEC0080A50F /* GPMsgReceiveCell.m */,
+				427122D02068CAEC0080A50F /* GPMsgReceiveCell.xib */,
+				427122EA2069146F0080A50F /* GPMsgSenderCell.h */,
+				427122EB2069146F0080A50F /* GPMsgSenderCell.m */,
+				427122EC2069146F0080A50F /* GPMsgSenderCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -899,6 +970,7 @@
 		42E7E5212054C0C600119CB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				427122D32068CEC70080A50F /* MembersIcon */,
 				42E7E5242054C10300119CB0 /* bar_home_normal.png */,
 				42E7E52A2054C4E700119CB0 /* bar_home_choose.png */,
 				42E7E5892057772E00119CB0 /* 1.jpg */,
@@ -911,6 +983,8 @@
 				42715AAC20649698000A79FC /* bet_left_btn.png */,
 				42715AAB20649698000A79FC /* bet_right_btn.png */,
 				42715AB62064E862000A79FC /* bet_dissmiss_btn.png */,
+				427122E72068F7620080A50F /* input_receive_bg.png */,
+				427122E62068F7620080A50F /* input_send_bg.png */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1063,6 +1137,11 @@
 					42E7E4CC2054B7BE00119CB0 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					42E7E4E42054B7BE00119CB0 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1101,7 +1180,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427122DB2068CEC70080A50F /* 4.png in Resources */,
 				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
+				427122D22068CAEC0080A50F /* GPMsgReceiveCell.xib in Resources */,
 				4263BA182059126F00103919 /* header_bg.png in Resources */,
 				42715A8C206257E7000A79FC /* GPPlayListCell.xib in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
@@ -1114,12 +1195,15 @@
 				4263BA9C205CF92900103919 /* agent_analysis_btn.png in Resources */,
 				42E7E5372054C70300119CB0 /* bar_pay_normal.png in Resources */,
 				42715AAD20649699000A79FC /* bet_right_btn.png in Resources */,
+				427122EE2069146F0080A50F /* GPMsgSenderCell.xib in Resources */,
 				42E7E5482056177000119CB0 /* sign.png in Resources */,
 				42E7E564205668C500119CB0 /* pay_qq.png in Resources */,
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
 				4263BA95205CB9CE00103919 /* game_point_img.png in Resources */,
 				4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */,
+				427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */,
+				427122E92068F7620080A50F /* input_receive_bg.png in Resources */,
 				4263BA0B2057CCD700103919 /* login_weChat_btn.png in Resources */,
 				42E7E58520576EED00119CB0 /* arrow_black.png in Resources */,
 				4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */,
@@ -1131,6 +1215,7 @@
 				4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
 				42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */,
+				427122E02068CEC70080A50F /* 1.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
 				4263B9E92057BD3700103919 /* mine_get.png in Resources */,
 				42E7E5412054D4C200119CB0 /* global_btn.png in Resources */,
@@ -1141,6 +1226,8 @@
 				4263BA91205CB79400103919 /* game_bg_img.png in Resources */,
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
+				427122E12068CEC70080A50F /* 0.png in Resources */,
+				427122E82068F7620080A50F /* input_send_bg.png in Resources */,
 				42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */,
 				4263BA3E2059629D00103919 /* setting_password_change.png in Resources */,
 				423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */,
@@ -1150,6 +1237,7 @@
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
 				42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */,
+				427122DE2068CEC70080A50F /* 2.png in Resources */,
 				42715A9820633D6E000A79FC /* GPRoomListCell.xib in Resources */,
 				42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */,
 				4263BA3C2059629D00103919 /* setting_clean.png in Resources */,
@@ -1166,18 +1254,22 @@
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
 				4263BA48205A103E00103919 /* bar_pay.png in Resources */,
 				42715AA52063825F000A79FC /* home_history_btn.png in Resources */,
+				427122DF2068CEC70080A50F /* 3.png in Resources */,
 				4263BA92205CB79400103919 /* game_title_img.png in Resources */,
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
 				4263BA162059121B00103919 /* user_icon.png in Resources */,
 				4263BA96205CB9CE00103919 /* game_table_img.png in Resources */,
+				427122DD2068CEC70080A50F /* 6.png in Resources */,
 				42E7E5492056177000119CB0 /* arrow.png in Resources */,
 				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
 				4263BA9A205CF92900103919 /* agent_user_btn.png in Resources */,
 				42E7E58E20579F6E00119CB0 /* home_money.png in Resources */,
+				427122C32068CA620080A50F /* GPMsgEnterRoomCell.xib in Resources */,
+				427122DC2068CEC70080A50F /* 5.png in Resources */,
 				42E7E5332054C6FB00119CB0 /* bar_notice_normal.png in Resources */,
 				4263BA4A205A196700103919 /* wallet_icon.png in Resources */,
 			);
@@ -1295,6 +1387,7 @@
 				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
 				42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
+				427122CC2068CAD30080A50F /* GPMsgSystemCell.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
 				42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */,
@@ -1308,6 +1401,7 @@
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
 				42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
+				427122B92068BDE00080A50F /* GPMessageModel.m in Sources */,
 				42715A93206263E3000A79FC /* GPPlayListModel.m in Sources */,
 				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,
 				4263BA52205A583000103919 /* GPBackWaterModel.m in Sources */,
@@ -1326,6 +1420,7 @@
 				4263BA4E205A546800103919 /* GPBackWaterCell.m in Sources */,
 				4263BA70205B627C00103919 /* GPBetCell.m in Sources */,
 				42715ABD2065EA0F000A79FC /* GPEnterRoomInfoModel.m in Sources */,
+				427122C22068CA620080A50F /* GPMsgEnterRoomCell.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
@@ -1343,10 +1438,12 @@
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
 				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
+				427122D12068CAEC0080A50F /* GPMsgReceiveCell.m in Sources */,
 				42715ABA2065E24E000A79FC /* GPOddsInfoModel.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
+				427122ED2069146F0080A50F /* GPMsgSenderCell.m in Sources */,
 				4263BA062057C5B500103919 /* GPWalletModel.m in Sources */,
 				42715AB22064D173000A79FC /* GPBetContentCell.m in Sources */,
 			);
@@ -1512,6 +1609,7 @@
 			baseConfigurationReference = 37DBED4784909874CF75BF7F /* Pods-GPLottery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GPLottery/GPLottery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
@@ -1529,6 +1627,7 @@
 			baseConfigurationReference = 03F7FD30635FB8A05363F45D /* Pods-GPLottery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GPLottery/GPLottery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";

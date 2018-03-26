@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - JCore (1.1.7)
+  - JMessage (3.5.0):
+    - JCore (= 1.1.7)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.3)
   - SDCycleScrollView (1.75):
@@ -25,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - JMessage
   - MBProgressHUD
   - MJRefresh
   - SDCycleScrollView
@@ -33,12 +37,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  JCore: f7459c81c135281a874a6beafdd321666adcc834
+  JMessage: ab47cc3da1ba126643204dbff8474e8a5b9ceec2
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
   TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
 
-PODFILE CHECKSUM: 7c1f2166c275a5e65e32e21d87ab827b03404233
+PODFILE CHECKSUM: 431c65793a3f50ef6af30d152e1e6de39d6b697a
 
 COCOAPODS: 1.4.0

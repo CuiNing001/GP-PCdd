@@ -13,6 +13,7 @@
 // toast
 + (void)toastViewWithMessage:(NSString *)message timer:(NSTimeInterval)timer;
 
-
+// Jason字符串转字典
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
 @end

@@ -157,12 +157,45 @@
     
     GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
     
-    roomVC.roomIdStr = roomListModel.roomId;
+    roomVC.roomIdStr = [NSString stringWithFormat:@"%@",roomListModel.roomId];
     
     roomVC.productIdStr = self.productIdStr;
     
-    [self.navigationController pushViewController:roomVC animated:YES];
+    // 加入聊天室
+    [JMSGChatRoom enterChatRoomWithRoomId:roomVC.roomIdStr completionHandler:^(id resultObject, NSError *error) {
+       
+        if (!error) {// 加入聊天室成功
+            
+            NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|SUCCESS|%@",resultObject);
+            
+            [self.navigationController pushViewController:roomVC animated:YES];
+            
+        }else{ // 加入聊天室失败
+            
+            NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|ERROR|%@",error);
+            
+            [ToastView toastViewWithMessage:@"加入聊天室失败，请稍后再试" timer:3.0];
+            
+            [JMSGChatRoom leaveChatRoomWithRoomId:roomVC.roomIdStr completionHandler:^(id resultObject, NSError *error) {
+                
+                if (!error) {
+                    
+                    NSLog(@"|ROOMLIST-VC|-|LEAVE-CHATROOM|-|SUCCESS|%@",resultObject);
+                    
+                }else{
+                    
+                    NSLog(@"|ROOMLIST-VC|-|LEAVE-CHATROOM|-|error|%@",error);
+                }
+            }];
+            
+        }
+        
+    }];
+
+    
 }
+
+
 
 #pragma mark - 懒加载
 - (NSMutableArray *)dataArray{

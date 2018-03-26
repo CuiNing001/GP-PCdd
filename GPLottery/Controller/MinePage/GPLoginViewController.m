@@ -86,8 +86,6 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
-            
             GPLoginModel *loginModel = [GPLoginModel new];
             
             [loginModel setValuesForKeysWithDictionary:respondModel.data];
@@ -102,23 +100,38 @@
                 loginModel.autograph = @"个性签名";
             }
             
-            // 存储数据
-            [UserDefaults addDataWithUsername:self.username
-                                     password:self.password
-                                        token:loginModel.token
-                                     nickname:loginModel.nickname
-                                      islogin:@"1"
-                                     moneyNum:loginModel.moneyNum
-                                       userID:loginModel.id
-                                        level:loginModel.level
-                                    autograph:loginModel.autograph];
-            
-            // 关闭登陆界面
-            [self dismissViewControllerAnimated:YES completion:nil];
+            // 登录极光
+            [JMSGUser loginWithUsername:loginModel.id password:kJMPassword completionHandler:^(id resultObject, NSError *error) {
+                
+                if (!error) {  // 登录成功
+                    
+                    NSLog(@"|LOGIN-VC|-|JM-LOGIN-resultObject|%@",resultObject);
+                    
+                    [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+             
+                    // 存储数据
+                    [UserDefaults addDataWithUsername:self.username
+                                             password:self.password
+                                                token:loginModel.token
+                                             nickname:loginModel.nickname
+                                              islogin:@"1"
+                                             moneyNum:loginModel.moneyNum
+                                               userID:loginModel.id
+                                                level:loginModel.level
+                                            autograph:loginModel.autograph];
+                    
+                    // 关闭登陆界面
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    
+                }else{  // 登录失败
+                    
+                    NSLog(@"|LOGIN-VC|-|JM-LOGIN-ERROR|%@",error);
+                }
+            }];
             
         }else{
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
         }
         
     } enError:^(NSError *error) {

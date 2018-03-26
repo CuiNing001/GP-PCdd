@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+static NSString *appKey = @"65ae5c02bed5052256476fc4";
 @interface AppDelegate ()
 
 @end
@@ -22,6 +23,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setVersionBtn];
     });
+    
+    
+    // 初始化极光IM
+    [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
     
     return YES;
 }

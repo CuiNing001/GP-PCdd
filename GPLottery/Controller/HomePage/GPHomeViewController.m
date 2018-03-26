@@ -207,7 +207,7 @@
     self.isLogin = self.infoModel.islogin;
     self.token   = self.infoModel.token;
     
-    NSLog(@"|HOME-VC|-[登陆状态]:%@-[token]:%@",self.isLogin,self.infoModel.token);
+    NSLog(@"|HOME-VC|-[登陆状态]:%@-[token]:%@-[userID]:%@",self.isLogin,self.infoModel.token,self.infoModel.userID);
 
 }
 

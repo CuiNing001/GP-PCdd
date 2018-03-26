@@ -9,5 +9,6 @@ target ‘GPLottery’ do
   pod 'MBProgressHUD'
   pod 'MJRefresh'
   pod 'SDWebImage'
+  pod 'JMessage'
 end
 

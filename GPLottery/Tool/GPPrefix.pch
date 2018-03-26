@@ -20,12 +20,19 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "GPRespondModel.h"
 #import "GPInfoModel.h"
+#import <JMessage/JMessage.h>
 
 #define kSize_width [UIScreen mainScreen].bounds.size.width    // 屏幕宽
 #define kSize_height [UIScreen mainScreen].bounds.size.height  // 屏幕高
-#define kBaseLocation @"http://192.168.1.20:8815/"           // 基础地址
-#define kPlayBaseLocation @"http://192.168.1.20:8816/"       // 下注相关地址
-#define kImageLoction @"http://192.168.1.20:8815/28/"        // 图片地址
+#define kBaseLocation @"http://192.168.1.20:8815/"             // 基础地址
+#define kPlayBaseLocation @"http://192.168.1.20:8816/"         // 下注相关地址
+#define kImageLoction @"http://192.168.1.20:8815/28/"          // 图片地址
+#define kJMPassword @"123123"                                  // 用户登录极光密码
+
+// 测试测试
+//#define kBaseLocation @"http://192.168.1.71:8081/"             // 基础地址
+//#define kPlayBaseLocation @"http://192.168.1.71:8082/"         // 下注相关地址
+//#define kImageLoction @"http://192.168.1.20:8815/28/"          // 图片地址
 
 
 #endif /* GPPrefix_pch */
