@@ -16,8 +16,13 @@
 #import "GPMsgSystemCell.h"
 #import "GPMsgReceiveCell.h"
 #import "GPMsgSenderCell.h"
+#import "GPRoomHistoryModel.h"
+#import "GPRoomHistoryCell.h"
+#import "GPRoomCopyBetView.h"
 
-
+static int isShow = 0; // 历史开奖记录view
+static int minute;     // 倒计时分钟
+static int second;     // 倒计时秒
 @interface GPRoomViewController ()<UITextViewDelegate,JMSGConversationDelegate,JMessageDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatViewBottom;  // chatview距离底部的距离
@@ -47,7 +52,19 @@
 
 @property (strong, nonatomic) NSString *betAmountStr;  // 下注金额
 @property (strong, nonatomic) NSString *playingId;     // 玩法id
+@property (strong, nonatomic) NSString *minAmount;     // 最小下注金额
 @property (strong, nonatomic) NSMutableArray *receiveMessageArray;  // 接收聊天室消息
+
+@property (weak, nonatomic) IBOutlet UIView *historyView;            // 往期记录
+@property (weak, nonatomic) IBOutlet UITableView *historyTableView;  // 往期记录
+@property (strong, nonatomic) NSMutableArray *historyDataArray;      // 往期记录
+
+@property (strong, nonatomic) NSString *openTime;   // 倒计时剩余时间
+@property (strong, nonatomic) NSTimer *enterTimer;  // 进入房间定时器
+@property (strong, nonatomic) NSTimer *normolTimer; // 房间内定时器
+
+@property (strong, nonatomic) GPRoomCopyBetView *betCopyView;  // 跟投页面
+
 
 @end
 
@@ -68,6 +85,7 @@
 #pragma mark - 关闭页面退出聊天室
 - (void)viewDidDisappear:(BOOL)animated{
     
+    // 退出聊天室
     [JMSGChatRoom leaveChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
        
         if (!error) {
@@ -79,9 +97,26 @@
             NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|error|%@",error);
         }
     }];
+    
+    // 销毁定时器
+    [self.normolTimer invalidate];
+    self.normolTimer = nil;
+    [self.enterTimer invalidate];
+    self.enterTimer = nil;
 }
 
 - (void)loadSubView{
+    
+    // 房间内正常定时器
+    self.normolTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(normolCountdown) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:self.normolTimer forMode:NSDefaultRunLoopMode];
+    [self.normolTimer setFireDate:[NSDate distantFuture]];  // 关闭定时器
+    
+    // 历史记录tableview
+    self.historyTableView.delegate = self;
+    self.historyTableView.dataSource = self;
+    self.historyTableView.tag = 1200;
+    [self.historyTableView registerNib:[UINib nibWithNibName:@"GPRoomHistoryCell" bundle:nil] forCellReuseIdentifier:@"historyCell"];
     
     // 添加极光监听事件通知
     [JMessage addDelegate:self withConversation:nil];
@@ -89,6 +124,7 @@
     // tableView代理
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tag = 1201;
     
     // tableView样式
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -117,7 +153,7 @@
   
     self.inputTextView.delegate = self;
     
-    // 添加betView
+    // **********添加betView*********** //
     self.roomBetView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.roomBetView];
     self.roomBetView.hidden = YES;
@@ -152,12 +188,32 @@
     self.roomBetView.doubleBetBtnBlock = ^{
       
         NSLog(@"双倍投注");
+        if (weakSelf.minAmount==nil) {  // minAmount 为空
+            
+            weakSelf.roomBetView.betTextField.text = @"0";
+            
+            [ToastView toastViewWithMessage:@"请先选择下注类型" timer:3.0];
+        }else{
+            
+            weakSelf.roomBetView.betTextField.text = [NSString stringWithFormat:@"%ld",weakSelf.roomBetView.betTextField.text.integerValue*2];
+        }
+        
     };
     
     // 最小下注
     self.roomBetView.minBetBtnBlock = ^{
       
         NSLog(@"最小下注");
+        
+        if (weakSelf.minAmount==nil) {  // minAmount 为空
+            
+            weakSelf.roomBetView.betTextField.text = @"0";
+            
+            [ToastView toastViewWithMessage:@"请先选择下注类型" timer:3.0];
+        }else{
+            
+            weakSelf.roomBetView.betTextField.text = [NSString stringWithFormat:@"%@",weakSelf.minAmount];
+        }
     };
     
     // 赔率说明
@@ -166,9 +222,12 @@
         NSLog(@"赔率说明");
     };
     
-    self.roomBetView.selecetItemBlock = ^(NSString *playId) {
+    // item点击事件
+    self.roomBetView.selecetItemBlock = ^(NSString *playId,NSString *minAmount) {
       
-        weakSelf.playingId = playId;
+        weakSelf.playingId = playId;    // 玩法id
+        weakSelf.minAmount = minAmount; // 最小下注金额
+        
     };
     
     // 确定投注
@@ -180,7 +239,22 @@
 
     };
     
+    // **********添加跟投页面*********** //
+    self.betCopyView = [[GPRoomCopyBetView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.betCopyView];
+    self.betCopyView.hidden = YES;
     
+    // 确定跟投
+    self.betCopyView.makeSuerBtnBlock = ^{
+        
+//        [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+    };
+    
+    // 取消跟投
+    self.betCopyView.cancelBtnBlock = ^{
+      
+        weakSelf.betCopyView.hidden = YES;
+    };
     
 }
 
@@ -216,6 +290,30 @@
 
 }
 
+#pragma mark - 开奖历史记录
+- (IBAction)showHistoryView:(UIButton *)sender {
+    
+    isShow++;
+    
+    if (isShow%2 == 0) {  // 偶数隐藏
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration      = 0.1;
+        transition.type          = kCATransitionMoveIn;
+        transition.subtype       = kCATransitionFromTop;
+        self.historyView.hidden  = YES;
+        [self.historyView.layer addAnimation:transition forKey:@"animation"];
+        
+    }else{  // 奇数
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration      = 0.1;
+        transition.type          = kCATransitionFade;
+        transition.subtype       = kCATransitionFromBottom;
+        self.historyView.hidden  = NO;
+        [self.historyView.layer addAnimation:transition forKey:@"animation"];
+    }
+}
 
 #pragma mark - 回收键盘
 - (IBAction)dissmissKeyBoardButton:(UIButton *)sender {
@@ -316,6 +414,7 @@
             
             [ToastView toastViewWithMessage:msg timer:3.0];
         }
+        [weakSelf.historyTableView reloadData];
         // 刷新数据
         [weakSelf.roomBetView.leftCollectionView reloadData];
         [weakSelf.roomBetView.middleCollectionView reloadData];
@@ -335,8 +434,140 @@
 - (void)updataForRoomContent{
     
     self.moneyLab.text = self.roomInfoModel.moneyNum;  // 用户元宝数
-   
+    NSDictionary *comingDic = [NSDictionary dictionaryWithDictionary:self.roomInfoModel.coming];  // 下期数据
+    self.expectLab.text = [comingDic objectForKey:@"expect"]; // 即将开奖期数
+    self.openTime = [comingDic objectForKey:@"openTime"];  // 倒计时秒数
+    NSString *endTime = [comingDic objectForKey:@"forbidBetAheadTime"]; // 封盘时间
     
+    NSLog(@"|ROOM-VC|-|openTime|:%@-|endTime|:%@",_openTime,endTime);
+    
+    // 设置倒计时
+    if (self.openTime.intValue>60) {
+        minute = self.openTime.intValue/60;   // 获取分钟数
+        second = self.openTime.intValue%60;   // 获取秒数
+    }else{
+        minute = 0;
+        second = self.openTime.intValue;
+    }
+    
+    NSLog(@"|ENTERROOM-OPENTIME|^^^^^^opentime^^^^^|%@|^^^^^^^minute^^^^^^^|%d|^^^^^^second^^^^^^^|%d",self.openTime,minute,second);
+    
+    self.enterTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:self.enterTimer forMode:NSDefaultRunLoopMode];
+  
+    // 设置开奖历史数据
+    NSMutableArray *historyArr = [NSMutableArray arrayWithArray:self.roomInfoModel.history];
+    
+    for (NSDictionary *codeDic in historyArr) {
+        
+        GPRoomHistoryModel *historyModel = [GPRoomHistoryModel new];
+        
+        [historyModel setValuesForKeysWithDictionary:codeDic];
+        
+        [self.historyDataArray addObject:historyModel];
+    }
+    
+    GPRoomHistoryModel *expectModel = self.historyDataArray.firstObject;
+    self.historyExpectLab.text      = expectModel.expect;
+    self.historyCodeLab.text        = expectModel.code;
+    self.historyCodeTextLab.text    = expectModel.codeText;
+    
+}
+
+#pragma mark - 倒计时
+/*
+ * @param openTime:进入房间获取剩余倒计时时间
+ * @param timer:距离下期开奖时间3分30秒 - 10秒封盘时间 = 倒计时时间3分20秒
+ */
+- (void)countdown{  // 进入房间开奖倒计时
+    
+    // 初始倒计时时间<0显示封盘中
+    if (second<0) {
+        
+        // 秒数为0时提示封盘中，停止定时器
+        self.timerLab.text = @"封盘中";
+        
+        // 关闭进入房间定时器
+        [self.enterTimer setFireDate:[NSDate distantFuture]];
+        
+        minute = 3;
+        second = 30;
+        // 开启正常房间内定时器
+        [self.normolTimer setFireDate:[NSDate distantPast]];
+    }else{
+        
+        if (minute>=0) {
+            self.timerLab.text = [NSString stringWithFormat:@"%d分:%d秒",minute,second];
+            // 分钟数大于0，秒数每秒减1
+            second--;
+            if (second == 0) {
+                if (minute==0) {
+                    minute--;
+                }else{
+                    
+                    // 秒数为0时,分钟数减1, 充值秒数为59
+                    minute--;
+                    second = 59;
+                }
+            }
+            
+        }else{
+            
+            self.timerLab.text = [NSString stringWithFormat:@"0分:%d秒",second];
+            // 分钟数<=0时，秒数每秒减1
+            second--;
+            
+            if (second == 0) {
+                // 秒数为0时提示封盘中，停止定时器
+                self.timerLab.text = @"封盘中";
+                
+                // 关闭进入房间定时器
+                [self.enterTimer setFireDate:[NSDate distantFuture]];
+                
+                minute = 3;
+                second = 30;
+                // 修改当前期数
+                self.expectLab.text = [NSString stringWithFormat:@"%d",self.expectLab.text.intValue+1];
+                // 开启正常房间内定时器
+                [self.normolTimer setFireDate:[NSDate distantPast]];
+            }
+        }
+    }
+}
+- (void)normolCountdown{   // 正常房间内开奖倒计时
+
+    if (minute>=0) {
+        // 分钟数>=0时，秒数没秒减1，
+        second--;
+        if (minute == 3 && second >20) {
+            // 分钟数==3并且秒数>20显示封盘中（10秒钟封盘时间）
+            self.timerLab.text = @"封盘中";
+        }else{
+            
+            // 封盘结束开始倒计时
+            self.timerLab.text = [NSString stringWithFormat:@"%d分:%d秒",minute,second];
+            
+            if (second==0) {
+                // 秒数为0时分钟数减1，重置秒数为59
+                minute--;
+                second = 59;
+            }
+        }
+    }else{
+        // 分钟数<0时，秒数每秒减1
+        self.timerLab.text = [NSString stringWithFormat:@"0分:%d秒",second];
+        second--;
+        if (second>=0) {
+            // 秒数==0时显示封盘中
+            self.timerLab.text = @"封盘中";
+            // 修改当前期数
+            self.expectLab.text = [NSString stringWithFormat:@"%d",self.expectLab.text.intValue+1];
+            // 重置倒计时时间
+            minute = 3;
+            second = 30;
+        }
+        
+    }
     
 }
 
@@ -414,12 +645,17 @@
             NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",self.roomIdStr,betAmount,self.playingId,self.productIdStr);
             
             // 投注成功发送消息
-            NSDictionary *contentDic = @{@"playingType":self.roomBetView.nameStr,@"betAmount":betAmount,@"name":self.infoModel.nickname,@"level":self.infoModel.level};
-            JMSGCustomContent *content = [[JMSGCustomContent alloc]initWithCustomDictionary:contentDic];
+            NSDictionary *contentDic = @{@"playingType":self.roomBetView.nameStr,@"betAmount":betAmount,@"level":self.infoModel.level,@"expect":self.expectLab.text,@"type":@"1"};
+//            JMSGCustomContent *content = [[JMSGCustomContent alloc]initWithCustomDictionary:contentDic];
+            NSString *contentSter = [ToastView dictionaryToJson:contentDic];
+            NSLog(@"========^send^text^^========%@",contentSter);
+            JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:contentSter];
             JMSGMessage *sendMessage = [JMSGMessage createChatRoomMessageWithContent:content chatRoomId:self.roomIdStr];
             [JMSGMessage sendMessage:sendMessage];
             GPMessageModel *messageModel = [GPMessageModel new];
             [messageModel setValuesForKeysWithDictionary:contentDic];
+            [messageModel setValue:@"sender" forKey:@"sendType"];
+            [messageModel setValue:self.infoModel.nickname forKey:@"name"];
             [weakSelf.receiveMessageArray addObject:messageModel];
             NSLog(@"|JMSENDMESSAGE|-|SEND|%@",sendMessage);
             [weakSelf.tableView reloadData];
@@ -491,89 +727,165 @@
     
     [self.tableView reloadData];
     
-    NSLog(@"========^^text^^========%@",msgText);
+    NSLog(@"========^receive^text^^========%@",msgText);
 }
 
-
+// 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
+- (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
+    
+    
+}
 
 #pragma mark - table view 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.receiveMessageArray.count;
+    if (tableView.tag == 1200) {
+        
+        return self.historyDataArray.count;
+        
+    }else{
+        
+        return self.receiveMessageArray.count;
+    }
+  
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
-    
-    if ([messageModel.type isEqualToString:@"0"]) {
+    if (tableView.tag == 1200) {   // historyTableView
         
         return 50;
         
-    }else if ([messageModel.type isEqualToString:@"1"]){
+    }else{  // 聊天tableview
         
-        return 120;
+        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
         
-    }else if ([messageModel.type isEqualToString:@"2"]){
-        
-        return 50;
-        
-    }else if([messageModel.type isEqualToString:@"3"]){
-        
-        return 50;
-    }else{
-        
-        return 120;
+        if ([messageModel.type isEqualToString:@"0"]) {
+            
+            return 50;
+            
+        }else if ([messageModel.type isEqualToString:@"1"]){
+            
+            return 120;
+            
+        }else if ([messageModel.type isEqualToString:@"2"]){
+            
+            return 10;
+            
+        }else if([messageModel.type isEqualToString:@"3"]){
+            
+            return 80;
+        }else{
+            
+            return 10;
+        }
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
-    GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
-    
-    if ([messageModel.type isEqualToString:@"0"]) {  // 进入房间的消息
+    if (tableView.tag == 1200) {   // historyTableView
         
-        GPMsgEnterRoomCell *enterRoomCell = [tableView dequeueReusableCellWithIdentifier:@"enterRoomCell" forIndexPath:indexPath];
+        GPRoomHistoryCell *historyCell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
         
-        [enterRoomCell setDataWithModel:messageModel];
+        historyCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        return enterRoomCell;
+        GPRoomHistoryModel *historyModel = self.historyDataArray[indexPath.row];
         
-    }else if ([messageModel.type isEqualToString:@"3"]){  // 推送开奖信息
+        [historyCell setDataWithModel:historyModel];
         
-        GPMsgSystemCell *systemCell = [tableView dequeueReusableCellWithIdentifier:@"systemCell" forIndexPath:indexPath];
+        return historyCell;
         
-        [systemCell setDataWithModel:messageModel];
+    }else{  // 聊天tableview
         
-        return systemCell;
+        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
         
-    }else if ([messageModel.type isEqualToString:@"1"]){  // 下注成功后的推送
-        
-        GPMsgReceiveCell *receiveCell = [tableView dequeueReusableCellWithIdentifier:@"receiveCell" forIndexPath:indexPath];
-        
-        [receiveCell setDataWithModel:messageModel];
-        
-        return receiveCell;
-        
-    }else if ([messageModel.type isEqualToString:@"2"]){   // 拉取用户余额
-        
-        return [[UITableViewCell alloc]init];
-        
-    }else{   // 发送方cell
-        
-        GPMsgSenderCell *secderCell = [tableView dequeueReusableCellWithIdentifier:@"secderCell" forIndexPath:indexPath];
-        
-        [secderCell setDataWithModel:messageModel];
-        
-        return secderCell;
+        if ([messageModel.sendType isEqualToString:@"sender"]) {  // 发送发cell
+            
+            if ([messageModel.type isEqualToString:@"1"]) {
+                
+                GPMsgSenderCell *secderCell = [tableView dequeueReusableCellWithIdentifier:@"secderCell" forIndexPath:indexPath];
+                
+                secderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                [secderCell setDataWithModel:messageModel];
+                
+                return secderCell;
+            }else{
+                return [[UITableViewCell alloc]init];
+            }
+        }else{  // 接收方cell
+            
+            if ([messageModel.type isEqualToString:@"0"]) {  // 进入房间的消息
+                
+                GPMsgEnterRoomCell *enterRoomCell = [tableView dequeueReusableCellWithIdentifier:@"enterRoomCell" forIndexPath:indexPath];
+                
+                enterRoomCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                [enterRoomCell setDataWithModel:messageModel];
+                
+                return enterRoomCell;
+                
+            }else if ([messageModel.type isEqualToString:@"3"]){  // 推送开奖信息
+                
+                GPMsgSystemCell *systemCell = [tableView dequeueReusableCellWithIdentifier:@"systemCell" forIndexPath:indexPath];
+                
+                systemCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                [systemCell setDataWithModel:messageModel];
+                
+                return systemCell;
+                
+            }else if ([messageModel.type isEqualToString:@"1"]){  // 下注成功后的推送
+                
+                GPMsgReceiveCell *receiveCell = [tableView dequeueReusableCellWithIdentifier:@"receiveCell" forIndexPath:indexPath];
+                
+                [receiveCell setDataWithModel:messageModel];
+                
+                return receiveCell;
+                
+            }else{
+                
+                return [[UITableViewCell alloc]init];
+            }
+            
+        }
     }
-
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // 点击后取消cell的点击状态
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // 跟投点击事件
+    if (tableView.tag == 1201) {
+        
+        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
+        
+        if (![messageModel.sendType isEqualToString:@"sender"]) {
+            
+            if ([messageModel.type isEqualToString:@"1"]) {
+                
+                if (![messageModel.expect isEqualToString:self.expectLab.text]) {
+                    
+                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
+                }else{
+                    
+                    self.betCopyView.hidden = NO;
+                    
+                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
+                    
+                    self.betAmountStr = messageModel.betAmount;
+                    
+//                    self.playingId = messageModel.
+                    
+                    [self.betCopyView.tableView reloadData];
+                }
+            }
+        }
+    }
+}
 
 #pragma mark - 懒加载
 - (NSMutableArray *)pageOneDataArray{
@@ -610,6 +922,15 @@
         self.receiveMessageArray = [NSMutableArray array];
     }
     return _receiveMessageArray;
+}
+
+- (NSMutableArray *)historyDataArray{
+    
+    if (!_historyDataArray) {
+        
+        self.historyDataArray = [NSMutableArray array];
+    }
+    return _historyDataArray;
 }
 
 - (void)didReceiveMemoryWarning {

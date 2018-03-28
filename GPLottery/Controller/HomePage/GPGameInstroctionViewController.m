@@ -8,10 +8,10 @@
 
 #import "GPGameInstroctionViewController.h"
 
-@interface GPGameInstroctionViewController ()
+@interface GPGameInstroctionViewController ()<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
 
 @end
 
@@ -25,7 +25,30 @@
     
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
     
+    // web view 样式
+    self.webView.scrollView.showsVerticalScrollIndicator = NO;
+    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
     self.webView.scrollView.scrollEnabled = NO;
+    self.webView.userInteractionEnabled = NO;
+    
+    self.webView.delegate = self;
+    
+    // 初始化加载框
+    self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    [self.view addSubview:_progressHUD];
+}
+
+#pragma mark - web view 代理方法
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    [self.progressHUD showAnimated:YES];
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self.progressHUD hideAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

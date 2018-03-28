@@ -140,6 +140,8 @@
         
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
+        NSLog(@"|LOGIN-VC|-|login-error|%@",error);
+        
     }];
 }
 

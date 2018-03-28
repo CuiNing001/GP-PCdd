@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSString *betAmount;   // 下注金额
 @property (strong, nonatomic) NSString *fromName;    // 接收方名称
 @property (strong, nonatomic) NSString *timestamp;   // 消息发出的时间戳
+@property (strong, nonatomic) NSString *sendType;    // 发送方和接收方
 
 @end

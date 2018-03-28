@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GPRoomCopyBetView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMD-Rf-3TN">
+                    <rect key="frame" x="50" y="200" width="275" height="267"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确定跟投吗？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ1-eA-dHP">
+                            <rect key="frame" x="76.5" y="10" width="122.5" height="24"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXU-27-R9X">
+                            <rect key="frame" x="20" y="220" width="92.5" height="37"/>
+                            <color key="backgroundColor" red="0.1019607843" green="0.77647058820000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="makeSuerButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="oGz-as-7Vz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKe-3Y-LcL">
+                            <rect key="frame" x="162.5" y="220" width="92.5" height="37"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37" id="JjU-qF-zEa"/>
+                            </constraints>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.1764705882" green="0.21960784310000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="8dM-Ri-4kq"/>
+                            </connections>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LQh-bp-O9z">
+                            <rect key="frame" x="0.0" y="44" width="275" height="166"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="LQh-bp-O9z" secondAttribute="trailing" id="6XB-Bl-Ep7"/>
+                        <constraint firstItem="CZ1-eA-dHP" firstAttribute="top" secondItem="cMD-Rf-3TN" secondAttribute="top" constant="10" id="ENG-d0-c8z"/>
+                        <constraint firstItem="OXU-27-R9X" firstAttribute="leading" secondItem="cMD-Rf-3TN" secondAttribute="leading" constant="20" id="Kwf-KW-Pbe"/>
+                        <constraint firstItem="OXU-27-R9X" firstAttribute="top" secondItem="LQh-bp-O9z" secondAttribute="bottom" constant="10" id="Lih-v9-JeL"/>
+                        <constraint firstItem="LQh-bp-O9z" firstAttribute="top" secondItem="CZ1-eA-dHP" secondAttribute="bottom" constant="10" id="TL0-d4-rEH"/>
+                        <constraint firstAttribute="trailing" secondItem="YKe-3Y-LcL" secondAttribute="trailing" constant="20" id="TT5-Zs-HJE"/>
+                        <constraint firstItem="LQh-bp-O9z" firstAttribute="leading" secondItem="cMD-Rf-3TN" secondAttribute="leading" id="Und-Ak-Vld"/>
+                        <constraint firstItem="YKe-3Y-LcL" firstAttribute="height" secondItem="OXU-27-R9X" secondAttribute="height" id="bWc-SY-CvO"/>
+                        <constraint firstItem="CZ1-eA-dHP" firstAttribute="centerX" secondItem="cMD-Rf-3TN" secondAttribute="centerX" id="bjD-Go-4zS"/>
+                        <constraint firstItem="YKe-3Y-LcL" firstAttribute="leading" secondItem="OXU-27-R9X" secondAttribute="trailing" constant="50" id="fb7-gd-GZk"/>
+                        <constraint firstItem="YKe-3Y-LcL" firstAttribute="width" secondItem="OXU-27-R9X" secondAttribute="width" id="jNv-Vz-ZHC"/>
+                        <constraint firstAttribute="bottom" secondItem="YKe-3Y-LcL" secondAttribute="bottom" constant="10" id="r3r-FV-Kcm"/>
+                        <constraint firstItem="YKe-3Y-LcL" firstAttribute="centerY" secondItem="OXU-27-R9X" secondAttribute="centerY" id="tIz-ff-MsD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cMD-Rf-3TN" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="AxE-Ix-ys6"/>
+                <constraint firstItem="cMD-Rf-3TN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="C2n-AY-XeZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cMD-Rf-3TN" secondAttribute="trailing" constant="50" id="L89-T5-hdK"/>
+                <constraint firstItem="cMD-Rf-3TN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Rx8-DJ-VLA"/>
+                <constraint firstItem="cMD-Rf-3TN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Txa-Gh-Jic"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="tableView" destination="LQh-bp-O9z" id="eqn-Fu-ZCw"/>
+            </connections>
+        </view>
+    </objects>
+</document>

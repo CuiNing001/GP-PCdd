@@ -7,6 +7,7 @@
 //
 
 #import "GPPayViewController.h"
+#import "GPPayMoneyViewController.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -117,21 +118,39 @@ static NSInteger indexNum;
 // 去支付
 - (IBAction)payforButton:(UIButton *)sender {
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPPayMoneyViewController *payMoneyVC = [storyboard instantiateViewControllerWithIdentifier:@"payMoneyVC"];
+    
     if (indexNum==0) {
         
-        NSLog(@"QQ支付");
+        NSLog(@"微信支付");
+        
+        payMoneyVC.titleStr = @"微信支付";
+        payMoneyVC.typeStr = @"2";
+        payMoneyVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:payMoneyVC animated:YES];
         
     }else if (indexNum==1){
         
         NSLog(@"QQ钱包支付");
         
+        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
+        
     }else if (indexNum==2){
         
         NSLog(@"QQ钱包支付2");
         
+        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
+        
     }else if (indexNum==3){
         
         NSLog(@"跳转支付宝支付");
+        
+        payMoneyVC.titleStr = @"支付宝支付";
+        payMoneyVC.typeStr = @"1";
+        payMoneyVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:payMoneyVC animated:YES];
         
     }
    

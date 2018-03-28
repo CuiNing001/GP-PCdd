@@ -16,4 +16,6 @@
 // Jason字符串转字典
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
++ (NSString*)dictionaryToJson:(NSDictionary *)dic;
+
 @end

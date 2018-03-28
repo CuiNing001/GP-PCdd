@@ -120,6 +120,23 @@
 		427122E92068F7620080A50F /* input_receive_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 427122E72068F7620080A50F /* input_receive_bg.png */; };
 		427122ED2069146F0080A50F /* GPMsgSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122EB2069146F0080A50F /* GPMsgSenderCell.m */; };
 		427122EE2069146F0080A50F /* GPMsgSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122EC2069146F0080A50F /* GPMsgSenderCell.xib */; };
+		427122F1206A29BF0080A50F /* GPRoomHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122F0206A29BF0080A50F /* GPRoomHistoryModel.m */; };
+		427122F5206A2A4C0080A50F /* GPRoomHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122F3206A2A4C0080A50F /* GPRoomHistoryCell.m */; };
+		427122F6206A2A4C0080A50F /* GPRoomHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122F4206A2A4C0080A50F /* GPRoomHistoryCell.xib */; };
+		427122F9206B24360080A50F /* GPRoomCopyBetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122F8206B24360080A50F /* GPRoomCopyBetView.m */; };
+		427122FB206B24460080A50F /* GPRoomCopyBetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122FA206B24460080A50F /* GPRoomCopyBetView.xib */; };
+		427122FF206B2D950080A50F /* GPBetCopyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427122FD206B2D950080A50F /* GPBetCopyCell.m */; };
+		42712300206B2D950080A50F /* GPBetCopyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427122FE206B2D950080A50F /* GPBetCopyCell.xib */; };
+		42712303206B62D60080A50F /* GPNoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42712302206B62D60080A50F /* GPNoticeModel.m */; };
+		42712307206B631A0080A50F /* GPNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42712305206B631A0080A50F /* GPNoticeCell.m */; };
+		42712308206B631A0080A50F /* GPNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42712306206B631A0080A50F /* GPNoticeCell.xib */; };
+		4271230B206B75170080A50F /* GPNoticeMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271230A206B75170080A50F /* GPNoticeMsgModel.m */; };
+		4271230D206B76570080A50F /* notice_statuse_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 4271230C206B76570080A50F /* notice_statuse_img.png */; };
+		42712310206B7F6F0080A50F /* GPNoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271230F206B7F6F0080A50F /* GPNoticeDetailViewController.m */; };
+		42712319206B9CAE0080A50F /* GPPayMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42712318206B9CAE0080A50F /* GPPayMoneyViewController.m */; };
+		4271231B206B9E900080A50F /* pay_refresh_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4271231A206B9E900080A50F /* pay_refresh_btn.png */; };
+		4271231E206BA7400080A50F /* GPEnterPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271231D206BA7400080A50F /* GPEnterPayModel.m */; };
+		42712321206BB1A50080A50F /* GPOrderPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42712320206BB1A50080A50F /* GPOrderPageViewController.m */; };
 		42715A7820620E2E000A79FC /* GPIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7720620E2E000A79FC /* GPIndexModel.m */; };
 		42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7A20620E41000A79FC /* GPBannerListModel.m */; };
 		42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42715A7D20620E56000A79FC /* GPProductListModel.m */; };
@@ -378,6 +395,34 @@
 		427122EA2069146F0080A50F /* GPMsgSenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgSenderCell.h; sourceTree = "<group>"; };
 		427122EB2069146F0080A50F /* GPMsgSenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgSenderCell.m; sourceTree = "<group>"; };
 		427122EC2069146F0080A50F /* GPMsgSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgSenderCell.xib; sourceTree = "<group>"; };
+		427122EF206A29BF0080A50F /* GPRoomHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomHistoryModel.h; sourceTree = "<group>"; };
+		427122F0206A29BF0080A50F /* GPRoomHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomHistoryModel.m; sourceTree = "<group>"; };
+		427122F2206A2A4C0080A50F /* GPRoomHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomHistoryCell.h; sourceTree = "<group>"; };
+		427122F3206A2A4C0080A50F /* GPRoomHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomHistoryCell.m; sourceTree = "<group>"; };
+		427122F4206A2A4C0080A50F /* GPRoomHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRoomHistoryCell.xib; sourceTree = "<group>"; };
+		427122F7206B24360080A50F /* GPRoomCopyBetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomCopyBetView.h; sourceTree = "<group>"; };
+		427122F8206B24360080A50F /* GPRoomCopyBetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomCopyBetView.m; sourceTree = "<group>"; };
+		427122FA206B24460080A50F /* GPRoomCopyBetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPRoomCopyBetView.xib; sourceTree = "<group>"; };
+		427122FC206B2D950080A50F /* GPBetCopyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBetCopyCell.h; sourceTree = "<group>"; };
+		427122FD206B2D950080A50F /* GPBetCopyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBetCopyCell.m; sourceTree = "<group>"; };
+		427122FE206B2D950080A50F /* GPBetCopyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBetCopyCell.xib; sourceTree = "<group>"; };
+		42712301206B62D60080A50F /* GPNoticeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNoticeModel.h; sourceTree = "<group>"; };
+		42712302206B62D60080A50F /* GPNoticeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNoticeModel.m; sourceTree = "<group>"; };
+		42712304206B631A0080A50F /* GPNoticeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNoticeCell.h; sourceTree = "<group>"; };
+		42712305206B631A0080A50F /* GPNoticeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNoticeCell.m; sourceTree = "<group>"; };
+		42712306206B631A0080A50F /* GPNoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPNoticeCell.xib; sourceTree = "<group>"; };
+		42712309206B75170080A50F /* GPNoticeMsgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNoticeMsgModel.h; sourceTree = "<group>"; };
+		4271230A206B75170080A50F /* GPNoticeMsgModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNoticeMsgModel.m; sourceTree = "<group>"; };
+		4271230C206B76570080A50F /* notice_statuse_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notice_statuse_img.png; sourceTree = "<group>"; };
+		4271230E206B7F6F0080A50F /* GPNoticeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNoticeDetailViewController.h; sourceTree = "<group>"; };
+		4271230F206B7F6F0080A50F /* GPNoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNoticeDetailViewController.m; sourceTree = "<group>"; };
+		42712317206B9CAE0080A50F /* GPPayMoneyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPayMoneyViewController.h; sourceTree = "<group>"; };
+		42712318206B9CAE0080A50F /* GPPayMoneyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPPayMoneyViewController.m; sourceTree = "<group>"; };
+		4271231A206B9E900080A50F /* pay_refresh_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_refresh_btn.png; sourceTree = "<group>"; };
+		4271231C206BA7400080A50F /* GPEnterPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEnterPayModel.h; sourceTree = "<group>"; };
+		4271231D206BA7400080A50F /* GPEnterPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPEnterPayModel.m; sourceTree = "<group>"; };
+		4271231F206BB1A50080A50F /* GPOrderPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPOrderPageViewController.h; sourceTree = "<group>"; };
+		42712320206BB1A50080A50F /* GPOrderPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOrderPageViewController.m; sourceTree = "<group>"; };
 		42715A7620620E2E000A79FC /* GPIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPIndexModel.h; sourceTree = "<group>"; };
 		42715A7720620E2E000A79FC /* GPIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPIndexModel.m; sourceTree = "<group>"; };
 		42715A7920620E41000A79FC /* GPBannerListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBannerListModel.h; sourceTree = "<group>"; };
@@ -708,6 +753,8 @@
 			children = (
 				42E7E5192054BE5C00119CB0 /* GPNoticeViewController.h */,
 				42E7E51A2054BE5C00119CB0 /* GPNoticeViewController.m */,
+				4271230E206B7F6F0080A50F /* GPNoticeDetailViewController.h */,
+				4271230F206B7F6F0080A50F /* GPNoticeDetailViewController.m */,
 			);
 			path = NoticePage;
 			sourceTree = "<group>";
@@ -717,6 +764,10 @@
 			children = (
 				42E7E5162054BE4F00119CB0 /* GPPayViewController.h */,
 				42E7E5172054BE4F00119CB0 /* GPPayViewController.m */,
+				42712317206B9CAE0080A50F /* GPPayMoneyViewController.h */,
+				42712318206B9CAE0080A50F /* GPPayMoneyViewController.m */,
+				4271231F206BB1A50080A50F /* GPOrderPageViewController.h */,
+				42712320206BB1A50080A50F /* GPOrderPageViewController.m */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -786,6 +837,8 @@
 				42715AB92065E24E000A79FC /* GPOddsInfoModel.m */,
 				42715ABB2065EA0F000A79FC /* GPEnterRoomInfoModel.h */,
 				42715ABC2065EA0F000A79FC /* GPEnterRoomInfoModel.m */,
+				427122EF206A29BF0080A50F /* GPRoomHistoryModel.h */,
+				427122F0206A29BF0080A50F /* GPRoomHistoryModel.m */,
 				427122B72068BDE00080A50F /* GPMessageModel.h */,
 				427122B82068BDE00080A50F /* GPMessageModel.m */,
 			);
@@ -795,6 +848,10 @@
 		42E7E50B2054BD9B00119CB0 /* NoticePage */ = {
 			isa = PBXGroup;
 			children = (
+				42712301206B62D60080A50F /* GPNoticeModel.h */,
+				42712302206B62D60080A50F /* GPNoticeModel.m */,
+				42712309206B75170080A50F /* GPNoticeMsgModel.h */,
+				4271230A206B75170080A50F /* GPNoticeMsgModel.m */,
 			);
 			path = NoticePage;
 			sourceTree = "<group>";
@@ -802,6 +859,8 @@
 		42E7E50C2054BD9B00119CB0 /* PayPage */ = {
 			isa = PBXGroup;
 			children = (
+				4271231C206BA7400080A50F /* GPEnterPayModel.h */,
+				4271231D206BA7400080A50F /* GPEnterPayModel.m */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -890,6 +949,15 @@
 				427122EA2069146F0080A50F /* GPMsgSenderCell.h */,
 				427122EB2069146F0080A50F /* GPMsgSenderCell.m */,
 				427122EC2069146F0080A50F /* GPMsgSenderCell.xib */,
+				427122F2206A2A4C0080A50F /* GPRoomHistoryCell.h */,
+				427122F3206A2A4C0080A50F /* GPRoomHistoryCell.m */,
+				427122F4206A2A4C0080A50F /* GPRoomHistoryCell.xib */,
+				427122F7206B24360080A50F /* GPRoomCopyBetView.h */,
+				427122F8206B24360080A50F /* GPRoomCopyBetView.m */,
+				427122FA206B24460080A50F /* GPRoomCopyBetView.xib */,
+				427122FC206B2D950080A50F /* GPBetCopyCell.h */,
+				427122FD206B2D950080A50F /* GPBetCopyCell.m */,
+				427122FE206B2D950080A50F /* GPBetCopyCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -897,6 +965,9 @@
 		42E7E5112054BD9B00119CB0 /* NoticePage */ = {
 			isa = PBXGroup;
 			children = (
+				42712304206B631A0080A50F /* GPNoticeCell.h */,
+				42712305206B631A0080A50F /* GPNoticeCell.m */,
+				42712306206B631A0080A50F /* GPNoticeCell.xib */,
 			);
 			path = NoticePage;
 			sourceTree = "<group>";
@@ -992,6 +1063,7 @@
 		42E7E5222054C0C600119CB0 /* NoticePage */ = {
 			isa = PBXGroup;
 			children = (
+				4271230C206B76570080A50F /* notice_statuse_img.png */,
 				42E7E5302054C6FB00119CB0 /* bar_notice_choose.png */,
 				42E7E5312054C6FB00119CB0 /* bar_notice_normal.png */,
 			);
@@ -1008,6 +1080,7 @@
 				42E7E55F205668C400119CB0 /* pay_ali.png */,
 				42E7E560205668C500119CB0 /* pay_bank.png */,
 				42E7E561205668C500119CB0 /* pay_qq.png */,
+				4271231A206B9E900080A50F /* pay_refresh_btn.png */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1205,11 +1278,13 @@
 				427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */,
 				427122E92068F7620080A50F /* input_receive_bg.png in Resources */,
 				4263BA0B2057CCD700103919 /* login_weChat_btn.png in Resources */,
+				427122FB206B24460080A50F /* GPRoomCopyBetView.xib in Resources */,
 				42E7E58520576EED00119CB0 /* arrow_black.png in Resources */,
 				4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */,
 				42E7E563205668C500119CB0 /* pay_bank.png in Resources */,
 				4263BA402059629D00103919 /* setting_card.png in Resources */,
 				4263B9EA2057BD3700103919 /* mine_game_list.png in Resources */,
+				42712300206B2D950080A50F /* GPBetCopyCell.xib in Resources */,
 				4263BA9B205CF92900103919 /* agent_agreement_btn.png in Resources */,
 				4263B9E62057BD3700103919 /* mine_game.png in Resources */,
 				4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */,
@@ -1234,6 +1309,7 @@
 				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
 				4263BA47205A103E00103919 /* bar_home.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
+				4271230D206B76570080A50F /* notice_statuse_img.png in Resources */,
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
 				42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */,
@@ -1253,6 +1329,7 @@
 				4263BA46205A103E00103919 /* bar_mine.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
 				4263BA48205A103E00103919 /* bar_pay.png in Resources */,
+				427122F6206A2A4C0080A50F /* GPRoomHistoryCell.xib in Resources */,
 				42715AA52063825F000A79FC /* home_history_btn.png in Resources */,
 				427122DF2068CEC70080A50F /* 3.png in Resources */,
 				4263BA92205CB79400103919 /* game_title_img.png in Resources */,
@@ -1263,10 +1340,12 @@
 				4263BA96205CB9CE00103919 /* game_table_img.png in Resources */,
 				427122DD2068CEC70080A50F /* 6.png in Resources */,
 				42E7E5492056177000119CB0 /* arrow.png in Resources */,
+				4271231B206B9E900080A50F /* pay_refresh_btn.png in Resources */,
 				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
 				4263BA9A205CF92900103919 /* agent_user_btn.png in Resources */,
+				42712308206B631A0080A50F /* GPNoticeCell.xib in Resources */,
 				42E7E58E20579F6E00119CB0 /* home_money.png in Resources */,
 				427122C32068CA620080A50F /* GPMsgEnterRoomCell.xib in Resources */,
 				427122DC2068CEC70080A50F /* 5.png in Resources */,
@@ -1366,6 +1445,7 @@
 				42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */,
 				42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */,
 				42715A87206248D3000A79FC /* GPRoomListViewController.m in Sources */,
+				42712319206B9CAE0080A50F /* GPPayMoneyViewController.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
 				42715A9B206345AF000A79FC /* GPRoonListModel.m in Sources */,
@@ -1374,6 +1454,7 @@
 				4263BA1B20591A5600103919 /* GPChangeDataViewController.m in Sources */,
 				423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */,
 				423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */,
+				42712303206B62D60080A50F /* GPNoticeModel.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
 				42E7E55620564F9C00119CB0 /* RegexPattern.m in Sources */,
 				42715AA8206490B5000A79FC /* GPRoomBetView.m in Sources */,
@@ -1391,14 +1472,18 @@
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
 				42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */,
+				42712321206BB1A50080A50F /* GPOrderPageViewController.m in Sources */,
 				42715A9720633D6E000A79FC /* GPRoomListCell.m in Sources */,
 				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
+				42712307206B631A0080A50F /* GPNoticeCell.m in Sources */,
 				42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
 				4263BA8C205BDE0F00103919 /* GPLinkOpenAccuoutView.m in Sources */,
 				4263BA2A20595C9900103919 /* GPGameListViewController.m in Sources */,
+				427122F1206A29BF0080A50F /* GPRoomHistoryModel.m in Sources */,
 				4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */,
+				4271230B206B75170080A50F /* GPNoticeMsgModel.m in Sources */,
 				42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
 				427122B92068BDE00080A50F /* GPMessageModel.m in Sources */,
@@ -1416,9 +1501,11 @@
 				4263BA9F205CFD4700103919 /* GPAnalysisViewController.m in Sources */,
 				42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */,
 				42E7E55720564F9C00119CB0 /* ToastView.m in Sources */,
+				427122FF206B2D950080A50F /* GPBetCopyCell.m in Sources */,
 				42E7E5802057646400119CB0 /* BaseModel.m in Sources */,
 				4263BA4E205A546800103919 /* GPBackWaterCell.m in Sources */,
 				4263BA70205B627C00103919 /* GPBetCell.m in Sources */,
+				427122F5206A2A4C0080A50F /* GPRoomHistoryCell.m in Sources */,
 				42715ABD2065EA0F000A79FC /* GPEnterRoomInfoModel.m in Sources */,
 				427122C22068CA620080A50F /* GPMsgEnterRoomCell.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
@@ -1432,7 +1519,9 @@
 				42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */,
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
+				42712310206B7F6F0080A50F /* GPNoticeDetailViewController.m in Sources */,
 				42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */,
+				427122F9206B24360080A50F /* GPRoomCopyBetView.m in Sources */,
 				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
 				42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */,
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
@@ -1443,6 +1532,7 @@
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
+				4271231E206BA7400080A50F /* GPEnterPayModel.m in Sources */,
 				427122ED2069146F0080A50F /* GPMsgSenderCell.m in Sources */,
 				4263BA062057C5B500103919 /* GPWalletModel.m in Sources */,
 				42715AB22064D173000A79FC /* GPBetContentCell.m in Sources */,

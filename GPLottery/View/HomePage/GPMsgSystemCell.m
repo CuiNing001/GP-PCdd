@@ -41,6 +41,15 @@
     //页面背景色
     [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#B9D2DC'"];
     
+    // 自适应webview高度
+    CGRect frame = webView.frame;
+    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
+    frame.size = fittingSize;
+    webView.frame = frame;
+    
+    NSLog(@"|systemCellHeight|%f",frame.size.height);
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

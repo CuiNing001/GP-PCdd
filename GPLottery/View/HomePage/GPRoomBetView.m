@@ -357,7 +357,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
         }
         
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
@@ -379,7 +379,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
         }
 
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
@@ -400,7 +400,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
         }
         
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);

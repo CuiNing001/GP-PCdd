@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="67" id="KGk-i7-Jjw" customClass="GPNoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="334" height="66.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPN-or-Lh7">
+                        <rect key="frame" x="32" y="25" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gub-F3-GBd">
+                        <rect key="frame" x="278.5" y="24" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice_statuse_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="HeR-8w-V2A">
+                        <rect key="frame" x="10" y="27.5" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="HKw-RK-t2a"/>
+                            <constraint firstAttribute="width" constant="12" id="p6S-n3-Ll1"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gub-F3-GBd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Cvq-NV-ZJK"/>
+                    <constraint firstItem="GPN-or-Lh7" firstAttribute="leading" secondItem="HeR-8w-V2A" secondAttribute="trailing" constant="10" id="Dcv-PZ-bdt"/>
+                    <constraint firstItem="HeR-8w-V2A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Tvn-FY-t3C"/>
+                    <constraint firstItem="HeR-8w-V2A" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c6l-ia-ILy"/>
+                    <constraint firstAttribute="trailing" secondItem="gub-F3-GBd" secondAttribute="trailing" constant="20" id="clY-Dw-I69"/>
+                    <constraint firstItem="GPN-or-Lh7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ycb-rG-aPu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="noticeLab" destination="GPN-or-Lh7" id="C7S-kb-uWo"/>
+                <outlet property="noticeStatusImageView" destination="HeR-8w-V2A" id="xQ1-MS-DvB"/>
+                <outlet property="noticeTimeLab" destination="gub-F3-GBd" id="afS-MW-lpp"/>
+            </connections>
+            <point key="canvasLocation" x="-214" y="66.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="notice_statuse_img.png" width="12" height="12"/>
+    </resources>
+</document>
