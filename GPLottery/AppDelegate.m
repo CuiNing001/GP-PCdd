@@ -19,31 +19,14 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setVersionBtn];
-    });
-    
-    
+
     // 初始化极光IM
     [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
     
     return YES;
 }
 
-#pragma mark - 添加全局按钮
--(void)setVersionBtn{
-    
-    MNAssistiveBtn *btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
-                                                     Frame:CGRectMake(0, 200, 50, 50)
-                                                     title:nil
-                                                titleColor:[UIColor whiteColor]
-                                                 titleFont:[UIFont systemFontOfSize:11]
-                                           backgroundColor:nil
-                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
-    [self.window addSubview:btn];
-    
-}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

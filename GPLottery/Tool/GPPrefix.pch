@@ -29,6 +29,7 @@
 #define kPlayBaseLocation @"http://192.168.1.20:8816/"         // 下注相关地址
 #define kImageLoction @"http://192.168.1.20:8815/28/"          // 图片地址
 #define kJMPassword @"123123"                                  // 用户登录极光密码
+#define kAdminUsername @"administrator_Gaming"                 // 单聊管理员用户名
 
 // 测试测试
 //#define kBaseLocation @"http://192.168.1.71:8081/"             // 基础地址

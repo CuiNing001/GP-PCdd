@@ -21,6 +21,22 @@
     self.title = @"客服";
 }
 
+#pragma mark - 发送消息结果回调
+- (void)onSendMessageResponse:(JMSGMessage *)message error:(NSError *)error{
+    
+    
+}
+
+#pragma mark - 接收消息回调
+- (void)onReceiveMessage:(JMSGMessage *)message error:(NSError *)error{
+    
+    JMSGTextContent *textContent = (JMSGTextContent *)message;
+    
+    NSString *msgText = textContent.text;
+    
+    NSLog(@"客服接收消息%@",msgText);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

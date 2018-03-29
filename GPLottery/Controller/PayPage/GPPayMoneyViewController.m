@@ -129,7 +129,9 @@
     
     NSString *orderLoc = [NSString stringWithFormat:@"%@pay/1/payMoney",kBaseLocation];
     
-    NSDictionary *paramDic = @{@"money":self.moneyTF.text,@"type":self.typeStr};
+    NSString *money = [NSString stringWithFormat:@"%.2f",self.moneyTF.text.intValue+0.2];
+    
+    NSDictionary *paramDic = @{@"money":money,@"type":self.typeStr};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
@@ -155,8 +157,8 @@
             
             if (weakSelf.moneyTF.text.length>0) {
                 
-                if (weakSelf.moneyTF.text.integerValue>9&&weakSelf.moneyTF.text.integerValue<2000) {
-                    
+//                if (weakSelf.moneyTF.text.integerValue>9&&weakSelf.moneyTF.text.integerValue<2000) {
+                
                     orderPageVC.orderID = [dic objectForKey:@"orderId"];
                     orderPageVC.titleStr = weakSelf.titleStr;
                     orderPageVC.orderMoney = weakSelf.moneyTF.text;
@@ -164,10 +166,10 @@
                     orderPageVC.orderType = weakSelf.typeStr;
                     
                     [weakSelf.navigationController pushViewController:orderPageVC animated:YES];
-                }else{
-                    
-                    [ToastView toastViewWithMessage:@"请输入规定金额" timer:3.0];
-                }
+//                }else{
+//
+//                    [ToastView toastViewWithMessage:@"请输入规定金额" timer:3.0];
+//                }
             }else{
                 
                 [ToastView toastViewWithMessage:@"请输入金额" timer:3.0];

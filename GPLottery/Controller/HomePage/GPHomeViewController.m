@@ -16,6 +16,7 @@
 #import "GPGameInstroctionViewController.h"
 #import "GPPlayListViewController.h"
 #import "GPRoomBetView.h"
+#import "GPServiceViewController.h"
 
 
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
@@ -47,6 +48,73 @@
    
     [self loadData];
     [self loadSubView];
+    
+    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setVersionBtn];
+    });
+}
+
+#pragma mark - 添加全局按钮
+-(void)setVersionBtn{
+    
+    MNAssistiveBtn *btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
+                                                     Frame:CGRectMake(0, 200, 50, 50)
+                                                     title:nil
+                                                titleColor:[UIColor whiteColor]
+                                                 titleFont:[UIFont systemFontOfSize:11]
+                                           backgroundColor:nil
+                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
+    
+    [btn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:btn];
+    
+}
+#pragma mark - 跳转客服
+- (void)turnToService:(UIButton *)sender{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+    
+    serviceVC.hidesBottomBarWhenPushed = YES;
+    
+    NSString *usernameSingle = @"abcd003";
+    // 获取单聊会话
+    [JMSGConversation singleConversationWithUsername:usernameSingle];
+    
+    // 未获取到对应单聊会话
+    if ([JMSGConversation singleConversationWithUsername:usernameSingle]) {
+        
+        // 创建单聊会话
+        [JMSGConversation createSingleConversationWithUsername:usernameSingle completionHandler:^(id resultObject, NSError *error) {
+            
+            if (!error) {
+                [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
+                // 创建单聊会话成功
+                [self.navigationController pushViewController:serviceVC animated:YES];
+  
+            }else{
+                
+                // 创建单聊会话失败
+                [ToastView toastViewWithMessage:@"链接失败，请稍后再试" timer:3.0];
+            }
+        }];
+    }else{
+        // 获取到对应单聊会话
+        [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
+        // 创建单聊会话成功
+        [self.navigationController pushViewController:serviceVC animated:YES];
+        
+    }
+    
+    
+    
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
