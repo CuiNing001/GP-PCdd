@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString       *token;
 @property (strong, nonatomic) NSMutableArray *dataArray;     // 玩法数据
 @property (strong, nonatomic) NSString       *historyLoc;    // 帐变记录地址
+@property (assign, nonatomic) NSInteger page; // 页码
+@property (assign, nonatomic) NSInteger rows; // 加载条数
 
 @end
 
@@ -34,12 +36,17 @@
 
 - (void)loadData{
     
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
 }
 
 - (void)loadSubView{
     
     self.title = @"帐变记录";
+    
+    // 初始化页码和条数
+    self.page = 1;
+    self.rows = 10;
     
     // 添加代理
     self.tableView.dataSource = self;
@@ -52,19 +59,40 @@
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPHistoryCell" bundle:nil] forCellReuseIdentifier:@"historyCell"];
     
+    // 添加刷新
+    __weak typeof(self)weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf.tableView.mj_footer resetNoMoreData];  // 消除尾部没有更多数据状态
+        weakSelf.page = 1;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        weakSelf.page++;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        if (weakSelf.page>5) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+    }];
+    
 }
 
-- (void)loadNetData{
+- (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
     
     [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];
     
     self.historyLoc = [NSString stringWithFormat:@"%@user/1/myMoneyChangeInfo",kBaseLocation];
+    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:self.historyLoc paramDic:nil token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:self.historyLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
         
         NSLog(@"|HISTORY-VC|success:%@",responserObject);
         
@@ -108,6 +136,9 @@
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
     }];
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
     
 }
 

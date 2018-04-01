@@ -37,7 +37,7 @@
     
     // 创建一个sessionManger管理对象
     AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
- 
+    
     if (token!=nil) {
         [manger.requestSerializer setValue:token forHTTPHeaderField:@"token"];
     }
@@ -55,5 +55,8 @@
     
     
 }
+
+
+
 
 @end

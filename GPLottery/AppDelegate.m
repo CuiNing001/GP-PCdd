@@ -7,9 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "GPServiceViewController.h"
 
 static NSString *appKey = @"65ae5c02bed5052256476fc4";
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -23,10 +26,48 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
     // 初始化极光IM
     [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
     
+    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setVersionBtn];
+    });
+    
+    
     return YES;
 }
 
-
+#pragma mark - 添加全局按钮
+-(void)setVersionBtn{
+    
+    self.btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
+                                                     Frame:CGRectMake(0, 200, 50, 50)
+                                                     title:nil
+                                                titleColor:[UIColor whiteColor]
+                                                 titleFont:[UIFont systemFontOfSize:11]
+                                           backgroundColor:nil
+                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
+    
+    [self.btn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    [window addSubview:self.btn];
+    
+}
+#pragma mark - 跳转客服
+- (void)turnToService:(UIButton *)sender{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+    
+    serviceVC.hidesBottomBarWhenPushed = YES;
+    
+   
+    
+    // 创建单聊会话成功
+    [self.window.rootViewController presentViewController:serviceVC animated:YES completion:nil];
+    
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

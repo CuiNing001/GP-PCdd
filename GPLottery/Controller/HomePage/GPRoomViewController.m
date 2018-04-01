@@ -652,6 +652,8 @@ static int second;     // 倒计时秒
             JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:contentSter];
             JMSGMessage *sendMessage = [JMSGMessage createChatRoomMessageWithContent:content chatRoomId:self.roomIdStr];
             [JMSGMessage sendMessage:sendMessage];
+            NSError *error;
+            [self onSendMessageResponse:sendMessage error:error];
             GPMessageModel *messageModel = [GPMessageModel new];
             [messageModel setValuesForKeysWithDictionary:contentDic];
             [messageModel setValue:@"sender" forKey:@"sendType"];
@@ -730,10 +732,28 @@ static int second;     // 倒计时秒
     NSLog(@"========^receive^text^^========%@",msgText);
 }
 
+#pragma mark - 发送消息结果回调
+- (void)onSendMessageResponse:(JMSGMessage *)message error:(NSError *)error{
+    
+    if (!error) {
+        
+        JMSGTextContent *textContent = (JMSGTextContent *)message.content;
+        
+        NSString *msgText = textContent.text;
+        
+        NSLog(@"|ROOM-VC|-|send-success|%@",msgText);
+    }else{
+        
+        NSLog(@"|ROOM-VC|-|send-error|%@",error);
+        [ToastView toastViewWithMessage:@"发送失败" timer:3.0];
+    }
+    
+}
+
 // 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
 - (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
     
-    
+    NSLog(@"==============^^信息变更^^==================%@",event);
 }
 
 #pragma mark - table view 代理方法
@@ -770,7 +790,7 @@ static int second;     // 倒计时秒
             
         }else if ([messageModel.type isEqualToString:@"2"]){
             
-            return 10;
+            return 1;
             
         }else if([messageModel.type isEqualToString:@"3"]){
             
@@ -859,32 +879,32 @@ static int second;     // 倒计时秒
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // 跟投点击事件
-    if (tableView.tag == 1201) {
-        
-        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
-        
-        if (![messageModel.sendType isEqualToString:@"sender"]) {
-            
-            if ([messageModel.type isEqualToString:@"1"]) {
-                
-                if (![messageModel.expect isEqualToString:self.expectLab.text]) {
-                    
-                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
-                }else{
-                    
-                    self.betCopyView.hidden = NO;
-                    
-                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
-                    
-                    self.betAmountStr = messageModel.betAmount;
-                    
-//                    self.playingId = messageModel.
-                    
-                    [self.betCopyView.tableView reloadData];
-                }
-            }
-        }
-    }
+//    if (tableView.tag == 1201) {
+//
+//        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
+//
+//        if (![messageModel.sendType isEqualToString:@"sender"]) {
+//
+//            if ([messageModel.type isEqualToString:@"1"]) {
+//
+//                if (![messageModel.expect isEqualToString:self.expectLab.text]) {
+//
+//                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
+//                }else{
+//
+//                    self.betCopyView.hidden = NO;
+//
+//                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
+//
+//                    self.betAmountStr = messageModel.betAmount;
+//
+//                    self.playingId = messageModel.playingId;
+//
+//                    [self.betCopyView.tableView reloadData];
+//                }
+//            }
+//        }
+//    }
 }
 
 #pragma mark - 懒加载

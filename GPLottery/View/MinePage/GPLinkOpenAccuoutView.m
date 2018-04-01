@@ -10,6 +10,8 @@
 #import <CoreImage/CoreImage.h>
 
 @interface GPLinkOpenAccuoutView()
+
+@property (strong, nonatomic) GPInfoModel *infoModel;            // 本地数据
 @end
 
 @implementation GPLinkOpenAccuoutView
@@ -21,6 +23,7 @@
         NSArray *viewArr = [[NSBundle mainBundle]loadNibNamed:@"GPLinkOpenAccuoutView" owner:self options:nil];
         self = viewArr[0];
         self.frame = frame;
+        [self loadUserDefaultsData];
         
         // 二维码添加长按手势
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPress:)];
@@ -102,7 +105,17 @@
     }
 }
 
-
+#pragma mark - 加载本地数据
+- (void)loadUserDefaultsData{
+    
+    NSMutableDictionary *infoDic = [UserDefaults searchData];
+    
+    self.infoModel               = [[GPInfoModel alloc]init];
+    
+    [self.infoModel setValuesForKeysWithDictionary:infoDic];
+    
+    self.contentLab.text = [NSString stringWithFormat:@"通过以上链接或扫描二维码注册的用户即为下线，您的分享ID为：%@，用户注册时填写此介绍人ID，即可成为您的下线。",self.infoModel.userID];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -48,5 +48,13 @@
  * 修改等级
  */
 + (void)upDataWithLevel:(NSString *)level;
+/*
+ * 修改用户类型
+ */
++ (void)upDataWithUserType:(NSString *)userType;
+/*
+ * 修改关于页面地址
+ */
++ (void)upDataWithAboutUrl:(NSString *)aboutUrl;
 
 @end

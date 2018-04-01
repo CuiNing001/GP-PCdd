@@ -45,12 +45,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>保存图片</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>获取相机</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>获取相册</string>
 </dict>
 </plist>

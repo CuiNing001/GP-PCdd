@@ -8,6 +8,8 @@
 
 #import "GPPayViewController.h"
 #import "GPPayMoneyViewController.h"
+#import "GPLinePayRecordViewController.h"
+#import "GPNormalPayViewController.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -160,21 +162,34 @@ static NSInteger indexNum;
 #pragma mark - section two 点击事件
 - (IBAction)sectionTwoRowZeroTap:(UITapGestureRecognizer *)sender {
     
-   
+    [ToastView toastViewWithMessage:@"暂未开放" timer:3.0];
 }
 
 - (IBAction)sectionTwoRowOneTap:(UITapGestureRecognizer *)sender {
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    GPNormalPayViewController *normalPayVC = [storyboard instantiateViewControllerWithIdentifier:@"normalPayVC"];
+    
+    normalPayVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:normalPayVC animated:YES];
 }
 
 // 查看转账记录
 - (IBAction)viewTransferRecord:(UIButton *)sender {
+    
+ 
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPLinePayRecordViewController *linePayVC = [storyboard instantiateViewControllerWithIdentifier:@"linePayVC"];
+    
+    linePayVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:linePayVC animated:YES];
+    
 }
 
-// 联系在线客服
-- (IBAction)contactCustomerService:(UIButton *)sender {
-}
 
 
 

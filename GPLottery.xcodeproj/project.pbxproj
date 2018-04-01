@@ -15,6 +15,40 @@
 		42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */; };
 		42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AB02061FD65007D44E8 /* GPLuckyCell.m */; };
 		42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AB12061FD65007D44E8 /* GPLuckyCell.xib */; };
+		423C89AB206C92F200F78719 /* service_add_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 423C89AA206C92F100F78719 /* service_add_btn.png */; };
+		423C89AF206C987F00F78719 /* GPServiceSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89AD206C987F00F78719 /* GPServiceSenderCell.m */; };
+		423C89B0206C987F00F78719 /* GPServiceSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89AE206C987F00F78719 /* GPServiceSenderCell.xib */; };
+		423C89B4206C989800F78719 /* GPServiceReciveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89B2206C989800F78719 /* GPServiceReciveCell.m */; };
+		423C89B5206C989800F78719 /* GPServiceReciveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89B3206C989800F78719 /* GPServiceReciveCell.xib */; };
+		423C89B8206E368300F78719 /* GPNormalUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89B7206E368300F78719 /* GPNormalUserModel.m */; };
+		423C89BC206E370F00F78719 /* GPNormalUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89BA206E370F00F78719 /* GPNormalUserCell.m */; };
+		423C89BD206E370F00F78719 /* GPNormalUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89BB206E370F00F78719 /* GPNormalUserCell.xib */; };
+		423C89C1206E475A00F78719 /* GPAgentUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89BF206E475A00F78719 /* GPAgentUserInfoCell.m */; };
+		423C89C2206E475A00F78719 /* GPAgentUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89C0206E475A00F78719 /* GPAgentUserInfoCell.xib */; };
+		423C89C5206E476A00F78719 /* GPAgentUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89C4206E476A00F78719 /* GPAgentUserInfoModel.m */; };
+		423C89C8206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89C7206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m */; };
+		423C89CC206E601D00F78719 /* GPAgentBenefitAnalysisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89CA206E601D00F78719 /* GPAgentBenefitAnalysisCell.m */; };
+		423C89CD206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89CB206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib */; };
+		423C89D0206E684100F78719 /* GPEarningsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89CF206E684100F78719 /* GPEarningsModel.m */; };
+		423C89D4206E68D200F78719 /* GPEarningsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89D2206E68D200F78719 /* GPEarningsCell.m */; };
+		423C89D5206E68D200F78719 /* GPEarningsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89D3206E68D200F78719 /* GPEarningsCell.xib */; };
+		423C89D8206E74E400F78719 /* GPForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89D7206E74E400F78719 /* GPForgetPasswordViewController.m */; };
+		423C89DB206F39B000F78719 /* GPBackWaterRulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89DA206F39B000F78719 /* GPBackWaterRulesViewController.m */; };
+		423C89DE206F3E5000F78719 /* GPShareRulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89DD206F3E5000F78719 /* GPShareRulesViewController.m */; };
+		423C89F1206F7B8F00F78719 /* pay_ali.png in Resources */ = {isa = PBXBuildFile; fileRef = 423C89EE206F7B8E00F78719 /* pay_ali.png */; };
+		423C89F2206F7B8F00F78719 /* pay_weChat.png in Resources */ = {isa = PBXBuildFile; fileRef = 423C89EF206F7B8F00F78719 /* pay_weChat.png */; };
+		423C89F3206F7B8F00F78719 /* pay_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 423C89F0206F7B8F00F78719 /* pay_qq.png */; };
+		423C89F6206F7C4C00F78719 /* GPLinePayRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89F5206F7C4C00F78719 /* GPLinePayRecordViewController.m */; };
+		423C89F9206F7C8500F78719 /* GPNormalPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89F8206F7C8500F78719 /* GPNormalPayViewController.m */; };
+		423C89FC206F7CF700F78719 /* GPBankInfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89FB206F7CF700F78719 /* GPBankInfomationViewController.m */; };
+		423C89FF206F811100F78719 /* GPLinePayRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89FE206F811100F78719 /* GPLinePayRecordModel.m */; };
+		423C8A03206F840600F78719 /* GPLinePayRecoedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C8A01206F840600F78719 /* GPLinePayRecoedCell.m */; };
+		423C8A04206F840600F78719 /* GPLinePayRecoedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C8A02206F840600F78719 /* GPLinePayRecoedCell.xib */; };
+		423C8A08206F951400F78719 /* GPNormalPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C8A06206F951400F78719 /* GPNormalPayCell.m */; };
+		423C8A09206F951400F78719 /* GPNormalPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C8A07206F951400F78719 /* GPNormalPayCell.xib */; };
+		423C8A0C206F974000F78719 /* GPNormalPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C8A0B206F974000F78719 /* GPNormalPayModel.m */; };
+		423C8A10206FADB300F78719 /* GPTransferTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C8A0E206FADB300F78719 /* GPTransferTypeCell.m */; };
+		423C8A11206FADB300F78719 /* GPTransferTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C8A0F206FADB300F78719 /* GPTransferTypeCell.xib */; };
 		423EBE44205FB7D6006E80ED /* GPChooseBankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */; };
 		423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */; };
 		423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE4A205FFF90006E80ED /* GPWithdrawViewController.m */; };
@@ -194,9 +228,7 @@
 		42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E55420564F9C00119CB0 /* UserDefaults.m */; };
 		42E7E55D2056659300119CB0 /* check_seleced.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55B2056659200119CB0 /* check_seleced.png */; };
 		42E7E55E2056659300119CB0 /* check_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55C2056659200119CB0 /* check_normal.png */; };
-		42E7E562205668C500119CB0 /* pay_ali.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E55F205668C400119CB0 /* pay_ali.png */; };
 		42E7E563205668C500119CB0 /* pay_bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E560205668C500119CB0 /* pay_bank.png */; };
-		42E7E564205668C500119CB0 /* pay_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E561205668C500119CB0 /* pay_qq.png */; };
 		42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E57A2057623900119CB0 /* GPMineListCell.m */; };
 		42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E7E57B2057623900119CB0 /* GPMineListCell.xib */; };
 		42E7E5802057646400119CB0 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E7E57F2057646400119CB0 /* BaseModel.m */; };
@@ -239,6 +271,61 @@
 		42148AAF2061FD65007D44E8 /* GPLuckyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLuckyCell.h; sourceTree = "<group>"; };
 		42148AB02061FD65007D44E8 /* GPLuckyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLuckyCell.m; sourceTree = "<group>"; };
 		42148AB12061FD65007D44E8 /* GPLuckyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPLuckyCell.xib; sourceTree = "<group>"; };
+		423C89AA206C92F100F78719 /* service_add_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_add_btn.png; sourceTree = "<group>"; };
+		423C89AC206C987F00F78719 /* GPServiceSenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceSenderCell.h; sourceTree = "<group>"; };
+		423C89AD206C987F00F78719 /* GPServiceSenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceSenderCell.m; sourceTree = "<group>"; };
+		423C89AE206C987F00F78719 /* GPServiceSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPServiceSenderCell.xib; sourceTree = "<group>"; };
+		423C89B1206C989800F78719 /* GPServiceReciveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceReciveCell.h; sourceTree = "<group>"; };
+		423C89B2206C989800F78719 /* GPServiceReciveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceReciveCell.m; sourceTree = "<group>"; };
+		423C89B3206C989800F78719 /* GPServiceReciveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPServiceReciveCell.xib; sourceTree = "<group>"; };
+		423C89B6206E368300F78719 /* GPNormalUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalUserModel.h; sourceTree = "<group>"; };
+		423C89B7206E368300F78719 /* GPNormalUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalUserModel.m; sourceTree = "<group>"; };
+		423C89B9206E370F00F78719 /* GPNormalUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalUserCell.h; sourceTree = "<group>"; };
+		423C89BA206E370F00F78719 /* GPNormalUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalUserCell.m; sourceTree = "<group>"; };
+		423C89BB206E370F00F78719 /* GPNormalUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPNormalUserCell.xib; sourceTree = "<group>"; };
+		423C89BE206E475A00F78719 /* GPAgentUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentUserInfoCell.h; sourceTree = "<group>"; };
+		423C89BF206E475A00F78719 /* GPAgentUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentUserInfoCell.m; sourceTree = "<group>"; };
+		423C89C0206E475A00F78719 /* GPAgentUserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPAgentUserInfoCell.xib; sourceTree = "<group>"; };
+		423C89C3206E476A00F78719 /* GPAgentUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentUserInfoModel.h; sourceTree = "<group>"; };
+		423C89C4206E476A00F78719 /* GPAgentUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentUserInfoModel.m; sourceTree = "<group>"; };
+		423C89C6206E5FA900F78719 /* GPAgentBenefitAnalysisModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentBenefitAnalysisModel.h; sourceTree = "<group>"; };
+		423C89C7206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentBenefitAnalysisModel.m; sourceTree = "<group>"; };
+		423C89C9206E601D00F78719 /* GPAgentBenefitAnalysisCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentBenefitAnalysisCell.h; sourceTree = "<group>"; };
+		423C89CA206E601D00F78719 /* GPAgentBenefitAnalysisCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentBenefitAnalysisCell.m; sourceTree = "<group>"; };
+		423C89CB206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPAgentBenefitAnalysisCell.xib; sourceTree = "<group>"; };
+		423C89CE206E684100F78719 /* GPEarningsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEarningsModel.h; sourceTree = "<group>"; };
+		423C89CF206E684100F78719 /* GPEarningsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPEarningsModel.m; sourceTree = "<group>"; };
+		423C89D1206E68D200F78719 /* GPEarningsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEarningsCell.h; sourceTree = "<group>"; };
+		423C89D2206E68D200F78719 /* GPEarningsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPEarningsCell.m; sourceTree = "<group>"; };
+		423C89D3206E68D200F78719 /* GPEarningsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPEarningsCell.xib; sourceTree = "<group>"; };
+		423C89D6206E74E400F78719 /* GPForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPForgetPasswordViewController.h; sourceTree = "<group>"; };
+		423C89D7206E74E400F78719 /* GPForgetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPForgetPasswordViewController.m; sourceTree = "<group>"; };
+		423C89D9206F39B000F78719 /* GPBackWaterRulesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBackWaterRulesViewController.h; sourceTree = "<group>"; };
+		423C89DA206F39B000F78719 /* GPBackWaterRulesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBackWaterRulesViewController.m; sourceTree = "<group>"; };
+		423C89DC206F3E5000F78719 /* GPShareRulesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPShareRulesViewController.h; sourceTree = "<group>"; };
+		423C89DD206F3E5000F78719 /* GPShareRulesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPShareRulesViewController.m; sourceTree = "<group>"; };
+		423C89EE206F7B8E00F78719 /* pay_ali.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_ali.png; sourceTree = "<group>"; };
+		423C89EF206F7B8F00F78719 /* pay_weChat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_weChat.png; sourceTree = "<group>"; };
+		423C89F0206F7B8F00F78719 /* pay_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_qq.png; sourceTree = "<group>"; };
+		423C89F4206F7C4C00F78719 /* GPLinePayRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLinePayRecordViewController.h; sourceTree = "<group>"; };
+		423C89F5206F7C4C00F78719 /* GPLinePayRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLinePayRecordViewController.m; sourceTree = "<group>"; };
+		423C89F7206F7C8500F78719 /* GPNormalPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalPayViewController.h; sourceTree = "<group>"; };
+		423C89F8206F7C8500F78719 /* GPNormalPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalPayViewController.m; sourceTree = "<group>"; };
+		423C89FA206F7CF700F78719 /* GPBankInfomationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfomationViewController.h; sourceTree = "<group>"; };
+		423C89FB206F7CF700F78719 /* GPBankInfomationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfomationViewController.m; sourceTree = "<group>"; };
+		423C89FD206F811100F78719 /* GPLinePayRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLinePayRecordModel.h; sourceTree = "<group>"; };
+		423C89FE206F811100F78719 /* GPLinePayRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLinePayRecordModel.m; sourceTree = "<group>"; };
+		423C8A00206F840600F78719 /* GPLinePayRecoedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLinePayRecoedCell.h; sourceTree = "<group>"; };
+		423C8A01206F840600F78719 /* GPLinePayRecoedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLinePayRecoedCell.m; sourceTree = "<group>"; };
+		423C8A02206F840600F78719 /* GPLinePayRecoedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPLinePayRecoedCell.xib; sourceTree = "<group>"; };
+		423C8A05206F951400F78719 /* GPNormalPayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalPayCell.h; sourceTree = "<group>"; };
+		423C8A06206F951400F78719 /* GPNormalPayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalPayCell.m; sourceTree = "<group>"; };
+		423C8A07206F951400F78719 /* GPNormalPayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPNormalPayCell.xib; sourceTree = "<group>"; };
+		423C8A0A206F974000F78719 /* GPNormalPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalPayModel.h; sourceTree = "<group>"; };
+		423C8A0B206F974000F78719 /* GPNormalPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalPayModel.m; sourceTree = "<group>"; };
+		423C8A0D206FADB300F78719 /* GPTransferTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPTransferTypeCell.h; sourceTree = "<group>"; };
+		423C8A0E206FADB300F78719 /* GPTransferTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPTransferTypeCell.m; sourceTree = "<group>"; };
+		423C8A0F206FADB300F78719 /* GPTransferTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPTransferTypeCell.xib; sourceTree = "<group>"; };
 		423EBE41205FB7D6006E80ED /* GPChooseBankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPChooseBankCell.h; sourceTree = "<group>"; };
 		423EBE42205FB7D6006E80ED /* GPChooseBankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPChooseBankCell.m; sourceTree = "<group>"; };
 		423EBE43205FB7D6006E80ED /* GPChooseBankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPChooseBankCell.xib; sourceTree = "<group>"; };
@@ -515,9 +602,7 @@
 		42E7E55A20564FF900119CB0 /* GPPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPrefix.pch; sourceTree = "<group>"; };
 		42E7E55B2056659200119CB0 /* check_seleced.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_seleced.png; sourceTree = "<group>"; };
 		42E7E55C2056659200119CB0 /* check_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_normal.png; sourceTree = "<group>"; };
-		42E7E55F205668C400119CB0 /* pay_ali.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_ali.png; sourceTree = "<group>"; };
 		42E7E560205668C500119CB0 /* pay_bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_bank.png; sourceTree = "<group>"; };
-		42E7E561205668C500119CB0 /* pay_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pay_qq.png; sourceTree = "<group>"; };
 		42E7E5792057623900119CB0 /* GPMineListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMineListCell.h; sourceTree = "<group>"; };
 		42E7E57A2057623900119CB0 /* GPMineListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMineListCell.m; sourceTree = "<group>"; };
 		42E7E57B2057623900119CB0 /* GPMineListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMineListCell.xib; sourceTree = "<group>"; };
@@ -687,6 +772,8 @@
 				423EBE5020600036006E80ED /* GPWithdrawListViewController.m */,
 				4263BA1F20595C5500103919 /* GPBackWaterViewController.h */,
 				4263BA2020595C5500103919 /* GPBackWaterViewController.m */,
+				423C89D9206F39B000F78719 /* GPBackWaterRulesViewController.h */,
+				423C89DA206F39B000F78719 /* GPBackWaterRulesViewController.m */,
 				4263BA2220595C6600103919 /* GPGameViewController.h */,
 				4263BA2320595C6600103919 /* GPGameViewController.m */,
 				42148AA92061EF66007D44E8 /* GPLuckyListViewController.h */,
@@ -711,6 +798,8 @@
 				4263BAA4205CFD7D00103919 /* GPProtocolViewController.m */,
 				4263BA2E20595CD400103919 /* GPEarningsViewController.h */,
 				4263BA2F20595CD400103919 /* GPEarningsViewController.m */,
+				423C89DC206F3E5000F78719 /* GPShareRulesViewController.h */,
+				423C89DD206F3E5000F78719 /* GPShareRulesViewController.m */,
 				4263BA3120595CE100103919 /* GPSettingViewController.h */,
 				4263BA3220595CE100103919 /* GPSettingViewController.m */,
 				4263BAA6205F4B2100103919 /* GPBinfPhoneViewController.h */,
@@ -725,6 +814,8 @@
 				4263BAB3205F4C1200103919 /* GPCleanDataViewController.m */,
 				4263BA3420595CEF00103919 /* GPAboutViewController.h */,
 				4263BA3520595CEF00103919 /* GPAboutViewController.m */,
+				423C89D6206E74E400F78719 /* GPForgetPasswordViewController.h */,
+				423C89D7206E74E400F78719 /* GPForgetPasswordViewController.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -768,6 +859,12 @@
 				42712318206B9CAE0080A50F /* GPPayMoneyViewController.m */,
 				4271231F206BB1A50080A50F /* GPOrderPageViewController.h */,
 				42712320206BB1A50080A50F /* GPOrderPageViewController.m */,
+				423C89F4206F7C4C00F78719 /* GPLinePayRecordViewController.h */,
+				423C89F5206F7C4C00F78719 /* GPLinePayRecordViewController.m */,
+				423C89F7206F7C8500F78719 /* GPNormalPayViewController.h */,
+				423C89F8206F7C8500F78719 /* GPNormalPayViewController.m */,
+				423C89FA206F7CF700F78719 /* GPBankInfomationViewController.h */,
+				423C89FB206F7CF700F78719 /* GPBankInfomationViewController.m */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -816,6 +913,14 @@
 				42148AA22060FA10007D44E8 /* GPRechargeModel.m */,
 				42148AAC2061FD0C007D44E8 /* GPLuckyModel.h */,
 				42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */,
+				423C89B6206E368300F78719 /* GPNormalUserModel.h */,
+				423C89B7206E368300F78719 /* GPNormalUserModel.m */,
+				423C89C3206E476A00F78719 /* GPAgentUserInfoModel.h */,
+				423C89C4206E476A00F78719 /* GPAgentUserInfoModel.m */,
+				423C89C6206E5FA900F78719 /* GPAgentBenefitAnalysisModel.h */,
+				423C89C7206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m */,
+				423C89CE206E684100F78719 /* GPEarningsModel.h */,
+				423C89CF206E684100F78719 /* GPEarningsModel.m */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -861,6 +966,10 @@
 			children = (
 				4271231C206BA7400080A50F /* GPEnterPayModel.h */,
 				4271231D206BA7400080A50F /* GPEnterPayModel.m */,
+				423C89FD206F811100F78719 /* GPLinePayRecordModel.h */,
+				423C89FE206F811100F78719 /* GPLinePayRecordModel.m */,
+				423C8A0A206F974000F78719 /* GPNormalPayModel.h */,
+				423C8A0B206F974000F78719 /* GPNormalPayModel.m */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -918,6 +1027,18 @@
 				42148AAF2061FD65007D44E8 /* GPLuckyCell.h */,
 				42148AB02061FD65007D44E8 /* GPLuckyCell.m */,
 				42148AB12061FD65007D44E8 /* GPLuckyCell.xib */,
+				423C89B9206E370F00F78719 /* GPNormalUserCell.h */,
+				423C89BA206E370F00F78719 /* GPNormalUserCell.m */,
+				423C89BB206E370F00F78719 /* GPNormalUserCell.xib */,
+				423C89BE206E475A00F78719 /* GPAgentUserInfoCell.h */,
+				423C89BF206E475A00F78719 /* GPAgentUserInfoCell.m */,
+				423C89C0206E475A00F78719 /* GPAgentUserInfoCell.xib */,
+				423C89C9206E601D00F78719 /* GPAgentBenefitAnalysisCell.h */,
+				423C89CA206E601D00F78719 /* GPAgentBenefitAnalysisCell.m */,
+				423C89CB206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib */,
+				423C89D1206E68D200F78719 /* GPEarningsCell.h */,
+				423C89D2206E68D200F78719 /* GPEarningsCell.m */,
+				423C89D3206E68D200F78719 /* GPEarningsCell.xib */,
 			);
 			path = MinePage;
 			sourceTree = "<group>";
@@ -958,6 +1079,12 @@
 				427122FC206B2D950080A50F /* GPBetCopyCell.h */,
 				427122FD206B2D950080A50F /* GPBetCopyCell.m */,
 				427122FE206B2D950080A50F /* GPBetCopyCell.xib */,
+				423C89AC206C987F00F78719 /* GPServiceSenderCell.h */,
+				423C89AD206C987F00F78719 /* GPServiceSenderCell.m */,
+				423C89AE206C987F00F78719 /* GPServiceSenderCell.xib */,
+				423C89B1206C989800F78719 /* GPServiceReciveCell.h */,
+				423C89B2206C989800F78719 /* GPServiceReciveCell.m */,
+				423C89B3206C989800F78719 /* GPServiceReciveCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -975,6 +1102,15 @@
 		42E7E5122054BD9B00119CB0 /* PayPage */ = {
 			isa = PBXGroup;
 			children = (
+				423C8A00206F840600F78719 /* GPLinePayRecoedCell.h */,
+				423C8A01206F840600F78719 /* GPLinePayRecoedCell.m */,
+				423C8A02206F840600F78719 /* GPLinePayRecoedCell.xib */,
+				423C8A05206F951400F78719 /* GPNormalPayCell.h */,
+				423C8A06206F951400F78719 /* GPNormalPayCell.m */,
+				423C8A07206F951400F78719 /* GPNormalPayCell.xib */,
+				423C8A0D206FADB300F78719 /* GPTransferTypeCell.h */,
+				423C8A0E206FADB300F78719 /* GPTransferTypeCell.m */,
+				423C8A0F206FADB300F78719 /* GPTransferTypeCell.xib */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1056,6 +1192,7 @@
 				42715AB62064E862000A79FC /* bet_dissmiss_btn.png */,
 				427122E72068F7620080A50F /* input_receive_bg.png */,
 				427122E62068F7620080A50F /* input_send_bg.png */,
+				423C89AA206C92F100F78719 /* service_add_btn.png */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1077,10 +1214,11 @@
 				42E7E5352054C70300119CB0 /* bar_pay_normal.png */,
 				42E7E55C2056659200119CB0 /* check_normal.png */,
 				42E7E55B2056659200119CB0 /* check_seleced.png */,
-				42E7E55F205668C400119CB0 /* pay_ali.png */,
 				42E7E560205668C500119CB0 /* pay_bank.png */,
-				42E7E561205668C500119CB0 /* pay_qq.png */,
 				4271231A206B9E900080A50F /* pay_refresh_btn.png */,
+				423C89EE206F7B8E00F78719 /* pay_ali.png */,
+				423C89F0206F7B8F00F78719 /* pay_qq.png */,
+				423C89EF206F7B8F00F78719 /* pay_weChat.png */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1270,13 +1408,14 @@
 				42715AAD20649699000A79FC /* bet_right_btn.png in Resources */,
 				427122EE2069146F0080A50F /* GPMsgSenderCell.xib in Resources */,
 				42E7E5482056177000119CB0 /* sign.png in Resources */,
-				42E7E564205668C500119CB0 /* pay_qq.png in Resources */,
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
+				423C89F3206F7B8F00F78719 /* pay_qq.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
 				4263BA95205CB9CE00103919 /* game_point_img.png in Resources */,
 				4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */,
 				427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */,
 				427122E92068F7620080A50F /* input_receive_bg.png in Resources */,
+				423C89F2206F7B8F00F78719 /* pay_weChat.png in Resources */,
 				4263BA0B2057CCD700103919 /* login_weChat_btn.png in Resources */,
 				427122FB206B24460080A50F /* GPRoomCopyBetView.xib in Resources */,
 				42E7E58520576EED00119CB0 /* arrow_black.png in Resources */,
@@ -1286,9 +1425,11 @@
 				4263B9EA2057BD3700103919 /* mine_game_list.png in Resources */,
 				42712300206B2D950080A50F /* GPBetCopyCell.xib in Resources */,
 				4263BA9B205CF92900103919 /* agent_agreement_btn.png in Resources */,
+				423C89AB206C92F200F78719 /* service_add_btn.png in Resources */,
 				4263B9E62057BD3700103919 /* mine_game.png in Resources */,
 				4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
+				423C8A11206FADB300F78719 /* GPTransferTypeCell.xib in Resources */,
 				42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */,
 				427122E02068CEC70080A50F /* 1.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
@@ -1301,6 +1442,8 @@
 				4263BA91205CB79400103919 /* game_bg_img.png in Resources */,
 				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
+				423C89C2206E475A00F78719 /* GPAgentUserInfoCell.xib in Resources */,
+				423C89B5206C989800F78719 /* GPServiceReciveCell.xib in Resources */,
 				427122E12068CEC70080A50F /* 0.png in Resources */,
 				427122E82068F7620080A50F /* input_send_bg.png in Resources */,
 				42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */,
@@ -1313,20 +1456,23 @@
 				4263BA0D2057CCD700103919 /* login_bg_img.png in Resources */,
 				42E7E58B2057772E00119CB0 /* 1.jpg in Resources */,
 				42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */,
+				423C89B0206C987F00F78719 /* GPServiceSenderCell.xib in Resources */,
 				427122DE2068CEC70080A50F /* 2.png in Resources */,
 				42715A9820633D6E000A79FC /* GPRoomListCell.xib in Resources */,
 				42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */,
 				4263BA3C2059629D00103919 /* setting_clean.png in Resources */,
+				423C8A04206F840600F78719 /* GPLinePayRecoedCell.xib in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				42715A9020625CA9000A79FC /* playlist_bottom_cell.png in Resources */,
+				423C89D5206E68D200F78719 /* GPEarningsCell.xib in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42E7E58F20579F6E00119CB0 /* home_person.png in Resources */,
 				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
 				42715AAE20649699000A79FC /* bet_left_btn.png in Resources */,
 				4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */,
 				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
-				42E7E562205668C500119CB0 /* pay_ali.png in Resources */,
 				4263BA46205A103E00103919 /* bar_mine.png in Resources */,
+				423C89F1206F7B8F00F78719 /* pay_ali.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
 				4263BA48205A103E00103919 /* bar_pay.png in Resources */,
 				427122F6206A2A4C0080A50F /* GPRoomHistoryCell.xib in Resources */,
@@ -1336,6 +1482,7 @@
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
+				423C8A09206F951400F78719 /* GPNormalPayCell.xib in Resources */,
 				4263BA162059121B00103919 /* user_icon.png in Resources */,
 				4263BA96205CB9CE00103919 /* game_table_img.png in Resources */,
 				427122DD2068CEC70080A50F /* 6.png in Resources */,
@@ -1343,6 +1490,7 @@
 				4271231B206B9E900080A50F /* pay_refresh_btn.png in Resources */,
 				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */,
+				423C89CD206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
 				4263BA9A205CF92900103919 /* agent_user_btn.png in Resources */,
 				42712308206B631A0080A50F /* GPNoticeCell.xib in Resources */,
@@ -1350,6 +1498,7 @@
 				427122C32068CA620080A50F /* GPMsgEnterRoomCell.xib in Resources */,
 				427122DC2068CEC70080A50F /* 5.png in Resources */,
 				42E7E5332054C6FB00119CB0 /* bar_notice_normal.png in Resources */,
+				423C89BD206E370F00F78719 /* GPNormalUserCell.xib in Resources */,
 				4263BA4A205A196700103919 /* wallet_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1445,6 +1594,7 @@
 				42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */,
 				42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */,
 				42715A87206248D3000A79FC /* GPRoomListViewController.m in Sources */,
+				423C89B8206E368300F78719 /* GPNormalUserModel.m in Sources */,
 				42712319206B9CAE0080A50F /* GPPayMoneyViewController.m in Sources */,
 				4263BA7E205BBC9D00103919 /* GPBetDetailCell.m in Sources */,
 				4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */,
@@ -1453,6 +1603,7 @@
 				4263BA112058F25E00103919 /* GPRegistModel.m in Sources */,
 				4263BA1B20591A5600103919 /* GPChangeDataViewController.m in Sources */,
 				423EBE4B205FFF90006E80ED /* GPWithdrawViewController.m in Sources */,
+				423C89C1206E475A00F78719 /* GPAgentUserInfoCell.m in Sources */,
 				423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */,
 				42712303206B62D60080A50F /* GPNoticeModel.m in Sources */,
 				42E7E4E02054B7BE00119CB0 /* main.m in Sources */,
@@ -1464,18 +1615,23 @@
 				4263BAAB205F4B4D00103919 /* GPBindBancCardViewController.m in Sources */,
 				4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */,
 				4263BA2120595C5500103919 /* GPBackWaterViewController.m in Sources */,
+				423C8A03206F840600F78719 /* GPLinePayRecoedCell.m in Sources */,
 				4263BA3620595CEF00103919 /* GPAboutViewController.m in Sources */,
 				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
 				42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				427122CC2068CAD30080A50F /* GPMsgSystemCell.m in Sources */,
+				423C89C5206E476A00F78719 /* GPAgentUserInfoModel.m in Sources */,
 				4263BA3020595CD400103919 /* GPEarningsViewController.m in Sources */,
+				423C8A0C206F974000F78719 /* GPNormalPayModel.m in Sources */,
 				4263BAAE205F4B7400103919 /* GPBankPasswordViewController.m in Sources */,
 				42715A9E20637ABF000A79FC /* GPRoomViewController.m in Sources */,
 				42712321206BB1A50080A50F /* GPOrderPageViewController.m in Sources */,
 				42715A9720633D6E000A79FC /* GPRoomListCell.m in Sources */,
+				423C89FF206F811100F78719 /* GPLinePayRecordModel.m in Sources */,
 				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
 				42712307206B631A0080A50F /* GPNoticeCell.m in Sources */,
+				423C89D4206E68D200F78719 /* GPEarningsCell.m in Sources */,
 				42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				4263BA142059024100103919 /* GPInfoModel.m in Sources */,
@@ -1486,6 +1642,8 @@
 				4271230B206B75170080A50F /* GPNoticeMsgModel.m in Sources */,
 				42715AA120637AD5000A79FC /* GPServiceViewController.m in Sources */,
 				42E7E51E2054BE6900119CB0 /* GPMineViewController.m in Sources */,
+				423C89DE206F3E5000F78719 /* GPShareRulesViewController.m in Sources */,
+				423C89F6206F7C4C00F78719 /* GPLinePayRecordViewController.m in Sources */,
 				427122B92068BDE00080A50F /* GPMessageModel.m in Sources */,
 				42715A93206263E3000A79FC /* GPPlayListModel.m in Sources */,
 				4263BA74205BB30600103919 /* GPGameDetailViewController.m in Sources */,
@@ -1498,6 +1656,8 @@
 				4263BA2D20595CA700103919 /* GPShareViewController.m in Sources */,
 				4263BA69205B5F8000103919 /* GPBetModel.m in Sources */,
 				42E7E55920564F9C00119CB0 /* UserDefaults.m in Sources */,
+				423C89B4206C989800F78719 /* GPServiceReciveCell.m in Sources */,
+				423C89AF206C987F00F78719 /* GPServiceSenderCell.m in Sources */,
 				4263BA9F205CFD4700103919 /* GPAnalysisViewController.m in Sources */,
 				42E7E55820564F9C00119CB0 /* AFNetManager.m in Sources */,
 				42E7E55720564F9C00119CB0 /* ToastView.m in Sources */,
@@ -1507,31 +1667,41 @@
 				4263BA70205B627C00103919 /* GPBetCell.m in Sources */,
 				427122F5206A2A4C0080A50F /* GPRoomHistoryCell.m in Sources */,
 				42715ABD2065EA0F000A79FC /* GPEnterRoomInfoModel.m in Sources */,
+				423C8A08206F951400F78719 /* GPNormalPayCell.m in Sources */,
 				427122C22068CA620080A50F /* GPMsgEnterRoomCell.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
 				423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */,
 				42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */,
+				423C89D0206E684100F78719 /* GPEarningsModel.m in Sources */,
+				423C89DB206F39B000F78719 /* GPBackWaterRulesViewController.m in Sources */,
 				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
+				423C89C8206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m in Sources */,
 				42148AAB2061EF66007D44E8 /* GPLuckyListViewController.m in Sources */,
 				4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */,
 				42A6FF3C2060E58D00977BCD /* GPWithdrawInfoModel.m in Sources */,
 				4263BA2720595C8100103919 /* GPHistoryViewController.m in Sources */,
+				423C89CC206E601D00F78719 /* GPAgentBenefitAnalysisCell.m in Sources */,
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
 				42712310206B7F6F0080A50F /* GPNoticeDetailViewController.m in Sources */,
+				423C89BC206E370F00F78719 /* GPNormalUserCell.m in Sources */,
 				42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */,
+				423C89F9206F7C8500F78719 /* GPNormalPayViewController.m in Sources */,
 				427122F9206B24360080A50F /* GPRoomCopyBetView.m in Sources */,
 				4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */,
 				42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */,
 				4263BAB4205F4C1200103919 /* GPCleanDataViewController.m in Sources */,
 				42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */,
 				42E7E51B2054BE5C00119CB0 /* GPNoticeViewController.m in Sources */,
+				423C89D8206E74E400F78719 /* GPForgetPasswordViewController.m in Sources */,
 				427122D12068CAEC0080A50F /* GPMsgReceiveCell.m in Sources */,
 				42715ABA2065E24E000A79FC /* GPOddsInfoModel.m in Sources */,
+				423C89FC206F7CF700F78719 /* GPBankInfomationViewController.m in Sources */,
 				42E7E4D22054B7BE00119CB0 /* AppDelegate.m in Sources */,
 				42715A8120624877000A79FC /* GPPlayListViewController.m in Sources */,
 				4263BA032057C55800103919 /* GPShareModel.m in Sources */,
+				423C8A10206FADB300F78719 /* GPTransferTypeCell.m in Sources */,
 				4271231E206BA7400080A50F /* GPEnterPayModel.m in Sources */,
 				427122ED2069146F0080A50F /* GPMsgSenderCell.m in Sources */,
 				4263BA062057C5B500103919 /* GPWalletModel.m in Sources */,

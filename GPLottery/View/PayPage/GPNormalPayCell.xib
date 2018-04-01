@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="GPNormalPayCell">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="348" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apR-Qw-68g">
+                        <rect key="frame" x="10" y="5" width="328" height="99.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApI-os-6Hc">
+                                <rect key="frame" x="10" y="10" width="69.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.1019607843" green="0.77647058820000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户人姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bt-8T-ZDM">
+                                <rect key="frame" x="231" y="10" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行具体信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2D-6s-Bgq">
+                                <rect key="frame" x="10" y="41" width="92" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do5-h7-MQK">
+                                <rect key="frame" x="10" y="69" width="61.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cr5-7m-lR1">
+                                <rect key="frame" x="302" y="41" width="16" height="16"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T2D-6s-Bgq" firstAttribute="top" secondItem="ApI-os-6Hc" secondAttribute="bottom" constant="10" id="8Ph-xb-4fN"/>
+                            <constraint firstItem="do5-h7-MQK" firstAttribute="leading" secondItem="apR-Qw-68g" secondAttribute="leading" constant="10" id="COc-nr-ZXS"/>
+                            <constraint firstItem="T2D-6s-Bgq" firstAttribute="leading" secondItem="apR-Qw-68g" secondAttribute="leading" constant="10" id="DjX-cU-J2F"/>
+                            <constraint firstItem="Cr5-7m-lR1" firstAttribute="top" secondItem="4bt-8T-ZDM" secondAttribute="bottom" constant="10" id="PUM-3w-h8G"/>
+                            <constraint firstItem="4bt-8T-ZDM" firstAttribute="top" secondItem="apR-Qw-68g" secondAttribute="top" constant="10" id="Pt3-Mj-Yar"/>
+                            <constraint firstItem="ApI-os-6Hc" firstAttribute="top" secondItem="apR-Qw-68g" secondAttribute="top" constant="10" id="R4L-7P-qSb"/>
+                            <constraint firstItem="do5-h7-MQK" firstAttribute="top" secondItem="T2D-6s-Bgq" secondAttribute="bottom" constant="10" id="YSM-rw-82r"/>
+                            <constraint firstItem="ApI-os-6Hc" firstAttribute="leading" secondItem="apR-Qw-68g" secondAttribute="leading" constant="10" id="c9t-8r-W3O"/>
+                            <constraint firstAttribute="trailing" secondItem="4bt-8T-ZDM" secondAttribute="trailing" constant="10" id="gQv-gi-2Hw"/>
+                            <constraint firstAttribute="trailing" secondItem="Cr5-7m-lR1" secondAttribute="trailing" constant="10" id="vnh-Ry-pej"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="apR-Qw-68g" secondAttribute="trailing" constant="10" id="A22-fc-eGg"/>
+                    <constraint firstItem="apR-Qw-68g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Ek1-RL-VUR"/>
+                    <constraint firstItem="apR-Qw-68g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Mb8-Bb-uOe"/>
+                    <constraint firstAttribute="bottom" secondItem="apR-Qw-68g" secondAttribute="bottom" constant="5" id="fBt-qE-NS5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="accountNameLab" destination="4bt-8T-ZDM" id="gHQ-Ba-eE5"/>
+                <outlet property="bankCardLab" destination="do5-h7-MQK" id="wTI-AJ-JeB"/>
+                <outlet property="bankNameLab" destination="ApI-os-6Hc" id="fk1-xJ-7ex"/>
+                <outlet property="mesgLab" destination="T2D-6s-Bgq" id="Phr-xY-SYp"/>
+            </connections>
+            <point key="canvasLocation" x="39" y="85"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow_black.png" width="16" height="16"/>
+    </resources>
+</document>

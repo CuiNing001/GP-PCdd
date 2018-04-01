@@ -103,6 +103,7 @@ showView.frame = CGRectMake((kSize_width - CGRectGetWidth(rect) - 20)/2,
     return dic;
 }
 
+#pragma mark - Jason字典转字符串
 + (NSString*)dictionaryToJson:(NSDictionary *)dic
 
 {

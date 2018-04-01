@@ -22,6 +22,8 @@
  * type    :环信登录ID
  * level   :等级
  * autograph:签名
+ * userType:用户类型1：普通用户，4：代理用户
+ * aboutUrl:个人中心关于地址
  */
 + (void)addDataWithUsername:(NSString *)username
                    password:(NSString *)password
@@ -44,6 +46,8 @@
     [userDefault setObject:userID   forKey:@"userID"];
     [userDefault setObject:level    forKey:@"level"];
     [userDefault setObject:autograph forKey:@"autograph"];
+    [userDefault setObject:@"1"     forKey:@"userType"];
+    [userDefault setObject:@"aboutUrl" forKey:@"aboutUrl"];
     [userDefault synchronize];
     NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@--autograph:%@",username,password,token,nickname,islogin,moneyNum,userID,level,autograph);
 }
@@ -95,6 +99,25 @@
 
 }
 
+/*
+ * 修改用户类型
+ */
++ (void)upDataWithUserType:(NSString *)userType{
+    
+    NSUserDefaults *userDefaule = [NSUserDefaults standardUserDefaults];
+    [userDefaule setObject:userType forKey:@"userType"];
+    [userDefaule synchronize];
+}
+
+/*
+ * 修改关于页面地址
+ */
++ (void)upDataWithAboutUrl:(NSString *)aboutUrl{
+    
+    NSUserDefaults *userDefaule = [NSUserDefaults standardUserDefaults];
+    [userDefaule setObject:aboutUrl forKey:@"aboutUrl"];
+    [userDefaule synchronize];
+}
 
 /*
  * 查询数据
@@ -107,6 +130,8 @@
  * type    :环信登录ID
  * level   :等级
  * autograph:签名
+ * userType:用户类型1：普通用户，4：代理用户
+ * aboutUrl:个人中心关于地址
  */
 + (NSMutableDictionary *)searchData
 {
@@ -122,8 +147,10 @@
     NSString *userID   = [userDefaults objectForKey:@"userID"];
     NSString *level    = [userDefaults objectForKey:@"level"];
     NSString *autograph = [userDefaults objectForKey:@"autograph"];
+    NSString *userType = [userDefaults objectForKey:@"userType"];
+    NSString *aboutUrl = [userDefaults objectForKey:@"aboutUrl"];
     
-    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil) {
+    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil &&userType!=nil &&aboutUrl!=nil) {
         
         userDic = @{@"loginName":username,
                     @"password":password,
@@ -133,7 +160,9 @@
                     @"moneyNum":moneyNum,
                     @"userID":userID,
                     @"level":level,
-                    @"autograph":autograph
+                    @"autograph":autograph,
+                    @"userType":userType,
+                    @"aboutUrl":aboutUrl
                     }.mutableCopy;
     }
      return userDic;
@@ -149,6 +178,8 @@
  * type    :充值渠道
  * type    :环信登录ID
  * level   :等级
+ * userType:用户类型1：普通用户，4：代理用户
+ * aboutUrl:个人中心关于地址
  */
 + (void)deleateData
 {
@@ -163,6 +194,8 @@
     [userDefaults removeObjectForKey:@"userID"];
     [userDefaults removeObjectForKey:@"level"];
     [userDefaults removeObjectForKey:@"autograph"];
+    [userDefaults removeObjectForKey:@"userType"];
+    [userDefaults removeObjectForKey:@"aboutUrl"];
     [userDefaults synchronize];
 
 

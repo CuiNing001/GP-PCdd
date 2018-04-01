@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;      // 用户名
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;      // 密码
 @property (weak, nonatomic) IBOutlet UITextField *passwordAgainTF; // 密码again
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTF;      // 昵称
 @property (weak, nonatomic) IBOutlet UITextField *refereeTF;       // 推荐人
 @property (strong, nonatomic) MBProgressHUD      *progressHUD;     // 加载框
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSString     *username;        // 用户名
 @property (strong, nonatomic) NSString     *password;        // 密码
 @property (strong, nonatomic) NSString     *passwordAgain;   // 确认密码
+@property (strong, nonatomic) NSString     *nicknameStr;     // 昵称
 @property (strong, nonatomic) NSString     *reference;       // 介绍人
 
 @end
@@ -65,12 +67,14 @@
     self.password      = self.passwordTF.text;
     self.passwordAgain = self.passwordAgainTF.text;
     self.reference     = self.refereeTF.text;
+    self.nicknameStr   = self.nicknameTF.text;
     
     // 根据介绍人是否为空初始化参数
     if (self.reference!=nil) {
         
         self.paramDic = @{@"loginName":self.username,
                           @"password":self.password,
+                          @"nickname":self.nicknameStr,
                           @"pid":self.reference
                           };
         
@@ -78,6 +82,7 @@
         
         self.paramDic = @{@"loginName":self.username,
                           @"password":self.password,
+                          @"nickname":self.nicknameStr
                           };
         
     }
@@ -96,54 +101,63 @@
     
     [self loadData];
     
-    if ([self.password isEqualToString:self.passwordAgain]) {
+    if (self.username.length>0 && self.password.length>0 && self.passwordAgain.length>0 && self.nicknameStr.length>0) {
         
-        // 请求注册数据
-        __weak typeof(self)weakSelf = self;
-        [AFNetManager requestPOSTWithURLStr:self.registerUrl paramDic:self.paramDic token:self.token finish:^(id responserObject) {
+        if ([self.password isEqualToString:self.passwordAgain]) {
             
-            NSLog(@"|REGIST-VC|success:%@",responserObject);
-            
-            [weakSelf.progressHUD hideAnimated:YES];
-            
-            GPRespondModel *respondModel = [GPRespondModel new];
-            
-            [respondModel setValuesForKeysWithDictionary:responserObject];
-            
-            if (respondModel.code.integerValue == 9200) {
+            // 请求注册数据
+            __weak typeof(self)weakSelf = self;
+            [AFNetManager requestPOSTWithURLStr:self.registerUrl paramDic:self.paramDic token:self.token finish:^(id responserObject) {
                 
-                [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+                NSLog(@"|REGIST-VC|success:%@",responserObject);
                 
-                GPRegistModel *registModel = [GPRegistModel new];
+                [weakSelf.progressHUD hideAnimated:YES];
                 
-                [registModel setValuesForKeysWithDictionary:respondModel.data];
+                GPRespondModel *respondModel = [GPRespondModel new];
                 
-                NSLog(@"|REGIST-VC|-[ID]:%@-[TOKEN]:%@",registModel.id,registModel.token);
+                [respondModel setValuesForKeysWithDictionary:responserObject];
                 
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];     // 注册成功返回登陆页面
+                if (respondModel.code.integerValue == 9200) {
+                    
+                    [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+                    
+                    GPRegistModel *registModel = [GPRegistModel new];
+                    
+                    [registModel setValuesForKeysWithDictionary:respondModel.data];
+                    
+                    NSLog(@"|REGIST-VC|-[ID]:%@-[TOKEN]:%@",registModel.id,registModel.token);
+                    
+                    [weakSelf dismissViewControllerAnimated:YES completion:nil];     // 注册成功返回登陆页面
+                    
+                }else{
+                    
+                    [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+                }
                 
-            }else{
                 
-                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
-            }
+            } enError:^(NSError *error) {
+                
+                [weakSelf.progressHUD hideAnimated:YES];
+                
+                [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+                
+            }];
             
             
-        } enError:^(NSError *error) {
+        }else{
             
-            [weakSelf.progressHUD hideAnimated:YES];
+            [self.progressHUD hideAnimated:YES];
             
-            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
-            
-        }];
-        
+            [self alertViewWithTitle:@"" message:@"两次密码输入不一致"];
+        }
+
         
     }else{
-        
         [self.progressHUD hideAnimated:YES];
-        
-        [self alertViewWithTitle:@"" message:@"两次密码输入不一致"];
+        [ToastView toastViewWithMessage:@"请补全必要注册信息" timer:3.0];
     }
-}
+    
+    }
 
 #pragma mark - text field delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -197,6 +211,13 @@
                 [ToastView toastViewWithMessage:@"两次密码不一致" timer:1.5];
             }
         }
+    }else if (textField.tag == 2007){
+        
+        if ([RegexPattern validateNickname:self.nicknameTF.text]) {
+            
+            [ToastView toastViewWithMessage:@"昵称格式不正确" timer:1.5];
+        }
+        
     }else if (textField.tag == 2006){
         // （非必填）
         
@@ -210,6 +231,7 @@
     [self.passwordTF      resignFirstResponder];
     [self.passwordAgainTF resignFirstResponder];
     [self.refereeTF       resignFirstResponder];
+    [self.nicknameTF      resignFirstResponder];
     
     // 取消键盘后还原view的frame
     [UIView animateWithDuration:0.5 animations:^{
@@ -223,6 +245,7 @@
     self.usernameTF.delegate      = self;
     self.passwordTF.delegate      = self;
     self.passwordAgainTF.delegate = self;
+    self.nicknameTF.delegate      = self;
     self.refereeTF.delegate       = self;
 }
 
@@ -230,7 +253,7 @@
 -(void)changeViewFrame:(NSNotification *) notification{
     
     //获取处于焦点中的view
-    NSArray *textFields = @[self.usernameTF,self.passwordTF,self.passwordAgainTF,self.refereeTF];
+    NSArray *textFields = @[self.usernameTF,self.passwordTF,self.passwordAgainTF,self.refereeTF,self.nicknameTF];
     
     UIView *focusView   = nil;
     

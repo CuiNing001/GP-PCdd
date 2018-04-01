@@ -9,6 +9,7 @@
 #import "GPBackWaterViewController.h"
 #import "GPBackWaterModel.h"
 #import "GPBackWaterCell.h"
+#import "GPBackWaterRulesViewController.h"
 
 @interface GPBackWaterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,6 +27,9 @@
 @property (strong, nonatomic) NSMutableArray     *dataArray;  // 玩法数据
 @property (strong, nonatomic) NSString           *playingMerchantId; // 玩法分类
 @property (weak, nonatomic) IBOutlet UIView *emptyPage;
+@property (assign, nonatomic) NSInteger page; // 页码
+@property (assign, nonatomic) NSInteger rows; // 加载条数
+@property (strong, nonatomic) NSString *agreementUrl;  // 回水规则地址
 
 
 @end
@@ -45,7 +49,8 @@
     
     // 默认请求玩法一数据
     self.playingMerchantId = @"1";
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
     
 }
 
@@ -53,6 +58,10 @@
 - (void)loadSubView{
     
     self.title = @"我的回水";
+    
+    // 初始化页码和条数
+    self.page = 1;
+    self.rows = 10;
     
     // 添加代理
     self.tableView.dataSource = self;
@@ -65,12 +74,30 @@
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPBackWaterCell" bundle:nil] forCellReuseIdentifier:@"backWaterCell"];
     
+    // 添加刷新
+    __weak typeof(self)weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf.tableView.mj_footer resetNoMoreData];  // 消除尾部没有更多数据状态
+        weakSelf.page = 1;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        weakSelf.page++;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        if (weakSelf.page>5) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+    }];
+    
 }
 
 #pragma mark - 加载网络数据
-- (void)loadNetData{
-    
-    [self.dataArray removeAllObjects];
+- (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
     
     [self.progressHUD showAnimated:YES];
     
@@ -78,9 +105,11 @@
     
     self.backWaterLoc = [NSString stringWithFormat:@"%@user/1/backWater",kBaseLocation];
     
+    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
+    
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:self.backWaterLoc paramDic:nil token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:self.backWaterLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
         
         NSLog(@"|BACKWATER-VC|success:%@",responserObject);
         
@@ -94,6 +123,7 @@
             
             [ToastView toastViewWithMessage:msg timer:1.5];
             
+            weakSelf.agreementUrl = [gameDic objectForKey:@"huiShuiUrl"];
             NSArray *statusOne   = [gameDic objectForKey:@"data1"];  // 玩法一
             NSArray *statusTwo   = [gameDic objectForKey:@"data2"];  // 玩法二
             NSArray *statusThree = [gameDic objectForKey:@"data3"];  // 玩法三
@@ -132,10 +162,9 @@
                 }
                 
             }
- 
             // 空数据显示默认空页面
             if (weakSelf.dataArray.count>0) {
-                
+
                 self.emptyPage.hidden = YES;
             }else{
                 self.emptyPage.hidden = NO;
@@ -156,17 +185,27 @@
         
     }];
     
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    
 }
 
 #pragma mark - 回水规则
 - (IBAction)rulesButton:(UIButton *)sender {
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    GPBackWaterRulesViewController *backWaterRulesVC = [storyboard instantiateViewControllerWithIdentifier:@"backWaterRulesVC"];
+    
+    backWaterRulesVC.agreementUrl = self.agreementUrl;
+    
+    [self.navigationController pushViewController:backWaterRulesVC animated:YES];
 }
 
 #pragma mark - 玩法一
 - (IBAction)lowRoomBtn:(UIButton *)sender {
     
+    [self.dataArray removeAllObjects];
     // 修改点击状态
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
@@ -177,12 +216,15 @@
     
     // 刷新数据
     self.playingMerchantId = @"1";
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
     
 }
 
 #pragma mark - 玩法二
 - (IBAction)middleRoomBtn:(UIButton *)sender {
+    
+    [self.dataArray removeAllObjects];
     
     // 修改点击状态
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
@@ -194,12 +236,15 @@
     
     // 刷新数据
     self.playingMerchantId = @"2";
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
    
 }
 
 #pragma mark - 玩法三
 - (IBAction)highRoomBtn:(UIButton *)sender {
+    
+    [self.dataArray removeAllObjects];
     
     // 修改点击状态
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
@@ -211,7 +256,8 @@
     
     // 刷新数据
     self.playingMerchantId = @"3";
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
     
 }
 

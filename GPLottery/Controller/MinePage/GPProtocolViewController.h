@@ -10,4 +10,6 @@
 
 @interface GPProtocolViewController : UIViewController
 
+@property (strong, nonatomic) NSString *agreementUrl;  // 代理协议地址
+
 @end

@@ -16,6 +16,8 @@
 @property (strong, nonatomic) MBProgressHUD      *progressHUD;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray     *luckyDataArray;
+@property (assign, nonatomic) NSInteger page; // 页码
+@property (assign, nonatomic) NSInteger rows; // 加载条数
 
 @end
 
@@ -30,10 +32,15 @@
 
 - (void)loadData{
     
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
 }
 
 - (void)loadSubView{
+    
+    // 初始化页码和条数
+    self.page = 1;
+    self.rows = 10;
     
     self.title = @"抽奖记录";
     
@@ -43,7 +50,7 @@
     
     // tableView样式
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.scrollEnabled  = NO;
+//    self.tableView.scrollEnabled  = NO;
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPLuckyCell" bundle:nil] forCellReuseIdentifier:@"luckyCell"];
@@ -51,9 +58,29 @@
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
+    
+    // 添加刷新
+    __weak typeof(self)weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+
+            [weakSelf.tableView.mj_footer resetNoMoreData];  // 消除尾部没有更多数据状态
+            weakSelf.page = 1;
+            [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+ 
+            weakSelf.page++;
+            [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+            if (weakSelf.page>5) {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+    }];
 }
 
-- (void)loadNetData{
+- (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
     
     [self.progressHUD showAnimated:YES];
     
@@ -61,9 +88,11 @@
     
     NSString *luckyListLoc = [NSString stringWithFormat:@"%@user/1/myLuckTurntableRecord",kBaseLocation];
     
+    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
+    
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:luckyListLoc paramDic:nil token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:luckyListLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
         
         NSLog(@"|LUCKYLIST-VC|success:%@",responserObject);
         
@@ -98,18 +127,21 @@
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
     }];
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
 }
 
 #pragma mark - tableview代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.luckyDataArray.count>0) {
-        
+//    if (self.luckyDataArray.count>0) {
+    
         return self.luckyDataArray.count;
-    }else{
-        
-        return 2;
-    }
+//    }else{
+//
+//        return 2;
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -122,15 +154,17 @@
     GPLuckyCell *luckyCell = [tableView dequeueReusableCellWithIdentifier:@"luckyCell" forIndexPath:indexPath];
     
     if (self.luckyDataArray.count>0) {
-        
+    
         GPLuckyModel *luckyModel = self.luckyDataArray[indexPath.row];
         
         [luckyCell setDataWithModel:luckyModel];
     }else{
         
-        luckyCell.creatTimeLab.text      = @"2018-2-12 12:00";
-        luckyCell.luckMoneyLevelLab.text = @"3";
-        luckyCell.extractAmountLab.text  = @"55.00元宝";
+        [ToastView toastViewWithMessage:@"暂无数据" timer:3.0];
+//
+////        luckyCell.creatTimeLab.text      = @"2018-2-12 12:00";
+////        luckyCell.luckMoneyLevelLab.text = @"3";
+////        luckyCell.extractAmountLab.text  = @"55.00元宝";
     }
     
     return luckyCell;

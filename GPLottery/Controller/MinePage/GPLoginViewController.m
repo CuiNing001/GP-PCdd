@@ -9,6 +9,7 @@
 #import "GPLoginViewController.h"
 #import "GPRegistViewController.h"
 #import "GPLoginModel.h"
+#import "GPForgetPasswordViewController.h"
 
 @interface GPLoginViewController ()<UITextFieldDelegate>
 
@@ -72,77 +73,86 @@
     
     [self loadData];
     
-    // 请求登陆接口
-    __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:self.loginUrl paramDic:self.paramDic token:self.token finish:^(id responserObject) {
+    if (self.username.length>0 && self.password.length>0) {
         
-        NSLog(@"|LOGIN-VC|success:%@",responserObject);
-        
-        [weakSelf.progressHUD hideAnimated:YES];
-        
-        GPRespondModel *respondModel = [GPRespondModel new];
-        
-        [respondModel setValuesForKeysWithDictionary:responserObject];
-        
-        if (respondModel.code.integerValue == 9200) {
+        // 请求登陆接口
+        __weak typeof(self)weakSelf = self;
+        [AFNetManager requestPOSTWithURLStr:self.loginUrl paramDic:self.paramDic token:self.token finish:^(id responserObject) {
             
-            GPLoginModel *loginModel = [GPLoginModel new];
+            NSLog(@"|LOGIN-VC|success:%@",responserObject);
             
-            [loginModel setValuesForKeysWithDictionary:respondModel.data];
+            [weakSelf.progressHUD hideAnimated:YES];
             
-            if (loginModel.nickname == nil) {
+            GPRespondModel *respondModel = [GPRespondModel new];
+            
+            [respondModel setValuesForKeysWithDictionary:responserObject];
+            
+            if (respondModel.code.integerValue == 9200) {
                 
-                loginModel.nickname = @"用户昵称";
-            }
-            
-            if (loginModel.autograph == nil) {
+                GPLoginModel *loginModel = [GPLoginModel new];
                 
-                loginModel.autograph = @"个性签名";
-            }
-            
-            // 登录极光
-            [JMSGUser loginWithUsername:loginModel.id password:kJMPassword completionHandler:^(id resultObject, NSError *error) {
+                [loginModel setValuesForKeysWithDictionary:respondModel.data];
                 
-                if (!error) {  // 登录成功
+                if (loginModel.nickname == nil) {
                     
-                    NSLog(@"|LOGIN-VC|-|JM-LOGIN-resultObject|%@",resultObject);
-                    
-                    [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
-             
-                    // 存储数据
-                    [UserDefaults addDataWithUsername:self.username
-                                             password:self.password
-                                                token:loginModel.token
-                                             nickname:loginModel.nickname
-                                              islogin:@"1"
-                                             moneyNum:loginModel.moneyNum
-                                               userID:loginModel.id
-                                                level:loginModel.level
-                                            autograph:loginModel.autograph];
-                    
-                    // 关闭登陆界面
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    
-                }else{  // 登录失败
-                    
-                    NSLog(@"|LOGIN-VC|-|JM-LOGIN-ERROR|%@",error);
+                    loginModel.nickname = @"用户昵称";
                 }
-            }];
+                
+                if (loginModel.autograph == nil) {
+                    
+                    loginModel.autograph = @"请添加个性签名...";
+                }
+                
+                // 登录极光
+                [JMSGUser loginWithUsername:loginModel.id password:kJMPassword completionHandler:^(id resultObject, NSError *error) {
+                    
+                    if (!error) {  // 登录成功
+                        
+                        NSLog(@"|LOGIN-VC|-|JM-LOGIN-resultObject|%@",resultObject);
+                        
+                        [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+                        
+                        // 存储数据
+                        [UserDefaults addDataWithUsername:self.username
+                                                 password:self.password
+                                                    token:loginModel.token
+                                                 nickname:loginModel.nickname
+                                                  islogin:@"1"
+                                                 moneyNum:loginModel.moneyNum
+                                                   userID:loginModel.id
+                                                    level:loginModel.level
+                                                autograph:loginModel.autograph];
+                        
+                        // 关闭登陆界面
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
+                    }else{  // 登录失败
+                        
+                        NSLog(@"|LOGIN-VC|-|JM-LOGIN-ERROR|%@",error);
+                    }
+                }];
+                
+            }else{
+                
+                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+            }
             
-        }else{
+        } enError:^(NSError *error) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
-        }
+            [weakSelf.progressHUD hideAnimated:YES];
+            
+            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+            
+            NSLog(@"|LOGIN-VC|-|login-error|%@",error);
+            
+        }];
+    }else{
         
-    } enError:^(NSError *error) {
-        
-        [weakSelf.progressHUD hideAnimated:YES];
-        
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
-        
-        NSLog(@"|LOGIN-VC|-|login-error|%@",error);
-        
-    }];
+        [self.progressHUD hideAnimated:YES];
+        [ToastView toastViewWithMessage:@"请补全登录信息" timer:3.0];
+    }
+    
+    
 }
 
 #pragma mark - 注册按钮
@@ -156,7 +166,9 @@
 #pragma mark - 忘记密码
 - (IBAction)forgetPassword:(UIButton *)sender {
     
+    GPForgetPasswordViewController *forgetPasswordVC;
     
+    [self getControllerFromStoryboardWithIdentifier:@"forgetPasswordVC" myVC:forgetPasswordVC];
 }
 
 #pragma mark - 三方登录

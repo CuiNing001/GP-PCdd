@@ -10,5 +10,6 @@ target ‘GPLottery’ do
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'JMessage'
+  pod 'TZImagePickerController'
 end
 

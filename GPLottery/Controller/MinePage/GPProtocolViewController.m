@@ -8,7 +8,11 @@
 
 #import "GPProtocolViewController.h"
 
-@interface GPProtocolViewController ()
+@interface GPProtocolViewController ()<UIWebViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
+
 
 @end
 
@@ -18,7 +22,44 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self loadSubView];
+}
+
+- (void)loadSubView{
+    
     self.title = @"代理协议";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.agreementUrl]];
+    
+    [self.webView loadRequest:request];
+    
+    self.webView.scrollView.showsVerticalScrollIndicator = NO;
+    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
+    //    self.webView.scrollView.scrollEnabled = NO;
+    self.webView.delegate = self;
+    
+    // 初始化加载框
+    self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    [self.view addSubview:_progressHUD];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    [self.progressHUD showAnimated:YES];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self.progressHUD hideAnimated:YES];
+    
+    // 设置webview字体大小
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.body.style.fontSize=13"];
+    
+    [webView stringByEvaluatingJavaScriptFromString:jsString];
+    
+    //页面背景色
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#B9D2DC'"];
+    
 }
 
 - (void)didReceiveMemoryWarning {

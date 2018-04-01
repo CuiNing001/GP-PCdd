@@ -23,15 +23,15 @@
                         <rect key="frame" x="10" y="5" width="310" height="76.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_wallet.png" translatesAutoresizingMaskIntoConstraints="NO" id="ilr-uJ-y3O">
-                                <rect key="frame" x="10" y="22.5" width="32" height="32"/>
+                                <rect key="frame" x="10" y="27.5" width="22" height="22"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVw-dp-48w">
-                                <rect key="frame" x="52" y="29.5" width="31" height="18"/>
+                                <rect key="frame" x="42" y="29.5" width="31" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00元宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whO-Zd-3uq">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00元宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whO-Zd-3uq">
                                 <rect key="frame" x="200" y="30.5" width="54" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,6 +77,6 @@
     </objects>
     <resources>
         <image name="arrow_black.png" width="16" height="16"/>
-        <image name="mine_wallet.png" width="32" height="32"/>
+        <image name="mine_wallet.png" width="22" height="22"/>
     </resources>
 </document>

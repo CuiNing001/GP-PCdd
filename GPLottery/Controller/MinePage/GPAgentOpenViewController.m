@@ -9,9 +9,12 @@
 #import "GPAgentOpenViewController.h"
 #import "GPLinkOpenAccuoutView.h"
 #import "GPShareModel.h"
+#import "GPNormalUserModel.h"
+#import "GPNormalUserCell.h"
 
-@interface GPAgentOpenViewController ()<UITextFieldDelegate>
+@interface GPAgentOpenViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 
+// 代理用户数据
 @property (weak, nonatomic) IBOutlet UIButton    *accountBtn;        // 直接开户
 @property (weak, nonatomic) IBOutlet UIButton    *linkAccountBtn;    // 链接开户
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;        // 用户名
@@ -22,6 +25,13 @@
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *dataArray;     // 玩法数据
 @property (strong, nonatomic) GPLinkOpenAccuoutView *linkView;   // 链接开户view
+
+// 普通用户数据
+@property (weak, nonatomic) IBOutlet UILabel *rulesNumOneLab;  // 规则1
+@property (weak, nonatomic) IBOutlet UILabel *rulesNumTwoLab;  // 规则2
+@property (weak, nonatomic) IBOutlet UITableView *tableView;   // 收益列表
+@property (weak, nonatomic) IBOutlet UIView *normalView;       // 普通用户可见view
+@property (strong, nonatomic) NSMutableArray *normalUserArray; // 普通用户数据
 
 @end
 
@@ -42,10 +52,24 @@
     
     // 代理开户数据
     [self loadNetData];
+    
+    // 普通用户数据
+    [self loadNormalUserData];
+    
+    [self loadUserDefaultsData];
 }
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    if (self.userType.integerValue == 1) {  // 普通用户
+        
+        self.normalView.hidden = NO;
+        
+    }else{  // 代理用户
+        
+        self.normalView.hidden = YES;
+    }
 
     // 初始化linkView
     self.linkView = [[GPLinkOpenAccuoutView alloc]initWithFrame:CGRectMake(0, 80+64, kSize_width, kSize_height-84)];
@@ -75,8 +99,84 @@
     // 添加空白区域点击事件
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(returnKeyboard)];
     [self.view addGestureRecognizer:tap];
+    
+    // table view 代理
+    self.tableView.delegate   = self;
+    self.tableView.dataSource = self;
+    
+    // 注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPNormalUserCell" bundle:nil] forCellReuseIdentifier:@"normalUserCell"];
+    
+    // tableView样式
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    // 添加刷新
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//
+//        [self loadNormalUserData];
+//
+//    }];
+   
 }
 
+#pragma mark- 普通用户分享规则
+- (void)loadNormalUserData{
+    
+//    [self.normalUserArray removeAllObjects];
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *normalUserLoc = [NSString stringWithFormat:@"%@member/1/memberRule",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:normalUserLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|AGENTOPEN-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            // 普通用户数据赋值
+            weakSelf.rulesNumOneLab.text = [respondModel.data objectForKey:@"notice1"];
+            weakSelf.rulesNumTwoLab.text = [respondModel.data objectForKey:@"notice2"];
+            
+            NSMutableArray *dataArr = [respondModel.data objectForKey:@"date1"];
+            
+            for (NSDictionary *dataDic in dataArr) {
+                
+                GPNormalUserModel *userModel = [GPNormalUserModel new];
+                
+                [userModel setValuesForKeysWithDictionary:dataDic];
+                
+                [weakSelf.normalUserArray addObject:userModel];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
+//    [self.tableView.mj_header endRefreshing];
+}
 
 #pragma mark - 加载代理开户数据
 - (void)loadNetData{
@@ -314,6 +414,35 @@
     
     self.token = self.infoModel.token;
     
+    self.userType = self.infoModel.userType;
+    
+}
+
+#pragma mark - tableview 数据代理
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.normalUserArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    GPNormalUserCell *normalUserCell = [tableView dequeueReusableCellWithIdentifier:@"normalUserCell" forIndexPath:indexPath];
+    
+    normalUserCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (self.normalUserArray.count>0) {
+        
+        GPNormalUserModel *normalUserModel = self.normalUserArray[indexPath.row];
+        
+        [normalUserCell setDataWithModel:normalUserModel];
+    }
+
+    return normalUserCell;
 }
 
 #pragma mark - 提醒框
@@ -349,7 +478,14 @@
     return _dataArray;
 }
 
-
+- (NSMutableArray *)normalUserArray{
+    
+    if (!_normalUserArray) {
+        
+        self.normalUserArray = [NSMutableArray array];
+    }
+    return _normalUserArray;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

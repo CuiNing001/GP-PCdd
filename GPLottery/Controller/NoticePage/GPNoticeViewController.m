@@ -339,6 +339,8 @@ static int touch = 0;  //  标记不同的tableview数据源
     
     noticeDetailVC.contentId = [NSString stringWithFormat:@"%@",noticeModel.id];
     
+    noticeDetailVC.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:noticeDetailVC animated:YES];
 }
 

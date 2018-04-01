@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic)MNAssistiveBtn *btn;  // 跳转客服button
 
 @end
 

@@ -10,4 +10,6 @@
 
 @interface GPAgentOpenViewController : UIViewController
 
+@property (strong, nonatomic) NSString *userType;  // 用户状态 ： suerType == 1:普通用户；suerType == 4:代理用户
+
 @end

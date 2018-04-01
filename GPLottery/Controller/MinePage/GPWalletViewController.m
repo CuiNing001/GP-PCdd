@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) GPUserStatusModel  *userStatusModel;
 
+
 @end
 
 @implementation GPWalletViewController

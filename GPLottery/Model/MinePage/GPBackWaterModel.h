@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *createDate;         // 回水时间
 @property (strong, nonatomic) NSString *backWaterRate;      // 回水率
 @property (strong, nonatomic) NSString *status;             // 状态
+@property (strong, nonatomic) NSString *agreementUrl;       // 回水规则地址
 
 @end

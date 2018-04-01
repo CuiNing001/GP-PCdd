@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSMutableArray *productArray;             // 产品
 @property (strong, nonatomic) GPProductListModel *leftProductModel;     // 左侧按钮model
 @property (strong, nonatomic) GPProductListModel *rightProductModel;    // 右侧按钮model
+@property (strong, nonatomic) NSString *userType;  // 用户类型：resulet:1 普通用户  ; 4 代理用户
 
 @end
 
@@ -49,73 +50,43 @@
     [self loadData];
     [self loadSubView];
     
-    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setVersionBtn];
-    });
+//    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self setVersionBtn];
+//    });
 }
 
-#pragma mark - 添加全局按钮
--(void)setVersionBtn{
-    
-    MNAssistiveBtn *btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
-                                                     Frame:CGRectMake(0, 200, 50, 50)
-                                                     title:nil
-                                                titleColor:[UIColor whiteColor]
-                                                 titleFont:[UIFont systemFontOfSize:11]
-                                           backgroundColor:nil
-                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
-    
-    [btn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    
-    [window addSubview:btn];
-    
-}
-#pragma mark - 跳转客服
-- (void)turnToService:(UIButton *)sender{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
-    
-    serviceVC.hidesBottomBarWhenPushed = YES;
-    
-    NSString *usernameSingle = @"abcd003";
-    // 获取单聊会话
-    [JMSGConversation singleConversationWithUsername:usernameSingle];
-    
-    // 未获取到对应单聊会话
-    if ([JMSGConversation singleConversationWithUsername:usernameSingle]) {
-        
-        // 创建单聊会话
-        [JMSGConversation createSingleConversationWithUsername:usernameSingle completionHandler:^(id resultObject, NSError *error) {
-            
-            if (!error) {
-                [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
-                // 创建单聊会话成功
-                [self.navigationController pushViewController:serviceVC animated:YES];
-  
-            }else{
-                
-                // 创建单聊会话失败
-                [ToastView toastViewWithMessage:@"链接失败，请稍后再试" timer:3.0];
-            }
-        }];
-    }else{
-        // 获取到对应单聊会话
-        [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
-        // 创建单聊会话成功
-        [self.navigationController pushViewController:serviceVC animated:YES];
-        
-    }
-    
-    
-    
-    
-    
-}
+//#pragma mark - 添加全局按钮
+//-(void)setVersionBtn{
+//    
+//    MNAssistiveBtn *btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
+//                                                     Frame:CGRectMake(0, 200, 50, 50)
+//                                                     title:nil
+//                                                titleColor:[UIColor whiteColor]
+//                                                 titleFont:[UIFont systemFontOfSize:11]
+//                                           backgroundColor:nil
+//                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
+//    
+//    [btn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    
+//    [window addSubview:btn];
+//    
+//}
+//#pragma mark - 跳转客服
+//- (void)turnToService:(UIButton *)sender{
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+//    
+//    serviceVC.hidesBottomBarWhenPushed = YES;
+//    
+//    // 创建单聊会话成功
+//    [self.navigationController pushViewController:serviceVC animated:YES];
+//
+//}
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -172,9 +143,20 @@
     
     NSString *indexLoc = [NSString stringWithFormat:@"%@1/index",kBaseLocation];
     
+    NSDictionary *paramDic = [NSDictionary dictionary];
+    
+    if (self.infoModel.userID.length>0) {
+        
+        paramDic = @{@"userId":self.infoModel.userID};
+    }else{
+        
+        paramDic = @{@"userId":@""};
+    }
+
+    
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:indexLoc paramDic:nil token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:indexLoc paramDic:paramDic token:self.infoModel.token finish:^(id responserObject) {
         
         NSLog(@"|INDEX-VC|success:%@",responserObject);
         
@@ -222,6 +204,13 @@
             weakSelf.rightProductModel = weakSelf.productArray[1];
             [weakSelf setProductListWithModel:weakSelf.rightProductModel sender:weakSelf.rightButton];
             
+            // 修改用户类型
+            weakSelf.userType = indexModel.userType;
+            [UserDefaults upDataWithUserType:weakSelf.userType];
+            NSLog(@"|INDEX-VC-USER-TYPE|%@",weakSelf.userType);
+            
+            // 修改个人中心关于页面地址
+            [UserDefaults upDataWithAboutUrl:indexModel.aboutUrl];
         }else{
             
             [ToastView toastViewWithMessage:msg timer:2.5];

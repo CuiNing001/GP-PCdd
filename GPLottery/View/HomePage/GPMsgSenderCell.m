@@ -17,11 +17,11 @@
 
 - (void)setDataWithModel:(GPMessageModel *)messageModel{
     
-    self.nicknameLab.text = messageModel.name;
-    [self.levelImageView setImage:[UIImage imageNamed:messageModel.level]];
-    self.playingTypeLab.text = messageModel.playingType;
-    self.expectLab.text = messageModel.expect;
-    self.betAmountLab.text = messageModel.betAmount;
+    self.nicknameLab.text = [NSString stringWithFormat:@"%@",messageModel.name];
+    [self.levelImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",messageModel.level]]];
+    self.playingTypeLab.text = [NSString stringWithFormat:@"%@",messageModel.playingType];
+    self.expectLab.text = [NSString stringWithFormat:@"%@",messageModel.expect];
+    self.betAmountLab.text = [NSString stringWithFormat:@"%@",messageModel.betAmount];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

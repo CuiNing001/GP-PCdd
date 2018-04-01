@@ -26,4 +26,6 @@
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)loadQRCardWithLoc;
 
+
+
 @end

@@ -17,6 +17,8 @@
 @property (strong, nonatomic) GPInfoModel    *infoModel;
 @property (strong, nonatomic) NSString       *token;
 @property (strong, nonatomic) NSMutableArray *dataArray;     // 玩法数据
+@property (assign, nonatomic) NSInteger page; // 页码
+@property (assign, nonatomic) NSInteger rows; // 加载条数
 
 @end
 
@@ -32,14 +34,18 @@
 #pragma mark - 加载数据
 - (void)loadData{
     
-    // 加载网络数据
-    [self loadNetData];
+    // 加载第一页公告数据
+    [self loadNetDataWithPage:@"1" rows:@"10"];
 }
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
     self.title = @"游戏记录";
+    
+    // 初始化页码和条数
+    self.page = 1;
+    self.rows = 10;
     
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -52,17 +58,37 @@
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPBetDetailCell" bundle:nil] forCellReuseIdentifier:@"betDetailCell"];
+    
+    // 添加刷新
+    __weak typeof(self)weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf.tableView.mj_footer resetNoMoreData];  // 消除尾部没有更多数据状态
+        weakSelf.page = 1;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        weakSelf.page++;
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        if (weakSelf.page>5) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        
+    }];
 }
 
 #pragma mark - 加载网络数据
-- (void)loadNetData{
+- (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
     
     [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];
     
     NSString *gameDetailLoc = [NSString stringWithFormat:@"%@user/1/enterBetDetail",kBaseLocation];
-    NSDictionary *paramDic = @{@"productId":self.productId,@"beginDate":self.beginDate,@"endDate":self.endDate};
+    NSDictionary *paramDic = @{@"productId":self.productId,@"beginDate":self.beginDate,@"endDate":self.endDate,@"page":page,@"rows":rows};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
@@ -101,6 +127,9 @@
         
     }];
     
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    
 }
 
 #pragma mark - 加载本地数据
@@ -119,8 +148,8 @@
 #pragma mark - tableview 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-//    return self.dataArray.count;
-    return 3;
+    return self.dataArray.count;
+//    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -134,18 +163,18 @@
     
     betDetailCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-//    GPBetDetailModel *detailModel = self.dataArray[indexPath.row];
-//
-//    [betDetailCell setDataWithModel:detailModel];
-    
-    betDetailCell.titleLab.text        = @"北京28--123566期";
-    betDetailCell.openCodeLab.text     = @"6+0+1";;
-    betDetailCell.playingTypeLab.text  = @"大小单双";
-    betDetailCell.openTypeLab.text     = @"大小单双";
-    betDetailCell.betAmoutLab.text     = @"200元宝";
-    betDetailCell.rewardNumLAb.text    = @"200元宝";
-    betDetailCell.openTimeLab.text     = @"2018-2-12 12:12:12";
-    betDetailCell.topRewardNumLab.text = @"200元宝";
+    GPBetDetailModel *detailModel = self.dataArray[indexPath.row];
+
+    [betDetailCell setDataWithModel:detailModel];
+
+//    betDetailCell.titleLab.text        = @"北京28--123566期";
+//    betDetailCell.openCodeLab.text     = @"6+0+1";;
+//    betDetailCell.playingTypeLab.text  = @"大小单双";
+//    betDetailCell.openTypeLab.text     = @"大小单双";
+//    betDetailCell.betAmoutLab.text     = @"200元宝";
+//    betDetailCell.rewardNumLAb.text    = @"200元宝";
+//    betDetailCell.openTimeLab.text     = @"2018-2-12 12:12:12";
+//    betDetailCell.topRewardNumLab.text = @"200元宝";
     
     return betDetailCell;
 }
