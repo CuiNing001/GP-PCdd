@@ -17,6 +17,7 @@
 
 - (void)setDataWithModel:(GPMessageModel *)messageModel{
     
+    self.msgTimeLab.text = [NSString stringWithFormat:@"%@",messageModel.date];
     self.nicknameLab.text = [NSString stringWithFormat:@"%@",messageModel.name];
     [self.levelImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",messageModel.level]]];
     self.playingTypeLab.text = [NSString stringWithFormat:@"%@",messageModel.playingType];

@@ -11,6 +11,9 @@
 
 @interface GPMsgReceiveCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *msgTimeLab;
+
+
 @property (weak, nonatomic) IBOutlet UILabel     *nicknameLab;         // 昵称
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;   // 会员级别
 @property (weak, nonatomic) IBOutlet UIImageView *receiveBgImageView;  // 聊天背景

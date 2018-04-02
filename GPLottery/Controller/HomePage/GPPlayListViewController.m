@@ -10,6 +10,7 @@
 #import "GPPlayListModel.h"
 #import "GPPlayListCell.h"
 #import "GPRoomListViewController.h"
+#import "GPOddInstroctionViewController.h"
 
 @interface GPPlayListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) MBProgressHUD      *progressHUD;
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *dataArray;
+@property (strong, nonatomic) NSString           *oddsExplain;  // 赔率说明
 
 @end
 
@@ -123,6 +125,55 @@
     
 }
 
+#pragma mark - 赔率说明
+- (void)loadOddInstrotionDataWithID:(NSString *)oddID{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *oddInstrotionLoc = [NSString stringWithFormat:@"%@playingMerchant/1/oddsDetail",kBaseLocation];
+    
+    NSDictionary *paramDic = @{@"id":oddID};
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:oddInstrotionLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|PLAYLIST-VC-ODD|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            weakSelf.oddsExplain = [respondModel.data objectForKey:@"oddsExplain"];
+            
+            // 跳转赔率说明
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPOddInstroctionViewController *oddInstrotionVC = [storyboard instantiateViewControllerWithIdentifier:@"oddInstroctionVC"];
+            oddInstrotionVC.webViewLoc = weakSelf.oddsExplain;
+            [weakSelf.navigationController pushViewController:oddInstrotionVC animated:YES];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+}
+
 #pragma mark - tableview 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -144,6 +195,8 @@
     
     GPPlayListCell *playListCell = [tableView dequeueReusableCellWithIdentifier:@"playListCell" forIndexPath:indexPath];
     
+    
+    
     playListCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (self.dataArray.count>0) {
@@ -151,6 +204,13 @@
         GPPlayListModel *playListModel = self.dataArray[indexPath.row];
         
         [playListCell setDataWithModel:playListModel];
+        
+        playListCell.oddInstroctionBlock = ^{
+            
+            NSLog(@"======^^^玩法ID^^^=====%@",playListModel.id);
+            
+            [self loadOddInstrotionDataWithID:[NSString stringWithFormat:@"%@",playListModel.id]];
+        };
     
     }
     

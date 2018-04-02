@@ -17,6 +17,8 @@
 #import "GPPlayListViewController.h"
 #import "GPRoomBetView.h"
 #import "GPServiceViewController.h"
+#import "GPBannerTypeTwoViewController.h"
+#import "GPBannerTypeThreeViewController.h"
 
 
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
@@ -92,6 +94,14 @@
     
     // 加载本地数据
     [self loadUserDefaultsData];
+}
+
+#pragma mark - 动态计算scrollview高度
+- (void)viewWillLayoutSubviews{
+    
+    [self.bgView layoutIfNeeded];
+    
+//    self.bgViewHeight.constant = kSize_height;
 }
 
 #pragma mark - 加载子控件
@@ -178,16 +188,33 @@
             // 设置首页基本数据
             [weakSelf setIndexDataWithModel:indexModel];
             
+            // 轮播图排序
+//            NSSortDescriptor *bannerSD = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
+//            weakSelf.bannerListArray = [[indexModel.bannerList sortedArrayUsingDescriptors:@[bannerSD]]mutableCopy];
+            
+            NSMutableArray *bannerLocArray = [NSMutableArray array];
             // 获取轮播图数据
             for (NSDictionary *bannerDic in indexModel.bannerList) {
                 
-                NSString *bannerLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,[bannerDic objectForKey:@"imagePath"]];
+//                NSString *bannerLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,[bannerDic objectForKey:@"imagePath"]];
                 
-                [weakSelf.bannerListArray addObject:bannerLoc];
+                GPBannerListModel *bannerModel = [GPBannerListModel new];
+
+                [bannerModel setValuesForKeysWithDictionary:bannerDic];
+                
+                [weakSelf.bannerListArray addObject:bannerModel];
+                
+                NSString *bannerLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,bannerModel.imagePath];
+                
+                [bannerLocArray addObject:bannerLoc];
+                
+                NSLog(@"|HOME-BANNER-TYPE|%@",bannerModel.type);
                 
             }
+            
+            
             // 设置轮播图地址
-            self.scrollView.imageURLStringsGroup = weakSelf.bannerListArray;
+            self.scrollView.imageURLStringsGroup = bannerLocArray;
             
             // 获取产品数据
             for (NSDictionary *productDic in indexModel.productList) {
@@ -296,6 +323,50 @@
 
 #pragma mark - 轮播图点击事件
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    
+    GPBannerListModel *bannerModel = self.bannerListArray[index];
+    
+    NSLog(@"|HOME-BANNER-点击事件|%@",bannerModel.type);
+    
+    if (bannerModel.type.integerValue == -1) {   // 无作用
+        
+        
+    }else if (bannerModel.type.integerValue == 1){  // 根据prouctId请求productDetail
+        
+        NSString *productID = [NSString stringWithFormat:@"%@",bannerModel.productId];
+        NSString *productName = @"玩法说明";
+        
+        NSDictionary *paramDic = @{@"id":productID};
+        
+        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+        
+    }else if (bannerModel.type.integerValue == 2){  // 生成二维码
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        GPBannerTypeTwoViewController *bannerTypeTwoVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeTwoVC"];
+        
+        bannerTypeTwoVC.hidesBottomBarWhenPushed = YES;
+        
+        bannerTypeTwoVC.QRLocation = bannerModel.url;
+        
+        [self.navigationController pushViewController:bannerTypeTwoVC animated:YES];
+        
+        
+    }else if (bannerModel.type.integerValue == 3){  // 外链
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        GPBannerTypeThreeViewController *bannerTypeThreeVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeThreeVC"];
+        
+        bannerTypeThreeVC.hidesBottomBarWhenPushed = YES;
+        
+        bannerTypeThreeVC.webViewLoc = bannerModel.url;
+        
+        [self.navigationController pushViewController:bannerTypeThreeVC animated:YES];
+        
+    }
+    
     
 }
 

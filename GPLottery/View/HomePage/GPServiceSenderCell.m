@@ -30,9 +30,22 @@
 
 // 控件样式
 - (void)setDataWithMessage:(JMSGMessage *)message{
+    
+    [self loadUserDefaultsData];
+    
+    NSTimeInterval second = message.timestamp.longLongValue/1000;             // 格式化时间戳
+    
+    NSDate *expireTimeDate = [NSDate dateWithTimeIntervalSince1970:second];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"HH:mm:ss"];
+    
+    NSString *msgDate = [formatter stringFromDate:expireTimeDate];
  
-    self.timeLab.text = [NSString stringWithFormat:@"%@",message.timestamp];
-    self.nicknameLab.text = message.fromUser.username;
+    self.timeLab.text = [NSString stringWithFormat:@"%@",msgDate];
+    
+    self.nicknameLab.text = self.infoModel.nickname;
     
     NSLog(@"========|发送cell|%@|==message==|%@",message.fromUser,message);
     
@@ -52,10 +65,24 @@
         self.cellImageView.contentMode     = UIViewContentModeScaleToFill;
         self.cellImageView.clipsToBounds   = YES;
         JMSGImageContent *imageContent = (JMSGImageContent *)message.content;
-        NSString *imageLink = imageContent.imageLink;
-        NSLog(@"=========^^^图片地址^^^========%@",imageLink);
-        [self.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageLink]];
-   
+        
+        [imageContent largeImageDataWithProgress:^(float percent, NSString *msgId) {
+            
+            NSLog(@"======================%f==================",percent);
+            
+        } completionHandler:^(NSData *data, NSString *objectId, NSError *error) {
+            
+            if (!error) {
+                NSString *imageLink = imageContent.imageLink;
+                NSLog(@"=========^^^图片地址^^^========%@",imageLink);
+                [self.cellImageView setImage:[UIImage imageWithData:data]];
+                
+            }else{
+                [ToastView toastViewWithMessage:@"图片获取失败" timer:3.0];
+            }
+            
+        }];
+        
     }
     
     // 设置图片拉伸样式
@@ -154,6 +181,17 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cellImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.cellBackgroundImage attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];    // 距离聊天气泡左侧：10
 }
 
+
+#pragma mark - 加载本地数据
+- (void)loadUserDefaultsData{
+    
+    NSMutableDictionary *infoDic = [UserDefaults searchData];
+    
+    self.infoModel               = [[GPInfoModel alloc]init];
+    
+    [self.infoModel setValuesForKeysWithDictionary:infoDic];
+    
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

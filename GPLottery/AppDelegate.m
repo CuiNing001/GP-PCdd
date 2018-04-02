@@ -26,13 +26,37 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
     // 初始化极光IM
     [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
     
+    
+    [JMessage registerForRemoteNotificationTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    
+    
     //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setVersionBtn];
     });
     
+    // 禁止自动休眠
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
+    
     
     return YES;
+}
+
+//获取DeviceToken成功
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+    NSLog(@"|^^^^^^^^APPDELEGATE^^^^^^^^^^^|DeviceToken: {%@}",deviceToken);
+    
+    [JMessage registerDeviceToken:deviceToken];
+
+}
+
+/*
+ * 功能：禁止横屏
+ */
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - 添加全局按钮
@@ -79,6 +103,9 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // 开启自动休眠
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 
 
@@ -89,6 +116,9 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // 禁止自动休眠
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
 
 

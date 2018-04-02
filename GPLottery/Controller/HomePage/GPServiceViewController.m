@@ -52,7 +52,7 @@
 
 - (void)loadData{
     
-    [self loadServiceNetData];
+    [self joinSingleChatRoom];
 }
 
 - (void)loadServiceNetData{
@@ -77,7 +77,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             
         }else{
@@ -110,19 +110,21 @@
             NSLog(@"^^^^^^^^^^^^^^^创建单聊会话^^^^^^^^^^^^^^^^^^%@",resultObject);
             
             if (!error) {
-                [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
+                [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
+                
+                [self loadServiceNetData];
                 
             }else{
                 
                 // 创建单聊会话失败
-                [ToastView toastViewWithMessage:@"链接失败，请稍后再试" timer:3.0];
+                [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
             }
         }];
     }else{
         // 获取到对应单聊会话
-        [ToastView toastViewWithMessage:@"链接成功" timer:3.0];
+        [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
         
-        
+        [self loadServiceNetData];
     }
     
 }
@@ -241,15 +243,15 @@
         self.imageData = UIImagePNGRepresentation(selectImage);
         
 //        // image消息的实例对象
-//        JMSGImageContent *imageContent = [[JMSGImageContent alloc]initWithImageData:self.imageData];
+        JMSGImageContent *imageContent = [[JMSGImageContent alloc]initWithImageData:self.imageData];
 //
-//        JMSGMessage *sendMessage = [JMSGMessage createSingleMessageWithContent:imageContent username:kAdminUsername];
+        [JMSGMessage createSingleMessageWithContent:imageContent username:kAdminUsername];
         
-        //
-//        [JMSGMessage sendMessage:sendMessage];
         [JMSGMessage sendSingleImageMessage:self.imageData toUser:kAdminUsername];
     
         [self.tableView reloadData];
+        
+        
         
     }];
     
@@ -264,14 +266,25 @@
 
     if (!error) {
         
-        JMSGTextContent *textContent = (JMSGTextContent *)message.content;
-
-        NSString *msgText = textContent.text;
-
-        NSLog(@"|SERVICE-VC|-|send-success|%@",msgText);
-        [ToastView toastViewWithMessage:@"发送成功" timer:3.0];
-        
+        if (message.contentType == kJMSGContentTypeText) {
+            
+            JMSGTextContent *textContent = (JMSGTextContent *)message.content;
+            
+            NSString *msgText = textContent.text;
+            
+            NSLog(@"|SERVICE-VC|-|send-success|%@",msgText);
+            [ToastView toastViewWithMessage:@"文字发送成功" timer:3.0];
+            
+        }else if (message.contentType == kJMSGContentTypeImage){
+            
+            NSLog(@"|SERVICE-VC|-|send-success|");
+            
+            [ToastView toastViewWithMessage:@"图片发送成功" timer:3.0];
+            
+        }
+ 
         [self.msgDataArray addObject:message];
+        [self.tableView reloadData];
     }else{
         
         NSLog(@"|SERVICE-VC|-|send-error|%@",error);
@@ -297,12 +310,10 @@
         
         NSLog(@"|RECEIVE-VC|接收消息失败error%ld",(long)error.code);
     }
-    
-    
-   
-    
-   
+
 }
+
+
 
 #pragma mark - 获取图片
 - (IBAction)addImage:(UIButton *)sender {
@@ -333,7 +344,6 @@
         [JMSGMessage sendMessage:sendMessage];
         NSError *error;
         [self onSendMessageResponse:sendMessage error:error];
-        [self.tableView reloadData];
         
         
         // 发送成功后回收键盘，清空输入框

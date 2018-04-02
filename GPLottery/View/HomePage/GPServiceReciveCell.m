@@ -36,8 +36,18 @@
 #pragma mark - 赋值cell
 - (void)setDataWithMessage:(JMSGMessage *)message{
     
-    self.timeLab.text = [NSString stringWithFormat:@"%@",message.timestamp];
-    self.nicknameLab.text = message.fromUser.username;
+    NSTimeInterval second = message.timestamp.longLongValue/1000;             // 格式化时间戳
+    
+    NSDate *expireTimeDate = [NSDate dateWithTimeIntervalSince1970:second];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"HH:mm:ss"];
+    
+    NSString *msgDate = [formatter stringFromDate:expireTimeDate];
+    
+    self.timeLab.text = [NSString stringWithFormat:@"%@",msgDate];
+    self.nicknameLab.text = @"客服";
     
      NSLog(@"========|接收cell|==%@|==message==|%@",message.fromUser,message);
     
@@ -50,9 +60,22 @@
         self.cellImageView.contentMode     = UIViewContentModeScaleToFill;
         self.cellImageView.clipsToBounds   = YES;
         JMSGImageContent *imageContent = (JMSGImageContent *)message.content;
-        NSString *imageLink = imageContent.imageLink;
-        NSLog(@"=========^^^图片地址^^^========%@",imageLink);
-        [self.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageLink]];
+        [imageContent largeImageDataWithProgress:^(float percent, NSString *msgId) {
+            
+            NSLog(@"======================%f==================",percent);
+            
+        } completionHandler:^(NSData *data, NSString *objectId, NSError *error) {
+            
+            if (!error) {
+                NSString *imageLink = imageContent.imageLink;
+                NSLog(@"=========^^^图片地址^^^========%@",imageLink);
+                [self.cellImageView setImage:[UIImage imageWithData:data]];
+                
+            }else{
+                [ToastView toastViewWithMessage:@"图片获取失败" timer:3.0];
+            }
+            
+        }];
     }else{
         
         self.textLab.hidden       = NO;

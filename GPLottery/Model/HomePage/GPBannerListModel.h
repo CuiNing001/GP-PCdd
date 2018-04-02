@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *bannerTime; // 创建时间
 @property (strong, nonatomic) NSString *productId;  // 产品id
 @property (strong, nonatomic) NSString *id;         //
-@property (strong, nonatomic) NSString *type;       // 
+@property (strong, nonatomic) NSString *type;       //
+@property (strong, nonatomic) NSString *url;        // 地址（二维码、外链）
 
 @end

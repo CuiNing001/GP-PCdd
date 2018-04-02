@@ -66,6 +66,11 @@ static int timerSecond;  // 倒计时秒数
 
 @property (strong, nonatomic) GPRoomCopyBetView *betCopyView;  // 跟投页面
 
+// right navigation bar
+@property (strong, nonatomic) UIView *itemView;
+
+@property (strong, nonatomic) UIButton *itemBtn;
+
 
 @end
 
@@ -75,14 +80,97 @@ static int timerSecond;  // 倒计时秒数
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"游戏大厅";
     NSLog(@"|ROOMVC|roomID:%@==productid:%@",_roomIdStr,_productIdStr);
     
     [self loadSubView];
     
-    [self loadOddsContentData];
+    [self enterChatRoom];
+    
+    if (self.productIdStr.integerValue == 1) {
+        
+        self.title = @"北京28";
+    }else{
+        
+        self.title = @"加拿大28";
+    }
     
     NSLog(@"|ROOM-VC-^^^^^^玩法ID(1:北京28、2:加拿大28)^^^^^^|%@",self.productIdStr);
+}
+
+#pragma mark - 自定义navigation bar item
+- (void)customNavigationBarItem{
+    
+    // 导航栏右侧按钮
+    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
+    
+    self.itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    _itemBtn.frame = CGRectMake(0, 10, 50, 30);
+    
+    [_itemBtn setImage:[UIImage imageNamed:@"service_item"] forState:UIControlStateNormal];
+    
+    [_itemBtn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_itemView addSubview:_itemBtn];
+    
+    UIButton *webBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    webBtn.frame = CGRectMake(50, 10, 50, 30);
+    
+    [webBtn setImage:[UIImage imageNamed:@"more_item"] forState:UIControlStateNormal];
+    
+    [webBtn addTarget:self action:@selector(turnToChooseView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_itemView addSubview:webBtn];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:_itemView];
+    
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+}
+
+#pragma mark - 跳转客服
+- (void)turnToService:(UIBarButtonItem *)sender{
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+//
+//    serviceVC.hidesBottomBarWhenPushed = YES;
+//
+//    [self.navigationController pushViewController:serviceVC animated:YES];
+}
+
+#pragma mark - 顶部走势图
+- (void)turnToChooseView:(UIBarButtonItem *)sender{
+    
+    
+}
+
+#pragma mark - 进入房间
+- (void)enterChatRoom{
+    
+    // 加入聊天室
+    __weak typeof(self)weakSelf = self;
+    [JMSGChatRoom enterChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
+        
+        if (!error) {// 加入聊天室成功
+            
+            NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|SUCCESS|%@",resultObject);
+            
+            [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
+            
+            // 获取数据
+            [weakSelf loadOddsContentData];
+            
+        }else{ // 加入聊天室失败
+            
+            NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|ERROR|%@",error);
+            
+            [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
+        }
+        
+    }];
 }
 
 #pragma mark - 关闭页面退出聊天室
@@ -102,18 +190,13 @@ static int timerSecond;  // 倒计时秒数
     }];
     
     // 销毁定时器
-    [self.normolTimer invalidate];
-    self.normolTimer = nil;
     [self.enterTimer invalidate];
     self.enterTimer = nil;
 }
 
 - (void)loadSubView{
     
-    // 房间内正常定时器
-    self.normolTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(normolCountdown) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop]addTimer:self.normolTimer forMode:NSDefaultRunLoopMode];
-    [self.normolTimer setFireDate:[NSDate distantFuture]];  // 关闭定时器
+    [self customNavigationBarItem];
     
     // 历史记录tableview
     self.historyTableView.delegate = self;
@@ -399,7 +482,7 @@ static int timerSecond;  // 倒计时秒数
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             // 获取房间内数据
             NSDictionary *dataDic = [responserObject objectForKey:@"data"];
@@ -437,11 +520,11 @@ static int timerSecond;  // 倒计时秒数
 #pragma mark - 房间数据赋值
 - (void)updataForRoomContent{
     
-    self.moneyLab.text = self.roomInfoModel.moneyNum;  // 用户元宝数
+    self.moneyLab.text = [NSString stringWithFormat:@"%@",self.roomInfoModel.moneyNum];  // 用户元宝数
     NSDictionary *comingDic = [NSDictionary dictionaryWithDictionary:self.roomInfoModel.coming];  // 下期数据
-    self.expectLab.text = [comingDic objectForKey:@"expect"]; // 即将开奖期数
-    self.openTime = [comingDic objectForKey:@"openTime"];  // 倒计时秒数
-    NSString *endTime = [comingDic objectForKey:@"forbidBetAheadTime"]; // 封盘时间
+    self.expectLab.text = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"expect"]]; // 即将开奖期数
+    self.openTime = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"openTime"]];  // 倒计时秒数
+    NSString *endTime = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"forbidBetAheadTime"]]; // 封盘时间
     
     NSLog(@"|ROOM-VC|-|openTime|:%@-|endTime|:%@",_openTime,endTime);
     
@@ -545,7 +628,6 @@ static int timerSecond;  // 倒计时秒数
                 minute = 0;
                 second = timerSecond-15;
             }
-            
             self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
             
         }else if (timerSecond<=15){  // 封盘
@@ -567,8 +649,6 @@ static int timerSecond;  // 倒计时秒数
         }
     }
 }
-
-
 
 #pragma mark - 投注数据赋值
 - (void)updataForBetContent{
@@ -659,7 +739,10 @@ static int timerSecond;  // 倒计时秒数
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+            [ToastView toastViewWithMessage:@"投注成功" timer:3.0];
+            
+            // 下注成功后修改余额
+            self.moneyLab.text = [NSString stringWithFormat:@"%d",self.moneyLab.text.intValue-betAmount.intValue];
 
             NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",weakSelf.roomIdStr,betAmount,weakSelf.playingId,weakSelf.productIdStr);
             
@@ -747,6 +830,23 @@ static int timerSecond;  // 倒计时秒数
     
     [self.tableView reloadData];
     
+    if (messageModel.type.integerValue == 2) {
+        
+        GPRoomHistoryModel *historyModel = [GPRoomHistoryModel new];
+        
+        historyModel.expect = messageModel.expect;
+        historyModel.code = messageModel.openCode;
+        historyModel.codeText = messageModel.openText;
+        
+        self.historyExpectLab.text = [NSString stringWithFormat:@"%@",messageModel.expect];
+        self.historyCodeLab.text = [NSString stringWithFormat:@"%@",messageModel.openCode];
+        self.historyCodeTextLab.text = [NSString stringWithFormat:@"%@",messageModel.openText];
+        
+        [self.historyDataArray insertObject:historyModel atIndex:0];
+        [self.historyDataArray removeObject:self.historyDataArray.lastObject];
+        [self.historyTableView reloadData];
+    }
+    
     // 添加tableview向上滚动
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
     [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -780,6 +880,13 @@ static int timerSecond;  // 倒计时秒数
     JMSGUser *user = [JMSGUser myInfo];
     
     NSLog(@"^^^^^^^^^^^^金额变更^^^^^^^^^^^^^^^%@",user.avatar);
+    
+    if (user.avatar.length>0) {
+        
+        self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
+    }
+    
+    
 }
 
 #pragma mark - table view 代理方法
@@ -812,7 +919,7 @@ static int timerSecond;  // 倒计时秒数
             
         }else if ([messageModel.type isEqualToString:@"1"]){
             
-            return 120;
+            return 150;
             
         }else if ([messageModel.type isEqualToString:@"2"]){
             

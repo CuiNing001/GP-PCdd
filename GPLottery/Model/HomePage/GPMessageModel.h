@@ -32,4 +32,7 @@
 
 @property (strong, nonatomic) UIImage *thumbnailImage;
 
+@property (strong, nonatomic) NSString *openCode; // 开内容
+@property (strong, nonatomic) NSString *openText; // 开奖类型（大小单双）
+
 @end

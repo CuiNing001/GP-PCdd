@@ -22,6 +22,9 @@
 #import "GPAboutViewController.h"
 
 @interface GPMineViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;
+
 @property (weak, nonatomic) IBOutlet UIView      *headerView;      // headerView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;       // tableView
 @property (weak, nonatomic) IBOutlet UIButton    *userImageBtn;    // 头像按钮
@@ -47,6 +50,14 @@
     [self loadData];
     [self loadSubView];
 
+}
+
+#pragma mark - 动态计算scrollview高度
+- (void)viewWillLayoutSubviews{
+    
+    [self.bgView layoutIfNeeded];
+    
+        self.bgViewHeight.constant = 180+self.listTextArray.count*60;
 }
 
 - (void)viewWillAppear:(BOOL)animated{

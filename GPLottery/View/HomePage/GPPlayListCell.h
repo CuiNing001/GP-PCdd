@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *playTypeLab;  // 玩法类型
 @property (weak, nonatomic) IBOutlet UILabel *remarkLab;    // 左下角文字
 @property (weak, nonatomic) IBOutlet UILabel *onlineNumLab; // 在线人数
+@property (copy, nonatomic) void (^oddInstroctionBlock)(void);  // 赔率说明
 
 - (void)setDataWithModel:(GPPlayListModel *)model;
 

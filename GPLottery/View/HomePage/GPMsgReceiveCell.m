@@ -18,6 +18,7 @@
 
 - (void)setDataWithModel:(GPMessageModel *)messageModel{
     
+    self.msgTimeLab.text = [NSString stringWithFormat:@"%@",messageModel.date];
     self.nicknameLab.text = [NSString stringWithFormat:@"%@",messageModel.name];
     [self.userIconImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",messageModel.level]]];
     self.expectLab.text = [NSString stringWithFormat:@"%@",messageModel.expect];

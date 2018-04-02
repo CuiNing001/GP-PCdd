@@ -11,6 +11,9 @@
 
 @interface GPMsgSenderCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *msgTimeLab;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLab;        // 昵称
 @property (weak, nonatomic) IBOutlet UIImageView *levelImageView; // 等级图标
 @property (weak, nonatomic) IBOutlet UILabel *playingTypeLab;     // 投注类型

@@ -136,14 +136,33 @@ static int touch = 0;
     
     NSDictionary *paramDic = @{@"map":map};
 
+    __weak typeof(self)weakSelf = self;
     [self postAsynWithURL:[NSURL URLWithString:bankInfoLoc] parems:paramDic compile:^(id response, NSData *data, NSError *error) {
 
         if (!error) {
-
+            
+            NSLog(@"|BANK-INFO-VC|success:%@",response);
+            //
+                    [weakSelf.progressHUD hideAnimated:YES];
+            
+                    GPRespondModel *respondModel = [GPRespondModel new];
+            
+                    [respondModel setValuesForKeysWithDictionary:response];
+            
+                    if (respondModel.code.integerValue == 9200) {
+            
+                        [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+                    }else{
+            
+                        [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+                    }
 
         }else{
 
-
+            [weakSelf.progressHUD hideAnimated:YES];
+            
+            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         }
 
     }];
@@ -324,6 +343,8 @@ static int touch = 0;
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     
     [request setHTTPBody:postData];
+    
+    NSLog(@"|---BANKINFOR---|%@",postData);
     
     [request setValue:self.token forHTTPHeaderField:@"token"];
     
