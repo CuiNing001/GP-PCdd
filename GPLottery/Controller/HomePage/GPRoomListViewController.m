@@ -161,6 +161,8 @@
     
     roomVC.productIdStr = self.productIdStr;
     
+    roomVC.playID = self.playID;
+    
     [self.navigationController pushViewController:roomVC animated:YES];
     
 //    // 加入聊天室

@@ -128,10 +128,12 @@ static NSInteger indexNum;
         
         NSLog(@"微信支付");
         
-        payMoneyVC.titleStr = @"微信支付";
-        payMoneyVC.typeStr = @"2";
-        payMoneyVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:payMoneyVC animated:YES];
+        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
+        
+//        payMoneyVC.titleStr = @"微信支付";
+//        payMoneyVC.typeStr = @"2";
+//        payMoneyVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:payMoneyVC animated:YES];
         
     }else if (indexNum==1){
         

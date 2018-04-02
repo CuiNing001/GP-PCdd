@@ -19,6 +19,7 @@
 #import "GPRoomHistoryModel.h"
 #import "GPRoomHistoryCell.h"
 #import "GPRoomCopyBetView.h"
+#import "GPOddInstroctionViewController.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
@@ -68,8 +69,9 @@ static int timerSecond;  // 倒计时秒数
 
 // right navigation bar
 @property (strong, nonatomic) UIView *itemView;
-
 @property (strong, nonatomic) UIButton *itemBtn;
+
+@property (strong, nonatomic) NSString           *oddsExplain;  // 赔率说明
 
 
 @end
@@ -84,7 +86,7 @@ static int timerSecond;  // 倒计时秒数
     
     [self loadSubView];
     
-    [self enterChatRoom];
+    
     
     if (self.productIdStr.integerValue == 1) {
         
@@ -132,19 +134,24 @@ static int timerSecond;  // 倒计时秒数
 #pragma mark - 跳转客服
 - (void)turnToService:(UIBarButtonItem *)sender{
     
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
-//
-//    serviceVC.hidesBottomBarWhenPushed = YES;
-//
-//    [self.navigationController pushViewController:serviceVC animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+
+    serviceVC.hidesBottomBarWhenPushed = YES;
+
+    [self.navigationController pushViewController:serviceVC animated:YES];
 }
 
 #pragma mark - 顶部走势图
 - (void)turnToChooseView:(UIBarButtonItem *)sender{
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self enterChatRoom];
 }
 
 #pragma mark - 进入房间
@@ -192,6 +199,9 @@ static int timerSecond;  // 倒计时秒数
     // 销毁定时器
     [self.enterTimer invalidate];
     self.enterTimer = nil;
+    
+    // 清除聊天数据
+    [self.receiveMessageArray removeAllObjects];
 }
 
 - (void)loadSubView{
@@ -307,6 +317,8 @@ static int timerSecond;  // 倒计时秒数
     self.roomBetView.oddsBtnBlock = ^{
       
         NSLog(@"赔率说明");
+        
+        [weakSelf loadOddInstrotionDataWithID:weakSelf.playID];
     };
     
     // item点击事件
@@ -887,6 +899,55 @@ static int timerSecond;  // 倒计时秒数
     }
     
     
+}
+
+#pragma mark - 赔率说明
+- (void)loadOddInstrotionDataWithID:(NSString *)oddID{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *oddInstrotionLoc = [NSString stringWithFormat:@"%@playingMerchant/1/oddsDetail",kBaseLocation];
+    
+    NSDictionary *paramDic = @{@"id":oddID};
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:oddInstrotionLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|PLAYLIST-VC-ODD|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            weakSelf.oddsExplain = [respondModel.data objectForKey:@"oddsExplain"];
+            
+            // 跳转赔率说明
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPOddInstroctionViewController *oddInstrotionVC = [storyboard instantiateViewControllerWithIdentifier:@"oddInstroctionVC"];
+            oddInstrotionVC.webViewLoc = weakSelf.oddsExplain;
+            [weakSelf.navigationController pushViewController:oddInstrotionVC animated:YES];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - table view 代理方法

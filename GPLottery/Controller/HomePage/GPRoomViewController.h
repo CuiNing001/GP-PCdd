@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *roomIdStr;    // 房间id
 @property (strong, nonatomic) NSString *productIdStr; // 产品id
+@property (strong, nonatomic) NSString *playID;       // 玩法id
 
 @end
