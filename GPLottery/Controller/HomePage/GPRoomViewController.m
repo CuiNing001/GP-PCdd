@@ -23,6 +23,7 @@
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
 static int second;     // 倒计时秒
+static int timerSecond;  // 倒计时秒数
 @interface GPRoomViewController ()<UITextViewDelegate,JMSGConversationDelegate,JMessageDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatViewBottom;  // chatview距离底部的距离
@@ -80,6 +81,8 @@ static int second;     // 倒计时秒
     [self loadSubView];
     
     [self loadOddsContentData];
+    
+    NSLog(@"|ROOM-VC-^^^^^^玩法ID(1:北京28、2:加拿大28)^^^^^^|%@",self.productIdStr);
 }
 
 #pragma mark - 关闭页面退出聊天室
@@ -128,6 +131,7 @@ static int second;     // 倒计时秒
     
     // tableView样式
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     
     // 注册进入房间cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgEnterRoomCell" bundle:nil] forCellReuseIdentifier:@"enterRoomCell"];
@@ -247,7 +251,7 @@ static int second;     // 倒计时秒
     // 确定跟投
     self.betCopyView.makeSuerBtnBlock = ^{
         
-//        [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+        [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
     };
     
     // 取消跟投
@@ -441,14 +445,17 @@ static int second;     // 倒计时秒
     
     NSLog(@"|ROOM-VC|-|openTime|:%@-|endTime|:%@",_openTime,endTime);
     
-    // 设置倒计时
-    if (self.openTime.intValue>60) {
-        minute = self.openTime.intValue/60;   // 获取分钟数
-        second = self.openTime.intValue%60;   // 获取秒数
-    }else{
-        minute = 0;
-        second = self.openTime.intValue;
-    }
+//    // 设置倒计时
+//    if (self.openTime.intValue>60) {
+//        minute = self.openTime.intValue/60;   // 获取分钟数
+//        second = self.openTime.intValue%60;   // 获取秒数
+//    }else{
+//        minute = 0;
+//        second = self.openTime.intValue;
+//    }
+    
+    // 设置倒计时时间
+    timerSecond = self.openTime.intValue;
     
     NSLog(@"|ENTERROOM-OPENTIME|^^^^^^opentime^^^^^|%@|^^^^^^^minute^^^^^^^|%d|^^^^^^second^^^^^^^|%d",self.openTime,minute,second);
     
@@ -477,99 +484,91 @@ static int second;     // 倒计时秒
 #pragma mark - 倒计时
 /*
  * @param openTime:进入房间获取剩余倒计时时间
- * @param timer:距离下期开奖时间3分30秒 - 10秒封盘时间 = 倒计时时间3分20秒
+ * @param 封盘时间:
+                   加拿大28：15秒
+                   北京28：30秒
+          开盘时间:
+                   加拿大28：3分30秒
+                   北京28：5分0秒
  */
-- (void)countdown{  // 进入房间开奖倒计时
-    
-    // 初始倒计时时间<0显示封盘中
-    if (second<0) {
-        
-        // 秒数为0时提示封盘中，停止定时器
-        self.timerLab.text = @"封盘中";
-        
-        // 关闭进入房间定时器
-        [self.enterTimer setFireDate:[NSDate distantFuture]];
-        
-        minute = 3;
-        second = 30;
-        // 开启正常房间内定时器
-        [self.normolTimer setFireDate:[NSDate distantPast]];
-    }else{
-        
-        if (minute>=0) {
-            self.timerLab.text = [NSString stringWithFormat:@"%d分:%d秒",minute,second];
-            // 分钟数大于0，秒数每秒减1
-            second--;
-            if (second == 0) {
-                if (minute==0) {
-                    minute--;
-                }else{
-                    
-                    // 秒数为0时,分钟数减1, 充值秒数为59
-                    minute--;
-                    second = 59;
-                }
-            }
-            
-        }else{
-            
-            self.timerLab.text = [NSString stringWithFormat:@"0分:%d秒",second];
-            // 分钟数<=0时，秒数每秒减1
-            second--;
-            
-            if (second == 0) {
-                // 秒数为0时提示封盘中，停止定时器
-                self.timerLab.text = @"封盘中";
-                
-                // 关闭进入房间定时器
-                [self.enterTimer setFireDate:[NSDate distantFuture]];
-                
-                minute = 3;
-                second = 30;
-                // 修改当前期数
-                self.expectLab.text = [NSString stringWithFormat:@"%d",self.expectLab.text.intValue+1];
-                // 开启正常房间内定时器
-                [self.normolTimer setFireDate:[NSDate distantPast]];
-            }
-        }
-    }
-}
-- (void)normolCountdown{   // 正常房间内开奖倒计时
 
-    if (minute>=0) {
-        // 分钟数>=0时，秒数没秒减1，
-        second--;
-        if (minute == 3 && second >20) {
-            // 分钟数==3并且秒数>20显示封盘中（10秒钟封盘时间）
-            self.timerLab.text = @"封盘中";
-        }else{
+- (void)countdown{
+    
+     // 北京28
+    if (self.productIdStr.integerValue == 1) {
+        
+        if (timerSecond >30) {   // 开盘
             
-            // 封盘结束开始倒计时
-            self.timerLab.text = [NSString stringWithFormat:@"%d分:%d秒",minute,second];
+            timerSecond--;
             
-            if (second==0) {
-                // 秒数为0时分钟数减1，重置秒数为59
-                minute--;
-                second = 59;
+            // 设置倒计时
+            if ((timerSecond-30)>60) {
+                minute = (timerSecond-30)/60;   // 获取分钟数
+                second = (timerSecond-30)%60;   // 获取秒数
+            }else{
+                minute = 0;
+                second = timerSecond-30;
             }
-        }
-    }else{
-        // 分钟数<0时，秒数每秒减1
-        self.timerLab.text = [NSString stringWithFormat:@"0分:%d秒",second];
-        second--;
-        if (second>=0) {
-            // 秒数==0时显示封盘中
+            
+            self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
+            
+        }else if (timerSecond<=30){  // 封盘
+            
             self.timerLab.text = @"封盘中";
-            // 修改当前期数
-            self.expectLab.text = [NSString stringWithFormat:@"%d",self.expectLab.text.intValue+1];
-            // 重置倒计时时间
-            minute = 3;
-            second = 30;
+            
+            timerSecond--;
+            
+            if (timerSecond == 0) {
+                
+                self.expectLab.text = [NSString stringWithFormat:@"%d",(self.expectLab.text.intValue+1)];
+                
+                timerSecond = 300;
+            }
+            
+        }else{   // 封盘
+            
+            self.timerLab.text = @"封盘中";
         }
         
+        // 加拿大28
+    }else if (self.productIdStr.integerValue == 2){
+        
+        if (timerSecond>15) {   // 开盘
+            
+            timerSecond--;
+            
+            // 设置倒计时
+            if ((timerSecond-15)>60) {
+                minute = (timerSecond-15)/60;   // 获取分钟数
+                second = (timerSecond-15)%60;   // 获取秒数
+            }else{
+                minute = 0;
+                second = timerSecond-15;
+            }
+            
+            self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
+            
+        }else if (timerSecond<=15){  // 封盘
+            
+            self.timerLab.text = @"封盘中";
+            
+            timerSecond--;
+            
+            if (timerSecond == 0) {
+                
+                self.expectLab.text = [NSString stringWithFormat:@"%d秒",(self.expectLab.text.intValue+1)];
+                
+                timerSecond =210;
+            }
+            
+        }else{   // 封盘
+            
+            self.timerLab.text = @"封盘中";
+        }
     }
-    
 }
+
+
 
 #pragma mark - 投注数据赋值
 - (void)updataForBetContent{
@@ -615,16 +614,36 @@ static int second;     // 倒计时秒
     
 }
 
+#pragma mark - 获取当前时间
+- (NSString *)loadNowDate{
+    
+    NSDate *nowDate = [NSDate date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    
+    NSString *nowDateStr = [dateFormatter stringFromDate:nowDate];
+    
+    NSLog(@"^^^^^^^当前时间^^^^^^^%@",nowDateStr);
+    
+    return nowDateStr;
+}
+
 #pragma mark - 确定投注
 - (void)makeSureBetWithAmount:(NSString *)betAmount{
+    
+    NSString *nowDate = [self loadNowDate];
+    
+//    NSDictionary *betDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":self.expectLab.text,@"level":self.infoModel.level,@"name":self.infoModel.nickname,@"playingId":self.playingId,@"playingType":self.productIdStr,@"type":@"1"};
+    
+    NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"betAmount":betAmount,@"playingId":self.playingId,@"productId":self.productIdStr};
     
     [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];
     
     NSString *betLoc = [NSString stringWithFormat:@"%@betting/1/do",kPlayBaseLocation];
-    
-    NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"betAmount":betAmount,@"playingId":self.playingId,@"productId":self.productIdStr};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
@@ -642,22 +661,21 @@ static int second;     // 倒计时秒
             
             [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
 
-            NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",self.roomIdStr,betAmount,self.playingId,self.productIdStr);
+            NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",weakSelf.roomIdStr,betAmount,weakSelf.playingId,weakSelf.productIdStr);
             
             // 投注成功发送消息
-            NSDictionary *contentDic = @{@"playingType":self.roomBetView.nameStr,@"betAmount":betAmount,@"level":self.infoModel.level,@"expect":self.expectLab.text,@"type":@"1"};
-//            JMSGCustomContent *content = [[JMSGCustomContent alloc]initWithCustomDictionary:contentDic];
+            NSDictionary *contentDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":weakSelf.expectLab.text,@"level":weakSelf.infoModel.level,@"name":weakSelf.infoModel.nickname,@"playingId":weakSelf.playingId,@"playingType":weakSelf.productIdStr,@"type":@"1"};
             NSString *contentSter = [ToastView dictionaryToJson:contentDic];
             NSLog(@"========^send^text^^========%@",contentSter);
             JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:contentSter];
-            JMSGMessage *sendMessage = [JMSGMessage createChatRoomMessageWithContent:content chatRoomId:self.roomIdStr];
+            JMSGMessage *sendMessage = [JMSGMessage createChatRoomMessageWithContent:content chatRoomId:weakSelf.roomIdStr];
             [JMSGMessage sendMessage:sendMessage];
             NSError *error;
-            [self onSendMessageResponse:sendMessage error:error];
+            [weakSelf onSendMessageResponse:sendMessage error:error];
             GPMessageModel *messageModel = [GPMessageModel new];
             [messageModel setValuesForKeysWithDictionary:contentDic];
             [messageModel setValue:@"sender" forKey:@"sendType"];
-            [messageModel setValue:self.infoModel.nickname forKey:@"name"];
+            [messageModel setValue:weakSelf.infoModel.nickname forKey:@"name"];
             [weakSelf.receiveMessageArray addObject:messageModel];
             NSLog(@"|JMSENDMESSAGE|-|SEND|%@",sendMessage);
             [weakSelf.tableView reloadData];
@@ -729,6 +747,11 @@ static int second;     // 倒计时秒
     
     [self.tableView reloadData];
     
+    // 添加tableview向上滚动
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+
     NSLog(@"========^receive^text^^========%@",msgText);
 }
 
@@ -747,13 +770,16 @@ static int second;     // 倒计时秒
         NSLog(@"|ROOM-VC|-|send-error|%@",error);
         [ToastView toastViewWithMessage:@"发送失败" timer:3.0];
     }
-    
 }
 
 // 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
 - (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
     
-    NSLog(@"==============^^信息变更^^==================%@",event);
+    NSLog(@"==============^^信息变更^^==================%@",event.eventDescription);
+    
+    JMSGUser *user = [JMSGUser myInfo];
+    
+    NSLog(@"^^^^^^^^^^^^金额变更^^^^^^^^^^^^^^^%@",user.avatar);
 }
 
 #pragma mark - table view 代理方法
@@ -777,7 +803,7 @@ static int second;     // 倒计时秒
         return 50;
         
     }else{  // 聊天tableview
-        
+   
         GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
         
         if ([messageModel.type isEqualToString:@"0"]) {
@@ -790,7 +816,7 @@ static int second;     // 倒计时秒
             
         }else if ([messageModel.type isEqualToString:@"2"]){
             
-            return 1;
+            return 0.01;
             
         }else if([messageModel.type isEqualToString:@"3"]){
             
@@ -830,6 +856,8 @@ static int second;     // 倒计时秒
                 
                 [secderCell setDataWithModel:messageModel];
                 
+//                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                
                 return secderCell;
             }else{
                 return [[UITableViewCell alloc]init];
@@ -844,6 +872,8 @@ static int second;     // 倒计时秒
                 
                 [enterRoomCell setDataWithModel:messageModel];
                 
+//                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                
                 return enterRoomCell;
                 
             }else if ([messageModel.type isEqualToString:@"3"]){  // 推送开奖信息
@@ -854,6 +884,8 @@ static int second;     // 倒计时秒
                 
                 [systemCell setDataWithModel:messageModel];
                 
+//                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                
                 return systemCell;
                 
             }else if ([messageModel.type isEqualToString:@"1"]){  // 下注成功后的推送
@@ -861,6 +893,8 @@ static int second;     // 倒计时秒
                 GPMsgReceiveCell *receiveCell = [tableView dequeueReusableCellWithIdentifier:@"receiveCell" forIndexPath:indexPath];
                 
                 [receiveCell setDataWithModel:messageModel];
+                
+//                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                 
                 return receiveCell;
                 
@@ -885,9 +919,9 @@ static int second;     // 倒计时秒
 //
 //        if (![messageModel.sendType isEqualToString:@"sender"]) {
 //
-//            if ([messageModel.type isEqualToString:@"1"]) {
+//            if (messageModel.type.integerValue ==1) {
 //
-//                if (![messageModel.expect isEqualToString:self.expectLab.text]) {
+//                if (messageModel.expect.integerValue != self.expectLab.text.integerValue) {
 //
 //                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
 //                }else{
@@ -896,15 +930,16 @@ static int second;     // 倒计时秒
 //
 //                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
 //
-//                    self.betAmountStr = messageModel.betAmount;
+//                    self.betAmountStr = [NSString stringWithFormat:@"%@",messageModel.betAmount];
 //
-//                    self.playingId = messageModel.playingId;
+//                    self.playingId = [NSString stringWithFormat:@"%@",messageModel.playingId];
 //
 //                    [self.betCopyView.tableView reloadData];
 //                }
 //            }
 //        }
 //    }
+    
 }
 
 #pragma mark - 懒加载

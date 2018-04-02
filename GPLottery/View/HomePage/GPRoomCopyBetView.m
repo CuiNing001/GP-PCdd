@@ -72,11 +72,11 @@
     
     betCopyCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    betCopyCell.userInfoLab.text = self.userInfoArray[indexPath.row];
+    betCopyCell.userInfoLab.text = [NSString stringWithFormat:@"%@",self.userInfoArray[indexPath.row]];
     
     if (self.betInfoArray.count>0) {
         
-        betCopyCell.betInfoLab.text = self.betInfoArray[indexPath.row];
+        betCopyCell.betInfoLab.text = [NSString stringWithFormat:@"%@",self.betInfoArray[indexPath.row]];
     }
     
     betCopyCell.selectionStyle = UITableViewCellSelectionStyleNone;
