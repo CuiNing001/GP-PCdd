@@ -53,7 +53,7 @@
 - (void)loadData{
     
     // 初始化list数据
-    self.listImageArray = @[@"setting_card",@"setting_password_change",@"setting_withdraw_password",@"setting_clean",@"setting_phone"].mutableCopy;
+    self.listImageArray = @[@"wallet_card",@"wallet_ recharge",@"wallet_ withdraw",@"wallet_recharge_list",@"wallet_ withdraw_list"].mutableCopy;
     self.listTextArray  = @[@"我的银行卡",@"充值",@"提现",@"充值记录",@"提现记录"].mutableCopy;
     
     // 请求数据
@@ -102,7 +102,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             GPWalletModel *walletModel = [GPWalletModel new];
             
@@ -154,7 +154,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             self.userStatusModel = [GPUserStatusModel new];
             

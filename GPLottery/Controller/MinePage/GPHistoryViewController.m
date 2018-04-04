@@ -51,6 +51,7 @@
     // 添加代理
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -104,7 +105,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             for (NSDictionary *dataDic in gameArray) {
                 

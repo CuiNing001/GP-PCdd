@@ -90,7 +90,7 @@ static int chooseNum = 0;
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             for (NSString *bankStr in dataArray) {
                 
@@ -157,7 +157,7 @@ static int chooseNum = 0;
             
             if (respondModel.code.integerValue == 9200) {
                 
-                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+//                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 

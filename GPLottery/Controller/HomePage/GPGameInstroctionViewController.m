@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = self.myTitle;
     
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
@@ -28,8 +30,8 @@
     // web view 样式
     self.webView.scrollView.showsVerticalScrollIndicator = NO;
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-    self.webView.scrollView.scrollEnabled = NO;
-    self.webView.userInteractionEnabled = NO;
+//    self.webView.scrollView.scrollEnabled = NO;
+//    self.webView.userInteractionEnabled = NO;
     
     self.webView.delegate = self;
     

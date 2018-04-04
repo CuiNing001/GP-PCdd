@@ -38,6 +38,8 @@
 #pragma mark - 添加子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     [self setTextFieldDelegate];
     
     // 添加空白区域点击事件
@@ -103,6 +105,8 @@
                     loginModel.autograph = @"请添加个性签名...";
                 }
                 
+                
+                
                 // 登录极光
                 [JMSGUser loginWithUsername:loginModel.id password:kJMPassword completionHandler:^(id resultObject, NSError *error) {
                     
@@ -110,7 +114,10 @@
                         
                         NSLog(@"|LOGIN-VC|-|JM-LOGIN-resultObject|%@",resultObject);
                         
-                        [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+                        // 关闭登陆界面
+                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                        
+//                        [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
                         
                         // 存储数据
                         [UserDefaults addDataWithUsername:self.username
@@ -123,8 +130,7 @@
                                                     level:loginModel.level
                                                 autograph:loginModel.autograph];
                         
-                        // 关闭登陆界面
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
                         
                     }else{  // 登录失败
                         

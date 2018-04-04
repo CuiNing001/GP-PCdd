@@ -38,6 +38,8 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = @"动态详情";
     
     self.titleLab.text = self.titleStr;
@@ -82,8 +84,8 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
-                
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
             weakSelf.detailStr = [respondModel.data objectForKey:@"content"];
             
             // 详情内容不为空时加载数据

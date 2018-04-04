@@ -20,14 +20,25 @@
 #import "GPRoomHistoryCell.h"
 #import "GPRoomCopyBetView.h"
 #import "GPOddInstroctionViewController.h"
+#import "GPRoomItemAlertView.h"
+#import "GPGameInstroctionViewController.h"
+#import "GPTrendViewController.h"
+#import "GPGameListViewController.h"
+#import "GPWalletModel.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
 static int second;     // 倒计时秒
 static int timerSecond;  // 倒计时秒数
+static int itemAlertTouch = 0; // 更多按钮点击次数
+static int scoreViewX; // 分数初始X值
+static int scoreViewY; // 分数初始Y值
+
 @interface GPRoomViewController ()<UITextViewDelegate,JMSGConversationDelegate,JMessageDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatViewBottom;  // chatview距离底部的距离
+@property (weak, nonatomic) IBOutlet UILabel *topScoreLab;  // 开奖输赢金额
+@property (weak, nonatomic) IBOutlet UIView *scoreView;     // 开奖输赢金额view
 
 
 @property (weak, nonatomic) IBOutlet UILabel *expectLab;  // 当前期数
@@ -53,8 +64,10 @@ static int timerSecond;  // 倒计时秒数
 @property (strong, nonatomic) NSMutableArray *pageThreeDataArray;   // page3数据源
 
 @property (strong, nonatomic) NSString *betAmountStr;  // 下注金额
+@property (strong, nonatomic) NSString *playingType;   // 下注类型（大小单双）
 @property (strong, nonatomic) NSString *playingId;     // 玩法id
 @property (strong, nonatomic) NSString *minAmount;     // 最小下注金额
+@property (strong, nonatomic) NSString *maxAmount;     // 最大下注金额
 @property (strong, nonatomic) NSMutableArray *receiveMessageArray;  // 接收聊天室消息
 
 @property (weak, nonatomic) IBOutlet UIView *historyView;            // 往期记录
@@ -72,6 +85,7 @@ static int timerSecond;  // 倒计时秒数
 @property (strong, nonatomic) UIButton *itemBtn;
 
 @property (strong, nonatomic) NSString           *oddsExplain;  // 赔率说明
+@property (strong, nonatomic) GPRoomItemAlertView *itemAlertView; //
 
 
 @end
@@ -140,15 +154,25 @@ static int timerSecond;  // 倒计时秒数
 
     serviceVC.hidesBottomBarWhenPushed = YES;
 
-    [self.navigationController pushViewController:serviceVC animated:YES];
+    [self presentViewController:serviceVC animated:YES completion:nil];
 }
 
 #pragma mark - 顶部走势图
 - (void)turnToChooseView:(UIBarButtonItem *)sender{
     
+    itemAlertTouch++;
+    
+    if (itemAlertTouch%2 == 0) {
+        
+        self.itemAlertView.hidden = YES;
+    }else{
+        
+        self.itemAlertView.hidden = NO;
+    }
     
 }
 
+#pragma mark - 页面即将出现进入聊天室
 - (void)viewWillAppear:(BOOL)animated{
     
     [self enterChatRoom];
@@ -204,9 +228,16 @@ static int timerSecond;  // 倒计时秒数
     [self.receiveMessageArray removeAllObjects];
 }
 
+#pragma mark - 加载子控件
 - (void)loadSubView{
     
+    // 分数label初始定位
+    scoreViewX = self.scoreView.frame.origin.x;
+    scoreViewY = self.scoreView.frame.origin.y;
+    
     [self customNavigationBarItem];
+    
+    self.scoreView.hidden = YES;
     
     // 历史记录tableview
     self.historyTableView.delegate = self;
@@ -322,11 +353,12 @@ static int timerSecond;  // 倒计时秒数
     };
     
     // item点击事件
-    self.roomBetView.selecetItemBlock = ^(NSString *playId,NSString *minAmount) {
+    self.roomBetView.selecetItemBlock = ^(NSString *playId,NSString *minAmount,NSString *maxAmount,NSString *playingType) {
       
         weakSelf.playingId = playId;    // 玩法id
         weakSelf.minAmount = minAmount; // 最小下注金额
-        
+        weakSelf.maxAmount = maxAmount; // 最大下注金额
+        weakSelf.playingType = playingType;
     };
     
     // 确定投注
@@ -334,7 +366,26 @@ static int timerSecond;  // 倒计时秒数
         
         weakSelf.betAmountStr = betAmountStr;  // 下注金额
         
-        [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+        if (betAmountStr.integerValue>0) {
+            
+            if (betAmountStr.integerValue<weakSelf.minAmount.integerValue) {
+                
+                [ToastView toastViewWithMessage:@"不能小于最下下注金额" timer:3.0];
+            }else{
+                
+                if (betAmountStr.integerValue>weakSelf.maxAmount.integerValue) {
+                    
+                    [ToastView toastViewWithMessage:@"超过最大下注金额" timer:3.0];
+                }else{
+                    
+                    [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+                }
+            }
+        }else{
+            
+            
+            [ToastView toastViewWithMessage:@"请选择投注类型并填写下注金额" timer:3.0];
+        }
 
     };
     
@@ -347,6 +398,8 @@ static int timerSecond;  // 倒计时秒数
     self.betCopyView.makeSuerBtnBlock = ^{
         
         [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+        
+        weakSelf.betCopyView.hidden = YES;
     };
     
     // 取消跟投
@@ -355,6 +408,43 @@ static int timerSecond;  // 倒计时秒数
         weakSelf.betCopyView.hidden = YES;
     };
     
+    // *************顶部弹出框view**********//
+    self.itemAlertView = [[GPRoomItemAlertView alloc]initWithFrame:CGRectMake(kSize_width-130, 0, 120, 230)];
+    [self.view addSubview:self.itemAlertView];
+    self.itemAlertView.hidden = YES;
+    
+    // 投注记录
+    self.itemAlertView.recordBtnBlock = ^{
+        
+        NSLog(@"投注记录");
+        
+        itemAlertTouch++;
+        weakSelf.itemAlertView.hidden = YES;
+        
+        [weakSelf turnToHistoryVC];
+    };
+    
+    // 玩法说明
+    self.itemAlertView.insBtnBlock = ^{
+        NSLog(@"玩法说明");
+        
+        itemAlertTouch++;
+        weakSelf.itemAlertView.hidden = YES;
+        
+        NSDictionary *paramDic = @{@"id":weakSelf.productIdStr};
+        
+        [weakSelf loadProductDetailDataWithParamDic:paramDic productName:weakSelf.title];
+    };
+    
+    // 走势图
+    self.itemAlertView.trendBtnBlock = ^{
+        NSLog(@"走势图");
+        
+        itemAlertTouch++;
+        weakSelf.itemAlertView.hidden = YES;
+        
+        [weakSelf turnToTrendVC];
+    };
 }
 
 // 键盘出现时修改chatView底部约束
@@ -615,7 +705,11 @@ static int timerSecond;  // 倒计时秒数
             
             if (timerSecond == 0) {
                 
+                // 封盘结束修改开奖期数
                 self.expectLab.text = [NSString stringWithFormat:@"%d",(self.expectLab.text.intValue+1)];
+                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",self.historyExpectLab.text.intValue+1];
+                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
+                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(?、?)"];
                 
                 timerSecond = 300;
             }
@@ -650,7 +744,11 @@ static int timerSecond;  // 倒计时秒数
             
             if (timerSecond == 0) {
                 
-                self.expectLab.text = [NSString stringWithFormat:@"%d秒",(self.expectLab.text.intValue+1)];
+                // 封盘结束修改开奖期数
+                self.expectLab.text = [NSString stringWithFormat:@"%d",(self.expectLab.text.intValue+1)];
+                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",self.historyExpectLab.text.intValue+1];
+                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
+                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(?、?)"];
                 
                 timerSecond =210;
             }
@@ -724,7 +822,7 @@ static int timerSecond;  // 倒计时秒数
 
 #pragma mark - 确定投注
 - (void)makeSureBetWithAmount:(NSString *)betAmount{
-    
+
     NSString *nowDate = [self loadNowDate];
     
 //    NSDictionary *betDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":self.expectLab.text,@"level":self.infoModel.level,@"name":self.infoModel.nickname,@"playingId":self.playingId,@"playingType":self.productIdStr,@"type":@"1"};
@@ -755,11 +853,23 @@ static int timerSecond;  // 倒计时秒数
             
             // 下注成功后修改余额
             self.moneyLab.text = [NSString stringWithFormat:@"%d",self.moneyLab.text.intValue-betAmount.intValue];
+            // 添加动画
+            self.scoreView.hidden = NO;
+            CGPoint centerPoint = self.view.center;
+            CGMutablePathRef path = CGPathCreateMutable(); // 可变路径
+            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);  // 设置起点
+            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);// 添加弧度路径
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"]; // 设置动画
+            animation.path = path;  // 添加路径
+            animation.duration = 3.0; // 动画时长
+            [self.scoreView.layer addAnimation:animation forKey:@"position"];  // 添加到view
+            self.topScoreLab.text = [NSString stringWithFormat:@"↓%@",self.betAmountStr];  // 修改金额
+
 
             NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",weakSelf.roomIdStr,betAmount,weakSelf.playingId,weakSelf.productIdStr);
             
             // 投注成功发送消息
-            NSDictionary *contentDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":weakSelf.expectLab.text,@"level":weakSelf.infoModel.level,@"name":weakSelf.infoModel.nickname,@"playingId":weakSelf.playingId,@"playingType":weakSelf.productIdStr,@"type":@"1"};
+            NSDictionary *contentDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":weakSelf.expectLab.text,@"level":weakSelf.infoModel.level,@"name":weakSelf.infoModel.nickname,@"playingId":weakSelf.playingId,@"playingType":weakSelf.playingType,@"type":@"1"};
             NSString *contentSter = [ToastView dictionaryToJson:contentDic];
             NSLog(@"========^send^text^^========%@",contentSter);
             JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:contentSter];
@@ -896,6 +1006,26 @@ static int timerSecond;  // 倒计时秒数
     if (user.avatar.length>0) {
         
         self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
+        
+//        NSString *score = [NSString stringWithFormat:@"%d",user.avatar.intValue-self.moneyLab.text.intValue];
+        
+        int score = user.avatar.intValue-self.moneyLab.text.intValue;
+        
+        // score>0表示赢
+        if (score>0) {
+            NSLog(@"|^^^^^^^^^^^^^^^SCORE^^^^^^^^^^^^^^^^^|%d",score);
+            self.scoreView.hidden = NO;
+            CGPoint centerPoint = self.view.center;
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
+            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+            animation.path = path;
+            animation.duration = 3.0;
+            [self.scoreView.layer addAnimation:animation forKey:@"position"];
+            
+            self.topScoreLab.text = [NSString stringWithFormat:@"↑%d",score];
+        }
     }
     
     
@@ -926,7 +1056,7 @@ static int timerSecond;  // 倒计时秒数
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             weakSelf.oddsExplain = [respondModel.data objectForKey:@"oddsExplain"];
             
@@ -948,6 +1078,125 @@ static int timerSecond;  // 倒计时秒数
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
     }];
+}
+
+#pragma mark - 加载玩法说明
+- (void)loadProductDetailDataWithParamDic:(NSDictionary *)paramDic productName:(NSString *)productName{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *productDetailLoc = [NSString stringWithFormat:@"%@product/1/productDetail",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:productDetailLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|GAMEINS-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            GPGameInstroctionViewController *gameInsVC = [storyboard instantiateViewControllerWithIdentifier:@"gameInstrostionVC"];
+            
+            gameInsVC.htmlString = [respondModel.data objectForKey:@"productExplain"];
+            
+            gameInsVC.myTitle = productName;
+            
+            gameInsVC.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:gameInsVC animated:YES];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
+}
+
+#pragma mark - 跳转走势图
+- (void)turnToTrendVC{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPTrendViewController *trendVC = [storyboard instantiateViewControllerWithIdentifier:@"trendVC"];
+    
+    trendVC.roomId = self.roomIdStr;
+    
+    [self.navigationController pushViewController:trendVC animated:YES];
+}
+
+#pragma mark - 跳转游戏记录
+- (void)turnToHistoryVC{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    GPGameListViewController *gameListVC = [storyboard instantiateViewControllerWithIdentifier:@"gameListVC"];
+    [self.navigationController pushViewController:gameListVC animated:YES];
+}
+
+#pragma mark - 刷新余额
+- (IBAction)refreshButton:(UIButton *)sender {
+    
+    [self.progressHUD showAnimated:YES];
+    
+    self.moneyLab.text = @"??元宝";
+    
+    [self loadUserDefaultsData];
+    
+    NSString *walletLoc = [NSString stringWithFormat:@"%@user/1/money",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:walletLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|ROOM-VC-MONEY-REFSH|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            GPWalletModel *walletModel = [GPWalletModel new];
+            
+            [walletModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 刷新钱包金额
+            self.moneyLab.text = walletModel.moneyNum;
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
 }
 
 #pragma mark - table view 代理方法
@@ -1081,32 +1330,32 @@ static int timerSecond;  // 倒计时秒数
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // 跟投点击事件
-//    if (tableView.tag == 1201) {
-//
-//        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
-//
-//        if (![messageModel.sendType isEqualToString:@"sender"]) {
-//
-//            if (messageModel.type.integerValue ==1) {
-//
-//                if (messageModel.expect.integerValue != self.expectLab.text.integerValue) {
-//
-//                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
-//                }else{
-//
-//                    self.betCopyView.hidden = NO;
-//
-//                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
-//
-//                    self.betAmountStr = [NSString stringWithFormat:@"%@",messageModel.betAmount];
-//
-//                    self.playingId = [NSString stringWithFormat:@"%@",messageModel.playingId];
-//
-//                    [self.betCopyView.tableView reloadData];
-//                }
-//            }
-//        }
-//    }
+    if (tableView.tag == 1201) {
+
+        GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
+
+        if (![messageModel.sendType isEqualToString:@"sender"]) {
+
+            if (messageModel.type.integerValue ==1) {
+
+                if (messageModel.expect.integerValue != self.expectLab.text.integerValue) {
+
+                    [ToastView toastViewWithMessage:@"只能跟投当前期" timer:3.0];
+                }else{
+
+                    self.betCopyView.hidden = NO;
+                    self.playingType = messageModel.playingType;
+                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
+                    self.playingId = messageModel.playingId;
+                    self.betAmountStr = [NSString stringWithFormat:@"%@",messageModel.betAmount];
+
+                    [self.betCopyView.tableView reloadData];
+
+
+                }
+            }
+        }
+    }
     
 }
 

@@ -45,6 +45,8 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = self.titleStr;
     
     // 初始化加载框
@@ -82,7 +84,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             GPEnterPayModel *enterPayModel = [GPEnterPayModel new];
             
@@ -147,7 +149,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:respondModel.data];
      

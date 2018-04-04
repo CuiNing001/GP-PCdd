@@ -40,6 +40,8 @@
 #pragma mark - 添加子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     [self setTextFieldDelegate];
     
     // 添加加载框
@@ -119,7 +121,7 @@
                 
                 if (respondModel.code.integerValue == 9200) {
                     
-                    [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+//                    [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
                     
                     GPRegistModel *registModel = [GPRegistModel new];
                     

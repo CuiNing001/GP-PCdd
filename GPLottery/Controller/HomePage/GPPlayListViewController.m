@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *dataArray;
 @property (strong, nonatomic) NSString           *oddsExplain;  // 赔率说明
+@property (strong, nonatomic) NSMutableArray     *imageArray;   // 背景图片数组
 
 @end
 
@@ -39,10 +40,14 @@
     self.title = self.productName;
     
     [self loadNetData];
+    
+    self.imageArray = @[@"room_list_one",@"room_list_two",@"room_list_three"].mutableCopy;
 }
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
     
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
@@ -82,7 +87,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             NSArray *dataArray = [responserObject objectForKey:@"data"];
             
@@ -96,6 +101,16 @@
             }
             
             [self.tableView reloadData];
+            
+        }else if(code.integerValue == 9201){
+            
+            [self.progressHUD showAnimated:YES];
+            
+            [JMSGUser logout:nil];
+            // 删除本地数据
+            [UserDefaults deleateData];
+            [self.navigationController popViewControllerAnimated:YES];
+            
             
         }else{
             
@@ -150,7 +165,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             weakSelf.oddsExplain = [respondModel.data objectForKey:@"oddsExplain"];
             
@@ -188,15 +203,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 200;
+    return 180;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GPPlayListCell *playListCell = [tableView dequeueReusableCellWithIdentifier:@"playListCell" forIndexPath:indexPath];
-    
-    
-    
+
     playListCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (self.dataArray.count>0) {
@@ -211,6 +224,10 @@
             
             [self loadOddInstrotionDataWithID:[NSString stringWithFormat:@"%@",playListModel.id]];
         };
+        
+        NSString *image = self.imageArray[indexPath.row];
+        
+        playListCell.bgImage.image = [UIImage imageNamed:image];
     
     }
     
@@ -243,6 +260,15 @@
         self.dataArray = [NSMutableArray array];
     }
     return _dataArray;
+}
+
+- (NSMutableArray *)imageArray{
+    
+    if (!_imageArray) {
+        
+        self.imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
 }
 
 - (void)didReceiveMemoryWarning {

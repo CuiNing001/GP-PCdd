@@ -75,6 +75,8 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     // 修改资料view添加点击事件
     UITapGestureRecognizer *dataTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeData)];
     [self.nickView addGestureRecognizer:dataTap];

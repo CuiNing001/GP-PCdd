@@ -12,8 +12,8 @@
 
 @interface GPAnalysisViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *settlementBtn;
-@property (weak, nonatomic) IBOutlet UIButton *noSettlementBtn;
+@property (weak, nonatomic) IBOutlet UIButton *settlementBtn;   // 已结算
+@property (weak, nonatomic) IBOutlet UIButton *noSettlementBtn; // 未结算
 @property (strong, nonatomic) GPInfoModel        *infoModel;       // 本地数据
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) MBProgressHUD      *progressHUD;
@@ -110,7 +110,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             for (NSDictionary *dataDic in dataArr) {
                 
@@ -160,7 +160,7 @@
     // 修改点击状态
     self.settlementBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
     self.noSettlementBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.settlementBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.settlementBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadNetDataWithPage:@"1" rows:@"10" status:self.status];
@@ -174,7 +174,7 @@
     // 修改点击状态
     self.noSettlementBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
     self.settlementBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     [self.settlementBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadNetDataWithPage:@"1" rows:@"10" status:self.status];

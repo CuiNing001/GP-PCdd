@@ -71,7 +71,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             // 基本数据赋值
             weakSelf.totalNumberLab.text = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"memberUserSum"]];

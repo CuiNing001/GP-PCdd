@@ -94,7 +94,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             self.userStatusModel = [GPUserStatusModel new];
             
@@ -155,7 +155,7 @@
             
             if (respondModel.code.integerValue == 9200) {
                 
-                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+//                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 
@@ -191,7 +191,7 @@
             
             if (respondModel.code.integerValue == 9200) {
                 
-                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+//                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 

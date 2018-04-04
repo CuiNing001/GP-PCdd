@@ -345,7 +345,6 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.leftCollectionView cellForItemAtIndexPath:indexPath];
-        
         // 修改选中item的UI
         betCell.bgView.layer.borderWidth = 0.5;
         betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -357,7 +356,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout,oddsModel.maxAmout,oddsModel.name);
         }
         
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
@@ -367,7 +366,6 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.middleCollectionView cellForItemAtIndexPath:indexPath];
-
         // 修改选中item的UI
         betCell.bgView.layer.borderWidth = 0.5;
         betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -379,7 +377,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout,oddsModel.maxAmout,oddsModel.name);
         }
 
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
@@ -388,7 +386,6 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.rightCollectionView cellForItemAtIndexPath:indexPath];
-
         // 修改选中item的UI
         betCell.bgView.layer.borderWidth = 0.5;
         betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -400,7 +397,7 @@ static int page = 1;
         
         if (self.selecetItemBlock) {
             
-            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout);
+            self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout,oddsModel.maxAmout,oddsModel.name);
         }
         
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);

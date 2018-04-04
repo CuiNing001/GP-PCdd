@@ -66,6 +66,7 @@
     // 添加代理
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -121,7 +122,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             weakSelf.agreementUrl = [gameDic objectForKey:@"huiShuiUrl"];
             NSArray *statusOne   = [gameDic objectForKey:@"data1"];  // 玩法一
@@ -207,10 +208,10 @@
     
     [self.dataArray removeAllObjects];
     // 修改点击状态
-    self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
+    self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.highRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -227,10 +228,10 @@
     [self.dataArray removeAllObjects];
     
     // 修改点击状态
-    self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
+    self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     [self.highRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -247,10 +248,10 @@
     [self.dataArray removeAllObjects];
     
     // 修改点击状态
-    self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
+    self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.highRoomBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.highRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -288,6 +289,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GPBackWaterCell *backWaterCell = [tableView dequeueReusableCellWithIdentifier:@"backWaterCell" forIndexPath:indexPath];
+    
+    backWaterCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     GPBackWaterModel *backWaterModel = self.dataArray[indexPath.row];
     

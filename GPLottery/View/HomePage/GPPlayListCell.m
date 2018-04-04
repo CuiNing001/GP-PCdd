@@ -7,7 +7,6 @@
 //
 
 #import "GPPlayListCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation GPPlayListCell
 
@@ -18,9 +17,9 @@
 
 - (void)setDataWithModel:(GPPlayListModel *)model{
     
-    NSString *imageLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,model.playingImageUrl];
+//    NSString *imageLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,model.playingImageUrl];
     
-    [self.bgImage sd_setImageWithURL:[NSURL URLWithString:imageLoc]];
+//    [self.bgImage sd_setImageWithURL:[NSURL URLWithString:imageLoc]];
     self.playTypeLab.text  = model.playingTypeName;
     self.remarkLab.text    = model.remarkExplain;
     self.onlineNumLab.text = model.onlineNum;

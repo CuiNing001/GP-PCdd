@@ -72,7 +72,7 @@
     }
 
     // 初始化linkView
-    self.linkView = [[GPLinkOpenAccuoutView alloc]initWithFrame:CGRectMake(0, 80+64, kSize_width, kSize_height-84)];
+    self.linkView = [[GPLinkOpenAccuoutView alloc]initWithFrame:CGRectMake(0, 70+64, kSize_width, kSize_height-84)];
     [self.view addSubview:self.linkView];
     self.linkView.hidden = YES;
     
@@ -144,7 +144,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             // 普通用户数据赋值
             weakSelf.rulesNumOneLab.text = [respondModel.data objectForKey:@"notice1"];
@@ -203,7 +203,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             GPShareModel *shareModel = [GPShareModel new];
             
@@ -297,7 +297,7 @@
     
     self.linkView.hidden = YES;
     self.accountBtn.backgroundColor = [UIColor whiteColor];
-    [self.accountBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.accountBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     self.linkAccountBtn.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1];
     [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -308,7 +308,7 @@
     
     self.linkView.hidden = NO;
     self.linkAccountBtn.backgroundColor = [UIColor whiteColor];
-    [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     self.accountBtn.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1];
     [self.accountBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
 }
@@ -338,7 +338,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
         }else{
             

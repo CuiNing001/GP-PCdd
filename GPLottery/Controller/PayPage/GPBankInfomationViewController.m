@@ -51,6 +51,8 @@ static int touch = 0;
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     [self setTextFieldDelegate];
     
     // 初始化加载框

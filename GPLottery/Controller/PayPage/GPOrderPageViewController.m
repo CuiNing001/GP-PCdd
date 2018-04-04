@@ -37,6 +37,8 @@
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = self.titleStr;
     
     self.orderTypeLab.text = [NSString stringWithFormat:@"%@信息",self.titleStr];

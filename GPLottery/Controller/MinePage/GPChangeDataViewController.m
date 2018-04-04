@@ -42,6 +42,8 @@
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     [self setTextFieldDelegate];   // 添加输入框代理
     
     // 添加空白区域点击事件
@@ -75,7 +77,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
             
             // 修改成功后修改本地数据
             [UserDefaults upDataWithNickname:self.nickName];

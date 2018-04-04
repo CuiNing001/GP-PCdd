@@ -37,7 +37,7 @@
     self.title = @"我的收益";
     
     // 加载第一页公告数据
-    [self loadNetDataWithPage:@"1" rows:@"10"];
+    [self loadNetDataWithPage:@"1" rows:@"20"];
 }
 
 - (void)loadSubView{
@@ -53,6 +53,7 @@
     // tableview代理
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPEarningsCell" bundle:nil] forCellReuseIdentifier:@"earningsCell"];
@@ -103,7 +104,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             for (NSDictionary *luckyDic in luckyArr) {
                 
@@ -163,7 +164,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 80;
+    return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

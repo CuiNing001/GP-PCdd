@@ -18,6 +18,8 @@
 @property (strong, nonatomic) MBProgressHUD      *progressHUD;
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *dataArray;
+@property (strong, nonatomic) NSMutableArray     *imageArray;   // 背景图片数组
+
 
 @end
 
@@ -36,16 +38,21 @@
     self.title = @"房间列表";
     
     [self loadNetData];
+    
+    self.imageArray = @[@"room_cell_one",@"room_cell_two",@"room_cell_three",@"room_cell_four"].mutableCopy;
+
 }
 
 - (void)loadSubView{
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
     
     // collection样式
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init]; // 初始化布局类
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];         // 滚动方向
     flowLayout.minimumLineSpacing = 25;        // 行间距
     flowLayout.minimumInteritemSpacing = 10;  // item间距
-    flowLayout.itemSize = CGSizeMake((kSize_width-30)/2, 260);  // item大小
+    flowLayout.itemSize = CGSizeMake((kSize_width-30)/2, 240);  // item大小
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10); // item位置
     self.collectionView.collectionViewLayout = flowLayout; // 绑定布局类
     self.collectionView.delegate = self;
@@ -82,7 +89,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             NSArray *dataArray = [responserObject objectForKey:@"data"];
             
@@ -144,6 +151,10 @@
         GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
         
         [roomListCell setDataWithModel:roomListModel];
+        
+        NSString *image = self.imageArray[indexPath.row];
+        
+        roomListCell.bgImageView.image = [UIImage imageNamed:image];
     }
     
     return roomListCell;
@@ -209,6 +220,15 @@
         self.dataArray = [NSMutableArray array];
     }
     return _dataArray;
+}
+
+- (NSMutableArray *)imageArray{
+    
+    if (!_imageArray) {
+        
+        self.imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -37,7 +37,7 @@
 @property (copy, nonatomic) void(^doubleBetBtnBlock)(void);  // 双倍投注按钮
 @property (copy, nonatomic) void(^betBtnBlock)(NSString *);        // 投注按钮
 @property (copy, nonatomic) void(^dissmissBtnBlock)(void);   // 关闭页面按钮
-@property (copy, nonatomic) void(^selecetItemBlock)(NSString *playId,NSString *minAmount); // cell点击
+@property (copy, nonatomic) void(^selecetItemBlock)(NSString *playId,NSString *minAmount,NSString *maxAmount,NSString *playingType); // cell点击
 
 @property (strong, nonatomic) NSMutableArray *pageOneDataArray;   // page1数据源
 @property (strong, nonatomic) NSMutableArray *pageTwoDataArray;   // page2数据源

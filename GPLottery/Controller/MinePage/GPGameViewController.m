@@ -76,7 +76,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             weakSelf.money = [respondModel.data objectForKey:@"money"];
             weakSelf.level = [respondModel.data objectForKey:@"level"];

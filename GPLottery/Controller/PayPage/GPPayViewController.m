@@ -19,6 +19,7 @@
  */
 static NSInteger indexNum;
 @interface GPPayViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *checkRecordBtn;
 
 @property (weak, nonatomic) IBOutlet UIImageView *indexZeroImg;  // index0图片
 @property (weak, nonatomic) IBOutlet UIImageView *indexOneImg;   // index1图片
@@ -44,18 +45,19 @@ static NSInteger indexNum;
 - (void)viewWillAppear:(BOOL)animated{
     
     // 进入页面添加遮罩view
-    [self initCoverView];
+//    [self initCoverView];
 }
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
-    
+    self.automaticallyAdjustsScrollViewInsets = false;
     
 }
 
 #pragma mark - 加载数据
 - (void)loadData{
+    
     
     // 单选框图片
     self.normalImageName   = @"check_normal";
@@ -63,6 +65,9 @@ static NSInteger indexNum;
     
     // 设置默认选项
     indexNum = 0;
+    
+    self.checkRecordBtn.layer.borderWidth = 1;
+    self.checkRecordBtn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1].CGColor;
     
 }
 
@@ -137,9 +142,12 @@ static NSInteger indexNum;
         
     }else if (indexNum==1){
         
-        NSLog(@"QQ钱包支付");
+        NSLog(@"跳转支付宝支付");
         
-        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
+        payMoneyVC.titleStr = @"支付宝支付";
+        payMoneyVC.typeStr = @"1";
+        payMoneyVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:payMoneyVC animated:YES];
         
     }else if (indexNum==2){
         
@@ -149,12 +157,7 @@ static NSInteger indexNum;
         
     }else if (indexNum==3){
         
-        NSLog(@"跳转支付宝支付");
-        
-        payMoneyVC.titleStr = @"支付宝支付";
-        payMoneyVC.typeStr = @"1";
-        payMoneyVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:payMoneyVC animated:YES];
+        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
         
     }
    
@@ -164,10 +167,7 @@ static NSInteger indexNum;
 #pragma mark - section two 点击事件
 - (IBAction)sectionTwoRowZeroTap:(UITapGestureRecognizer *)sender {
     
-    [ToastView toastViewWithMessage:@"暂未开放" timer:3.0];
-}
-
-- (IBAction)sectionTwoRowOneTap:(UITapGestureRecognizer *)sender {
+    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -178,8 +178,14 @@ static NSInteger indexNum;
     [self.navigationController pushViewController:normalPayVC animated:YES];
 }
 
+- (IBAction)sectionTwoRowOneTap:(UITapGestureRecognizer *)sender {
+    
+    [ToastView toastViewWithMessage:@"暂未开放" timer:3.0];
+}
+
 // 查看转账记录
 - (IBAction)viewTransferRecord:(UIButton *)sender {
+    
     
  
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -208,8 +214,8 @@ static NSInteger indexNum;
     [self.coverView addGestureRecognizer:hiddenTap];
     
     // 遮罩上添加图片
-    UIImageView *tipImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 200,200 , 200)];
-    tipImage.image = [UIImage imageNamed:@""];
+    UIImageView *tipImage = [[UIImageView alloc]initWithFrame:self.view.frame];
+    tipImage.image = [UIImage imageNamed:@"pay_lunch@2x"];
     [self.coverView addSubview:tipImage];
 }
 

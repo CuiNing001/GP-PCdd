@@ -45,21 +45,23 @@ static int touch = 0;  //  标记不同的tableview数据源
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     // 初始化页码和条数
     self.page = 1;
     self.rows = 10;
     
     // 轮播图view添加边框
-    self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.headerView.layer.borderWidth = 1;
+//    self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
+//    self.headerView.layer.borderWidth = 1;
 
     // 设置轮播图
     CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height);
     SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
-                                                               placeholderImage:[UIImage imageNamed:@"1.jpg"]];
+                                                               placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];
     //    scrollView.imageURLStringsGroup = self.bannerListArrya;                            // 轮播图网络图片
-    scrollView.localizationImageNamesGroup = @[@"1.jpg",@"2.jpg"];                       // 轮播图本地图片
+    scrollView.localizationImageNamesGroup = @[@"home_banner_placehorder.jpg",@"home_banner_placehorder.jpg"];                       // 轮播图本地图片
     scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
     scrollView.autoScrollTimeInterval      = 3.0;                                        // 轮播图滚动时间间隔
     scrollView.contentMode = UIViewContentModeScaleAspectFit;                            // 设置图片模式
@@ -150,7 +152,7 @@ static int touch = 0;  //  标记不同的tableview数据源
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             NSMutableArray *dataArr = [responserObject objectForKey:@"data"];
             
@@ -205,7 +207,7 @@ static int touch = 0;  //  标记不同的tableview数据源
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             NSMutableArray *dataArr = [responserObject objectForKey:@"data"];
             
@@ -244,8 +246,8 @@ static int touch = 0;  //  标记不同的tableview数据源
     [self.noticeDataArr removeAllObjects];
     
     // 点击按钮切换选中颜色，底部view颜色修改
-    self.noticeBtnView.backgroundColor = [UIColor orangeColor];
-     [self.noticeBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    self.noticeBtnView.backgroundColor = [UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1];
+     [self.noticeBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     
     self.msgBtnView.backgroundColor = [UIColor whiteColor];
     [self.msgBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -266,8 +268,8 @@ static int touch = 0;  //  标记不同的tableview数据源
     self.noticeBtnView.backgroundColor = [UIColor whiteColor];
     [self.noticeBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
-    self.msgBtnView.backgroundColor = [UIColor orangeColor];
-    [self.msgBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    self.msgBtnView.backgroundColor = [UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1];
+    [self.msgBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadMyMsgDataWithPage:@"1" rows:@"10"];
     
@@ -299,7 +301,7 @@ static int touch = 0;  //  标记不同的tableview数据源
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 80;
+    return 38;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

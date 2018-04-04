@@ -40,8 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    // 获取用户状态信息
-    [self loadUserStatus];
+    
 }
 
 - (void)loadData{
@@ -49,10 +48,15 @@
     // 初始化list数据
     self.listImageArray = @[@"setting_card",@"setting_password_change",@"setting_withdraw_password",@"setting_clean",@"setting_phone"].mutableCopy;
     self.listTextArray  = @[@"绑定银行卡",@"修改密码",@"提现密码",@"清除缓存",@"绑定手机"].mutableCopy;
+    
+    // 获取用户状态信息
+    [self loadUserStatus];
 
 }
 
 - (void)loadSubView{
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
     
     self.title = @"设置";
     
@@ -101,7 +105,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             self.userStatusModel = [GPUserStatusModel new];
             
@@ -138,26 +142,15 @@
 - (IBAction)singoutButton:(UIButton *)sender {
     
     [self.progressHUD showAnimated:YES];
-
-    // 退出极光
-    [JMSGUser logout:^(id resultObject, NSError *error) {
-       
-        if (!error) {
-            
-            // 退出成功
-            // 删除本地数据
-            [UserDefaults deleateData];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            
-        }else{
-            
-            // 退出失败
-            
-            [ToastView toastViewWithMessage:@"链接出错，请稍后再试" timer:3.0];
-        }
-    }];
     
-    [self.progressHUD hideAnimated:YES];
+    [JMSGUser logout:nil];
+    
+    // 删除本地数据
+    [UserDefaults deleateData];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+//    [self.progressHUD hideAnimated:YES];
     
     
     

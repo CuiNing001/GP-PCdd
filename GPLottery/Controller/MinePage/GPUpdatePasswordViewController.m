@@ -75,7 +75,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
             
             [self.navigationController popViewControllerAnimated:YES];
             

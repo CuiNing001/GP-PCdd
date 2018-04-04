@@ -34,7 +34,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     // 设置webview字体大小
-    NSString *jsString = [[NSString alloc] initWithFormat:@"document.body.style.fontSize=13"];
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.body.style.fontSize=12"];
     
     [webView stringByEvaluatingJavaScriptFromString:jsString];
     

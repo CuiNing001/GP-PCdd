@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-vf-TKu">
                         <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-ZV-bNw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room_cell_one.png" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-ZV-bNw">
                                 <rect key="frame" x="0.0" y="0.0" width="249" height="303"/>
                             </imageView>
                             <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rx-IG-BaH">
@@ -87,4 +87,7 @@
             <point key="canvasLocation" x="-54" y="-10"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="room_cell_one.png" width="172" height="240"/>
+    </resources>
 </document>

@@ -41,6 +41,8 @@
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     // 初始化页码和条数
     self.page = 1;
     self.rows = 10;
@@ -105,7 +107,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             for (NSDictionary *dataDic in recordArr) {
                 

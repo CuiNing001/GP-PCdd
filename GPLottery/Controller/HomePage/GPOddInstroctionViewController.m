@@ -26,6 +26,8 @@
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = @"赔率说明";
     
     [self.webView loadHTMLString:self.webViewLoc baseURL:nil];
@@ -55,7 +57,7 @@
     [webView stringByEvaluatingJavaScriptFromString:jsString];
     
     //页面背景色
-    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#B9D2DC'"];
+//    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#B9D2DC'"];
     
 }
 

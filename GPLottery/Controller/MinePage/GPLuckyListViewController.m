@@ -104,7 +104,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
             
             for (NSDictionary *luckyDic in luckyArr) {
                 

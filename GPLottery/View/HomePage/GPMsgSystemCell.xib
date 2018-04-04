@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMT-Fc-dXr">
-                        <rect key="frame" x="10" y="10" width="358" height="92.5"/>
+                        <rect key="frame" x="40" y="10" width="298" height="92.5"/>
                         <subviews>
                             <webView contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ght-jU-1cT">
-                                <rect key="frame" x="0.0" y="0.0" width="358" height="92.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="298" height="92.5"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                                 <userDefinedRuntimeAttributes>
@@ -48,9 +48,9 @@
                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="oMT-Fc-dXr" secondAttribute="bottom" constant="10" id="A7C-mD-kLS"/>
-                    <constraint firstAttribute="trailing" secondItem="oMT-Fc-dXr" secondAttribute="trailing" constant="10" id="Aq8-Aa-eln"/>
+                    <constraint firstAttribute="trailing" secondItem="oMT-Fc-dXr" secondAttribute="trailing" constant="40" id="Aq8-Aa-eln"/>
                     <constraint firstItem="oMT-Fc-dXr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="eyl-1o-ubG"/>
-                    <constraint firstItem="oMT-Fc-dXr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kCf-vd-I9Q"/>
+                    <constraint firstItem="oMT-Fc-dXr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="kCf-vd-I9Q"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

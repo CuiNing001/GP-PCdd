@@ -26,6 +26,8 @@
 
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = @"分享二维码";
     
     // 初始化linkView

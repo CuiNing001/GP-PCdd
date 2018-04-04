@@ -22,36 +22,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7v-MB-fHe">
                         <rect key="frame" x="10" y="10" width="345" height="135"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_bottom_cell.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ezh-GA-pn8">
-                                <rect key="frame" x="0.0" y="95" width="345" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4ew-Ps-v7h"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room_list_one.png" translatesAutoresizingMaskIntoConstraints="NO" id="XU9-kq-NF8">
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="135"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_person_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9rS-1n-u4F">
+                                <rect key="frame" x="273" y="110" width="16" height="16"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-tW-1ag">
+                                <rect key="frame" x="299" y="110" width="35.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（最高回水28%）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00B-H1-1yC">
+                                <rect key="frame" x="71" y="110" width="106" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="玩法一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmz-mL-Quc">
-                                <rect key="frame" x="15" y="112" width="46" height="18"/>
+                                <rect key="frame" x="15" y="109" width="46" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（最高回水28%）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00B-H1-1yC">
-                                <rect key="frame" x="71" y="113" width="106" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-tW-1ag">
-                                <rect key="frame" x="299.5" y="113" width="35.5" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_person_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9rS-1n-u4F">
-                                <rect key="frame" x="273.5" y="113" width="16" height="16"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XU9-kq-NF8">
-                                <rect key="frame" x="0.0" y="0.0" width="345" height="95"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-3S-U0N">
                                 <rect key="frame" x="245" y="10" width="90" height="30"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.94901960784313721" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,19 +70,16 @@
                         <constraints>
                             <constraint firstItem="XU9-kq-NF8" firstAttribute="top" secondItem="F7v-MB-fHe" secondAttribute="top" id="4VN-QM-9F4"/>
                             <constraint firstAttribute="trailing" secondItem="hEy-tW-1ag" secondAttribute="trailing" constant="10" id="64D-kF-376"/>
-                            <constraint firstItem="Ezh-GA-pn8" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" id="CyK-wu-USS"/>
                             <constraint firstItem="hEy-tW-1ag" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="Dyy-js-M5G"/>
-                            <constraint firstItem="Ezh-GA-pn8" firstAttribute="top" secondItem="XU9-kq-NF8" secondAttribute="bottom" id="EZM-7d-4qI"/>
                             <constraint firstItem="00B-H1-1yC" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="GQe-f5-9Zw"/>
                             <constraint firstItem="hEy-tW-1ag" firstAttribute="leading" secondItem="9rS-1n-u4F" secondAttribute="trailing" constant="10" id="JYg-iT-ief"/>
                             <constraint firstItem="00B-H1-1yC" firstAttribute="leading" secondItem="Zmz-mL-Quc" secondAttribute="trailing" constant="10" id="LVt-kA-akT"/>
-                            <constraint firstAttribute="bottom" secondItem="Zmz-mL-Quc" secondAttribute="bottom" constant="5" id="Lfh-gy-ZQp"/>
+                            <constraint firstAttribute="bottom" secondItem="Zmz-mL-Quc" secondAttribute="bottom" constant="8" id="Lfh-gy-ZQp"/>
                             <constraint firstItem="XU9-kq-NF8" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" id="Lig-c5-paF"/>
                             <constraint firstAttribute="trailing" secondItem="SDH-3S-U0N" secondAttribute="trailing" constant="10" id="Oc8-uJ-Kg1"/>
+                            <constraint firstAttribute="bottom" secondItem="XU9-kq-NF8" secondAttribute="bottom" id="a8T-Wb-HSj"/>
                             <constraint firstItem="Zmz-mL-Quc" firstAttribute="leading" secondItem="F7v-MB-fHe" secondAttribute="leading" constant="15" id="kAm-Jg-krH"/>
-                            <constraint firstAttribute="trailing" secondItem="Ezh-GA-pn8" secondAttribute="trailing" id="mS7-1N-WFD"/>
                             <constraint firstAttribute="trailing" secondItem="XU9-kq-NF8" secondAttribute="trailing" id="vXB-X2-OaR"/>
-                            <constraint firstAttribute="bottom" secondItem="Ezh-GA-pn8" secondAttribute="bottom" id="w9g-bK-nRK"/>
                             <constraint firstItem="9rS-1n-u4F" firstAttribute="centerY" secondItem="Zmz-mL-Quc" secondAttribute="centerY" id="x0N-7J-KM7"/>
                             <constraint firstItem="SDH-3S-U0N" firstAttribute="top" secondItem="F7v-MB-fHe" secondAttribute="top" constant="10" id="xHl-WD-K2y"/>
                         </constraints>
@@ -117,7 +108,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="playlist_bottom_cell.png" width="355" height="40"/>
         <image name="playlist_person_icon.png" width="16" height="16"/>
+        <image name="room_list_one.png" width="335" height="160"/>
     </resources>
 </document>

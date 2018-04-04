@@ -14,7 +14,7 @@
 #import "GPServiceSenderCell.h"
 #import "GPMessageModel.h"
 #import "GPServiceReciveCell.h"
-
+#import "GPServiceLageImageView.h"
 
 @interface GPServiceViewController ()<UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UITextViewDelegate,JMSGMessageDelegate,JMSGConversationDelegate,JMessageDelegate>
 
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *msgDataArray;         // 消息数据
 @property (strong, nonatomic) NSData *imageData; // 图片数据
+@property (strong, nonatomic) GPServiceLageImageView *largeImageView;   // 加载大图
 
 @end
 
@@ -131,7 +132,7 @@
 
 - (void)loadSubView{
     
-    [self joinSingleChatRoom];
+//    [self joinSingleChatRoom];
     
     self.title = @"客服";
     
@@ -149,6 +150,9 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
     
+    // tableview下滑取消键盘
+    self.tableView.keyboardDismissMode  = UIScrollViewKeyboardDismissModeInteractive;
+    
     // textView代理
     self.inputTextView.delegate = self;
     
@@ -157,16 +161,33 @@
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
+    //增加监听，当键盘出现或改变时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
     // 添加点击事件
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dissmissKeyboard:)];
-    [self.view addGestureRecognizer:tap];
+//    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(dissmissKeyboard:)];
+//    [self.view addGestureRecognizer:recognizer];
+//    tap.delegate = self;
     
     // 注册发送cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceSenderCell" bundle:nil] forCellReuseIdentifier:@"serviceSenderCell"];
     
     // 注册接收cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceReciveCell" bundle:nil] forCellReuseIdentifier:@"serviceReceiveCell"];
+    
+    // 加载大图
+    self.largeImageView = [[GPServiceLageImageView alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    [self.view addSubview:self.largeImageView];
+    self.largeImageView.hidden = YES;
+    __weak typeof(self)weakSelf = self;
+    self.largeImageView.dissmissBlock = ^{
+      
+        weakSelf.largeImageView.hidden = YES;
+
+    };
 
 }
 
@@ -199,7 +220,14 @@
     
 }
 
-
+- (void)keyboardWillHide:(NSNotification *)aNotification{
+    
+    // 取消键盘后还原view的frame
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.bottomHeight.constant = 0;
+    }];
+}
 
 #pragma mark - 加载本地数据
 - (void)loadUserDefaultsData{
@@ -321,17 +349,29 @@
     [self chooseImage];
 }
 
-#pragma mark - 点击空白处回收键盘
-- (void)dissmissKeyboard:(UITapGestureRecognizer *)tap{
-    
-    [self.inputTextView resignFirstResponder];
-    
-    // 取消键盘后还原view的frame
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        self.bottomHeight.constant = 0;
-    }];
+#pragma mark - 放大过程中出现的缓慢动画
+- (void)shakeToShow:(UIView*)aView{
+    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.duration = 0.3;
+    NSMutableArray *values = [NSMutableArray array];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+    animation.values = values;
+    [aView.layer addAnimation:animation forKey:nil];
+    self.largeImageView.hidden = NO;
 }
+
+#pragma mark - 点击空白处回收键盘
+//- (void)dissmissKeyboard:(UITapGestureRecognizer *)tap{
+//
+//    [self.inputTextView resignFirstResponder];
+//
+//    // 取消键盘后还原view的frame
+//    [UIView animateWithDuration:0.5 animations:^{
+//
+//        self.bottomHeight.constant = 0;
+//    }];
+//}
 
 #pragma mark - textview代理方法
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -388,7 +428,7 @@
         
         GPServiceSenderCell *serviceSenderCell = [tableView dequeueReusableCellWithIdentifier:@"serviceSenderCell" forIndexPath:indexPath];
         
-        serviceSenderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        serviceSenderCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         serviceSenderCell.backgroundColor = [UIColor clearColor];
         
@@ -399,7 +439,7 @@
         
         GPServiceReciveCell *serviceReceiveCell = [tableView dequeueReusableCellWithIdentifier:@"serviceReceiveCell" forIndexPath:indexPath];
         
-        serviceReceiveCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        serviceReceiveCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         serviceReceiveCell.backgroundColor = [UIColor clearColor];
         
@@ -407,9 +447,25 @@
         
         return serviceReceiveCell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    JMSGMessage *sendMessage = self.msgDataArray[indexPath.row];
+
+    if (sendMessage.contentType == kJMSGContentTypeImage) {
+        
+        self.largeImageView.hidden = NO;
+        [self shakeToShow:self.largeImageView];
+        
+        [self.largeImageView setImageDataWithMessage:sendMessage];
+    }
     
 }
+
+
 
 #pragma mark - 懒加载
 - (NSMutableArray *)msgDataArray{

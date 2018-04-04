@@ -104,7 +104,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             for (NSDictionary *dataDic in gameArray) {
                 

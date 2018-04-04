@@ -22,6 +22,8 @@
 
 
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *bgView;                    // 背景view
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;  // 背景view的高度
 @property (weak, nonatomic) IBOutlet UIView *headerView;                // 轮播图
@@ -51,6 +53,7 @@
    
     [self loadData];
     [self loadSubView];
+    
     
 //    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -92,6 +95,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    
     // 加载本地数据
     [self loadUserDefaultsData];
 }
@@ -107,6 +111,8 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
 //    GPRoomBetView *betView = [[GPRoomBetView alloc]initWithFrame:self.view.frame];
 //    [self.view addSubview:betView];
     
@@ -114,19 +120,19 @@
     self.tabBarController.delegate = self;
     
     // 轮播图view添加边框
-    self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.headerView.layer.borderWidth = 1;
+//    self.headerView.layer.borderColor = [UIColor orangeColor].CGColor;
+//    self.headerView.layer.borderWidth = 1;
     
     // 设置轮播图
     CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height);
     self.scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
-                                                               placeholderImage:[UIImage imageNamed:@"1.jpg"]];
+                                                               placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];
     //    scrollView.imageURLStringsGroup = self.bannerListArrya;                            // 轮播图网络图片
 //    self.scrollView.localizationImageNamesGroup = @[@"1.jpg",@"2.jpg"];                       // 轮播图本地图片
     self.scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
     self.scrollView.autoScrollTimeInterval      = 3.0;                                        // 轮播图滚动时间间隔
-    self.scrollView.contentMode = UIViewContentModeScaleAspectFit;
+    self.scrollView.contentMode = UIViewContentModeScaleToFill;
     [self.headerView addSubview:self.scrollView];
     
     // 初始化加载框
@@ -177,7 +183,7 @@
         
         if (code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:msg timer:1.5];
+//            [ToastView toastViewWithMessage:msg timer:1.5];
             
             NSDictionary *dataDic = [responserObject objectForKey:@"data"];
             
@@ -227,9 +233,9 @@
             }
             // 设置产品数据
             weakSelf.leftProductModel = weakSelf.productArray[0];
-            [weakSelf setProductListWithModel:weakSelf.leftProductModel sender:weakSelf.leftButton];
+//            [weakSelf setProductListWithModel:weakSelf.leftProductModel sender:weakSelf.leftButton];
             weakSelf.rightProductModel = weakSelf.productArray[1];
-            [weakSelf setProductListWithModel:weakSelf.rightProductModel sender:weakSelf.rightButton];
+//            [weakSelf setProductListWithModel:weakSelf.rightProductModel sender:weakSelf.rightButton];
             
             // 修改用户类型
             weakSelf.userType = indexModel.userType;
@@ -277,6 +283,7 @@
     
     // 设置button背景图
     [sender sd_setBackgroundImageWithURL:[NSURL URLWithString:imageLoc] forState:UIControlStateNormal];
+    
     
 }
 
@@ -438,7 +445,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             

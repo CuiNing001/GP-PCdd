@@ -25,6 +25,7 @@
 }
 
 - (void)loadSubView{
+    self.automaticallyAdjustsScrollViewInsets = false;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.webViewLoc]];
     
