@@ -85,9 +85,9 @@ static int touch = 0;
     
     UIPasteboard *pastboard = [UIPasteboard generalPasteboard];
     
-    pastboard.string = self.bankCardLab.text;
+    pastboard.string = self.accountNameLab.text;
     
-    [ToastView toastViewWithMessage:@"卡号已复制到剪切板" timer:3.0];
+    [ToastView toastViewWithMessage:@"收款人已复制" timer:3.0];
 }
 
 #pragma mark - 复制银行账号
@@ -95,9 +95,9 @@ static int touch = 0;
     
     UIPasteboard *pastboard = [UIPasteboard generalPasteboard];
     
-    pastboard.string = self.accountNameLab.text;
+    pastboard.string = self.cardNumberLab.text;
     
-    [ToastView toastViewWithMessage:@"收款人已复制到剪切板" timer:3.0];
+    [ToastView toastViewWithMessage:@"卡号已复制" timer:3.0];
 }
 
 #pragma mark - 选择存款方式

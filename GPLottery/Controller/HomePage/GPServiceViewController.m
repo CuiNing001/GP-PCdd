@@ -40,6 +40,16 @@
     [self loadData];
     [self loadSubView];
 }
+
+// 账号在其他设备登陆
+- (void)onReceiveLoginUserStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event {
+    
+    if (event.eventType == kJMSGEventNotificationLoginKicked) {
+        
+        [self alertViewWithTitle:@"首页提醒" message:@"账号在其他设备登陆"];
+    }
+}
+
 - (IBAction)dissmissButton:(UIButton *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -47,7 +57,30 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
+    // 进入客服页面隐藏全局按钮
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     
+    for (UIView * view in keyWindow.subviews) {
+        
+        if ([view.class isEqual:[MNAssistiveBtn class]]) {
+            
+            view.hidden = YES;
+        }
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    // 关闭客服页面取消全局按钮隐藏
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    
+    for (UIView * view in keyWindow.subviews) {
+        
+        if ([view.class isEqual:[MNAssistiveBtn class]]) {
+            
+            view.hidden = NO;
+        }
+    }
 }
 
 
@@ -465,7 +498,28 @@
     
 }
 
-
+#pragma mark - 提醒框
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           
+                                                           [self dismissViewControllerAnimated:YES
+                                                                                    completion:nil];
+                                                       }];
+    
+    [alert addAction:action];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
+    
+}
 
 #pragma mark - 懒加载
 - (NSMutableArray *)msgDataArray{

@@ -409,7 +409,7 @@ static int scoreViewY; // 分数初始Y值
     };
     
     // *************顶部弹出框view**********//
-    self.itemAlertView = [[GPRoomItemAlertView alloc]initWithFrame:CGRectMake(kSize_width-130, 0, 120, 230)];
+    self.itemAlertView = [[GPRoomItemAlertView alloc]initWithFrame:CGRectMake(kSize_width-120, 84, 120, 120)];
     [self.view addSubview:self.itemAlertView];
     self.itemAlertView.hidden = YES;
     
@@ -997,6 +997,29 @@ static int scoreViewY; // 分数初始Y值
 // 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
 - (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
     
+    if (event.eventType == kJMSGEventNotificationLoginKicked) {
+        
+        NSLog(@"^^^room^^^用户被登出^^^^^^^");
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+//        [self alertViewWithTitle:@"提醒" message:@"账号在其他设备登陆"];
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提醒" message:@"账号在其他设备登陆" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 删除本地数据
+            [UserDefaults deleateData];
+            
+            
+        }];
+        
+        [alertVC addAction:action];
+        
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
+    
     NSLog(@"==============^^信息变更^^==================%@",event.eventDescription);
     
     JMSGUser *user = [JMSGUser myInfo];
@@ -1356,6 +1379,29 @@ static int scoreViewY; // 分数初始Y值
             }
         }
     }
+    
+}
+
+#pragma mark - 提醒框
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           
+                                                           [self dismissViewControllerAnimated:YES
+                                                                                    completion:nil];
+                                                       }];
+    
+    [alert addAction:action];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
     
 }
 

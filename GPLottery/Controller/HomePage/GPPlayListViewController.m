@@ -106,10 +106,26 @@
             
             [self.progressHUD showAnimated:YES];
             
-            [JMSGUser logout:nil];
-            // 删除本地数据
-            [UserDefaults deleateData];
-            [self.navigationController popViewControllerAnimated:YES];
+            // 未登陆状态返回主页
+            UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"提醒"
+                                                                            message:@"请先登陆"
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   
+                                                                   [JMSGUser logout:nil];
+                                                                   // 删除本地数据
+                                                                   [UserDefaults deleateData];
+                                                                   [self.navigationController popViewControllerAnimated:YES];
+                                                               }];
+            
+            [alert addAction:action];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
             
             
         }else{

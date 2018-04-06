@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GPHomeMoreView">
+            <rect key="frame" x="0.0" y="0.0" width="201" height="230"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ru6-iE-2Y5">
+                    <rect key="frame" x="0.0" y="0.0" width="201" height="114.5"/>
+                    <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="充值" image="wallet_ recharge.png">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="rechargeButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="BRJ-3Q-7En"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G9-ew-Igb">
+                    <rect key="frame" x="10" y="114.5" width="181" height="1"/>
+                    <color key="backgroundColor" red="0.89946785579999999" green="0.89831517459999999" blue="0.91844964360000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Qha-mO-o6l"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="750-8h-rCX">
+                    <rect key="frame" x="0.0" y="115.5" width="201" height="114.5"/>
+                    <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="提现" image="wallet_ withdraw.png">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="withdrawButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="bLS-zf-lfx"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="750-8h-rCX" secondAttribute="bottom" id="40r-y5-upN"/>
+                <constraint firstItem="750-8h-rCX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BcM-1P-sOq"/>
+                <constraint firstItem="750-8h-rCX" firstAttribute="top" secondItem="2G9-ew-Igb" secondAttribute="bottom" id="Bih-5I-NFQ"/>
+                <constraint firstItem="2G9-ew-Igb" firstAttribute="top" secondItem="ru6-iE-2Y5" secondAttribute="bottom" id="LwM-oq-oEq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ru6-iE-2Y5" secondAttribute="trailing" id="MdI-a9-2ij"/>
+                <constraint firstItem="ru6-iE-2Y5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="WqO-bu-klH"/>
+                <constraint firstItem="ru6-iE-2Y5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZP6-4Y-JeE"/>
+                <constraint firstItem="2G9-ew-Igb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cRr-e5-YB0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="750-8h-rCX" secondAttribute="trailing" id="ehg-fe-95M"/>
+                <constraint firstItem="2G9-ew-Igb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="niC-Y4-QoR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2G9-ew-Igb" secondAttribute="trailing" constant="10" id="njf-2E-FEc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-61.5" y="-167"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="wallet_ recharge.png" width="24" height="22"/>
+        <image name="wallet_ withdraw.png" width="24" height="24"/>
+    </resources>
+</document>

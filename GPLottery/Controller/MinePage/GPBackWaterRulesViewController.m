@@ -28,6 +28,8 @@
     
     self.title = @"回水规则";
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.agreementUrl]];
     
     [self.webView loadRequest:request];

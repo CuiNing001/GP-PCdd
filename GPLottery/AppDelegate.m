@@ -7,12 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GPLoginViewController.h"
 
 static NSString *appKey = @"65ae5c02bed5052256476fc4";
-@interface AppDelegate ()
-
-
+@interface AppDelegate ()<JMessageDelegate>
 
 @end
 
@@ -29,6 +27,8 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
     
     [JMessage registerForRemoteNotificationTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
     
+    // 添加极光监听事件通知
+    [JMessage addDelegate:self withConversation:nil];
     
     //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -58,6 +58,41 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 {
     return UIInterfaceOrientationMaskPortrait;
 }
+
+// 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
+- (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
+
+    if (event.eventType == kJMSGEventNotificationLoginKicked) {
+
+        NSLog(@"^^^appdelegate^^^用户被登出^^^^^^^");
+        
+        [self.window.rootViewController.navigationController popToRootViewControllerAnimated:YES];
+
+//        [self alertViewWithTitle:@"提醒" message:@"账号在其他设备登陆"];loginVC
+
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提醒appdelegate" message:@"账号在其他设备登陆" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 删除本地数据
+            [UserDefaults deleateData];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            GPLoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
+            
+            loginVC.hidesBottomBarWhenPushed = YES;
+   
+            // 创建单聊会话成功
+            [self.window.rootViewController presentViewController:loginVC animated:YES completion:nil];
+        }];
+        
+        [alertVC addAction:action];
+        
+        [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+    }
+}
+
 
 #pragma mark - 添加全局按钮
 -(void)setVersionBtn{
@@ -90,6 +125,30 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
     
     // 创建单聊会话成功
     [self.window.rootViewController presentViewController:serviceVC animated:YES completion:nil];
+    
+}
+
+#pragma mark - 提醒框
+- (void)alertViewWithTitle:(NSString *)title message:(NSString *)message{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           
+                                                           [JMSGUser logout:nil];
+                                                           // 删除本地数据
+                                                           [UserDefaults deleateData];
+                                                       }];
+    
+    [alert addAction:action];
+    
+    [self.window.rootViewController presentViewController:alert
+                       animated:YES
+                     completion:nil];
     
 }
 

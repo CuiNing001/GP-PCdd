@@ -19,8 +19,12 @@
 #import "GPServiceViewController.h"
 #import "GPBannerTypeTwoViewController.h"
 #import "GPBannerTypeThreeViewController.h"
+#import "GPHomeMoreView.h"
+#import "GPPayViewController.h"
+#import "GPWithdrawViewController.h"
+#import "GPUserStatusModel.h"
 
-
+static int touch = 0;
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
 
@@ -43,6 +47,11 @@
 @property (strong, nonatomic) GPProductListModel *leftProductModel;     // 左侧按钮model
 @property (strong, nonatomic) GPProductListModel *rightProductModel;    // 右侧按钮model
 @property (strong, nonatomic) NSString *userType;  // 用户类型：resulet:1 普通用户  ; 4 代理用户
+
+@property (strong, nonatomic) UIView *itemView;   // bar item
+@property (strong, nonatomic) UIButton *itemBtn;  // bar item button
+@property (strong, nonatomic) GPHomeMoreView *moreView; // 顶部item more按钮
+@property (strong, nonatomic) GPUserStatusModel  *userStatusModel;// 拥挤公告信息
 
 @end
 
@@ -93,11 +102,115 @@
 //
 //}
 
--(void)viewWillAppear:(BOOL)animated{
+
+#pragma mark - 自定义navigation bar item
+- (void)customNavigationBarItem{
     
+    // 导航栏右侧按钮
+    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
+    
+    self.itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    _itemBtn.frame = CGRectMake(0, 10, 50, 30);
+    
+    [_itemBtn setImage:[UIImage imageNamed:@"service_item"] forState:UIControlStateNormal];
+    
+    [_itemBtn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_itemView addSubview:_itemBtn];
+    
+    UIButton *webBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    webBtn.frame = CGRectMake(50, 10, 50, 30);
+    
+    [webBtn setImage:[UIImage imageNamed:@"more_item"] forState:UIControlStateNormal];
+    
+    [webBtn addTarget:self action:@selector(turnToChooseView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_itemView addSubview:webBtn];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:_itemView];
+    
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+}
+
+#pragma mark - 跳转客服
+- (void)turnToService:(UIBarButtonItem *)sender{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+    
+    serviceVC.hidesBottomBarWhenPushed = YES;
+    
+    [self presentViewController:serviceVC animated:YES completion:nil];
+}
+
+#pragma mark - 顶部提现充值
+- (void)turnToChooseView:(UIBarButtonItem *)sender{
+    
+    touch++;
+    
+    if (touch%2==0) {
+        
+        self.moreView.hidden = YES;
+    }else{
+        
+        self.moreView.hidden = NO;
+    }
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
     // 加载本地数据
     [self loadUserDefaultsData];
+    
+    // 验证token
+//    [self checkToken];
+}
+
+#pragma mark - 验证token
+- (void)checkToken{
+    
+    NSString *checkLoc = [NSString stringWithFormat:@"%@checkToken",kBaseLocation];
+    
+    if (self.token.length>0) {
+        
+       NSDictionary *paramDic = @{@"token":self.token};
+        
+        // 请求登陆接口
+        __weak typeof(self)weakSelf = self;
+        [AFNetManager requestPOSTWithURLStr:checkLoc paramDic:paramDic token:nil finish:^(id responserObject) {
+            
+            NSLog(@"|HOME-VC-CHECK-TOKEN|success:%@",responserObject);
+            
+            [weakSelf.progressHUD hideAnimated:YES];
+            
+            GPRespondModel *respondModel = [GPRespondModel new];
+            
+            [respondModel setValuesForKeysWithDictionary:responserObject];
+            
+            if (respondModel.code.integerValue == 9201) {
+                
+                [JMSGUser logout:nil];
+                // 删除本地数据
+                [UserDefaults deleateData];
+                
+            }else{
+                
+                [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+            }
+            
+        } enError:^(NSError *error) {
+            
+            [weakSelf.progressHUD hideAnimated:YES];
+            
+            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+            
+        }];
+    } 
 }
 
 #pragma mark - 动态计算scrollview高度
@@ -110,6 +223,9 @@
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    
+    // 自定义右侧导航按钮
+    [self customNavigationBarItem];
     
     self.automaticallyAdjustsScrollViewInsets = false;
     
@@ -139,6 +255,23 @@
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
     
+    // 顶部more按钮
+    self.moreView = [[GPHomeMoreView alloc]initWithFrame:CGRectMake(kSize_width-120, 84, 100, 80)];
+    [self.view addSubview:self.moreView];
+    self.moreView.hidden = YES;
+    
+    // 顶部more按钮-充值
+    __weak typeof(self)weakSelf = self;
+    self.moreView.rechargeBlock = ^{
+      
+        [weakSelf turnToPayVC];
+    };
+    
+    // 顶部more按钮-提现
+    self.moreView.withdrawBlock = ^{
+        
+        [weakSelf turnToWithdrawVC];
+    };
 }
 
 #pragma mark - 加载数据
@@ -148,6 +281,105 @@
     self.isLogin = self.infoModel.islogin;
     
     [self loadNetData];
+}
+
+#pragma mark - 充值
+- (void)turnToPayVC{
+    
+    touch++;
+    
+    self.moreView.hidden = YES;
+    
+    // 未登陆状态提醒
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        UIStoryboard *storyboard       = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPPayViewController *payVC     = [storyboard instantiateViewControllerWithIdentifier:@"payVC"];
+        payVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:payVC animated:YES];
+    }
+}
+
+#pragma mark - 提现
+- (void)turnToWithdrawVC{
+    
+    touch++;
+    
+    self.moreView.hidden = YES;
+    
+    // 未登陆状态提醒
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        // 未绑定银行卡提醒先绑定银行卡
+        if (self.userStatusModel.bankStatus.integerValue == 0) {
+            
+            [ToastView toastViewWithMessage:@"请先绑定银行卡" timer:3.0];
+            
+        }else{
+            
+            // 已绑定跳转到提现页面
+            UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPWithdrawViewController *withdrawVC = [storyboard instantiateViewControllerWithIdentifier:@"withdrawVC"];
+            withdrawVC.hidesBottomBarWhenPushed  = YES;
+            [self.navigationController pushViewController:withdrawVC animated:YES];
+        }
+    }
+    
+}
+
+#pragma mark - 获取用户公共信息
+/*
+ * @param phoneStatus:手机绑定状态  // 0:未绑定，1:已绑定
+ * @param luckTurntableStatus:转盘抽奖次数
+ * @param userExchange:提现密码绑定状态
+ * @param bankStatus:银行卡绑定状态
+ */
+- (void)loadUserStatus{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *userStatusLoc = [NSString stringWithFormat:@"%@user/1/userCommon",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:userStatusLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|HOME-VC-WIDTHRAW|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            //            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            self.userStatusModel = [GPUserStatusModel new];
+            
+            [self.userStatusModel setValuesForKeysWithDictionary:respondModel.data];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - 加载网络数据
@@ -331,95 +563,123 @@
 #pragma mark - 轮播图点击事件
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
-    GPBannerListModel *bannerModel = self.bannerListArray[index];
-    
-    NSLog(@"|HOME-BANNER-点击事件|%@",bannerModel.type);
-    
-    if (bannerModel.type.integerValue == -1) {   // 无作用
+    if (![self.isLogin isEqualToString:@"1"]) {
         
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
         
-    }else if (bannerModel.type.integerValue == 1){  // 根据prouctId请求productDetail
+        GPBannerListModel *bannerModel = self.bannerListArray[index];
         
-        NSString *productID = [NSString stringWithFormat:@"%@",bannerModel.productId];
-        NSString *productName = @"玩法说明";
+        NSLog(@"|HOME-BANNER-点击事件|%@",bannerModel.type);
         
-        NSDictionary *paramDic = @{@"id":productID};
-        
-        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
-        
-    }else if (bannerModel.type.integerValue == 2){  // 生成二维码
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        GPBannerTypeTwoViewController *bannerTypeTwoVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeTwoVC"];
-        
-        bannerTypeTwoVC.hidesBottomBarWhenPushed = YES;
-        
-        bannerTypeTwoVC.QRLocation = bannerModel.url;
-        
-        [self.navigationController pushViewController:bannerTypeTwoVC animated:YES];
-        
-        
-    }else if (bannerModel.type.integerValue == 3){  // 外链
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        GPBannerTypeThreeViewController *bannerTypeThreeVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeThreeVC"];
-        
-        bannerTypeThreeVC.hidesBottomBarWhenPushed = YES;
-        
-        bannerTypeThreeVC.webViewLoc = bannerModel.url;
-        
-        [self.navigationController pushViewController:bannerTypeThreeVC animated:YES];
-        
+        if (bannerModel.type.integerValue == -1) {   // 无作用
+            
+            
+        }else if (bannerModel.type.integerValue == 1){  // 根据prouctId请求productDetail
+            
+            NSString *productID = [NSString stringWithFormat:@"%@",bannerModel.productId];
+            NSString *productName = @"玩法说明";
+            
+            NSDictionary *paramDic = @{@"id":productID};
+            
+            [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+            
+        }else if (bannerModel.type.integerValue == 2){  // 生成二维码
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            GPBannerTypeTwoViewController *bannerTypeTwoVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeTwoVC"];
+            
+            bannerTypeTwoVC.hidesBottomBarWhenPushed = YES;
+            
+            bannerTypeTwoVC.QRLocation = bannerModel.url;
+            
+            [self.navigationController pushViewController:bannerTypeTwoVC animated:YES];
+            
+            
+        }else if (bannerModel.type.integerValue == 3){  // 外链
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            GPBannerTypeThreeViewController *bannerTypeThreeVC = [storyboard instantiateViewControllerWithIdentifier:@"bannerTypeThreeVC"];
+            
+            bannerTypeThreeVC.hidesBottomBarWhenPushed = YES;
+            
+            bannerTypeThreeVC.webViewLoc = bannerModel.url;
+            
+            [self.navigationController pushViewController:bannerTypeThreeVC animated:YES];
+            
+        }
     }
-    
-    
 }
 
 #pragma mark - 左侧进入房间按钮
 - (IBAction)enterRoomLeftButton:(UIButton *)sender {
     
-    NSString *productID = self.leftProductModel.id;
-    NSString *productName = self.leftProductModel.productName;
-    
-    [self turnToPlayListPageWithProductName:productName productID:productID];
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        NSString *productID = self.leftProductModel.id;
+        NSString *productName = self.leftProductModel.productName;
+        
+        [self turnToPlayListPageWithProductName:productName productID:productID];
+    }
 }
 
 #pragma mark - 左侧玩法说明按钮
 - (IBAction)gameInstructionButton:(UIButton *)sender {
     
-    NSString *productID = self.leftProductModel.id;
-    NSString *productName = self.leftProductModel.productName;
-    
-    NSLog(@"|left|name:%@==id:%@",productName,productID);
-    
-    NSDictionary *paramDic = @{@"id":productID};
-    
-    [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        NSString *productID = self.leftProductModel.id;
+        NSString *productName = self.leftProductModel.productName;
+        
+        NSLog(@"|left|name:%@==id:%@",productName,productID);
+        
+        NSDictionary *paramDic = @{@"id":productID};
+        
+        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+    }
 }
 
 
 #pragma mark - 右侧进入房间按钮
 - (IBAction)enterRoomRightButton:(UIButton *)sender {
     
-    NSString *productID = self.rightProductModel.id;
-    NSString *productName = self.rightProductModel.productName;
-    
-    [self turnToPlayListPageWithProductName:productName productID:productID];
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        NSString *productID = self.rightProductModel.id;
+        NSString *productName = self.rightProductModel.productName;
+        
+        [self turnToPlayListPageWithProductName:productName productID:productID];
+    }
 }
 
 #pragma mark - 右侧玩法说明按钮
 - (IBAction)rightGameInsButton:(UIButton *)sender {
     
-    NSString *productID = self.rightProductModel.id;
-    NSString *productName = self.rightProductModel.productName;
-    
-    NSLog(@"|right|name:%@==id:%@",productName,productID);
-    
-    NSDictionary *paramDic = @{@"id":productID};
-    
-    [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+        
+        NSString *productID = self.rightProductModel.id;
+        NSString *productName = self.rightProductModel.productName;
+        
+        NSLog(@"|right|name:%@==id:%@",productName,productID);
+        
+        NSDictionary *paramDic = @{@"id":productID};
+        
+        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+    }
 }
 
 #pragma mark - 加载玩法说明
