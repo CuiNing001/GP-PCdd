@@ -42,6 +42,17 @@ static int touch = 0;  //  标记不同的tableview数据源
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        self.tabBarController.selectedIndex = 0;
+    }
+}
+
 #pragma mark - 加载子控件
 - (void)loadSubView{
     

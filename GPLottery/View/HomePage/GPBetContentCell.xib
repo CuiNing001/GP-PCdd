@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="116" height="101"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWU-LD-bP1">
-                                <rect key="frame" x="0.0" y="0.0" width="116" height="50.5"/>
+                                <rect key="frame" x="29" y="0.0" width="58" height="50.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -40,10 +40,10 @@
                             <constraint firstAttribute="bottom" secondItem="hfh-yO-HEC" secondAttribute="bottom" id="A49-cb-yIL"/>
                             <constraint firstItem="oWU-LD-bP1" firstAttribute="height" secondItem="XwP-uw-sF5" secondAttribute="height" multiplier="0.5" id="GSA-i9-pbs"/>
                             <constraint firstAttribute="trailing" secondItem="hfh-yO-HEC" secondAttribute="trailing" id="HVZ-wy-MNW"/>
+                            <constraint firstItem="oWU-LD-bP1" firstAttribute="width" secondItem="XwP-uw-sF5" secondAttribute="width" multiplier="0.5" id="NOJ-sD-8WN"/>
+                            <constraint firstItem="oWU-LD-bP1" firstAttribute="centerX" secondItem="XwP-uw-sF5" secondAttribute="centerX" id="cJL-PN-mFR"/>
                             <constraint firstItem="hfh-yO-HEC" firstAttribute="leading" secondItem="XwP-uw-sF5" secondAttribute="leading" id="dal-F2-EMA"/>
-                            <constraint firstAttribute="trailing" secondItem="oWU-LD-bP1" secondAttribute="trailing" id="fJc-wV-wIk"/>
                             <constraint firstItem="oWU-LD-bP1" firstAttribute="top" secondItem="XwP-uw-sF5" secondAttribute="top" id="lRv-P9-GUK"/>
-                            <constraint firstItem="oWU-LD-bP1" firstAttribute="leading" secondItem="XwP-uw-sF5" secondAttribute="leading" id="mc4-Yh-21q"/>
                             <constraint firstItem="hfh-yO-HEC" firstAttribute="top" secondItem="oWU-LD-bP1" secondAttribute="bottom" id="yvc-Zk-atF"/>
                         </constraints>
                     </view>

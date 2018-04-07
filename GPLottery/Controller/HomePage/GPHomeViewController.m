@@ -63,44 +63,7 @@ static int touch = 0;
     [self loadData];
     [self loadSubView];
     
-    
-//    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self setVersionBtn];
-//    });
 }
-
-//#pragma mark - 添加全局按钮
-//-(void)setVersionBtn{
-//    
-//    MNAssistiveBtn *btn = [MNAssistiveBtn mn_touchWithType:MNAssistiveTouchTypeNone
-//                                                     Frame:CGRectMake(0, 200, 50, 50)
-//                                                     title:nil
-//                                                titleColor:[UIColor whiteColor]
-//                                                 titleFont:[UIFont systemFontOfSize:11]
-//                                           backgroundColor:nil
-//                                           backgroundImage:[UIImage imageNamed:@"global_btn"]];
-//    
-//    [btn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//    
-//    [window addSubview:btn];
-//    
-//}
-//#pragma mark - 跳转客服
-//- (void)turnToService:(UIButton *)sender{
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
-//    
-//    serviceVC.hidesBottomBarWhenPushed = YES;
-//    
-//    // 创建单聊会话成功
-//    [self.navigationController pushViewController:serviceVC animated:YES];
-//
-//}
 
 
 #pragma mark - 自定义navigation bar item

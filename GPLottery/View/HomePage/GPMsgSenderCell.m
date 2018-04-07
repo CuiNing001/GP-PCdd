@@ -15,6 +15,7 @@
     // Initialization code
 }
 
+
 - (void)setDataWithModel:(GPMessageModel *)messageModel{
     
     self.msgTimeLab.text = [NSString stringWithFormat:@"%@",messageModel.date];

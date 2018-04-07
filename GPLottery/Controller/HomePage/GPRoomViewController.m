@@ -172,10 +172,21 @@ static int scoreViewY; // 分数初始Y值
     
 }
 
+
+
 #pragma mark - 页面即将出现进入聊天室
 - (void)viewWillAppear:(BOOL)animated{
     
-    [self enterChatRoom];
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        
+        [self enterChatRoom];
+    }
 }
 
 #pragma mark - 进入房间

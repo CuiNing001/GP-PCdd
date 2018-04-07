@@ -8,6 +8,7 @@
 
 #import "GPGameViewController.h"
 #import "GPLuckyListViewController.h"
+#import "sys/utsname.h"
 
 @interface GPGameViewController ()<CAAnimationDelegate>
 
@@ -30,6 +31,18 @@
     
     [self loadLucyGameData];
     [self loadSubView];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
 }
 
 #pragma mark - 自定义bar item
@@ -101,6 +114,17 @@
     self.title = @"幸运抽奖";
     
     [self customNavigationBarItem];
+    
+    // 获取设备型号
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    // 适配5s、SE
+    if ([deviceString isEqualToString:@"iPhone6,1"]||[deviceString isEqualToString:@"iPhone6,2"]||[deviceString isEqualToString:@"iPhone8,4"]) {
+        
+        
+    }
 }
 
 #pragma mark - 加载本地数据

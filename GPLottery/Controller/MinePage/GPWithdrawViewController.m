@@ -26,15 +26,24 @@
 @end
 
 @implementation GPWithdrawViewController
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadNetData];
     [self loadSubView];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
 }
 
 - (void)loadSubView{

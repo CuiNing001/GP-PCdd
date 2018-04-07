@@ -38,8 +38,18 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    // 获取用户状态
-    [self loadUserStatus];
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        
+        // 获取用户状态
+        [self loadUserStatus];
+    }
+    
 }
 
 - (void)loadData{

@@ -70,7 +70,7 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 
 //        [self alertViewWithTitle:@"提醒" message:@"账号在其他设备登陆"];loginVC
 
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提醒appdelegate" message:@"账号在其他设备登陆" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提醒" message:@"账号在其他设备登陆" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             

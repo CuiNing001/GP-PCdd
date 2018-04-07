@@ -247,7 +247,7 @@ static int page = 1;
     [rightFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     rightFlowLayout.minimumLineSpacing = 25;
     rightFlowLayout.minimumInteritemSpacing = 10;
-    rightFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-30)/2, 50);
+    rightFlowLayout.itemSize = CGSizeMake(80, 80);
     rightFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.rightCollectionView.collectionViewLayout = rightFlowLayout;
 //    self.rightCollectionView.delaysContentTouches = false;
@@ -321,12 +321,37 @@ static int page = 1;
         
         GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
         
+        if (self.pageThreeDataArray.count>0) {
+            
+            if (indexPath.row == 0) {
+                
+                betContentCell.nameLab.backgroundColor = [UIColor redColor];
+                betContentCell.nameLab.layer.masksToBounds = YES;
+                betContentCell.nameLab.layer.cornerRadius = 20;
+            }else if (indexPath.row == 1){
+                
+                betContentCell.nameLab.backgroundColor = [UIColor greenColor];
+                betContentCell.nameLab.layer.masksToBounds = YES;
+                betContentCell.nameLab.layer.cornerRadius = 20;
+            }else if (indexPath.row == 2){
+                
+                betContentCell.nameLab.backgroundColor = [UIColor blueColor];
+                betContentCell.nameLab.layer.masksToBounds = YES;
+                betContentCell.nameLab.layer.cornerRadius = 20;
+            }else{
+                
+                betContentCell.nameLab.backgroundColor = [UIColor orangeColor];
+                betContentCell.nameLab.layer.masksToBounds = YES;
+                betContentCell.nameLab.layer.cornerRadius = 20;
+            }
+        }
+        
         [betContentCell setDataWithMode:oddsModel];
+        
+        
         
         return betContentCell;
     }
-    
-    
 }
 
 // 是否允许选中

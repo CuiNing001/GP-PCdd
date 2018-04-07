@@ -44,6 +44,18 @@ static int monthNum = 0;  // 选择月份
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
+
 - (void)loadData{
     
     self.yearDataSource = @[@"2017",@"2018"].mutableCopy;

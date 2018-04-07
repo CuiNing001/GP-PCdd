@@ -29,6 +29,10 @@ static NSInteger indexNum;
 @property (strong, nonatomic) NSString *normalImageName;      // 单选框正常状态
 @property (strong, nonatomic) NSString *selectedImageName;    // 单选框选中状态
 
+@property (strong, nonatomic) GPInfoModel *infoModel;            // 本地数据
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
+@property (strong, nonatomic) NSString *token;
+
 
 @end
 
@@ -44,9 +48,21 @@ static NSInteger indexNum;
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    // 进入页面添加遮罩view
-//    [self initCoverView];
+    [self loadUserDefaultsData];
+    
+    // 未登陆状态返回首页界面
+    if (![self.infoModel.islogin isEqualToString:@"1"]) {
+        
+        self.tabBarController.selectedIndex = 0;
+    }
+    
 }
+
+//- (void)viewWillAppear:(BOOL)animated{
+//
+//    // 进入页面添加遮罩view
+////    [self initCoverView];
+//}
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
@@ -68,6 +84,19 @@ static NSInteger indexNum;
     
     self.checkRecordBtn.layer.borderWidth = 1;
     self.checkRecordBtn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1].CGColor;
+    
+}
+
+#pragma mark - 加载本地数据
+- (void)loadUserDefaultsData{
+    
+    NSMutableDictionary *infoDic = [UserDefaults searchData];
+    
+    self.infoModel               = [[GPInfoModel alloc]init];
+    
+    [self.infoModel setValuesForKeysWithDictionary:infoDic];
+    
+    self.token   = self.infoModel.token;
     
 }
 

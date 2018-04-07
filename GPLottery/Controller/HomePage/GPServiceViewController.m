@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSMutableArray     *msgDataArray;         // 消息数据
 @property (strong, nonatomic) NSData *imageData; // 图片数据
 @property (strong, nonatomic) GPServiceLageImageView *largeImageView;   // 加载大图
+@property (strong, nonatomic) JMSGConversation   *conversation;
 
 @end
 
@@ -41,14 +42,7 @@
     [self loadSubView];
 }
 
-// 账号在其他设备登陆
-- (void)onReceiveLoginUserStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event {
-    
-    if (event.eventType == kJMSGEventNotificationLoginKicked) {
-        
-        [self alertViewWithTitle:@"首页提醒" message:@"账号在其他设备登陆"];
-    }
-}
+
 
 - (IBAction)dissmissButton:(UIButton *)sender {
     
@@ -133,31 +127,49 @@
     
     NSString *usernameSingle = kAdminUsername;
     // 获取单聊会话
-    [JMSGConversation singleConversationWithUsername:usernameSingle];
+   self.conversation =  [JMSGConversation singleConversationWithUsername:usernameSingle];
+    
     
     // 未获取到对应单聊会话
     if ([JMSGConversation singleConversationWithUsername:usernameSingle]) {
-        
+
         // 创建单聊会话
         [JMSGConversation createSingleConversationWithUsername:usernameSingle completionHandler:^(id resultObject, NSError *error) {
-            
-            NSLog(@"^^^^^^^^^^^^^^^创建单聊会话^^^^^^^^^^^^^^^^^^%@",resultObject);
-            
+
             if (!error) {
+                
+                NSLog(@"^^^^^^^^^^^^^^^创建单聊会话^^^^^^^^^^^^^^^^^^%@",resultObject);
+                
                 [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
-                
+
+                [self.conversation allMessages:^(id resultObject, NSError *error) {
+
+                    self.msgDataArray = [NSMutableArray arrayWithArray:resultObject];
+
+                    [self.tableView reloadData];
+                }];
+
                 [self loadServiceNetData];
-                
+
             }else{
-                
+
                 // 创建单聊会话失败
                 [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
             }
         }];
     }else{
+        
+        NSLog(@"^^^^^^^^^^^^^^^获取单聊会话^^^^^^^^^^^^^^^^^^");
         // 获取到对应单聊会话
         [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
-        
+
+        [self.conversation allMessages:^(id resultObject, NSError *error) {
+
+            self.msgDataArray = [NSMutableArray arrayWithArray:resultObject];
+
+            [self.tableView reloadData];
+        }];
+
         [self loadServiceNetData];
     }
     
@@ -206,10 +218,10 @@
 //    tap.delegate = self;
     
     // 注册发送cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceSenderCell" bundle:nil] forCellReuseIdentifier:@"serviceSenderCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceSenderCell" bundle:nil] forCellReuseIdentifier:@"serviceSenderCell"];
     
     // 注册接收cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceReciveCell" bundle:nil] forCellReuseIdentifier:@"serviceReceiveCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"GPServiceReciveCell" bundle:nil] forCellReuseIdentifier:@"serviceReceiveCell"];
     
     // 加载大图
     self.largeImageView = [[GPServiceLageImageView alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -374,7 +386,10 @@
 
 }
 
-
+- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages{
+    
+    [ToastView toastViewWithMessage:@"离线消息" timer:3.0];
+}
 
 #pragma mark - 获取图片
 - (IBAction)addImage:(UIButton *)sender {
@@ -415,8 +430,8 @@
         JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:self.inputTextView.text];
         JMSGMessage *sendMessage = [JMSGMessage createSingleMessageWithContent:content username:kAdminUsername];
         [JMSGMessage sendMessage:sendMessage];
-        NSError *error;
-        [self onSendMessageResponse:sendMessage error:error];
+//        NSError *error;
+//        [self onSendMessageResponse:sendMessage error:error];
         
         
         // 发送成功后回收键盘，清空输入框
@@ -457,22 +472,46 @@
     
     JMSGMessage *sendMessage = self.msgDataArray[indexPath.row];
     
-    if (![sendMessage.fromType isEqualToString:@"admin"]) {
+    if (sendMessage.target == self.conversation.target) {
         
-        GPServiceSenderCell *serviceSenderCell = [tableView dequeueReusableCellWithIdentifier:@"serviceSenderCell" forIndexPath:indexPath];
+        GPServiceSenderCell *serviceSenderCell = [tableView cellForRowAtIndexPath:indexPath];
         
-//        serviceSenderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        // 解决xib复用数据混乱问题  
+        if (serviceSenderCell == nil) {
+            
+            serviceSenderCell = (GPServiceSenderCell *)[[[NSBundle mainBundle]loadNibNamed:@"GPServiceSenderCell" owner:self options:nil]lastObject];
+            
+        }else{
+            
+                //删除cell的所有子视图
+                while ([serviceSenderCell.contentView.subviews lastObject] != nil){
+                    
+                    [(UIView*)[serviceSenderCell.contentView.subviews lastObject] removeFromSuperview];
+                }
+        }
         
         serviceSenderCell.backgroundColor = [UIColor clearColor];
         
         [serviceSenderCell setDataWithMessage:sendMessage];
         
         return serviceSenderCell;
+        
     }else{
         
-        GPServiceReciveCell *serviceReceiveCell = [tableView dequeueReusableCellWithIdentifier:@"serviceReceiveCell" forIndexPath:indexPath];
+        GPServiceReciveCell *serviceReceiveCell = [tableView cellForRowAtIndexPath:indexPath];
         
-//        serviceReceiveCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (serviceReceiveCell == nil) {
+            
+            serviceReceiveCell = (GPServiceReciveCell *)[[[NSBundle mainBundle]loadNibNamed:@"GPServiceReciveCell" owner:self options:nil]lastObject];
+            
+        }else{
+            
+            //删除cell的所有子视图
+            while ([serviceReceiveCell.contentView.subviews lastObject] != nil){
+                
+                [(UIView*)[serviceReceiveCell.contentView.subviews lastObject] removeFromSuperview];
+            }
+        }
         
         serviceReceiveCell.backgroundColor = [UIColor clearColor];
         
