@@ -337,7 +337,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iw4-pL-lR5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="游戏大厅" id="zM1-2T-RDy"/>
+                    <navigationItem key="navigationItem" title="游戏大厅" id="zM1-2T-RDy">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="index_left_item.png" id="mcc-ds-88I">
+                            <connections>
+                                <action selector="leftMoreItem:" destination="FPd-6t-o96" id="zF9-Ps-Au7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bgScrollView" destination="FWb-hs-1B1" id="gSk-DS-r9A"/>
                         <outlet property="bgView" destination="Uf7-1Y-dfn" id="Bfd-rV-3P6"/>
@@ -663,6 +669,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yb-A2-cYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1295" y="2484"/>
+        </scene>
+        <!--My Message View Controller-->
+        <scene sceneID="D65-cq-bPv">
+            <objects>
+                <viewController storyboardIdentifier="myMessageVC" id="UQj-RI-YN1" customClass="GPMyMessageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8q1-I9-OYs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOn-QX-2aK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="L09-FR-4Sa" firstAttribute="bottom" secondItem="hOn-QX-2aK" secondAttribute="bottom" id="INp-TT-tth"/>
+                            <constraint firstItem="L09-FR-4Sa" firstAttribute="trailing" secondItem="hOn-QX-2aK" secondAttribute="trailing" id="Wm3-u0-zE5"/>
+                            <constraint firstItem="hOn-QX-2aK" firstAttribute="top" secondItem="L09-FR-4Sa" secondAttribute="top" id="fs7-J0-GzG"/>
+                            <constraint firstItem="hOn-QX-2aK" firstAttribute="leading" secondItem="L09-FR-4Sa" secondAttribute="leading" id="kn1-ug-9dW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L09-FR-4Sa"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="hOn-QX-2aK" id="Z0S-AX-Sm3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVF-nB-0lr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-508" y="2490"/>
         </scene>
         <!--Room List View Controller-->
         <scene sceneID="xQP-hF-5gW">
@@ -6471,6 +6507,7 @@
         <image name="home_money.png" width="32" height="28"/>
         <image name="home_person.png" width="32" height="28"/>
         <image name="index_left_btn.png" width="180" height="218"/>
+        <image name="index_left_item.png" width="18" height="16"/>
         <image name="index_right_btn.jpg" width="180" height="218"/>
         <image name="login_back_arrows.png" width="11" height="18"/>
         <image name="login_bg_img.png" width="375" height="667"/>

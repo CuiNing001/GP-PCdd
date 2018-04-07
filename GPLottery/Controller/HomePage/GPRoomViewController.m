@@ -690,7 +690,7 @@ static int scoreViewY; // 分数初始Y值
 
 - (void)countdown{
     
-     // 北京28
+     // ^^^^^^^^^^^^北京28倒计时^^^^^^^^^^^^^
     if (self.productIdStr.integerValue == 1) {
         
         if (timerSecond >30) {   // 开盘
@@ -730,7 +730,7 @@ static int scoreViewY; // 分数初始Y值
             self.timerLab.text = @"封盘中";
         }
         
-        // 加拿大28
+        // ^^^^^^^^^^^^^^^加拿大28倒计时^^^^^^^^^^^^^^^^^
     }else if (self.productIdStr.integerValue == 2){
         
         if (timerSecond>15) {   // 开盘
@@ -963,7 +963,7 @@ static int scoreViewY; // 分数初始Y值
     
     [self.tableView reloadData];
     
-    if (messageModel.type.integerValue == 2) {
+    if (messageModel.type.integerValue == 2) {  // 开奖结果
         
         GPRoomHistoryModel *historyModel = [GPRoomHistoryModel new];
         
@@ -978,6 +978,11 @@ static int scoreViewY; // 分数初始Y值
         [self.historyDataArray insertObject:historyModel atIndex:0];
         [self.historyDataArray removeObject:self.historyDataArray.lastObject];
         [self.historyTableView reloadData];
+        
+    }else if (messageModel.type.integerValue == 5){  // 封盘
+        
+        [self.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
+        self.timerLab.text = @"封盘中";
     }
     
     // 添加tableview向上滚动

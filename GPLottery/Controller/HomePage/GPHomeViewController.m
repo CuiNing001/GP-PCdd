@@ -23,8 +23,12 @@
 #import "GPPayViewController.h"
 #import "GPWithdrawViewController.h"
 #import "GPUserStatusModel.h"
+#import "GPHomeLeftItemView.h"
+#import "GPWalletViewController.h"
+#import "GPMyMessageViewController.h"
 
-static int touch = 0;
+static int touch = 0;   // 右侧更多按钮点击次数
+static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *bgScrollView;
 
@@ -51,7 +55,8 @@ static int touch = 0;
 @property (strong, nonatomic) UIView *itemView;   // bar item
 @property (strong, nonatomic) UIButton *itemBtn;  // bar item button
 @property (strong, nonatomic) GPHomeMoreView *moreView; // 顶部item more按钮
-@property (strong, nonatomic) GPUserStatusModel  *userStatusModel;// 拥挤公告信息
+@property (strong, nonatomic) GPUserStatusModel  *userStatusModel;   // 用户公共信息
+@property (strong, nonatomic) GPHomeLeftItemView *indexLeftMoreView; // 左侧更多页面
 
 @end
 
@@ -116,8 +121,9 @@ static int touch = 0;
     touch++;
     
     if (touch%2==0) {
-        
+
         self.moreView.hidden = YES;
+        
     }else{
         
         self.moreView.hidden = NO;
@@ -125,6 +131,19 @@ static int touch = 0;
     
 }
 
+#pragma mark - 顶部左侧item
+- (IBAction)leftMoreItem:(UIBarButtonItem *)sender {
+    
+    leftViewTouch++;
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.5;
+        transition.type     = kCATransitionMoveIn;
+        transition.subtype  = kCATransitionFromBottom;
+        self.indexLeftMoreView.hidden = NO;
+        [self.indexLeftMoreView.layer addAnimation:transition forKey:@"animation"];
+}
+
+#pragma mark - 页面即将出现
 -(void)viewWillAppear:(BOOL)animated{
     
     // 加载本地数据
@@ -218,22 +237,102 @@ static int touch = 0;
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
     
-    // 顶部more按钮
+    // ^^^^^^^^^^^^^^^^^^^^^^^^顶部右侧more按钮^^^^^^^^^^^^^^^^^^^^^^^^^^
     self.moreView = [[GPHomeMoreView alloc]initWithFrame:CGRectMake(kSize_width-120, 84, 100, 80)];
     [self.view addSubview:self.moreView];
     self.moreView.hidden = YES;
     
-    // 顶部more按钮-充值
+    // 顶部右侧more按钮-充值
     __weak typeof(self)weakSelf = self;
     self.moreView.rechargeBlock = ^{
       
         [weakSelf turnToPayVC];
     };
     
-    // 顶部more按钮-提现
+    // 顶部右侧more按钮-提现
     self.moreView.withdrawBlock = ^{
         
         [weakSelf turnToWithdrawVC];
+    };
+    
+    // ^^^^^^^^^^^^^^^^^^^^^^^^顶部左侧more按钮^^^^^^^^^^^^^^^^^^^^^^^^^^
+    self.indexLeftMoreView = [[GPHomeLeftItemView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.indexLeftMoreView];
+//    [self.navigationController.view addSubview:self.indexLeftMoreView];
+    self.indexLeftMoreView.hidden = YES;
+    
+    // 顶部左侧more按钮 - 返回
+    self.indexLeftMoreView.dissmissBlock = ^{
+      
+        leftViewTouch++;
+
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.5;
+        transition.type     = kCATransitionMoveIn;
+        transition.subtype  = kCATransitionFromBottom;
+        [weakSelf.indexLeftMoreView.layer addAnimation:transition forKey:@"animation"];
+        weakSelf.indexLeftMoreView.hidden = YES;
+        
+    };
+    // 顶部左侧more按钮 - 充值
+    self.indexLeftMoreView.topUpBlock = ^{
+        
+        leftViewTouch++;
+        weakSelf.indexLeftMoreView.hidden = YES;
+        
+        UIStoryboard *storyboard       = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPPayViewController *payVC     = [storyboard instantiateViewControllerWithIdentifier:@"payVC"];
+        payVC.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:payVC animated:YES];
+    };
+    // 顶部左侧more按钮 - 提现
+    self.indexLeftMoreView.withdrawalBlock = ^{
+        
+        // 未登陆状态提醒
+        if (![weakSelf.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            // 未绑定银行卡提醒先绑定银行卡
+            if (weakSelf.userStatusModel.bankStatus.integerValue == 0) {
+                
+                [ToastView toastViewWithMessage:@"请先绑定银行卡" timer:3.0];
+                
+            }else{
+                
+                leftViewTouch++;
+                weakSelf.indexLeftMoreView.hidden = YES;
+                
+                // 已绑定跳转到提现页面
+                UIStoryboard *storyboard             = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                GPWithdrawViewController *withdrawVC = [storyboard instantiateViewControllerWithIdentifier:@"withdrawVC"];
+                withdrawVC.hidesBottomBarWhenPushed  = YES;
+                [weakSelf.navigationController pushViewController:withdrawVC animated:YES];
+            }
+        }
+    };
+    // 顶部左侧more按钮 - 我的钱包
+    self.indexLeftMoreView.myWalletBlock = ^{
+        
+        leftViewTouch++;
+        weakSelf.indexLeftMoreView.hidden = YES;
+        
+        UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPWalletViewController *walletVC      = [storyboard instantiateViewControllerWithIdentifier:@"walletVC"];
+        walletVC.hidesBottomBarWhenPushed     = YES;
+        [weakSelf.navigationController pushViewController:walletVC animated:YES];
+    };
+    // 顶部左侧more按钮 - 我的消息
+    self.indexLeftMoreView.myMessageBlock = ^{
+        
+        leftViewTouch++;
+        weakSelf.indexLeftMoreView.hidden = YES;
+        
+        UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        GPMyMessageViewController *myMessageVC= [storyboard instantiateViewControllerWithIdentifier:@"myMessageVC"];
+        myMessageVC.hidesBottomBarWhenPushed     = YES;
+        [weakSelf.navigationController pushViewController:myMessageVC animated:YES];
     };
 }
 
@@ -270,7 +369,6 @@ static int touch = 0;
 - (void)turnToWithdrawVC{
     
     touch++;
-    
     self.moreView.hidden = YES;
     
     // 未登陆状态提醒

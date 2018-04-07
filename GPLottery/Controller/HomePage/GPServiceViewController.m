@@ -162,7 +162,8 @@
         NSLog(@"^^^^^^^^^^^^^^^获取单聊会话^^^^^^^^^^^^^^^^^^");
         // 获取到对应单聊会话
         [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
-
+        
+        // 获取聊天记录
         [self.conversation allMessages:^(id resultObject, NSError *error) {
 
             self.msgDataArray = [NSMutableArray arrayWithArray:resultObject];

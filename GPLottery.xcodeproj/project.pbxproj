@@ -20,6 +20,24 @@
 		420DB55620785B1C00B09FEA /* global_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB55320785B1C00B09FEA /* global_btn@3x.png */; };
 		420DB55720785B1C00B09FEA /* global_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB55420785B1C00B09FEA /* global_btn@1x.png */; };
 		420DB561207874ED00B09FEA /* game_table_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB560207874ED00B09FEA /* game_table_img.png */; };
+		420DB5722078B56B00B09FEA /* index_msg_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5632078B56A00B09FEA /* index_msg_btn@3x.png */; };
+		420DB5732078B56B00B09FEA /* index_money_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5642078B56A00B09FEA /* index_money_img@2x.png */; };
+		420DB5742078B56B00B09FEA /* index_money_img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5652078B56A00B09FEA /* index_money_img@3x.png */; };
+		420DB5752078B56B00B09FEA /* index_msg_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5662078B56A00B09FEA /* index_msg_btn@2x.png */; };
+		420DB5762078B56B00B09FEA /* index_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5672078B56A00B09FEA /* index_back_btn@2x.png */; };
+		420DB5772078B56B00B09FEA /* index_wallet_img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5682078B56A00B09FEA /* index_wallet_img@3x.png */; };
+		420DB57A2078B56B00B09FEA /* index_wallet_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB56B2078B56A00B09FEA /* index_wallet_img@2x.png */; };
+		420DB57B2078B56B00B09FEA /* index_back_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB56C2078B56A00B09FEA /* index_back_btn@3x.png */; };
+		420DB57C2078B56B00B09FEA /* index_wallet_img@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB56D2078B56A00B09FEA /* index_wallet_img@1x.png */; };
+		420DB57D2078B56B00B09FEA /* index_back_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB56E2078B56A00B09FEA /* index_back_btn@1x.png */; };
+		420DB57F2078B56B00B09FEA /* index_msg_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5702078B56A00B09FEA /* index_msg_btn@1x.png */; };
+		420DB5802078B56B00B09FEA /* index_money_img@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5712078B56A00B09FEA /* index_money_img@1x.png */; };
+		420DB5842078B87500B09FEA /* index_left_item@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5812078B87200B09FEA /* index_left_item@1x.png */; };
+		420DB5852078B87500B09FEA /* index_left_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5822078B87300B09FEA /* index_left_item@2x.png */; };
+		420DB5862078B87500B09FEA /* index_left_item@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5832078B87400B09FEA /* index_left_item@3x.png */; };
+		420DB5892078B93400B09FEA /* GPHomeLeftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5882078B93400B09FEA /* GPHomeLeftItemView.m */; };
+		420DB58B2078B94200B09FEA /* GPHomeLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */; };
+		420DB58E2078DF4500B09FEA /* GPMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */; };
 		42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA22060FA10007D44E8 /* GPRechargeModel.m */; };
 		42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */; };
 		42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */; };
@@ -374,6 +392,26 @@
 		420DB55320785B1C00B09FEA /* global_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_btn@3x.png"; sourceTree = "<group>"; };
 		420DB55420785B1C00B09FEA /* global_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_btn@1x.png"; sourceTree = "<group>"; };
 		420DB560207874ED00B09FEA /* game_table_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_table_img.png; sourceTree = "<group>"; };
+		420DB5632078B56A00B09FEA /* index_msg_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_msg_btn@3x.png"; sourceTree = "<group>"; };
+		420DB5642078B56A00B09FEA /* index_money_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_money_img@2x.png"; sourceTree = "<group>"; };
+		420DB5652078B56A00B09FEA /* index_money_img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_money_img@3x.png"; sourceTree = "<group>"; };
+		420DB5662078B56A00B09FEA /* index_msg_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_msg_btn@2x.png"; sourceTree = "<group>"; };
+		420DB5672078B56A00B09FEA /* index_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_back_btn@2x.png"; sourceTree = "<group>"; };
+		420DB5682078B56A00B09FEA /* index_wallet_img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_wallet_img@3x.png"; sourceTree = "<group>"; };
+		420DB56B2078B56A00B09FEA /* index_wallet_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_wallet_img@2x.png"; sourceTree = "<group>"; };
+		420DB56C2078B56A00B09FEA /* index_back_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_back_btn@3x.png"; sourceTree = "<group>"; };
+		420DB56D2078B56A00B09FEA /* index_wallet_img@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_wallet_img@1x.png"; sourceTree = "<group>"; };
+		420DB56E2078B56A00B09FEA /* index_back_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_back_btn@1x.png"; sourceTree = "<group>"; };
+		420DB5702078B56A00B09FEA /* index_msg_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_msg_btn@1x.png"; sourceTree = "<group>"; };
+		420DB5712078B56A00B09FEA /* index_money_img@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_money_img@1x.png"; sourceTree = "<group>"; };
+		420DB5812078B87200B09FEA /* index_left_item@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_item@1x.png"; sourceTree = "<group>"; };
+		420DB5822078B87300B09FEA /* index_left_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_item@2x.png"; sourceTree = "<group>"; };
+		420DB5832078B87400B09FEA /* index_left_item@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_item@3x.png"; sourceTree = "<group>"; };
+		420DB5872078B93400B09FEA /* GPHomeLeftItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPHomeLeftItemView.h; sourceTree = "<group>"; };
+		420DB5882078B93400B09FEA /* GPHomeLeftItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPHomeLeftItemView.m; sourceTree = "<group>"; };
+		420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPHomeLeftItemView.xib; sourceTree = "<group>"; };
+		420DB58C2078DF4500B09FEA /* GPMyMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMyMessageViewController.h; sourceTree = "<group>"; };
+		420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMyMessageViewController.m; sourceTree = "<group>"; };
 		42148AA12060FA10007D44E8 /* GPRechargeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeModel.h; sourceTree = "<group>"; };
 		42148AA22060FA10007D44E8 /* GPRechargeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeModel.m; sourceTree = "<group>"; };
 		42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeListCell.h; sourceTree = "<group>"; };
@@ -863,6 +901,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		420DB5622078B56A00B09FEA /* index */ = {
+			isa = PBXGroup;
+			children = (
+				420DB5812078B87200B09FEA /* index_left_item@1x.png */,
+				420DB5822078B87300B09FEA /* index_left_item@2x.png */,
+				420DB5832078B87400B09FEA /* index_left_item@3x.png */,
+				420DB5632078B56A00B09FEA /* index_msg_btn@3x.png */,
+				420DB5642078B56A00B09FEA /* index_money_img@2x.png */,
+				420DB5652078B56A00B09FEA /* index_money_img@3x.png */,
+				420DB5662078B56A00B09FEA /* index_msg_btn@2x.png */,
+				420DB5672078B56A00B09FEA /* index_back_btn@2x.png */,
+				420DB5682078B56A00B09FEA /* index_wallet_img@3x.png */,
+				420DB56B2078B56A00B09FEA /* index_wallet_img@2x.png */,
+				420DB56C2078B56A00B09FEA /* index_back_btn@3x.png */,
+				420DB56D2078B56A00B09FEA /* index_wallet_img@1x.png */,
+				420DB56E2078B56A00B09FEA /* index_back_btn@1x.png */,
+				420DB5702078B56A00B09FEA /* index_msg_btn@1x.png */,
+				420DB5712078B56A00B09FEA /* index_money_img@1x.png */,
+			);
+			path = index;
+			sourceTree = "<group>";
+		};
 		427122D32068CEC70080A50F /* MembersIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1056,6 +1116,8 @@
 				42CD99CB207201BD00F86F21 /* GPOddInstroctionViewController.m */,
 				42CD99E020731A9900F86F21 /* GPTrendViewController.h */,
 				42CD99E120731A9900F86F21 /* GPTrendViewController.m */,
+				420DB58C2078DF4500B09FEA /* GPMyMessageViewController.h */,
+				420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1320,6 +1382,9 @@
 				420DB54B207714A600B09FEA /* GPHomeMoreView.h */,
 				420DB54C207714A600B09FEA /* GPHomeMoreView.m */,
 				420DB54E207714BB00B09FEA /* GPHomeMoreView.xib */,
+				420DB5872078B93400B09FEA /* GPHomeLeftItemView.h */,
+				420DB5882078B93400B09FEA /* GPHomeLeftItemView.m */,
+				420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1442,6 +1507,7 @@
 		42E7E5212054C0C600119CB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				420DB5622078B56A00B09FEA /* index */,
 				427122D32068CEC70080A50F /* MembersIcon */,
 				42E7E5242054C10300119CB0 /* bar_home_normal.png */,
 				42E7E52A2054C4E700119CB0 /* bar_home_choose.png */,
@@ -1744,6 +1810,7 @@
 			files = (
 				42F402C8207481B200A2D03A /* room_cell_two@2x.png in Resources */,
 				427122DB2068CEC70080A50F /* 4.png in Resources */,
+				420DB5732078B56B00B09FEA /* index_money_img@2x.png in Resources */,
 				42F4026E2073859A00A2D03A /* wallet_ withdraw_list@1x.png in Resources */,
 				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
 				427122D22068CAEC0080A50F /* GPMsgReceiveCell.xib in Resources */,
@@ -1759,13 +1826,16 @@
 				420DB55620785B1C00B09FEA /* global_btn@3x.png in Resources */,
 				42F402DE2074A01800A2D03A /* home_person@2x.png in Resources */,
 				42715AB32064D173000A79FC /* GPBetContentCell.xib in Resources */,
+				420DB5752078B56B00B09FEA /* index_msg_btn@2x.png in Resources */,
 				42F402682073859A00A2D03A /* wallet_ recharge@1x.png in Resources */,
 				423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */,
 				42CD9A14207375B200F86F21 /* pay_item_normal@2x.png in Resources */,
+				420DB58B2078B94200B09FEA /* GPHomeLeftItemView.xib in Resources */,
 				42CD99FB207374B000F86F21 /* bar_home_normal@2x.png in Resources */,
 				42F402712073859A00A2D03A /* wallet_ withdraw@2x.png in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
 				42F402732073859A00A2D03A /* wallet_ recharge@3x.png in Resources */,
+				420DB57B2078B56B00B09FEA /* index_back_btn@3x.png in Resources */,
 				42F4026B2073859A00A2D03A /* wallet_ withdraw_list@3x.png in Resources */,
 				42E7E55E2056659300119CB0 /* check_normal.png in Resources */,
 				42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */,
@@ -1782,10 +1852,12 @@
 				42E7E52E2054C6F100119CB0 /* bar_mine_normal.png in Resources */,
 				423C89F3206F7B8F00F78719 /* pay_qq.png in Resources */,
 				42CD9A212073761900F86F21 /* bar_notice_select@2x.png in Resources */,
+				420DB57D2078B56B00B09FEA /* index_back_btn@1x.png in Resources */,
 				4207C04E2077096400680B89 /* service_item@1x.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
 				4263BA95205CB9CE00103919 /* game_point_img.png in Resources */,
 				42CD99FE207374B000F86F21 /* bar_home_select@2x.png in Resources */,
+				420DB5762078B56B00B09FEA /* index_back_btn@2x.png in Resources */,
 				4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */,
 				427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */,
 				427122E92068F7620080A50F /* input_receive_bg.png in Resources */,
@@ -1824,11 +1896,13 @@
 				42F4026F2073859A00A2D03A /* wallet_recharge_list@2x.png in Resources */,
 				42CD9A242073761900F86F21 /* bar_notice_normal@3x.png in Resources */,
 				4207C04F2077096400680B89 /* service_item@2x.png in Resources */,
+				420DB5742078B56B00B09FEA /* index_money_img@3x.png in Resources */,
 				42F4028F207386FF00A2D03A /* setting_clean@2x.png in Resources */,
 				42F4026D2073859A00A2D03A /* wallet_recharge_list@3x.png in Resources */,
 				427122E02068CEC70080A50F /* 1.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
 				42F402AC2073B26200A2D03A /* index_right_btn@2x.png in Resources */,
+				420DB5862078B87500B09FEA /* index_left_item@3x.png in Resources */,
 				4263B9E92057BD3700103919 /* mine_get.png in Resources */,
 				42F402C7207481B200A2D03A /* room_cell_two@3x.png in Resources */,
 				4263BA4F205A546800103919 /* GPBackWaterCell.xib in Resources */,
@@ -1851,6 +1925,7 @@
 				423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */,
 				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
 				42F402692073859A00A2D03A /* wallet_ withdraw@1x.png in Resources */,
+				420DB5852078B87500B09FEA /* index_left_item@2x.png in Resources */,
 				42F402DF2074A01800A2D03A /* home_person@3x.png in Resources */,
 				42E7E4D82054B7BE00119CB0 /* Main.storyboard in Resources */,
 				4271230D206B76570080A50F /* notice_statuse_img.png in Resources */,
@@ -1885,6 +1960,8 @@
 				420DB561207874ED00B09FEA /* game_table_img.png in Resources */,
 				42CD9A18207375B300F86F21 /* pay_item_select@1x.png in Resources */,
 				42CD9A0B2073752A00F86F21 /* mine_bar_select2x.png in Resources */,
+				420DB57A2078B56B00B09FEA /* index_wallet_img@2x.png in Resources */,
+				420DB5722078B56B00B09FEA /* index_msg_btn@3x.png in Resources */,
 				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
 				423C89F1206F7B8F00F78719 /* pay_ali.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
@@ -1900,8 +1977,10 @@
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
+				420DB5802078B56B00B09FEA /* index_money_img@1x.png in Resources */,
 				423C8A09206F951400F78719 /* GPNormalPayCell.xib in Resources */,
 				42CD9A17207375B300F86F21 /* pay_item_select@3x.png in Resources */,
+				420DB57F2078B56B00B09FEA /* index_msg_btn@1x.png in Resources */,
 				4263BA162059121B00103919 /* user_icon.png in Resources */,
 				42F402CD207481B200A2D03A /* room_list_one@3x.png in Resources */,
 				42CD99D920730DDE00F86F21 /* room_betLunch_img.png in Resources */,
@@ -1926,10 +2005,13 @@
 				423C89CD206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib in Resources */,
 				42CD9A232073761900F86F21 /* bar_notice_normal@2x.png in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
+				420DB57C2078B56B00B09FEA /* index_wallet_img@1x.png in Resources */,
+				420DB5842078B87500B09FEA /* index_left_item@1x.png in Resources */,
 				4263BA9A205CF92900103919 /* agent_user_btn.png in Resources */,
 				42F40289207386FF00A2D03A /* setting_clean@1x.png in Resources */,
 				42F40291207386FF00A2D03A /* setting_password_change@1x.png in Resources */,
 				42F4028E207386FF00A2D03A /* setting_clean@3x.png in Resources */,
+				420DB5772078B56B00B09FEA /* index_wallet_img@3x.png in Resources */,
 				42F402E62074A4FE00A2D03A /* room_list_two@3x.png in Resources */,
 				42CD9A092073752A00F86F21 /* mine_bar_normal@1x.png in Resources */,
 				42F402DA2074A01800A2D03A /* home_money@3x.png in Resources */,
@@ -2036,6 +2118,7 @@
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
 				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,
 				42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */,
+				420DB5892078B93400B09FEA /* GPHomeLeftItemView.m in Sources */,
 				42715A7B20620E41000A79FC /* GPBannerListModel.m in Sources */,
 				42715A87206248D3000A79FC /* GPRoomListViewController.m in Sources */,
 				423C89B8206E368300F78719 /* GPNormalUserModel.m in Sources */,
@@ -2067,6 +2150,7 @@
 				42CD99CC207201BD00F86F21 /* GPOddInstroctionViewController.m in Sources */,
 				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
 				42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */,
+				420DB58E2078DF4500B09FEA /* GPMyMessageViewController.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				427122CC2068CAD30080A50F /* GPMsgSystemCell.m in Sources */,
 				423C89C5206E476A00F78719 /* GPAgentUserInfoModel.m in Sources */,
