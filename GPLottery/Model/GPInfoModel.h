@@ -20,6 +20,9 @@
 @property (strong, nonatomic) NSString *level;      // 等级
 @property (strong, nonatomic) NSString *autograph;  // 签名
 @property (strong, nonatomic) NSString *userType;   // 用户类型  默认为1(普通用户)
-@property (strong, nonatomic) NSString *aboutUrl; // 个人中心关于页面地址
+@property (strong, nonatomic) NSString *aboutUrl;   // 个人中心关于页面地址
+@property (strong, nonatomic) NSString *indexLunchCount;     // 首页lunch点击次数
+@property (strong, nonatomic) NSString *roomLunchCount;      // 群聊lunch点击次数
+@property (strong, nonatomic) NSString *betLunchCount;       // 下注lunch点击次数
 
 @end

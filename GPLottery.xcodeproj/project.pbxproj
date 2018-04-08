@@ -38,6 +38,15 @@
 		420DB5892078B93400B09FEA /* GPHomeLeftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5882078B93400B09FEA /* GPHomeLeftItemView.m */; };
 		420DB58B2078B94200B09FEA /* GPHomeLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */; };
 		420DB58E2078DF4500B09FEA /* GPMyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */; };
+		420DB5912079E57000B09FEA /* GPCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5902079E57000B09FEA /* GPCoverView.m */; };
+		420DB5932079E57E00B09FEA /* GPCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5922079E57E00B09FEA /* GPCoverView.xib */; };
+		420DB59A2079FBBB00B09FEA /* index_left_btn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5982079FBBB00B09FEA /* index_left_btn.jpg */; };
+		420DB59B2079FBBB00B09FEA /* index_right_btn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5992079FBBB00B09FEA /* index_right_btn.jpg */; };
+		420DB59F207A0C0700B09FEA /* game_bet_lunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */; };
+		420DB5A0207A0C0700B09FEA /* game_bet_lunch@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */; };
+		420DB5A1207A0C0700B09FEA /* game_bet_lunch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */; };
+		420DB5A5207A2C4B00B09FEA /* GPMsgScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5A3207A2C4B00B09FEA /* GPMsgScoreCell.m */; };
+		420DB5A6207A2C4B00B09FEA /* GPMsgScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5A4207A2C4B00B09FEA /* GPMsgScoreCell.xib */; };
 		42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA22060FA10007D44E8 /* GPRechargeModel.m */; };
 		42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */; };
 		42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */; };
@@ -224,7 +233,6 @@
 		42CD99D620730DDE00F86F21 /* room_lunch_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99D120730DDC00F86F21 /* room_lunch_img.png */; };
 		42CD99D720730DDE00F86F21 /* room_ins_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99D220730DDD00F86F21 /* room_ins_btn.png */; };
 		42CD99D820730DDE00F86F21 /* room_trend_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99D320730DDD00F86F21 /* room_trend_btn.png */; };
-		42CD99D920730DDE00F86F21 /* room_betLunch_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99D420730DDD00F86F21 /* room_betLunch_img.png */; };
 		42CD99DA20730DDE00F86F21 /* room_record_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99D520730DDD00F86F21 /* room_record_btn.png */; };
 		42CD99DD20730E3E00F86F21 /* GPRoomItemAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CD99DC20730E3E00F86F21 /* GPRoomItemAlertView.m */; };
 		42CD99DF20730E5000F86F21 /* GPRoomItemAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CD99DE20730E5000F86F21 /* GPRoomItemAlertView.xib */; };
@@ -326,12 +334,6 @@
 		42F40291207386FF00A2D03A /* setting_password_change@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F40282207386FF00A2D03A /* setting_password_change@1x.png */; };
 		42F40292207386FF00A2D03A /* setting_withdraw_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F40283207386FF00A2D03A /* setting_withdraw_password@2x.png */; };
 		42F40293207386FF00A2D03A /* setting_withdraw_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F40284207386FF00A2D03A /* setting_withdraw_password@3x.png */; };
-		42F402AC2073B26200A2D03A /* index_right_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402A62073B26100A2D03A /* index_right_btn@2x.png */; };
-		42F402AD2073B26200A2D03A /* index_right_btn@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 42F402A72073B26100A2D03A /* index_right_btn@3x.jpg */; };
-		42F402AE2073B26200A2D03A /* index_left_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402A82073B26100A2D03A /* index_left_btn@3x.png */; };
-		42F402AF2073B26200A2D03A /* index_left_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402A92073B26100A2D03A /* index_left_btn@2x.png */; };
-		42F402B02073B26200A2D03A /* index_right_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402AA2073B26200A2D03A /* index_right_btn@1x.png */; };
-		42F402B12073B26200A2D03A /* index_left_btn@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402AB2073B26200A2D03A /* index_left_btn@1x.png */; };
 		42F402B42073CB4500A2D03A /* GPServiceLageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F402B32073CB4500A2D03A /* GPServiceLageImageView.m */; };
 		42F402B62073CB5E00A2D03A /* GPServiceLageImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F402B52073CB5E00A2D03A /* GPServiceLageImageView.xib */; };
 		42F402C7207481B200A2D03A /* room_cell_two@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402B9207481B100A2D03A /* room_cell_two@3x.png */; };
@@ -412,6 +414,17 @@
 		420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPHomeLeftItemView.xib; sourceTree = "<group>"; };
 		420DB58C2078DF4500B09FEA /* GPMyMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMyMessageViewController.h; sourceTree = "<group>"; };
 		420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMyMessageViewController.m; sourceTree = "<group>"; };
+		420DB58F2079E57000B09FEA /* GPCoverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPCoverView.h; sourceTree = "<group>"; };
+		420DB5902079E57000B09FEA /* GPCoverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCoverView.m; sourceTree = "<group>"; };
+		420DB5922079E57E00B09FEA /* GPCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPCoverView.xib; sourceTree = "<group>"; };
+		420DB5982079FBBB00B09FEA /* index_left_btn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index_left_btn.jpg; sourceTree = "<group>"; };
+		420DB5992079FBBB00B09FEA /* index_right_btn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index_right_btn.jpg; sourceTree = "<group>"; };
+		420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@2x.png"; sourceTree = "<group>"; };
+		420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@1x.png"; sourceTree = "<group>"; };
+		420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@3x.png"; sourceTree = "<group>"; };
+		420DB5A2207A2C4B00B09FEA /* GPMsgScoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgScoreCell.h; sourceTree = "<group>"; };
+		420DB5A3207A2C4B00B09FEA /* GPMsgScoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgScoreCell.m; sourceTree = "<group>"; };
+		420DB5A4207A2C4B00B09FEA /* GPMsgScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgScoreCell.xib; sourceTree = "<group>"; };
 		42148AA12060FA10007D44E8 /* GPRechargeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeModel.h; sourceTree = "<group>"; };
 		42148AA22060FA10007D44E8 /* GPRechargeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeModel.m; sourceTree = "<group>"; };
 		42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeListCell.h; sourceTree = "<group>"; };
@@ -707,7 +720,6 @@
 		42CD99D120730DDC00F86F21 /* room_lunch_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_lunch_img.png; sourceTree = "<group>"; };
 		42CD99D220730DDD00F86F21 /* room_ins_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_ins_btn.png; sourceTree = "<group>"; };
 		42CD99D320730DDD00F86F21 /* room_trend_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_trend_btn.png; sourceTree = "<group>"; };
-		42CD99D420730DDD00F86F21 /* room_betLunch_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_betLunch_img.png; sourceTree = "<group>"; };
 		42CD99D520730DDD00F86F21 /* room_record_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_record_btn.png; sourceTree = "<group>"; };
 		42CD99DB20730E3E00F86F21 /* GPRoomItemAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomItemAlertView.h; sourceTree = "<group>"; };
 		42CD99DC20730E3E00F86F21 /* GPRoomItemAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomItemAlertView.m; sourceTree = "<group>"; };
@@ -832,12 +844,6 @@
 		42F40282207386FF00A2D03A /* setting_password_change@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_password_change@1x.png"; sourceTree = "<group>"; };
 		42F40283207386FF00A2D03A /* setting_withdraw_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_withdraw_password@2x.png"; sourceTree = "<group>"; };
 		42F40284207386FF00A2D03A /* setting_withdraw_password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_withdraw_password@3x.png"; sourceTree = "<group>"; };
-		42F402A62073B26100A2D03A /* index_right_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_right_btn@2x.png"; sourceTree = "<group>"; };
-		42F402A72073B26100A2D03A /* index_right_btn@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index_right_btn@3x.jpg"; sourceTree = "<group>"; };
-		42F402A82073B26100A2D03A /* index_left_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_btn@3x.png"; sourceTree = "<group>"; };
-		42F402A92073B26100A2D03A /* index_left_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_btn@2x.png"; sourceTree = "<group>"; };
-		42F402AA2073B26200A2D03A /* index_right_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_right_btn@1x.png"; sourceTree = "<group>"; };
-		42F402AB2073B26200A2D03A /* index_left_btn@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_left_btn@1x.png"; sourceTree = "<group>"; };
 		42F402B22073CB4500A2D03A /* GPServiceLageImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceLageImageView.h; sourceTree = "<group>"; };
 		42F402B32073CB4500A2D03A /* GPServiceLageImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceLageImageView.m; sourceTree = "<group>"; };
 		42F402B52073CB5E00A2D03A /* GPServiceLageImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPServiceLageImageView.xib; sourceTree = "<group>"; };
@@ -1349,6 +1355,9 @@
 				427122C92068CAD30080A50F /* GPMsgSystemCell.h */,
 				427122CA2068CAD30080A50F /* GPMsgSystemCell.m */,
 				427122CB2068CAD30080A50F /* GPMsgSystemCell.xib */,
+				420DB5A2207A2C4B00B09FEA /* GPMsgScoreCell.h */,
+				420DB5A3207A2C4B00B09FEA /* GPMsgScoreCell.m */,
+				420DB5A4207A2C4B00B09FEA /* GPMsgScoreCell.xib */,
 				427122CE2068CAEC0080A50F /* GPMsgReceiveCell.h */,
 				427122CF2068CAEC0080A50F /* GPMsgReceiveCell.m */,
 				427122D02068CAEC0080A50F /* GPMsgReceiveCell.xib */,
@@ -1385,6 +1394,9 @@
 				420DB5872078B93400B09FEA /* GPHomeLeftItemView.h */,
 				420DB5882078B93400B09FEA /* GPHomeLeftItemView.m */,
 				420DB58A2078B94200B09FEA /* GPHomeLeftItemView.xib */,
+				420DB58F2079E57000B09FEA /* GPCoverView.h */,
+				420DB5902079E57000B09FEA /* GPCoverView.m */,
+				420DB5922079E57E00B09FEA /* GPCoverView.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1523,17 +1535,15 @@
 				427122E72068F7620080A50F /* input_receive_bg.png */,
 				427122E62068F7620080A50F /* input_send_bg.png */,
 				423C89AA206C92F100F78719 /* service_add_btn.png */,
-				42CD99D420730DDD00F86F21 /* room_betLunch_img.png */,
 				42CD99D220730DDD00F86F21 /* room_ins_btn.png */,
+				420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */,
+				420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */,
+				420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */,
 				42CD99D120730DDC00F86F21 /* room_lunch_img.png */,
+				420DB5982079FBBB00B09FEA /* index_left_btn.jpg */,
+				420DB5992079FBBB00B09FEA /* index_right_btn.jpg */,
 				42CD99D520730DDD00F86F21 /* room_record_btn.png */,
 				42CD99D320730DDD00F86F21 /* room_trend_btn.png */,
-				42F402AB2073B26200A2D03A /* index_left_btn@1x.png */,
-				42F402A92073B26100A2D03A /* index_left_btn@2x.png */,
-				42F402A82073B26100A2D03A /* index_left_btn@3x.png */,
-				42F402AA2073B26200A2D03A /* index_right_btn@1x.png */,
-				42F402A62073B26100A2D03A /* index_right_btn@2x.png */,
-				42F402A72073B26100A2D03A /* index_right_btn@3x.jpg */,
 				42F402D72074A01700A2D03A /* home_money@1x.png */,
 				42F402D52074A01600A2D03A /* home_money@2x.png */,
 				42F402D42074A01600A2D03A /* home_money@3x.png */,
@@ -1809,6 +1819,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F402C8207481B200A2D03A /* room_cell_two@2x.png in Resources */,
+				420DB5A6207A2C4B00B09FEA /* GPMsgScoreCell.xib in Resources */,
 				427122DB2068CEC70080A50F /* 4.png in Resources */,
 				420DB5732078B56B00B09FEA /* index_money_img@2x.png in Resources */,
 				42F4026E2073859A00A2D03A /* wallet_ withdraw_list@1x.png in Resources */,
@@ -1885,11 +1896,9 @@
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
 				42F402E82074A4FE00A2D03A /* room_list_three@1x.png in Resources */,
 				423C8A11206FADB300F78719 /* GPTransferTypeCell.xib in Resources */,
-				42F402AE2073B26200A2D03A /* index_left_btn@3x.png in Resources */,
 				4207C0502077096400680B89 /* service_item@3x.png in Resources */,
 				42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */,
 				42F402CC207481B200A2D03A /* room_cell_three@2x.png in Resources */,
-				42F402B02073B26200A2D03A /* index_right_btn@1x.png in Resources */,
 				42CD99EF2073512100F86F21 /* home_lunch@2x.png in Resources */,
 				42CD9A222073761900F86F21 /* bar_notice_normal@1x.png in Resources */,
 				42F40288207386FF00A2D03A /* setting_phone@3x.png in Resources */,
@@ -1901,7 +1910,6 @@
 				42F4026D2073859A00A2D03A /* wallet_recharge_list@3x.png in Resources */,
 				427122E02068CEC70080A50F /* 1.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
-				42F402AC2073B26200A2D03A /* index_right_btn@2x.png in Resources */,
 				420DB5862078B87500B09FEA /* index_left_item@3x.png in Resources */,
 				4263B9E92057BD3700103919 /* mine_get.png in Resources */,
 				42F402C7207481B200A2D03A /* room_cell_two@3x.png in Resources */,
@@ -1917,7 +1925,6 @@
 				423C89B5206C989800F78719 /* GPServiceReciveCell.xib in Resources */,
 				427122E12068CEC70080A50F /* 0.png in Resources */,
 				427122E82068F7620080A50F /* input_send_bg.png in Resources */,
-				42F402AD2073B26200A2D03A /* index_right_btn@3x.jpg in Resources */,
 				4207C05C20770E4100680B89 /* more_item@3x.png in Resources */,
 				42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */,
 				42F4028C207386FF00A2D03A /* setting_phone@1x.png in Resources */,
@@ -1935,7 +1942,10 @@
 				42F4028D207386FF00A2D03A /* setting_card@2x.png in Resources */,
 				423C89B0206C987F00F78719 /* GPServiceSenderCell.xib in Resources */,
 				42CD99FC207374B000F86F21 /* bar_home_normal@3x.png in Resources */,
+				420DB59B2079FBBB00B09FEA /* index_right_btn.jpg in Resources */,
 				427122DE2068CEC70080A50F /* 2.png in Resources */,
+				420DB5932079E57E00B09FEA /* GPCoverView.xib in Resources */,
+				420DB5A0207A0C0700B09FEA /* game_bet_lunch@1x.png in Resources */,
 				42715A9820633D6E000A79FC /* GPRoomListCell.xib in Resources */,
 				42CD99F02073512100F86F21 /* pay_lunch@2x.png in Resources */,
 				42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */,
@@ -1946,7 +1956,6 @@
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				42715A9020625CA9000A79FC /* playlist_bottom_cell.png in Resources */,
 				423C89D5206E68D200F78719 /* GPEarningsCell.xib in Resources */,
-				42F402B12073B26200A2D03A /* index_left_btn@1x.png in Resources */,
 				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
 				42F402742073859A00A2D03A /* wallet_card@1x.png in Resources */,
 				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
@@ -1970,7 +1979,7 @@
 				420DB55520785B1C00B09FEA /* global_btn@2x.png in Resources */,
 				42CD99D620730DDE00F86F21 /* room_lunch_img.png in Resources */,
 				42715AA52063825F000A79FC /* home_history_btn.png in Resources */,
-				42F402AF2073B26200A2D03A /* index_left_btn@2x.png in Resources */,
+				420DB59F207A0C0700B09FEA /* game_bet_lunch@2x.png in Resources */,
 				427122DF2068CEC70080A50F /* 3.png in Resources */,
 				4263BA92205CB79400103919 /* game_title_img.png in Resources */,
 				42CD9A00207374B000F86F21 /* bar_home_select@3x.png in Resources */,
@@ -1983,7 +1992,6 @@
 				420DB57F2078B56B00B09FEA /* index_msg_btn@1x.png in Resources */,
 				4263BA162059121B00103919 /* user_icon.png in Resources */,
 				42F402CD207481B200A2D03A /* room_list_one@3x.png in Resources */,
-				42CD99D920730DDE00F86F21 /* room_betLunch_img.png in Resources */,
 				42F402CF207481B200A2D03A /* room_cell_three@3x.png in Resources */,
 				427122DD2068CEC70080A50F /* 6.png in Resources */,
 				42CD9A0A2073752A00F86F21 /* mine_bar_normal@3x.png in Resources */,
@@ -1996,6 +2004,7 @@
 				42F40292207386FF00A2D03A /* setting_withdraw_password@2x.png in Resources */,
 				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */,
+				420DB5A1207A0C0700B09FEA /* game_bet_lunch@3x.png in Resources */,
 				42CD9A16207375B300F86F21 /* pay_item_select@2x.png in Resources */,
 				42CD9A072073752A00F86F21 /* mine_bar_select@3x.png in Resources */,
 				42F402672073859A00A2D03A /* wallet_card@3x.png in Resources */,
@@ -2003,6 +2012,7 @@
 				4207C05D20770E4100680B89 /* more_item@1x.png in Resources */,
 				42F402EF2074A73A00A2D03A /* room_cell_four@2x.png in Resources */,
 				423C89CD206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib in Resources */,
+				420DB59A2079FBBB00B09FEA /* index_left_btn.jpg in Resources */,
 				42CD9A232073761900F86F21 /* bar_notice_normal@2x.png in Resources */,
 				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
 				420DB57C2078B56B00B09FEA /* index_wallet_img@1x.png in Resources */,
@@ -2150,7 +2160,9 @@
 				42CD99CC207201BD00F86F21 /* GPOddInstroctionViewController.m in Sources */,
 				42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */,
 				42715A84206248A2000A79FC /* GPGameInstroctionViewController.m in Sources */,
+				420DB5A5207A2C4B00B09FEA /* GPMsgScoreCell.m in Sources */,
 				420DB58E2078DF4500B09FEA /* GPMyMessageViewController.m in Sources */,
+				420DB5912079E57000B09FEA /* GPCoverView.m in Sources */,
 				4263BA2420595C6600103919 /* GPGameViewController.m in Sources */,
 				427122CC2068CAD30080A50F /* GPMsgSystemCell.m in Sources */,
 				423C89C5206E476A00F78719 /* GPAgentUserInfoModel.m in Sources */,
@@ -2411,7 +2423,7 @@
 				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guanpukeji.GPLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2429,7 +2441,7 @@
 				DEVELOPMENT_TEAM = 4PYV397ERW;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GPLottery/Tool/GPPrefix.pch";
 				INFOPLIST_FILE = GPLottery/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guanpukeji.GPLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";

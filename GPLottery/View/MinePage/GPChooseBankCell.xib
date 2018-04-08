@@ -33,7 +33,7 @@
                     <constraint firstItem="Eyy-ee-nVV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Yl9-me-qhj"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="hiG-kG-OGg"/>
             <connections>
                 <outlet property="bankNameLab" destination="Eyy-ee-nVV" id="eW9-Dx-eZ4"/>
             </connections>

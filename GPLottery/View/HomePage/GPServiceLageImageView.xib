@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="coj-59-MIt">
-                    <rect key="frame" x="20" y="120" width="335" height="447"/>
+                    <rect key="frame" x="20" y="100" width="335" height="467"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qO-jz-Zpt">
-                    <rect key="frame" x="255" y="40" width="100" height="80"/>
+                    <rect key="frame" x="255" y="20" width="100" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="CTr-sd-eGx"/>
                         <constraint firstAttribute="height" constant="80" id="KIY-CV-IC5"/>
@@ -33,14 +33,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="coj-59-MIt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6VQ-jK-mm7"/>
-                <constraint firstItem="coj-59-MIt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="H87-85-tuZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9qO-jz-Zpt" secondAttribute="trailing" constant="20" id="JbU-4P-zlQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="coj-59-MIt" secondAttribute="bottom" constant="100" id="Qge-rZ-ZPt"/>
+                <constraint firstItem="coj-59-MIt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="6VQ-jK-mm7"/>
+                <constraint firstItem="coj-59-MIt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="H87-85-tuZ"/>
+                <constraint firstAttribute="trailing" secondItem="9qO-jz-Zpt" secondAttribute="trailing" constant="20" id="JbU-4P-zlQ"/>
+                <constraint firstAttribute="bottom" secondItem="coj-59-MIt" secondAttribute="bottom" constant="100" id="Qge-rZ-ZPt"/>
                 <constraint firstItem="coj-59-MIt" firstAttribute="top" secondItem="9qO-jz-Zpt" secondAttribute="bottom" id="bY3-hy-OqZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="coj-59-MIt" secondAttribute="trailing" constant="20" id="gnH-kl-uOk"/>
+                <constraint firstAttribute="trailing" secondItem="coj-59-MIt" secondAttribute="trailing" constant="20" id="gnH-kl-uOk"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="6gi-WK-b0o"/>
             <connections>
                 <outlet property="largeImageView" destination="coj-59-MIt" id="DLE-N9-jw5"/>
             </connections>

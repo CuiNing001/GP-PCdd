@@ -68,7 +68,7 @@
                     <constraint firstItem="Vcx-gt-K05" firstAttribute="leading" secondItem="WWq-cp-Uc8" secondAttribute="trailing" constant="1" id="qsC-cT-XHO"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="1NN-gF-Ddr"/>
             <connections>
                 <outlet property="nicknameLab" destination="wK2-rW-Vp6" id="Ixj-0K-PL4"/>
                 <outlet property="profitLossQuotaLab" destination="Vcx-gt-K05" id="LJD-I2-eZ4"/>

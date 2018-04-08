@@ -79,7 +79,7 @@
                     <constraint firstItem="g3O-Ar-aDQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="y6L-Hg-GSo"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="K8q-dP-bqt"/>
             <connections>
                 <outlet property="cellBackgroundImage" destination="f74-8a-mzw" id="Bd2-UX-jiJ"/>
                 <outlet property="cellContentView" destination="7fp-8a-t1q" id="Yx7-Sb-abe"/>

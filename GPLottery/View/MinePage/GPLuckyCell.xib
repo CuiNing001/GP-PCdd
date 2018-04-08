@@ -57,7 +57,7 @@
                     <constraint firstItem="1nb-kv-pjs" firstAttribute="leading" secondItem="tVz-rb-20b" secondAttribute="trailing" constant="1" id="vnD-fK-Erq"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="my0-zo-tdb"/>
             <connections>
                 <outlet property="creatTimeLab" destination="58x-hw-F5g" id="x2R-3A-EoY"/>
                 <outlet property="extractAmountLab" destination="1nb-kv-pjs" id="QLM-Di-39h"/>

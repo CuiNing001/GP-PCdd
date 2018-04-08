@@ -50,6 +50,8 @@
     
     self.title = @"提现";
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];

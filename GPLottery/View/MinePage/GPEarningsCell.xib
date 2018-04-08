@@ -61,7 +61,7 @@
                     <constraint firstAttribute="bottom" secondItem="qzW-Eo-syd" secondAttribute="bottom" constant="1" id="hli-pY-9NX"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="rge-qa-cfL"/>
             <connections>
                 <outlet property="betAmountLab" destination="hTA-KE-DYl" id="Qhs-UX-kXc"/>
                 <outlet property="commissionLab" destination="sfi-Je-xUf" id="ZT0-Y3-bgj"/>

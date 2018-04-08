@@ -20,11 +20,13 @@
 #import "GPSettingViewController.h"
 #import "GPEarningsViewController.h"
 #import "GPAboutViewController.h"
+#import "GPWalletModel.h"
 
 @interface GPMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;
 
+@property (strong, nonatomic) NSString *token;
 @property (weak, nonatomic) IBOutlet UIView      *headerView;      // headerView
 @property (weak, nonatomic) IBOutlet UITableView *tableView;       // tableView
 @property (weak, nonatomic) IBOutlet UIButton    *userImageBtn;    // 头像按钮
@@ -102,6 +104,9 @@
     
     [self loadUserDefaultsData];
     
+    // 获取用户余额
+    [self loadUserMoney];
+    
     if (self.userType.integerValue == 1) {     // 普通用户
         
         // 初始化list数据
@@ -114,14 +119,62 @@
         self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_agent_open",@"mine_agent_background",@"mine_setting",@"mine_about"].mutableCopy;
         self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"代理开户",@"代理后台",@"设置",@"关于"].mutableCopy;
     }
-    
-    
-    
+ 
 }
 
 #pragma mark - 修改头像
 - (IBAction)changeUserImageBtn:(UIButton *)sender {
     
+    
+}
+
+#pragma mark - 获取用户余额
+- (void)loadUserMoney{
+    
+    [self.progressHUD showAnimated:YES];
+    
+//    [self loadUserDefaultsData];
+    
+    self.money = @"??元宝";
+    
+    NSString *walletLoc = [NSString stringWithFormat:@"%@user/1/money",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:walletLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|MINE-VC-MONEY-REFSH|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            GPWalletModel *walletModel = [GPWalletModel new];
+            
+            [walletModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 刷新钱包金额
+            self.money = walletModel.moneyNum;
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        // 刷新cell-index-0
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+        [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
     
 }
 
@@ -145,7 +198,7 @@
     [self.infoModel setValuesForKeysWithDictionary:infoDic];
     
     // 初始化钱包金额
-    self.money = self.infoModel.moneyNum;
+    self.token = self.infoModel.token;
     
     // 登录状态
     self.isLogin = self.infoModel.islogin;

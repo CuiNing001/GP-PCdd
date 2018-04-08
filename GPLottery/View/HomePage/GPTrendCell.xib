@@ -106,7 +106,7 @@
                     <constraint firstItem="rAQ-YO-gmP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="w9l-dE-hcU"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="PFj-PL-ZwP"/>
             <connections>
                 <outlet property="big" destination="rBS-qC-Bu3" id="O1b-6p-mXv"/>
                 <outlet property="bigDouble" destination="crf-Hq-I7b" id="hKC-Pl-4tH"/>

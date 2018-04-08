@@ -77,7 +77,7 @@
                     <constraint firstAttribute="bottom" secondItem="apR-Qw-68g" secondAttribute="bottom" constant="5" id="fBt-qE-NS5"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="4t9-u9-fjc"/>
             <connections>
                 <outlet property="accountNameLab" destination="4bt-8T-ZDM" id="gHQ-Ba-eE5"/>
                 <outlet property="bankCardLab" destination="do5-h7-MQK" id="wTI-AJ-JeB"/>

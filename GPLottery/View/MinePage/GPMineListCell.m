@@ -28,7 +28,7 @@
         
         self.mineListImage.image = [UIImage imageNamed:image];
         self.mineListText.text   = text;
-        self.mineListMoney.text  = [NSString stringWithFormat:@"%@元宝",money];
+        self.mineListMoney.text  = [NSString stringWithFormat:@"%@",money];
     }
     
 }

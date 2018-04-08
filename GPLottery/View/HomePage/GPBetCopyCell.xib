@@ -62,7 +62,7 @@
                     <constraint firstAttribute="trailing" secondItem="8gR-DA-QFn" secondAttribute="trailing" constant="20" id="WYA-kv-9Ig"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="Fqb-RL-MpN"/>
             <connections>
                 <outlet property="betInfoLab" destination="FyW-c5-wZo" id="1Dx-l5-dHp"/>
                 <outlet property="userInfoLab" destination="jUk-zH-UDc" id="G9c-g0-1xE"/>

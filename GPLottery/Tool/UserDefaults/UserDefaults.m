@@ -24,6 +24,9 @@
  * autograph:签名
  * userType:用户类型1：普通用户，4：代理用户
  * aboutUrl:个人中心关于地址
+ * indexLunchCount:首页导航页点击次数
+ * roomLunchCount :房间导航页点击次数
+ * betLunchCount  :下注导航页点击次数
  */
 + (void)addDataWithUsername:(NSString *)username
                    password:(NSString *)password
@@ -48,6 +51,9 @@
     [userDefault setObject:autograph forKey:@"autograph"];
     [userDefault setObject:@"1"     forKey:@"userType"];
     [userDefault setObject:@"aboutUrl" forKey:@"aboutUrl"];
+    [userDefault setObject:@"1" forKey:@"indexLunchCount"];
+    [userDefault setObject:@"1" forKey:@"roomLunchCount"];
+    [userDefault setObject:@"1" forKey:@"betLunchCount"];
     [userDefault synchronize];
     NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@--autograph:%@",username,password,token,nickname,islogin,moneyNum,userID,level,autograph);
 }
@@ -120,6 +126,34 @@
 }
 
 /*
+ * 修改首页lunch点击次数
+ */
++ (void)upDataWithIndexLunchCount:(NSString *)indexLunchCount{
+    
+    NSUserDefaults *userDefaule = [NSUserDefaults standardUserDefaults];
+    [userDefaule setObject:indexLunchCount forKey:@"indexLunchCount"];
+    [userDefaule synchronize];
+}
+/*
+ * 修改群聊房间lunch点击次数
+ */
++ (void)upDataWithRoomLunchCount:(NSString *)roomLunchCount{
+    
+    NSUserDefaults *userDefaule = [NSUserDefaults standardUserDefaults];
+    [userDefaule setObject:roomLunchCount forKey:@"roomLunchCount"];
+    [userDefaule synchronize];
+}
+/*
+ * 修改群聊房间下注lunch点击次数
+ */
++ (void)upDataWithBetLunchCount:(NSString *)betLunchCount{
+    
+    NSUserDefaults *userDefaule = [NSUserDefaults standardUserDefaults];
+    [userDefaule setObject:betLunchCount forKey:@"betLunchCount"];
+    [userDefaule synchronize];
+}
+
+/*
  * 查询数据
  * username:用户名
  * password:密码
@@ -149,8 +183,11 @@
     NSString *autograph = [userDefaults objectForKey:@"autograph"];
     NSString *userType = [userDefaults objectForKey:@"userType"];
     NSString *aboutUrl = [userDefaults objectForKey:@"aboutUrl"];
+    NSString *indexLunchCount = [userDefaults objectForKey:@"indexLunchCount"];
+    NSString *roomLunchCount = [userDefaults objectForKey:@"roomLunchCount"];
+    NSString *betLunchCount = [userDefaults objectForKey:@"betLunchCount"];
     
-    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil &&userType!=nil &&aboutUrl!=nil) {
+    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil &&userType!=nil &&aboutUrl!=nil && indexLunchCount!=nil && roomLunchCount!=nil && betLunchCount!=nil) {
         
         userDic = @{@"loginName":username,
                     @"password":password,
@@ -162,7 +199,10 @@
                     @"level":level,
                     @"autograph":autograph,
                     @"userType":userType,
-                    @"aboutUrl":aboutUrl
+                    @"aboutUrl":aboutUrl,
+                    @"indexLunchCount":indexLunchCount,
+                    @"roomLunchCount":roomLunchCount,
+                    @"betLunchCount":betLunchCount
                     }.mutableCopy;
     }
      return userDic;

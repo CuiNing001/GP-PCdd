@@ -26,6 +26,7 @@
 #import "GPHomeLeftItemView.h"
 #import "GPWalletViewController.h"
 #import "GPMyMessageViewController.h"
+#import "GPCoverView.h"
 
 static int touch = 0;   // 右侧更多按钮点击次数
 static int leftViewTouch = 0;  // 左侧更多按钮点击次数
@@ -57,6 +58,8 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @property (strong, nonatomic) GPHomeMoreView *moreView; // 顶部item more按钮
 @property (strong, nonatomic) GPUserStatusModel  *userStatusModel;   // 用户公共信息
 @property (strong, nonatomic) GPHomeLeftItemView *indexLeftMoreView; // 左侧更多页面
+@property (strong, nonatomic) GPCoverView *coverView;  // 导航遮罩层
+@property (strong, nonatomic) NSString *indexCoverCount; // 首页lunch次数
 
 @end
 
@@ -205,6 +208,27 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
+    [self loadUserDefaultsData];
+    __weak typeof(self)weakSelf = self;
+    
+    // 遮罩层
+    self.coverView = [[GPCoverView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.coverView];
+    self.coverView.coverImageView.image = [UIImage imageNamed:@"home_lunch"];
+    if (self.indexCoverCount.integerValue == 1) {
+        // 第一次登陆显示遮罩
+        self.coverView.hidden = NO;
+    }else{
+        //
+        self.coverView.hidden = YES;
+    }
+    
+    self.coverView.dissMissBlock = ^{
+      
+        weakSelf.coverView.hidden = YES;
+        // 修改登陆次数
+        [UserDefaults upDataWithIndexLunchCount:@"2"];
+    };
     
     // 自定义右侧导航按钮
     [self customNavigationBarItem];
@@ -243,7 +267,6 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     self.moreView.hidden = YES;
     
     // 顶部右侧more按钮-充值
-    __weak typeof(self)weakSelf = self;
     self.moreView.rechargeBlock = ^{
       
         [weakSelf turnToPayVC];
@@ -592,6 +615,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     // 设置登陆状态
     self.isLogin = self.infoModel.islogin;
     self.token   = self.infoModel.token;
+    self.indexCoverCount = self.infoModel.indexLunchCount;
     
     NSLog(@"|HOME-VC|-[登陆状态]:%@-[token]:%@-[userID]:%@",self.isLogin,self.infoModel.token,self.infoModel.userID);
 

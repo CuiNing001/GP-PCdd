@@ -32,7 +32,7 @@
                     <constraint firstItem="Hyj-qx-QbR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gEZ-Fs-KuC"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="Y23-rd-907"/>
             <connections>
                 <outlet property="transferLab" destination="Hyj-qx-QbR" id="FEj-2R-kUW"/>
             </connections>

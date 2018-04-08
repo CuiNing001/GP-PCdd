@@ -87,12 +87,12 @@
             <color key="backgroundColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="cMD-Rf-3TN" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="AxE-Ix-ys6"/>
-                <constraint firstItem="cMD-Rf-3TN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="C2n-AY-XeZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cMD-Rf-3TN" secondAttribute="trailing" constant="50" id="L89-T5-hdK"/>
+                <constraint firstItem="cMD-Rf-3TN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="C2n-AY-XeZ"/>
+                <constraint firstAttribute="trailing" secondItem="cMD-Rf-3TN" secondAttribute="trailing" constant="50" id="L89-T5-hdK"/>
                 <constraint firstItem="cMD-Rf-3TN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Rx8-DJ-VLA"/>
                 <constraint firstItem="cMD-Rf-3TN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Txa-Gh-Jic"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="Tez-qe-f4y"/>
             <connections>
                 <outlet property="tableView" destination="LQh-bp-O9z" id="eqn-Fu-ZCw"/>
             </connections>

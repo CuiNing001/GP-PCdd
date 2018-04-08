@@ -253,7 +253,7 @@
                     <constraint firstItem="NM6-PV-9xU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kSn-kA-pqC"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="TkU-zN-pwa"/>
             <connections>
                 <outlet property="accountNameLab" destination="osF-BU-lqh" id="Hpy-eH-U2D"/>
                 <outlet property="amountLab" destination="Sn4-RQ-rec" id="aXx-5K-8AD"/>

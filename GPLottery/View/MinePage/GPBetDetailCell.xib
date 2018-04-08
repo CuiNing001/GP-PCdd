@@ -160,7 +160,7 @@
                     <constraint firstItem="YQ3-1k-Yxu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lYC-sL-QUD"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="8ze-st-tBX"/>
             <connections>
                 <outlet property="betAmoutLab" destination="fdH-8h-sWA" id="BFn-UH-dcH"/>
                 <outlet property="openCodeLab" destination="ZHW-nz-JSO" id="Vwv-tQ-Dc5"/>

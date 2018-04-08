@@ -100,7 +100,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="vyl-Xs-lez"/>
             <connections>
                 <outlet property="backWaterLab" destination="xPk-9F-W44" id="gcy-zf-5Sk"/>
                 <outlet property="moneyNumLab" destination="cbW-ev-7Yi" id="lr3-wv-qV7"/>

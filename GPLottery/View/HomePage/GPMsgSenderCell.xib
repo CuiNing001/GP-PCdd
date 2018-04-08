@@ -124,7 +124,7 @@
                     <constraint firstAttribute="bottom" secondItem="ZSJ-mg-wkz" secondAttribute="bottom" id="sOh-E0-1rM"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="BMx-H4-Boe"/>
             <connections>
                 <outlet property="betAmountLab" destination="5oa-FF-hQb" id="zMP-Tm-YGf"/>
                 <outlet property="expectLab" destination="u2I-MP-vS4" id="aqw-r0-Ceo"/>

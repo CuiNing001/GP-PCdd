@@ -25,6 +25,9 @@
 @property (strong, nonatomic) NSString *fromName;    // 接收方名称
 @property (strong, nonatomic) NSString *timestamp;   // 消息发出的时间戳
 @property (strong, nonatomic) NSString *sendType;    // 发送方和接收方
+
+//@property (strong, nonatomic) NSString *openCode;  // 开奖信息内容
+//@property (strong, nonatomic) NSString *openText;  // 开奖内容
 /** @brief 图片消息的原图 */
 @property (strong, nonatomic) UIImage *image;
 /** @brief 图片消息缩略图的大小 */
@@ -32,6 +35,7 @@
 
 @property (strong, nonatomic) UIImage *thumbnailImage;
 
+@property (strong, nonatomic) NSString *openTime;  // 开奖信息时间
 @property (strong, nonatomic) NSString *openCode; // 开内容
 @property (strong, nonatomic) NSString *openText; // 开奖类型（大小单双）
 

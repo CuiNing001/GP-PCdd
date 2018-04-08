@@ -25,6 +25,8 @@
 #import "GPTrendViewController.h"
 #import "GPGameListViewController.h"
 #import "GPWalletModel.h"
+#import "GPCoverView.h"
+#import "GPMsgScoreCell.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
@@ -87,6 +89,9 @@ static int scoreViewY; // 分数初始Y值
 @property (strong, nonatomic) NSString           *oddsExplain;  // 赔率说明
 @property (strong, nonatomic) GPRoomItemAlertView *itemAlertView; //
 
+@property (strong, nonatomic) GPCoverView *coverView;  // 导航遮罩层
+@property (strong, nonatomic) NSString *roomCoverCount; // 首页lunch次数
+@property (strong, nonatomic) NSString *betCoverCount; // 首页lunch次数
 
 @end
 
@@ -280,6 +285,9 @@ static int scoreViewY; // 分数初始Y值
     // 注册接收方cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgSenderCell" bundle:nil] forCellReuseIdentifier:@"secderCell"];
     
+    // 开奖消息cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgScoreCell" bundle:nil] forCellReuseIdentifier:@"scoreCell"];
+    
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
@@ -456,6 +464,24 @@ static int scoreViewY; // 分数初始Y值
         
         [weakSelf turnToTrendVC];
     };
+    
+    // ^^^^^^^^^^^^^遮罩层^^^^^^^^^^
+    [self loadUserDefaultsData];
+    self.coverView = [[GPCoverView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.coverView];
+    self.coverView.coverImageView.image = [UIImage imageNamed:@"game_lunch"];
+    if (self.roomCoverCount.integerValue == 1) {
+        
+        self.coverView.hidden = NO;
+    }else{
+        self.coverView.hidden = YES;
+    }
+    
+    self.coverView.dissMissBlock = ^{
+        
+        weakSelf.coverView.hidden = YES;
+        [UserDefaults upDataWithRoomLunchCount:@"2"];
+    };
 }
 
 // 键盘出现时修改chatView底部约束
@@ -556,6 +582,10 @@ static int scoreViewY; // 分数初始Y值
     
     self.token   = self.infoModel.token;
     
+    self.roomCoverCount = self.infoModel.roomLunchCount;
+    
+    self.betCoverCount  = self.infoModel.betLunchCount;
+    
     NSLog(@"===:%@",self.token);
     
 }
@@ -567,6 +597,13 @@ static int scoreViewY; // 分数初始Y值
     [UIView animateWithDuration:1 animations:^{
         
         self.roomBetView.hidden = NO;
+        
+        if (self.betCoverCount.integerValue == 1) {
+            
+            self.coverView.hidden = NO;
+            self.coverView.coverImageView.image = [UIImage imageNamed:@"game_bet_lunch"];
+            [UserDefaults upDataWithBetLunchCount:@"2"];
+        }
 
     }];
 }
@@ -838,7 +875,7 @@ static int scoreViewY; // 分数初始Y值
     
 //    NSDictionary *betDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":self.expectLab.text,@"level":self.infoModel.level,@"name":self.infoModel.nickname,@"playingId":self.playingId,@"playingType":self.productIdStr,@"type":@"1"};
     
-    NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"betAmount":betAmount,@"playingId":self.playingId,@"productId":self.productIdStr};
+    NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"betAmount":betAmount,@"playingId":self.playingId,@"productId":self.productIdStr,@"expect":self.expectLab.text};
     
     [self.progressHUD showAnimated:YES];
     
@@ -926,6 +963,11 @@ static int scoreViewY; // 分数初始Y值
 - (void)onReceiveChatRoomConversation:(JMSGConversation *)conversation
                              messages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)messages{
     
+    NSLog(@"=========%@",[messages.lastObject.target roomID]);
+    
+    // 过滤其他聊天室信息
+    if ([[messages.lastObject.target roomID]isEqualToString:self.roomIdStr]) {
+
     JMSGTextContent *textContent = (JMSGTextContent *)messages.lastObject.content;
     
     NSString *msgText = textContent.text;
@@ -991,6 +1033,11 @@ static int scoreViewY; // 分数初始Y值
     
 
     NSLog(@"========^receive^text^^========%@",msgText);
+        
+    }else{
+        
+        NSLog(@"^^^^^^^^^其他聊天室消息^^^^^^^^^%@",[messages.lastObject.target roomID]);
+    }
 }
 
 #pragma mark - 发送消息结果回调
@@ -1272,14 +1319,14 @@ static int scoreViewY; // 分数初始Y值
             
         }else if ([messageModel.type isEqualToString:@"2"]){
             
-            return 0.01;
+            return 50;
             
         }else if([messageModel.type isEqualToString:@"3"]){
             
             return 80;
         }else{
             
-            return 10;
+            return 0.01;
         }
     }
 }
@@ -1354,9 +1401,17 @@ static int scoreViewY; // 分数初始Y值
                 
                 return receiveCell;
                 
+            }else if ([messageModel.type isEqualToString:@"2"]){  // 开奖信息
+                
+                GPMsgScoreCell *scoreCell = [tableView dequeueReusableCellWithIdentifier:@"scoreCell" forIndexPath:indexPath];
+                scoreCell.backgroundColor = [UIColor clearColor];
+                [scoreCell setDataWithModel:messageModel];
+                
+                return scoreCell;
+                
             }else{
                 
-                return [[UITableViewCell alloc]init];
+                return [UITableViewCell new];
             }
             
         }

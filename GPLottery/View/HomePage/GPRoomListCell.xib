@@ -77,7 +77,7 @@
                 <constraint firstItem="hc3-vf-TKu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uee-PC-Pdv"/>
                 <constraint firstItem="hc3-vf-TKu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="u87-rU-uRm"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <viewLayoutGuide key="safeArea" id="pEt-xb-e8p"/>
             <size key="customSize" width="249" height="303"/>
             <connections>
                 <outlet property="bgImageView" destination="2eG-ZV-bNw" id="uPc-Kd-bAP"/>

@@ -97,7 +97,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="oXa-Rv-vtC"/>
             <connections>
                 <outlet property="bgImage" destination="XU9-kq-NF8" id="llh-VA-A3H"/>
                 <outlet property="onlineNumLab" destination="hEy-tW-1ag" id="puK-Kf-Qbu"/>

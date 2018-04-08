@@ -54,7 +54,7 @@
                     <constraint firstAttribute="trailing" secondItem="SCa-YF-yPA" secondAttribute="trailing" id="VUJ-pN-V9U"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="ikI-Dd-P3v"/>
             <connections>
                 <outlet property="amountLab" destination="EH6-vu-hKE" id="mmX-Sc-wtf"/>
                 <outlet property="commissionLab" destination="Krz-ve-kpn" id="vX7-Ix-pyp"/>

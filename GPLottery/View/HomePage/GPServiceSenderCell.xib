@@ -78,7 +78,7 @@
                     <constraint firstItem="4Ud-NL-FWh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="t6m-Sp-gtS"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="vg0-bN-WZT"/>
             <connections>
                 <outlet property="cellBackgroundImage" destination="dEX-ug-oX0" id="GdL-Uk-mR0"/>
                 <outlet property="cellContentView" destination="GnP-rm-RQe" id="hp2-Qj-zYA"/>

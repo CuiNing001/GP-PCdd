@@ -145,75 +145,38 @@ static int touch = 0;
     NSString *accountName = [NSString stringWithFormat:@"%@",self.accountNameTF.text];
     NSString *bankInfoLoc = [NSString stringWithFormat:@"%@pay/1/fillBankPayInfoSubmit",kBaseLocation];
     
-    NSDictionary *map = @{@"bankName":bankName,@"bankCardAccount":bankNumber,@"amount":amount,@"accountName":accountName,@"transferType":self.type};
+    NSDictionary *paramDic = @{@"bankName":bankName,@"bankCardAccount":bankNumber,@"amount":amount,@"accountName":accountName,@"transferType":self.type};
     
-    NSDictionary *paramDic = @{@"map":map};
-
+//     请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [self postAsynWithURL:[NSURL URLWithString:bankInfoLoc] parems:paramDic compile:^(id response, NSData *data, NSError *error) {
+    [AFNetManager requestPOSTWithURLStr:bankInfoLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
 
-        if (!error) {
+        NSLog(@"|BANK-INFO-VC|success:%@",responserObject);
+
+        [weakSelf.progressHUD hideAnimated:YES];
+
+        GPRespondModel *respondModel = [GPRespondModel new];
+
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+
+        if (respondModel.code.integerValue == 9200) {
+
+            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
-            NSLog(@"|BANK-INFO-VC|success:%@",response);
-            //
-                    [weakSelf.progressHUD hideAnimated:YES];
-            
-                    GPRespondModel *respondModel = [GPRespondModel new];
-            
-                    [respondModel setValuesForKeysWithDictionary:response];
-            
-                    if (respondModel.code.integerValue == 9200) {
-            
-                        [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
-            
-                    }else{
-            
-                        [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
-                    }
+            [weakSelf.navigationController popViewControllerAnimated:YES];
 
         }else{
 
-            [weakSelf.progressHUD hideAnimated:YES];
-            
-            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
         }
 
+    } enError:^(NSError *error) {
+
+        [weakSelf.progressHUD hideAnimated:YES];
+
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+
     }];
-    
-    //    NSData *data =    [NSJSONSerialization dataWithJSONObject:map options:NSJSONWritingPrettyPrinted error:nil];
-    
-    //    NSDictionary *paramDic = @{@"map":data};
-    
-    //    NSString *mapJsonStr = [ToastView dictionaryToJson:map];
-    
-    // 请求登陆接口
-//    __weak typeof(self)weakSelf = self;
-//    [AFNetManager requestPOSTWithURLStr:bankInfoLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
-//
-//        NSLog(@"|BANK-INFO-VC|success:%@",responserObject);
-//
-//        [weakSelf.progressHUD hideAnimated:YES];
-//
-//        GPRespondModel *respondModel = [GPRespondModel new];
-//
-//        [respondModel setValuesForKeysWithDictionary:responserObject];
-//
-//        if (respondModel.code.integerValue == 9200) {
-//
-//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
-//
-//        }else{
-//
-//            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
-//        }
-//
-//    } enError:^(NSError *error) {
-//
-//        [weakSelf.progressHUD hideAnimated:YES];
-//
-//        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
-//
-//    }];
     
 }
 

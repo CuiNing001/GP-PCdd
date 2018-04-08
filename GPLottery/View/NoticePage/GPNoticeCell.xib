@@ -48,7 +48,7 @@
                     <constraint firstItem="GPN-or-Lh7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ycb-rG-aPu"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="qa7-4k-Npb"/>
             <connections>
                 <outlet property="noticeLab" destination="GPN-or-Lh7" id="C7S-kb-uWo"/>
                 <outlet property="noticeStatusImageView" destination="HeR-8w-V2A" id="xQ1-MS-DvB"/>

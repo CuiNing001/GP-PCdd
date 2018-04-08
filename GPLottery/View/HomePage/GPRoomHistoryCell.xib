@@ -47,7 +47,7 @@
                     <constraint firstItem="HFJ-vx-tcs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wTK-qJ-jUS"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="akQ-V9-dSc"/>
             <connections>
                 <outlet property="codeLab" destination="Qa0-qS-NeW" id="KNs-t6-bEa"/>
                 <outlet property="expectLab" destination="e7i-hH-kjn" id="wMD-Cn-0Z8"/>

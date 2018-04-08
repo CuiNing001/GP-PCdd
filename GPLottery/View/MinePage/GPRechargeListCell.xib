@@ -59,7 +59,7 @@
                     <constraint firstItem="FML-yy-54T" firstAttribute="centerY" secondItem="dhh-rJ-Gwn" secondAttribute="centerY" id="tMM-UD-p4l"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="WQB-FM-uAH"/>
             <connections>
                 <outlet property="amountLab" destination="dhh-rJ-Gwn" id="nIe-k1-i8Q"/>
                 <outlet property="timeLab" destination="sQ6-BA-0Pa" id="GiY-Xz-qHn"/>

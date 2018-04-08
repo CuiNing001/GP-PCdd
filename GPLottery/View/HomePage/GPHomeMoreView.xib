@@ -46,20 +46,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="750-8h-rCX" secondAttribute="bottom" id="40r-y5-upN"/>
-                <constraint firstItem="750-8h-rCX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BcM-1P-sOq"/>
+                <constraint firstAttribute="bottom" secondItem="750-8h-rCX" secondAttribute="bottom" id="40r-y5-upN"/>
+                <constraint firstItem="750-8h-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BcM-1P-sOq"/>
                 <constraint firstItem="750-8h-rCX" firstAttribute="top" secondItem="2G9-ew-Igb" secondAttribute="bottom" id="Bih-5I-NFQ"/>
                 <constraint firstItem="2G9-ew-Igb" firstAttribute="top" secondItem="ru6-iE-2Y5" secondAttribute="bottom" id="LwM-oq-oEq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ru6-iE-2Y5" secondAttribute="trailing" id="MdI-a9-2ij"/>
-                <constraint firstItem="ru6-iE-2Y5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="WqO-bu-klH"/>
-                <constraint firstItem="ru6-iE-2Y5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZP6-4Y-JeE"/>
+                <constraint firstAttribute="trailing" secondItem="ru6-iE-2Y5" secondAttribute="trailing" id="MdI-a9-2ij"/>
+                <constraint firstItem="ru6-iE-2Y5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WqO-bu-klH"/>
+                <constraint firstItem="ru6-iE-2Y5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZP6-4Y-JeE"/>
                 <constraint firstItem="2G9-ew-Igb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cRr-e5-YB0"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="750-8h-rCX" secondAttribute="trailing" id="ehg-fe-95M"/>
-                <constraint firstItem="2G9-ew-Igb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="niC-Y4-QoR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2G9-ew-Igb" secondAttribute="trailing" constant="10" id="njf-2E-FEc"/>
+                <constraint firstAttribute="trailing" secondItem="750-8h-rCX" secondAttribute="trailing" id="ehg-fe-95M"/>
+                <constraint firstItem="2G9-ew-Igb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="niC-Y4-QoR"/>
+                <constraint firstAttribute="trailing" secondItem="2G9-ew-Igb" secondAttribute="trailing" constant="10" id="njf-2E-FEc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="gHI-nc-LPA"/>
             <point key="canvasLocation" x="-61.5" y="-167"/>
         </view>
     </objects>

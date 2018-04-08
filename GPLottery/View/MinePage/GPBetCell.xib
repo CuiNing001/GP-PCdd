@@ -33,7 +33,7 @@
                     <constraint firstItem="YR2-z9-HOS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zLc-6z-pH1"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="bbE-zn-SCI"/>
             <connections>
                 <outlet property="typeLab" destination="YR2-z9-HOS" id="zZf-Ph-WKV"/>
             </connections>

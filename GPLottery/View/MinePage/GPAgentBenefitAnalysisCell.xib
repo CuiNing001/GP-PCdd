@@ -54,7 +54,7 @@
                     <constraint firstAttribute="bottom" secondItem="77G-Pf-rfE" secondAttribute="bottom" constant="1" id="lgB-9Q-723"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="fSu-hl-ztt"/>
             <connections>
                 <outlet property="creatDateLab" destination="t4e-wY-xzW" id="3qk-dV-cd9"/>
                 <outlet property="memberLab" destination="LRS-Bq-l2z" id="Nmf-HT-mSV"/>

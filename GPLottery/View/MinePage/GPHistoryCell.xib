@@ -93,7 +93,7 @@
                     <constraint firstItem="OuI-Sn-BQ1" firstAttribute="centerY" secondItem="eLB-zV-25o" secondAttribute="centerY" id="wUq-kE-YjV"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="eWN-VG-23R"/>
             <connections>
                 <outlet property="hourDateLab" destination="Iry-Rm-4gp" id="dNl-gE-DGj"/>
                 <outlet property="moneyLab" destination="W0j-0S-YEd" id="7K8-Ic-4hd"/>

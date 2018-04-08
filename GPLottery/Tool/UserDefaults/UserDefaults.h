@@ -56,5 +56,17 @@
  * 修改关于页面地址
  */
 + (void)upDataWithAboutUrl:(NSString *)aboutUrl;
+/*
+ * 修改首页lunch点击次数
+ */
++ (void)upDataWithIndexLunchCount:(NSString *)indexLunchCount;
+/*
+ * 修改群聊房间lunch点击次数
+ */
++ (void)upDataWithRoomLunchCount:(NSString *)roomLunchCount;
+/*
+ * 修改群聊房间下注lunch点击次数
+ */
++ (void)upDataWithBetLunchCount:(NSString *)betLunchCount;
 
 @end

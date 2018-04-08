@@ -55,7 +55,7 @@
                 <constraint firstItem="XwP-uw-sF5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="R5p-LJ-gqc"/>
                 <constraint firstAttribute="bottom" secondItem="XwP-uw-sF5" secondAttribute="bottom" id="laz-jm-ZM5"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <viewLayoutGuide key="safeArea" id="0bp-PN-lag"/>
             <size key="customSize" width="116" height="101"/>
             <connections>
                 <outlet property="bgView" destination="XwP-uw-sF5" id="Sem-Ff-05P"/>

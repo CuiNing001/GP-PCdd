@@ -53,7 +53,7 @@
                     <constraint firstItem="oMT-Fc-dXr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="kCf-vd-I9Q"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="Cc4-gM-ITg"/>
             <connections>
                 <outlet property="webView" destination="Ght-jU-1cT" id="oFf-h3-0jZ"/>
             </connections>

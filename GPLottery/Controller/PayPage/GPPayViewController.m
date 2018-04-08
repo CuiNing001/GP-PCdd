@@ -10,6 +10,7 @@
 #import "GPPayMoneyViewController.h"
 #import "GPLinePayRecordViewController.h"
 #import "GPNormalPayViewController.h"
+#import "GPCoverView.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -54,15 +55,13 @@ static NSInteger indexNum;
     if (![self.infoModel.islogin isEqualToString:@"1"]) {
         
         self.tabBarController.selectedIndex = 0;
+    }else{
+        
+        // 添加引导页
+        [self initCoverView];
     }
     
 }
-
-//- (void)viewWillAppear:(BOOL)animated{
-//
-//    // 进入页面添加遮罩view
-////    [self initCoverView];
-//}
 
 #pragma mark - 加载子控件
 - (void)loadSubView{
@@ -196,8 +195,6 @@ static NSInteger indexNum;
 #pragma mark - section two 点击事件
 - (IBAction)sectionTwoRowZeroTap:(UITapGestureRecognizer *)sender {
     
-    
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GPNormalPayViewController *normalPayVC = [storyboard instantiateViewControllerWithIdentifier:@"normalPayVC"];
@@ -215,8 +212,6 @@ static NSInteger indexNum;
 // 查看转账记录
 - (IBAction)viewTransferRecord:(UIButton *)sender {
     
-    
- 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GPLinePayRecordViewController *linePayVC = [storyboard instantiateViewControllerWithIdentifier:@"linePayVC"];
@@ -226,9 +221,6 @@ static NSInteger indexNum;
     [self.navigationController pushViewController:linePayVC animated:YES];
     
 }
-
-
-
 
 #pragma mark - 遮罩层view
 - (void)initCoverView{
