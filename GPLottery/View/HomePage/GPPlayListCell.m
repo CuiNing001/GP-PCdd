@@ -20,9 +20,9 @@
 //    NSString *imageLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,model.playingImageUrl];
     
 //    [self.bgImage sd_setImageWithURL:[NSURL URLWithString:imageLoc]];
-    self.playTypeLab.text  = model.playingTypeName;
-    self.remarkLab.text    = model.remarkExplain;
-    self.onlineNumLab.text = model.onlineNum;
+    self.playTypeLab.text  = [NSString stringWithFormat:@"%@",model.playingTypeName];
+    self.remarkLab.text    = [NSString stringWithFormat:@"%@",model.remarkExplain];
+    self.onlineNumLab.text = [NSString stringWithFormat:@"%@",model.onlineNum];
     
 }
 

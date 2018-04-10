@@ -31,7 +31,7 @@
     self.title = @"分享二维码";
     
     // 初始化linkView
-    self.linkView = [[GPLinkOpenAccuoutView alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    self.linkView = [[GPLinkOpenAccuoutView alloc]initWithFrame:CGRectMake(0, 64, kSize_width, kSize_height)];
     [self.view addSubview:self.linkView];
     
     

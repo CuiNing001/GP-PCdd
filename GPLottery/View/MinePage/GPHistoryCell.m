@@ -22,8 +22,8 @@
     
     self.yearDateLab.text = year;
     self.hourDateLab.text = hour;
-    self.moneyLab.text    = model.moneyChangeAmount;
-    self.typeLab.text     = model.changeType;
+    self.moneyLab.text    = [NSString stringWithFormat:@"%@",model.moneyChangeAmount];
+    self.typeLab.text     = [NSString stringWithFormat:@"%@",model.changeType];
     
 }
 

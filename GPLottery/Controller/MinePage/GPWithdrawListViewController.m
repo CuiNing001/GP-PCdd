@@ -133,7 +133,7 @@
         return self.rechargeArray.count;
     }else{
         
-        return 3;
+        return 1;
     }
     
     
@@ -155,9 +155,9 @@
         [rechargeListCell setDataWithModel:rechargeModel];
     }else{
         
-        rechargeListCell.amountLab.text = @"123.12";
-        rechargeListCell.timeLab.text   = @"2018-2-21";
-        rechargeListCell.typeLab.text   = @"线下充值";
+        rechargeListCell.amountLab.text = @"暂无记录";
+        rechargeListCell.timeLab.text   = @"暂无记录";
+        rechargeListCell.typeLab.text   = @"暂无记录";
     }
     
     return rechargeListCell;

@@ -260,7 +260,7 @@
     // 点击后取消cell的点击状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (self.userType.integerValue == 1) {  // 普通用户
+    if (self.userType.integerValue == 1 || self.userType.integerValue == 2) {  // 普通用户
         
         // cell点击事件
         if (indexPath.row == 0) {       // 钱包

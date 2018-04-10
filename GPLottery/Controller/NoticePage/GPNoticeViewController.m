@@ -71,8 +71,7 @@ static int touch = 0;  //  标记不同的tableview数据源
     SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
                                                                placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];
-    //    scrollView.imageURLStringsGroup = self.bannerListArrya;                            // 轮播图网络图片
-    scrollView.localizationImageNamesGroup = @[@"home_banner_placehorder.jpg",@"home_banner_placehorder.jpg"];                       // 轮播图本地图片
+    scrollView.localizationImageNamesGroup = @[@"notice_scroll_img_one.jpg",@"notice_scroll_img_two.jpg",@"notice_scroll_img_three.jpg",@"notice_scroll_img_four.jpg",@"notice_scroll_img_five.jpg",@"notice_scroll_img_six.jpg"];                       // 轮播图本地图片
     scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
     scrollView.autoScrollTimeInterval      = 3.0;                                        // 轮播图滚动时间间隔
     scrollView.contentMode = UIViewContentModeScaleAspectFit;                            // 设置图片模式

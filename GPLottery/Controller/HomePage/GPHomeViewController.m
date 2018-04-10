@@ -31,7 +31,7 @@
 #import "GPAlertNoticeView.h"
 #import "GPNoticeModel.h"
 
-
+static int errorState = 0;  // 数据连接状态
 static int touch = 0;   // 右侧更多按钮点击次数
 static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
@@ -549,6 +549,9 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     __weak typeof(self)weakSelf = self;
     [AFNetManager requestPOSTWithURLStr:indexLoc paramDic:paramDic token:self.infoModel.token finish:^(id responserObject) {
         
+        // 设置数据连接状态
+        errorState = 0;
+        
         NSLog(@"|INDEX-VC|success:%@",responserObject);
         
         [weakSelf.progressHUD hideAnimated:YES];
@@ -628,6 +631,9 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         [weakSelf.progressHUD hideAnimated:YES];
         
+        // 设置数据连接状态
+        errorState = 1;
+        
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
         NSLog(@"|HOME-VC|-|home-error|%@",error);
@@ -640,7 +646,8 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 - (void)setIndexDataWithModel:(GPIndexModel *)indexModel{
     
     self.personLab.text = [NSString stringWithFormat:@"%@",indexModel.registerNum];
-    self.ratioLab.text = [NSString stringWithFormat:@"%@",indexModel.winRate];
+//    self.ratioLab.text = [NSString stringWithFormat:@"%@",indexModel.winRate];
+    self.ratioLab.text = [NSString stringWithFormat:@"98"];
     self.moneyLab.text = [NSString stringWithFormat:@"%@",indexModel.earnedIncome];
     
 }
@@ -708,12 +715,15 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 #pragma mark - 轮播图点击事件
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
+    
     if (![self.isLogin isEqualToString:@"1"]) {
         
         [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
     }else{
         
-        GPBannerListModel *bannerModel = self.bannerListArray[index];
+        GPBannerListModel *bannerModel = [GPBannerListModel new];
+        
+        bannerModel = self.bannerListArray[index];
         
         NSLog(@"|HOME-BANNER-点击事件|%@",bannerModel.type);
         
@@ -761,70 +771,106 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 #pragma mark - 左侧进入房间按钮
 - (IBAction)enterRoomLeftButton:(UIButton *)sender {
     
-    if (![self.isLogin isEqualToString:@"1"]) {
+    if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
     }else{
         
-        NSString *productID = self.leftProductModel.id;
-        NSString *productName = self.leftProductModel.productName;
-        
-        [self turnToPlayListPageWithProductName:productName productID:productID];
+        if (![self.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            NSString *productID = self.leftProductModel.id;
+            NSString *productName = self.leftProductModel.productName;
+            
+            [self turnToPlayListPageWithProductName:productName productID:productID];
+        }
     }
+    
+    
 }
 
 #pragma mark - 左侧玩法说明按钮
 - (IBAction)gameInstructionButton:(UIButton *)sender {
     
-    if (![self.isLogin isEqualToString:@"1"]) {
+    if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
     }else{
         
-        NSString *productID = self.leftProductModel.id;
-        NSString *productName = self.leftProductModel.productName;
-        
-        NSLog(@"|left|name:%@==id:%@",productName,productID);
-        
-        NSDictionary *paramDic = @{@"id":productID};
-        
-        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+        if (![self.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            NSString *productID = self.leftProductModel.id;
+            NSString *productName = self.leftProductModel.productName;
+            
+            NSLog(@"|left|name:%@==id:%@",productName,productID);
+            
+            NSDictionary *paramDic = @{@"id":productID};
+            
+            [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+        }
     }
+    
+    
 }
 
 
 #pragma mark - 右侧进入房间按钮
 - (IBAction)enterRoomRightButton:(UIButton *)sender {
     
-    if (![self.isLogin isEqualToString:@"1"]) {
+    if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
     }else{
         
-        NSString *productID = self.rightProductModel.id;
-        NSString *productName = self.rightProductModel.productName;
-        
-        [self turnToPlayListPageWithProductName:productName productID:productID];
+        if (![self.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            NSString *productID = self.rightProductModel.id;
+            NSString *productName = self.rightProductModel.productName;
+            
+            [self turnToPlayListPageWithProductName:productName productID:productID];
+        }
     }
+    
+    
 }
 
 #pragma mark - 右侧玩法说明按钮
 - (IBAction)rightGameInsButton:(UIButton *)sender {
     
-    if (![self.isLogin isEqualToString:@"1"]) {
+    if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
     }else{
         
-        NSString *productID = self.rightProductModel.id;
-        NSString *productName = self.rightProductModel.productName;
-        
-        NSLog(@"|right|name:%@==id:%@",productName,productID);
-        
-        NSDictionary *paramDic = @{@"id":productID};
-        
-        [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+        if (![self.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            NSString *productID = self.rightProductModel.id;
+            NSString *productName = self.rightProductModel.productName;
+            
+            NSLog(@"|right|name:%@==id:%@",productName,productID);
+            
+            NSDictionary *paramDic = @{@"id":productID};
+            
+            [self loadProductDetailDataWithParamDic:paramDic productName:productName];
+        }
     }
+    
+    
 }
 
 #pragma mark - 加载玩法说明
@@ -961,7 +1007,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         if (respondModel.code.integerValue == 9200) {
             
             weakSelf.noticeDetailStr = [respondModel.data objectForKey:@"content"];
-            weakSelf.alertNoticeView.noticeTitle = [respondModel.data objectForKey:@"title"];
+            weakSelf.alertNoticeView.noticeTitle.text = [respondModel.data objectForKey:@"title"];
             // 详情内容不为空时加载数据
             if (weakSelf.noticeDetailStr.length != 0) {
                 

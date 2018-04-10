@@ -78,14 +78,14 @@
         
         [weakSelf.tableView.mj_footer resetNoMoreData];  // 消除尾部没有更多数据状态
         weakSelf.page = 1;
-        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.page] rows:[NSString stringWithFormat:@"%ld",(long)weakSelf.rows]];
         
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
         
         weakSelf.page++;
-        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",weakSelf.page] rows:[NSString stringWithFormat:@"%ld",weakSelf.rows]];
+        [weakSelf loadNetDataWithPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.page] rows:[NSString stringWithFormat:@"%ld",(long)weakSelf.rows]];
         if (weakSelf.page>5) {
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }
@@ -158,7 +158,10 @@
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.dataArray.count;
+        return self.dataArray.count;
+
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -172,8 +175,8 @@
     
     GPHistoryModel *historyModel = self.dataArray[indexPath.row];
     
-    [historyCell setDateWithModel:historyModel];
-    
+        [historyCell setDateWithModel:historyModel];
+
     return historyCell;
 }
 

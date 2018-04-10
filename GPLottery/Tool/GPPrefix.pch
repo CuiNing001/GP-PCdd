@@ -43,9 +43,14 @@
 //#define kImageLoction @"http://192.168.1.20:8815/28/"          // 图片地址
 
 // 外网测试地址
-#define kBaseLocation @"http://59.110.175.231:8815/"             // 基础地址
-#define kPlayBaseLocation @"http://59.110.175.231:8816/"         // 下注相关地址
-#define kImageLoction @"http://59.110.175.231:8815/28/"          // 图片地址
+//#define kBaseLocation @"http://59.110.175.231:8815/"             // 基础地址
+//#define kPlayBaseLocation @"http://59.110.175.231:8816/"         // 下注相关地址
+//#define kImageLoction @"http://59.110.175.231:8815/28/"          // 图片地址
+
+// 新测试地址
+#define kBaseLocation @"http://128.14.128.207:8815/"             // 基础地址
+#define kPlayBaseLocation @"http://128.14.128.207:8816/"         // 下注相关地址
+#define kImageLoction @"http://128.14.128.207:8815/28/"          // 图片地址
 
 
 #endif /* GPPrefix_pch */

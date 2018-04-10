@@ -22,7 +22,7 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 
     
     // 初始化极光IM
-    [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
+    [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:YES category:nil messageRoaming:NO];
     
     
     [JMessage registerForRemoteNotificationTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];

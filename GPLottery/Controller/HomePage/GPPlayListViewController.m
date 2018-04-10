@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [self loadData];
     [self loadSubView];
 }
@@ -70,6 +70,11 @@
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
+    
+    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.progressHUD showAnimated:YES];
+    });
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GPPlayListCell" bundle:nil] forCellReuseIdentifier:@"playListCell"];
 }
@@ -173,6 +178,8 @@
 #pragma mark - 加载本地数据
 - (void)loadUserDefaultsData{
     
+    
+    
     NSMutableDictionary *infoDic = [UserDefaults searchData];
     
     self.infoModel               = [[GPInfoModel alloc]init];
@@ -240,7 +247,7 @@
         return self.dataArray.count;
     }else{
         
-         return 3;
+         return 1;
     }
 }
 
@@ -282,17 +289,22 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GPRoomListViewController *roomListVC = [storyboard instantiateViewControllerWithIdentifier:@"roomListVC"];
-    
-    if (self.dataArray.count>0) {
-        
+
         GPPlayListModel *playListModel = self.dataArray[indexPath.row];
         
-        roomListVC.playID = playListModel.id;
+        roomListVC.playID = [NSString stringWithFormat:@"%@",playListModel.id];
         
         roomListVC.productIdStr = self.productID;
+    
+    if (roomListVC.playID.length>0) {
+        
+        [self.navigationController pushViewController:roomListVC animated:YES];
+    }else{
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
     }
 
-    [self.navigationController pushViewController:roomListVC animated:YES];
+    
 }
 
 #pragma mark - 懒加载

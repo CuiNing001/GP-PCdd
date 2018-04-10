@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *name;      // 玩法名称
 @property (strong, nonatomic) NSString *minAmout;  // 最小下注
 @property (strong, nonatomic) NSString *type;      // type
-@property (assign, nonatomic) NSString *selectState;   // 选中状态
+//@property (assign, nonatomic) NSString *selectState;   // 选中状态
 
 
 @end

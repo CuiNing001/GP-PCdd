@@ -47,6 +47,8 @@
 
 - (void)loadData{
     
+    
+    
     self.title = @"房间列表";
     
     [self loadNetData];
@@ -76,6 +78,11 @@
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
     [self.view addSubview:_progressHUD];
+    
+    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.progressHUD showAnimated:YES];
+    });
 }
 
 #pragma mark - 加载网络数据
@@ -166,7 +173,7 @@
         return self.dataArray.count;
     }
     
-    return 12;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -191,17 +198,25 @@
     
     GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
+        
+        roomVC.roomIdStr = [NSString stringWithFormat:@"%@",roomListModel.roomId];
+        
+        roomVC.productIdStr = self.productIdStr;
+        
+        roomVC.playID = self.playID;
     
-    GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
+    if (roomVC.roomIdStr.length>0) {
+        
+        [self.navigationController pushViewController:roomVC animated:YES];
+    }else{
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+    }
     
-    roomVC.roomIdStr = [NSString stringWithFormat:@"%@",roomListModel.roomId];
     
-    roomVC.productIdStr = self.productIdStr;
-    
-    roomVC.playID = self.playID;
-    
-    [self.navigationController pushViewController:roomVC animated:YES];
     
 //    // 加入聊天室
 //    [JMSGChatRoom enterChatRoomWithRoomId:roomVC.roomIdStr completionHandler:^(id resultObject, NSError *error) {

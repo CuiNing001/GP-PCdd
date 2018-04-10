@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *time;        // 充值时间
 @property (strong, nonatomic) NSString *type;        // 充值状态
 @property (strong, nonatomic) NSString *paymentType; // 充值方式
+@property (strong, nonatomic) NSString *status;      // 1：未审核  2：审核通过  3：审核不通过
 
 @end

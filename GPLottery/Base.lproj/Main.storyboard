@@ -138,19 +138,19 @@
                                                 <rect key="frame" x="10" y="180" width="355" height="90"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pln-fY-fjB">
-                                                        <rect key="frame" x="286.5" y="24" width="43" height="42"/>
+                                                        <rect key="frame" x="284" y="24" width="43" height="42"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <color key="textColor" red="0.2196078431372549" green="0.52941176470588236" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn3-HH-Tr5">
-                                                        <rect key="frame" x="334.5" y="37" width="10.5" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn3-HH-Tr5">
+                                                        <rect key="frame" x="332" y="35" width="13" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赚钱率" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMA-bi-aeK">
-                                                        <rect key="frame" x="291" y="66" width="34" height="13.5"/>
+                                                        <rect key="frame" x="288.5" y="66" width="34" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

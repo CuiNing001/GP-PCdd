@@ -184,6 +184,8 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 页面即将出现进入聊天室
 - (void)viewWillAppear:(BOOL)animated{
     
+//    [self.progressHUD showAnimated:YES];
+    
     [self loadUserDefaultsData];
     
     // 未登陆状态返回首页界面
@@ -198,7 +200,7 @@ static int scoreViewY; // 分数初始Y值
 
 #pragma mark - 进入房间
 - (void)enterChatRoom{
-    
+    [self.progressHUD showAnimated:YES];
     // 加入聊天室
     __weak typeof(self)weakSelf = self;
     [JMSGChatRoom enterChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
@@ -215,7 +217,7 @@ static int scoreViewY; // 分数初始Y值
         }else{ // 加入聊天室失败
             
             NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|ERROR|%@",error);
-            
+            [self.progressHUD hideAnimated:YES];
             [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
         }
         
@@ -682,7 +684,7 @@ static int scoreViewY; // 分数初始Y值
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
                                                                
-                                                               [self.navigationController popViewControllerAnimated:YES];
+                                                               [self.navigationController popToRootViewControllerAnimated:YES];
                                                            }];
         
         [alert addAction:action];
@@ -811,7 +813,7 @@ static int scoreViewY; // 分数初始Y值
 
 - (void)countdown{
     
-    NSLog(@"%d",timerSecond);
+//    NSLog(@"%d",timerSecond);
     
      // ^^^^^^^^^^^^北京28倒计时^^^^^^^^^^^^^
     if (self.productIdStr.integerValue == 1) {
@@ -976,6 +978,8 @@ static int scoreViewY; // 分数初始Y值
             
             // 下注成功后修改余额
             self.moneyLab.text = [NSString stringWithFormat:@"%d",self.moneyLab.text.intValue-betAmount.intValue];
+            
+            /*
             // 添加动画
             self.scoreView.hidden = NO;
             CGPoint centerPoint = self.view.center;
@@ -987,7 +991,7 @@ static int scoreViewY; // 分数初始Y值
             animation.duration = 3.0; // 动画时长
             [self.scoreView.layer addAnimation:animation forKey:@"position"];  // 添加到view
             self.topScoreLab.text = [NSString stringWithFormat:@"↓%@",self.betAmountStr];  // 修改金额
-
+             */
 
             NSLog(@"|ROOM-VC-BETTING==9200|roomID:%@===betAmount:%@===playingId:%@===productID:%@",weakSelf.roomIdStr,betAmount,weakSelf.playingId,weakSelf.productIdStr);
             
@@ -1033,7 +1037,7 @@ static int scoreViewY; // 分数初始Y值
 }
 
 
-#pragma mark - 极光代理方法
+#pragma mark - 极光代理方法（接收消息）
 // 接收聊天室消息
 - (void)onReceiveChatRoomConversation:(JMSGConversation *)conversation
                              messages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)messages{
@@ -1122,7 +1126,7 @@ static int scoreViewY; // 分数初始Y值
     }
 }
 
-#pragma mark - 发送消息结果回调
+#pragma mark - 极光代理方法 （发送消息结果回调）
 - (void)onSendMessageResponse:(JMSGMessage *)message error:(NSError *)error{
     
     if (!error) {
@@ -1138,8 +1142,7 @@ static int scoreViewY; // 分数初始Y值
         [ToastView toastViewWithMessage:@"发送失败" timer:3.0];
     }
 }
-
-// 当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
+#pragma mark - 极光代理方法 （当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件）
 - (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event{
     
     if (event.eventType == kJMSGEventNotificationLoginKicked) {
@@ -1183,7 +1186,7 @@ static int scoreViewY; // 分数初始Y值
         
         // score>0表示赢
         if (score>0) {
-            NSLog(@"|^^^^^^^^^^^^^^^SCORE^^^^^^^^^^^^^^^^^|%d",score);
+            NSLog(@"|^^^^^^^^^^^^^^^赢SCORE^^^^^^^^^^^^^^^^^|%d",score);
             self.scoreView.hidden = NO;
             CGPoint centerPoint = self.view.center;
             CGMutablePathRef path = CGPathCreateMutable();
@@ -1195,6 +1198,18 @@ static int scoreViewY; // 分数初始Y值
             [self.scoreView.layer addAnimation:animation forKey:@"position"];
             
             self.topScoreLab.text = [NSString stringWithFormat:@"↑%d",score];
+        }else{
+            NSLog(@"|^^^^^^^^^^^^^^^输SCORE^^^^^^^^^^^^^^^^^|%d",score);
+            self.scoreView.hidden = NO;
+            CGPoint centerPoint = self.view.center;
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
+            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+            animation.path = path;
+            animation.duration = 3.0;
+            [self.scoreView.layer addAnimation:animation forKey:@"position"];
+            self.topScoreLab.text = [NSString stringWithFormat:@"↓%d",score];
         }
     }
     
