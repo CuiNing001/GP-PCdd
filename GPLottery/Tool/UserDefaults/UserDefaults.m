@@ -11,6 +11,35 @@
 @implementation UserDefaults
 
 
+///*
+// * 存储页面启动次数
+// */
+//+ (void)addLunchCount{
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setObject:@"1" forKey:@"count"];
+//    [userDefault synchronize];
+//}
+//
+///*
+// * 点击公告确认修改次数
+// */
+//+ (void)changeLunchCount{
+//
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setObject:@"2" forKey:@"count"];
+//    [userDefault synchronize];
+//}
+//
+///*
+// * 删除启动次数
+// */
+//+ (void)deleateLunchCount{
+//
+//    NSUserDefaults *userDefale = [NSUserDefaults standardUserDefaults];
+//    [userDefale removeObjectForKey:@"count"];
+//    [userDefale synchronize];
+//}
+
 /*
  * 添加数据
  * username:用户名
@@ -54,9 +83,21 @@
     [userDefault setObject:@"1" forKey:@"indexLunchCount"];
     [userDefault setObject:@"1" forKey:@"roomLunchCount"];
     [userDefault setObject:@"1" forKey:@"betLunchCount"];
+    [userDefault setObject:@"1" forKey:@"noticeAlertCount"];
     [userDefault synchronize];
     NSLog(@"username:%@--password:%@--token:%@--nickname:%@--islogin%@--moneyNum:%@--userID%@--level%@--autograph:%@",username,password,token,nickname,islogin,moneyNum,userID,level,autograph);
 }
+
+/*
+ * 修改公告弹窗点击状态
+ */
++ (void)changeLunchCountWithCount:(NSString *)count{
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:count forKey:@"noticeAlertCount"];
+    [userDefault synchronize];
+}
+
 /*
  * 修改昵称
  * nickname:昵称
@@ -186,8 +227,9 @@
     NSString *indexLunchCount = [userDefaults objectForKey:@"indexLunchCount"];
     NSString *roomLunchCount = [userDefaults objectForKey:@"roomLunchCount"];
     NSString *betLunchCount = [userDefaults objectForKey:@"betLunchCount"];
+    NSString *noticeAlertCount = [userDefaults objectForKey:@"noticeAlertCount"];
     
-    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil &&userType!=nil &&aboutUrl!=nil && indexLunchCount!=nil && roomLunchCount!=nil && betLunchCount!=nil) {
+    if (username!=nil && password!=nil && nickname!=nil && islogin!=nil && token!=nil && moneyNum!=nil && userID!=nil && level!=nil&&autograph!=nil &&userType!=nil &&aboutUrl!=nil && indexLunchCount!=nil && roomLunchCount!=nil && betLunchCount!=nil && noticeAlertCount!=nil) {
         
         userDic = @{@"loginName":username,
                     @"password":password,
@@ -202,7 +244,8 @@
                     @"aboutUrl":aboutUrl,
                     @"indexLunchCount":indexLunchCount,
                     @"roomLunchCount":roomLunchCount,
-                    @"betLunchCount":betLunchCount
+                    @"betLunchCount":betLunchCount,
+                    @"noticeAlertCount":noticeAlertCount
                     }.mutableCopy;
     }
      return userDic;
@@ -236,6 +279,10 @@
     [userDefaults removeObjectForKey:@"autograph"];
     [userDefaults removeObjectForKey:@"userType"];
     [userDefaults removeObjectForKey:@"aboutUrl"];
+    [userDefaults removeObjectForKey:@"indexLunchCount"];
+    [userDefaults removeObjectForKey:@"roomLunchCount"];
+    [userDefaults removeObjectForKey:@"betLunchCount"];
+    [userDefaults removeObjectForKey:@"noticeAlertCount"];
     [userDefaults synchronize];
 
 

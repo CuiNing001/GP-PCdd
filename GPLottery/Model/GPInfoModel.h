@@ -24,5 +24,7 @@
 @property (strong, nonatomic) NSString *indexLunchCount;     // 首页lunch点击次数
 @property (strong, nonatomic) NSString *roomLunchCount;      // 群聊lunch点击次数
 @property (strong, nonatomic) NSString *betLunchCount;       // 下注lunch点击次数
+@property (strong, nonatomic) NSString *noticeAlertCount;    // 公告弹窗点击次数
+
 
 @end

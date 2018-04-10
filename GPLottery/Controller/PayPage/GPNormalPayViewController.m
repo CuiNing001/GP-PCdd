@@ -78,33 +78,37 @@
     
     NSString *normalPayLoc = [NSString stringWithFormat:@"%@pay/1/enterBankPay",kBaseLocation];
     
+    NSDictionary *paramDic = @{@"type":@"1"};
+    
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:normalPayLoc paramDic:nil token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:normalPayLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
         
         NSLog(@"|NORMAL-PAY-VC|success:%@",responserObject);
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        GPRespondModel *respondModel = [GPRespondModel new];
+        NSString *code = [NSString stringWithFormat:@"%@",[responserObject objectForKey:@"code"]];
+        NSString *msg = [responserObject objectForKey:@"msg"];
         
-        [respondModel setValuesForKeysWithDictionary:responserObject];
-        
-        if (respondModel.code.integerValue == 9200) {
+        if (code.integerValue == 9200) {
             
-//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            NSArray *dataArray = [responserObject objectForKey:@"data"];
             
-            GPNormalPayModel *normalParModel = [GPNormalPayModel new];
-            
-            [normalParModel setValuesForKeysWithDictionary:respondModel.data];
-            
-            [weakSelf.datSourceArray addObject:normalParModel];
+            for (NSDictionary *dataDic in dataArray) {
+                
+                GPNormalPayModel *normalParModel = [GPNormalPayModel new];
+                
+                [normalParModel setValuesForKeysWithDictionary:dataDic];
+                
+                [weakSelf.datSourceArray addObject:normalParModel];
+            }
             
             [weakSelf.tableView reloadData];
             
         }else{
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+            [ToastView toastViewWithMessage:msg timer:2.5];
         }
         
     } enError:^(NSError *error) {
@@ -153,6 +157,7 @@
     bankInfoVC.bankName = model.bankName;
     bankInfoVC.mesg = model.mesg;
     bankInfoVC.bankCard = model.bankCard;
+    bankInfoVC.bankID = model.id;
     
     [self.navigationController pushViewController:bankInfoVC animated:YES];
 }

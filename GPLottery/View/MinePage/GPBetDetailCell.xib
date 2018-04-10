@@ -120,31 +120,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LUB-Eb-jB9" firstAttribute="centerY" secondItem="LAj-T1-Z86" secondAttribute="centerY" id="2df-7w-0Sb"/>
+                            <constraint firstItem="fdH-8h-sWA" firstAttribute="centerY" secondItem="tAc-y3-sDL" secondAttribute="centerY" id="4HE-Yl-t8R"/>
                             <constraint firstItem="uOD-uO-HqC" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" id="5Jr-ad-xrD"/>
                             <constraint firstItem="1nX-vJ-Glx" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" constant="10" id="A4A-EP-fNL"/>
                             <constraint firstItem="LAj-T1-Z86" firstAttribute="top" secondItem="1nX-vJ-Glx" secondAttribute="bottom" constant="12" id="CYM-bp-Gqn"/>
-                            <constraint firstItem="ZHW-nz-JSO" firstAttribute="leading" secondItem="1nX-vJ-Glx" secondAttribute="trailing" constant="5" id="DuW-Qa-yy8"/>
-                            <constraint firstItem="ZHW-nz-JSO" firstAttribute="top" secondItem="uOD-uO-HqC" secondAttribute="bottom" constant="12" id="Ebz-JD-lCw"/>
+                            <constraint firstItem="fdH-8h-sWA" firstAttribute="leading" secondItem="tAc-y3-sDL" secondAttribute="trailing" constant="5" id="H7e-tt-uMb"/>
                             <constraint firstItem="4FA-kU-adm" firstAttribute="top" secondItem="LAj-T1-Z86" secondAttribute="bottom" constant="12" id="OCm-0u-PO8"/>
-                            <constraint firstItem="fdH-8h-sWA" firstAttribute="top" secondItem="Lid-vu-GMV" secondAttribute="bottom" constant="12" id="QE5-JQ-Mm9"/>
                             <constraint firstItem="tAc-y3-sDL" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" constant="10" id="SPc-WD-mH2"/>
-                            <constraint firstItem="7Lo-W6-9xt" firstAttribute="top" secondItem="fdH-8h-sWA" secondAttribute="bottom" constant="12" id="c2S-Se-9PX"/>
-                            <constraint firstItem="fdH-8h-sWA" firstAttribute="leading" secondItem="tAc-y3-sDL" secondAttribute="trailing" constant="5" id="cpr-2A-jrN"/>
+                            <constraint firstItem="ZHW-nz-JSO" firstAttribute="centerY" secondItem="1nX-vJ-Glx" secondAttribute="centerY" id="WLf-Hb-BAA"/>
+                            <constraint firstItem="7Lo-W6-9xt" firstAttribute="centerY" secondItem="W2g-mq-cao" secondAttribute="centerY" id="acf-5s-iSn"/>
+                            <constraint firstItem="7Lo-W6-9xt" firstAttribute="leading" secondItem="W2g-mq-cao" secondAttribute="trailing" constant="5" id="dQd-cn-H4V"/>
                             <constraint firstItem="4FA-kU-adm" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" constant="10" id="eyT-sw-b65"/>
-                            <constraint firstItem="Lid-vu-GMV" firstAttribute="leading" secondItem="4FA-kU-adm" secondAttribute="trailing" constant="5" id="g9o-y3-r1m"/>
                             <constraint firstAttribute="bottom" secondItem="x87-Tg-ybo" secondAttribute="bottom" constant="10" id="gpX-h0-phg"/>
                             <constraint firstItem="1nX-vJ-Glx" firstAttribute="top" secondItem="uOD-uO-HqC" secondAttribute="bottom" constant="12" id="hPv-06-6vj"/>
                             <constraint firstItem="W2g-mq-cao" firstAttribute="top" secondItem="tAc-y3-sDL" secondAttribute="bottom" constant="12" id="hVq-HN-FT2"/>
-                            <constraint firstItem="LUB-Eb-jB9" firstAttribute="top" secondItem="ZHW-nz-JSO" secondAttribute="bottom" constant="12" id="kCr-nH-FLm"/>
-                            <constraint firstItem="Lid-vu-GMV" firstAttribute="top" secondItem="LUB-Eb-jB9" secondAttribute="bottom" constant="12" id="kge-wt-Xyd"/>
+                            <constraint firstItem="Lid-vu-GMV" firstAttribute="leading" secondItem="4FA-kU-adm" secondAttribute="trailing" constant="5" id="kY7-uJ-dGt"/>
                             <constraint firstItem="LAj-T1-Z86" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" constant="10" id="l4F-sZ-qSj"/>
+                            <constraint firstItem="Lid-vu-GMV" firstAttribute="centerY" secondItem="4FA-kU-adm" secondAttribute="centerY" id="lvm-Hk-ysV"/>
                             <constraint firstAttribute="trailing" secondItem="uOD-uO-HqC" secondAttribute="trailing" id="mOp-JS-H4v"/>
                             <constraint firstItem="W2g-mq-cao" firstAttribute="leading" secondItem="YQ3-1k-Yxu" secondAttribute="leading" constant="10" id="pWj-kz-L6C"/>
                             <constraint firstAttribute="trailing" secondItem="x87-Tg-ybo" secondAttribute="trailing" constant="10" id="pcE-hh-9Qm"/>
                             <constraint firstItem="uOD-uO-HqC" firstAttribute="top" secondItem="YQ3-1k-Yxu" secondAttribute="top" id="qCN-1G-T1h"/>
-                            <constraint firstItem="7Lo-W6-9xt" firstAttribute="leading" secondItem="W2g-mq-cao" secondAttribute="trailing" constant="5" id="u6J-5Y-cpw"/>
                             <constraint firstItem="tAc-y3-sDL" firstAttribute="top" secondItem="4FA-kU-adm" secondAttribute="bottom" constant="12" id="w55-Fm-GZC"/>
-                            <constraint firstItem="LUB-Eb-jB9" firstAttribute="leading" secondItem="LAj-T1-Z86" secondAttribute="trailing" constant="5" id="zsf-IT-gTI"/>
+                            <constraint firstItem="ZHW-nz-JSO" firstAttribute="leading" secondItem="1nX-vJ-Glx" secondAttribute="trailing" constant="5" id="wCN-m2-gb8"/>
+                            <constraint firstItem="LUB-Eb-jB9" firstAttribute="leading" secondItem="LAj-T1-Z86" secondAttribute="trailing" constant="5" id="wnf-gV-s6L"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>

@@ -15,7 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *oddsLab;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
+@property (strong, nonatomic) NSString *selectStatus; // 选中状态
+
 - (void)setDataWithMode:(GPOddsInfoModel *)model;
+
 
 
 @end

@@ -42,11 +42,20 @@
 		420DB5932079E57E00B09FEA /* GPCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5922079E57E00B09FEA /* GPCoverView.xib */; };
 		420DB59A2079FBBB00B09FEA /* index_left_btn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5982079FBBB00B09FEA /* index_left_btn.jpg */; };
 		420DB59B2079FBBB00B09FEA /* index_right_btn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5992079FBBB00B09FEA /* index_right_btn.jpg */; };
-		420DB59F207A0C0700B09FEA /* game_bet_lunch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */; };
-		420DB5A0207A0C0700B09FEA /* game_bet_lunch@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */; };
-		420DB5A1207A0C0700B09FEA /* game_bet_lunch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */; };
 		420DB5A5207A2C4B00B09FEA /* GPMsgScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5A3207A2C4B00B09FEA /* GPMsgScoreCell.m */; };
 		420DB5A6207A2C4B00B09FEA /* GPMsgScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5A4207A2C4B00B09FEA /* GPMsgScoreCell.xib */; };
+		420DB5A9207AFB7000B09FEA /* GPNormalAliPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5A8207AFB7000B09FEA /* GPNormalAliPayViewController.m */; };
+		420DB5AC207AFB8D00B09FEA /* GPAliPayInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5AB207AFB8D00B09FEA /* GPAliPayInfoViewController.m */; };
+		420DB5B0207B031B00B09FEA /* GPNormalAliPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5AE207B031B00B09FEA /* GPNormalAliPayCell.m */; };
+		420DB5B1207B031B00B09FEA /* GPNormalAliPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5AF207B031B00B09FEA /* GPNormalAliPayCell.xib */; };
+		420DB5B5207B127600B09FEA /* ali_step_one.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5B2207B127600B09FEA /* ali_step_one.jpg */; };
+		420DB5B6207B127600B09FEA /* ali_step_three.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5B3207B127600B09FEA /* ali_step_three.jpg */; };
+		420DB5B7207B127600B09FEA /* ali_step_two.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5B4207B127600B09FEA /* ali_step_two.jpg */; };
+		420DB5B9207B1AC500B09FEA /* game_bet_lunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5B8207B1AC500B09FEA /* game_bet_lunch.png */; };
+		420DB5BC207B374B00B09FEA /* GPRoomPlayingRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5BB207B374B00B09FEA /* GPRoomPlayingRecordViewController.m */; };
+		420DB5BF207B49DA00B09FEA /* GPAlertNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5BE207B49DA00B09FEA /* GPAlertNoticeView.m */; };
+		420DB5C1207B49E400B09FEA /* GPAlertNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420DB5C0207B49E400B09FEA /* GPAlertNoticeView.xib */; };
+		420DB5C4207B701F00B09FEA /* GPRefreshModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420DB5C3207B701F00B09FEA /* GPRefreshModel.m */; };
 		42148AA32060FA10007D44E8 /* GPRechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA22060FA10007D44E8 /* GPRechargeModel.m */; };
 		42148AA72060FAA5007D44E8 /* GPRechargeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AA52060FAA5007D44E8 /* GPRechargeListCell.m */; };
 		42148AA82060FAA5007D44E8 /* GPRechargeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AA62060FAA5007D44E8 /* GPRechargeListCell.xib */; };
@@ -96,15 +105,6 @@
 		423EBE5420609FF8006E80ED /* GPBankCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE5320609FF8006E80ED /* GPBankCardView.m */; };
 		423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EBE552060A005006E80ED /* GPBankCardView.xib */; };
 		423EBE592060A632006E80ED /* GPBankInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423EBE582060A632006E80ED /* GPBankInfoModel.m */; };
-		4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DA2057BBFF00103919 /* mine_wallet.png */; };
-		4263B9E42057BD3700103919 /* mine_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DC2057BD3600103919 /* mine_share.png */; };
-		4263B9E52057BD3700103919 /* mine_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DD2057BD3600103919 /* mine_setting.png */; };
-		4263B9E62057BD3700103919 /* mine_game.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DE2057BD3600103919 /* mine_game.png */; };
-		4263B9E72057BD3700103919 /* mine_backwater.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9DF2057BD3600103919 /* mine_backwater.png */; };
-		4263B9E82057BD3700103919 /* mine_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9E02057BD3700103919 /* mine_history.png */; };
-		4263B9E92057BD3700103919 /* mine_get.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9E12057BD3700103919 /* mine_get.png */; };
-		4263B9EA2057BD3700103919 /* mine_game_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9E22057BD3700103919 /* mine_game_list.png */; };
-		4263B9EB2057BD3700103919 /* mine_about.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263B9E32057BD3700103919 /* mine_about.png */; };
 		4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9ED2057BEBF00103919 /* GPLoginViewController.m */; };
 		4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9F02057BECE00103919 /* GPRegistViewController.m */; };
 		4263B9FD2057C0DC00103919 /* GPRespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263B9FC2057C0DC00103919 /* GPRespondModel.m */; };
@@ -136,8 +136,6 @@
 		4263BA56205A78BA00103919 /* GPHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA54205A78BA00103919 /* GPHistoryCell.m */; };
 		4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA55205A78BA00103919 /* GPHistoryCell.xib */; };
 		4263BA5A205A7F9F00103919 /* GPHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA59205A7F9F00103919 /* GPHistoryModel.m */; };
-		4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA5B205AA6F000103919 /* mine_agent_background.png */; };
-		4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA5C205AA6F000103919 /* mine_agent_open.png */; };
 		4263BA61205AA78D00103919 /* GPAgentOpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA60205AA78D00103919 /* GPAgentOpenViewController.m */; };
 		4263BA64205AA7AC00103919 /* GPAgentBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4263BA63205AA7AC00103919 /* GPAgentBgViewController.m */; };
 		4263BA66205AA9B400103919 /* game_triangle_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4263BA65205AA9B300103919 /* game_triangle_btn.png */; };
@@ -359,6 +357,41 @@
 		42F402EE2074A73A00A2D03A /* room_cell_four@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402EC2074A73A00A2D03A /* room_cell_four@3x.png */; };
 		42F402EF2074A73A00A2D03A /* room_cell_four@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F402ED2074A73A00A2D03A /* room_cell_four@2x.png */; };
 		42F402F32074B01200A2D03A /* game_bg_img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 42F402F22074B01200A2D03A /* game_bg_img.jpg */; };
+		42F55733207B928C0057F288 /* mine_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55712207B928C0057F288 /* mine_share@2x.png */; };
+		42F55734207B928C0057F288 /* mine_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55713207B928C0057F288 /* mine_setting@2x.png */; };
+		42F55735207B928C0057F288 /* mine_wallet@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55714207B928C0057F288 /* mine_wallet@1x.png */; };
+		42F55736207B928C0057F288 /* mine_game@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55715207B928C0057F288 /* mine_game@3x.png */; };
+		42F55737207B928C0057F288 /* mine_agent_open@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55716207B928C0057F288 /* mine_agent_open@1x.png */; };
+		42F55738207B928C0057F288 /* mine_game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55717207B928C0057F288 /* mine_game@2x.png */; };
+		42F55739207B928C0057F288 /* mine_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55718207B928C0057F288 /* mine_setting@3x.png */; };
+		42F5573A207B928C0057F288 /* mine_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55719207B928C0057F288 /* mine_share@3x.png */; };
+		42F5573B207B928C0057F288 /* mine_get@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571A207B928C0057F288 /* mine_get@3x.png */; };
+		42F5573C207B928C0057F288 /* mine_game_list@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571B207B928C0057F288 /* mine_game_list@1x.png */; };
+		42F5573D207B928C0057F288 /* mine_history@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571C207B928C0057F288 /* mine_history@1x.png */; };
+		42F5573E207B928C0057F288 /* mine_agent_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571D207B928C0057F288 /* mine_agent_background@3x.png */; };
+		42F5573F207B928C0057F288 /* mine_about@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571E207B928C0057F288 /* mine_about@3x.png */; };
+		42F55740207B928C0057F288 /* mine_backwater@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5571F207B928C0057F288 /* mine_backwater@3x.png */; };
+		42F55741207B928C0057F288 /* mine_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55720207B928C0057F288 /* mine_about@2x.png */; };
+		42F55742207B928C0057F288 /* mine_backwater@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55721207B928C0057F288 /* mine_backwater@2x.png */; };
+		42F55743207B928C0057F288 /* mine_agent_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55722207B928C0057F288 /* mine_agent_background@2x.png */; };
+		42F55744207B928C0057F288 /* mine_get@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55723207B928C0057F288 /* mine_get@2x.png */; };
+		42F55745207B928C0057F288 /* mine_game_list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55724207B928C0057F288 /* mine_game_list@3x.png */; };
+		42F55746207B928C0057F288 /* mine_get@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55725207B928C0057F288 /* mine_get@1x.png */; };
+		42F55747207B928C0057F288 /* mine_backwater@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55726207B928C0057F288 /* mine_backwater@1x.png */; };
+		42F55748207B928C0057F288 /* mine_about@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55727207B928C0057F288 /* mine_about@1x.png */; };
+		42F55749207B928C0057F288 /* mine_agent_background@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55728207B928C0057F288 /* mine_agent_background@1x.png */; };
+		42F5574A207B928C0057F288 /* mine_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55729207B928C0057F288 /* mine_history@3x.png */; };
+		42F5574B207B928C0057F288 /* mine_history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572A207B928C0057F288 /* mine_history@2x.png */; };
+		42F5574C207B928C0057F288 /* mine_game_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572B207B928C0057F288 /* mine_game_list@2x.png */; };
+		42F5574D207B928C0057F288 /* mine_agent_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572C207B928C0057F288 /* mine_agent_open@2x.png */; };
+		42F5574E207B928C0057F288 /* mine_game@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572D207B928C0057F288 /* mine_game@1x.png */; };
+		42F5574F207B928C0057F288 /* mine_wallet@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572E207B928C0057F288 /* mine_wallet@3x.png */; };
+		42F55750207B928C0057F288 /* mine_wallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F5572F207B928C0057F288 /* mine_wallet@2x.png */; };
+		42F55751207B928C0057F288 /* mine_agent_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55730207B928C0057F288 /* mine_agent_open@3x.png */; };
+		42F55752207B928C0057F288 /* mine_share@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55731207B928C0057F288 /* mine_share@1x.png */; };
+		42F55753207B928C0057F288 /* mine_setting@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55732207B928C0057F288 /* mine_setting@1x.png */; };
+		42F55756207B95200057F288 /* lunch_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55754207B951E0057F288 /* lunch_img@2x.png */; };
+		42F55757207B95200057F288 /* lunch_img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F55755207B951E0057F288 /* lunch_img@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -419,12 +452,27 @@
 		420DB5922079E57E00B09FEA /* GPCoverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPCoverView.xib; sourceTree = "<group>"; };
 		420DB5982079FBBB00B09FEA /* index_left_btn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index_left_btn.jpg; sourceTree = "<group>"; };
 		420DB5992079FBBB00B09FEA /* index_right_btn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index_right_btn.jpg; sourceTree = "<group>"; };
-		420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@2x.png"; sourceTree = "<group>"; };
-		420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@1x.png"; sourceTree = "<group>"; };
-		420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game_bet_lunch@3x.png"; sourceTree = "<group>"; };
 		420DB5A2207A2C4B00B09FEA /* GPMsgScoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgScoreCell.h; sourceTree = "<group>"; };
 		420DB5A3207A2C4B00B09FEA /* GPMsgScoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgScoreCell.m; sourceTree = "<group>"; };
 		420DB5A4207A2C4B00B09FEA /* GPMsgScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgScoreCell.xib; sourceTree = "<group>"; };
+		420DB5A7207AFB7000B09FEA /* GPNormalAliPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalAliPayViewController.h; sourceTree = "<group>"; };
+		420DB5A8207AFB7000B09FEA /* GPNormalAliPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalAliPayViewController.m; sourceTree = "<group>"; };
+		420DB5AA207AFB8D00B09FEA /* GPAliPayInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAliPayInfoViewController.h; sourceTree = "<group>"; };
+		420DB5AB207AFB8D00B09FEA /* GPAliPayInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAliPayInfoViewController.m; sourceTree = "<group>"; };
+		420DB5AD207B031B00B09FEA /* GPNormalAliPayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPNormalAliPayCell.h; sourceTree = "<group>"; };
+		420DB5AE207B031B00B09FEA /* GPNormalAliPayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPNormalAliPayCell.m; sourceTree = "<group>"; };
+		420DB5AF207B031B00B09FEA /* GPNormalAliPayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPNormalAliPayCell.xib; sourceTree = "<group>"; };
+		420DB5B2207B127600B09FEA /* ali_step_one.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ali_step_one.jpg; sourceTree = "<group>"; };
+		420DB5B3207B127600B09FEA /* ali_step_three.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ali_step_three.jpg; sourceTree = "<group>"; };
+		420DB5B4207B127600B09FEA /* ali_step_two.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ali_step_two.jpg; sourceTree = "<group>"; };
+		420DB5B8207B1AC500B09FEA /* game_bet_lunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_bet_lunch.png; sourceTree = "<group>"; };
+		420DB5BA207B374B00B09FEA /* GPRoomPlayingRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRoomPlayingRecordViewController.h; sourceTree = "<group>"; };
+		420DB5BB207B374B00B09FEA /* GPRoomPlayingRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRoomPlayingRecordViewController.m; sourceTree = "<group>"; };
+		420DB5BD207B49DA00B09FEA /* GPAlertNoticeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAlertNoticeView.h; sourceTree = "<group>"; };
+		420DB5BE207B49DA00B09FEA /* GPAlertNoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAlertNoticeView.m; sourceTree = "<group>"; };
+		420DB5C0207B49E400B09FEA /* GPAlertNoticeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPAlertNoticeView.xib; sourceTree = "<group>"; };
+		420DB5C2207B701F00B09FEA /* GPRefreshModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRefreshModel.h; sourceTree = "<group>"; };
+		420DB5C3207B701F00B09FEA /* GPRefreshModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRefreshModel.m; sourceTree = "<group>"; };
 		42148AA12060FA10007D44E8 /* GPRechargeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeModel.h; sourceTree = "<group>"; };
 		42148AA22060FA10007D44E8 /* GPRechargeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRechargeModel.m; sourceTree = "<group>"; };
 		42148AA42060FAA5007D44E8 /* GPRechargeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRechargeListCell.h; sourceTree = "<group>"; };
@@ -506,15 +554,6 @@
 		423EBE552060A005006E80ED /* GPBankCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPBankCardView.xib; sourceTree = "<group>"; };
 		423EBE572060A632006E80ED /* GPBankInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBankInfoModel.h; sourceTree = "<group>"; };
 		423EBE582060A632006E80ED /* GPBankInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBankInfoModel.m; sourceTree = "<group>"; };
-		4263B9DA2057BBFF00103919 /* mine_wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_wallet.png; sourceTree = "<group>"; };
-		4263B9DC2057BD3600103919 /* mine_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_share.png; sourceTree = "<group>"; };
-		4263B9DD2057BD3600103919 /* mine_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_setting.png; sourceTree = "<group>"; };
-		4263B9DE2057BD3600103919 /* mine_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_game.png; sourceTree = "<group>"; };
-		4263B9DF2057BD3600103919 /* mine_backwater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_backwater.png; sourceTree = "<group>"; };
-		4263B9E02057BD3700103919 /* mine_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_history.png; sourceTree = "<group>"; };
-		4263B9E12057BD3700103919 /* mine_get.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_get.png; sourceTree = "<group>"; };
-		4263B9E22057BD3700103919 /* mine_game_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_game_list.png; sourceTree = "<group>"; };
-		4263B9E32057BD3700103919 /* mine_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_about.png; sourceTree = "<group>"; };
 		4263B9EC2057BEBF00103919 /* GPLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLoginViewController.h; sourceTree = "<group>"; };
 		4263B9ED2057BEBF00103919 /* GPLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLoginViewController.m; sourceTree = "<group>"; };
 		4263B9EF2057BECE00103919 /* GPRegistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRegistViewController.h; sourceTree = "<group>"; };
@@ -568,8 +607,6 @@
 		4263BA55205A78BA00103919 /* GPHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPHistoryCell.xib; sourceTree = "<group>"; };
 		4263BA58205A7F9F00103919 /* GPHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPHistoryModel.h; sourceTree = "<group>"; };
 		4263BA59205A7F9F00103919 /* GPHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPHistoryModel.m; sourceTree = "<group>"; };
-		4263BA5B205AA6F000103919 /* mine_agent_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_agent_background.png; sourceTree = "<group>"; };
-		4263BA5C205AA6F000103919 /* mine_agent_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_agent_open.png; sourceTree = "<group>"; };
 		4263BA5F205AA78D00103919 /* GPAgentOpenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentOpenViewController.h; sourceTree = "<group>"; };
 		4263BA60205AA78D00103919 /* GPAgentOpenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAgentOpenViewController.m; sourceTree = "<group>"; };
 		4263BA62205AA7AC00103919 /* GPAgentBgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAgentBgViewController.h; sourceTree = "<group>"; };
@@ -870,6 +907,41 @@
 		42F402EC2074A73A00A2D03A /* room_cell_four@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room_cell_four@3x.png"; sourceTree = "<group>"; };
 		42F402ED2074A73A00A2D03A /* room_cell_four@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room_cell_four@2x.png"; sourceTree = "<group>"; };
 		42F402F22074B01200A2D03A /* game_bg_img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = game_bg_img.jpg; sourceTree = "<group>"; };
+		42F55712207B928C0057F288 /* mine_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_share@2x.png"; sourceTree = "<group>"; };
+		42F55713207B928C0057F288 /* mine_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_setting@2x.png"; sourceTree = "<group>"; };
+		42F55714207B928C0057F288 /* mine_wallet@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_wallet@1x.png"; sourceTree = "<group>"; };
+		42F55715207B928C0057F288 /* mine_game@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game@3x.png"; sourceTree = "<group>"; };
+		42F55716207B928C0057F288 /* mine_agent_open@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_open@1x.png"; sourceTree = "<group>"; };
+		42F55717207B928C0057F288 /* mine_game@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game@2x.png"; sourceTree = "<group>"; };
+		42F55718207B928C0057F288 /* mine_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_setting@3x.png"; sourceTree = "<group>"; };
+		42F55719207B928C0057F288 /* mine_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_share@3x.png"; sourceTree = "<group>"; };
+		42F5571A207B928C0057F288 /* mine_get@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_get@3x.png"; sourceTree = "<group>"; };
+		42F5571B207B928C0057F288 /* mine_game_list@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game_list@1x.png"; sourceTree = "<group>"; };
+		42F5571C207B928C0057F288 /* mine_history@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_history@1x.png"; sourceTree = "<group>"; };
+		42F5571D207B928C0057F288 /* mine_agent_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_background@3x.png"; sourceTree = "<group>"; };
+		42F5571E207B928C0057F288 /* mine_about@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_about@3x.png"; sourceTree = "<group>"; };
+		42F5571F207B928C0057F288 /* mine_backwater@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_backwater@3x.png"; sourceTree = "<group>"; };
+		42F55720207B928C0057F288 /* mine_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_about@2x.png"; sourceTree = "<group>"; };
+		42F55721207B928C0057F288 /* mine_backwater@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_backwater@2x.png"; sourceTree = "<group>"; };
+		42F55722207B928C0057F288 /* mine_agent_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_background@2x.png"; sourceTree = "<group>"; };
+		42F55723207B928C0057F288 /* mine_get@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_get@2x.png"; sourceTree = "<group>"; };
+		42F55724207B928C0057F288 /* mine_game_list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game_list@3x.png"; sourceTree = "<group>"; };
+		42F55725207B928C0057F288 /* mine_get@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_get@1x.png"; sourceTree = "<group>"; };
+		42F55726207B928C0057F288 /* mine_backwater@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_backwater@1x.png"; sourceTree = "<group>"; };
+		42F55727207B928C0057F288 /* mine_about@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_about@1x.png"; sourceTree = "<group>"; };
+		42F55728207B928C0057F288 /* mine_agent_background@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_background@1x.png"; sourceTree = "<group>"; };
+		42F55729207B928C0057F288 /* mine_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_history@3x.png"; sourceTree = "<group>"; };
+		42F5572A207B928C0057F288 /* mine_history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_history@2x.png"; sourceTree = "<group>"; };
+		42F5572B207B928C0057F288 /* mine_game_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game_list@2x.png"; sourceTree = "<group>"; };
+		42F5572C207B928C0057F288 /* mine_agent_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_open@2x.png"; sourceTree = "<group>"; };
+		42F5572D207B928C0057F288 /* mine_game@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_game@1x.png"; sourceTree = "<group>"; };
+		42F5572E207B928C0057F288 /* mine_wallet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_wallet@3x.png"; sourceTree = "<group>"; };
+		42F5572F207B928C0057F288 /* mine_wallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_wallet@2x.png"; sourceTree = "<group>"; };
+		42F55730207B928C0057F288 /* mine_agent_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_agent_open@3x.png"; sourceTree = "<group>"; };
+		42F55731207B928C0057F288 /* mine_share@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_share@1x.png"; sourceTree = "<group>"; };
+		42F55732207B928C0057F288 /* mine_setting@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_setting@1x.png"; sourceTree = "<group>"; };
+		42F55754207B951E0057F288 /* lunch_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lunch_img@2x.png"; sourceTree = "<group>"; };
+		42F55755207B951E0057F288 /* lunch_img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lunch_img@3x.png"; sourceTree = "<group>"; };
 		DC5E06EBC9B502EDB46FA2D7 /* Pods_GPLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPLottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1124,6 +1196,8 @@
 				42CD99E120731A9900F86F21 /* GPTrendViewController.m */,
 				420DB58C2078DF4500B09FEA /* GPMyMessageViewController.h */,
 				420DB58D2078DF4500B09FEA /* GPMyMessageViewController.m */,
+				420DB5BA207B374B00B09FEA /* GPRoomPlayingRecordViewController.h */,
+				420DB5BB207B374B00B09FEA /* GPRoomPlayingRecordViewController.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1154,6 +1228,10 @@
 				423C89F8206F7C8500F78719 /* GPNormalPayViewController.m */,
 				423C89FA206F7CF700F78719 /* GPBankInfomationViewController.h */,
 				423C89FB206F7CF700F78719 /* GPBankInfomationViewController.m */,
+				420DB5A7207AFB7000B09FEA /* GPNormalAliPayViewController.h */,
+				420DB5A8207AFB7000B09FEA /* GPNormalAliPayViewController.m */,
+				420DB5AA207AFB8D00B09FEA /* GPAliPayInfoViewController.h */,
+				420DB5AB207AFB8D00B09FEA /* GPAliPayInfoViewController.m */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1237,6 +1315,8 @@
 				427122B82068BDE00080A50F /* GPMessageModel.m */,
 				42CD99E8207322A500F86F21 /* GPTrendModel.h */,
 				42CD99E9207322A500F86F21 /* GPTrendModel.m */,
+				420DB5C2207B701F00B09FEA /* GPRefreshModel.h */,
+				420DB5C3207B701F00B09FEA /* GPRefreshModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1397,6 +1477,9 @@
 				420DB58F2079E57000B09FEA /* GPCoverView.h */,
 				420DB5902079E57000B09FEA /* GPCoverView.m */,
 				420DB5922079E57E00B09FEA /* GPCoverView.xib */,
+				420DB5BD207B49DA00B09FEA /* GPAlertNoticeView.h */,
+				420DB5BE207B49DA00B09FEA /* GPAlertNoticeView.m */,
+				420DB5C0207B49E400B09FEA /* GPAlertNoticeView.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1423,6 +1506,9 @@
 				423C8A0D206FADB300F78719 /* GPTransferTypeCell.h */,
 				423C8A0E206FADB300F78719 /* GPTransferTypeCell.m */,
 				423C8A0F206FADB300F78719 /* GPTransferTypeCell.xib */,
+				420DB5AD207B031B00B09FEA /* GPNormalAliPayCell.h */,
+				420DB5AE207B031B00B09FEA /* GPNormalAliPayCell.m */,
+				420DB5AF207B031B00B09FEA /* GPNormalAliPayCell.xib */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1430,6 +1516,8 @@
 		42E7E51F2054C0C600119CB0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				42F55754207B951E0057F288 /* lunch_img@2x.png */,
+				42F55755207B951E0057F288 /* lunch_img@3x.png */,
 				42CD99F7207374AE00F86F21 /* bar_home_normal@1x.png */,
 				42CD99F5207374AD00F86F21 /* bar_home_normal@2x.png */,
 				42CD99F6207374AD00F86F21 /* bar_home_normal@3x.png */,
@@ -1472,6 +1560,7 @@
 		42E7E5202054C0C600119CB0 /* MinePage */ = {
 			isa = PBXGroup;
 			children = (
+				42F55711207B928C0057F288 /* mine */,
 				42F402B7207481B100A2D03A /* room_list_icon */,
 				42F40275207386FF00A2D03A /* setting */,
 				42F402562073859900A2D03A /* myWallet */,
@@ -1483,17 +1572,6 @@
 				42E7E5462056176F00119CB0 /* sign.png */,
 				4263BA172059126F00103919 /* header_bg.png */,
 				4263BA152059121A00103919 /* user_icon.png */,
-				4263B9DA2057BBFF00103919 /* mine_wallet.png */,
-				4263B9E32057BD3700103919 /* mine_about.png */,
-				4263B9DF2057BD3600103919 /* mine_backwater.png */,
-				4263B9E22057BD3700103919 /* mine_game_list.png */,
-				4263B9DE2057BD3600103919 /* mine_game.png */,
-				4263B9E12057BD3700103919 /* mine_get.png */,
-				4263B9E02057BD3700103919 /* mine_history.png */,
-				4263BA5B205AA6F000103919 /* mine_agent_background.png */,
-				4263BA5C205AA6F000103919 /* mine_agent_open.png */,
-				4263B9DD2057BD3600103919 /* mine_setting.png */,
-				4263B9DC2057BD3600103919 /* mine_share.png */,
 				4263BA0A2057CCD700103919 /* login_back_arrows.png */,
 				4263BA092057CCD700103919 /* login_bg_img.png */,
 				4263BA082057CCD700103919 /* login_qq_btn.png */,
@@ -1536,14 +1614,12 @@
 				427122E62068F7620080A50F /* input_send_bg.png */,
 				423C89AA206C92F100F78719 /* service_add_btn.png */,
 				42CD99D220730DDD00F86F21 /* room_ins_btn.png */,
-				420DB59D207A0C0600B09FEA /* game_bet_lunch@1x.png */,
-				420DB59C207A0C0600B09FEA /* game_bet_lunch@2x.png */,
-				420DB59E207A0C0600B09FEA /* game_bet_lunch@3x.png */,
 				42CD99D120730DDC00F86F21 /* room_lunch_img.png */,
 				420DB5982079FBBB00B09FEA /* index_left_btn.jpg */,
 				420DB5992079FBBB00B09FEA /* index_right_btn.jpg */,
 				42CD99D520730DDD00F86F21 /* room_record_btn.png */,
 				42CD99D320730DDD00F86F21 /* room_trend_btn.png */,
+				420DB5B8207B1AC500B09FEA /* game_bet_lunch.png */,
 				42F402D72074A01700A2D03A /* home_money@1x.png */,
 				42F402D52074A01600A2D03A /* home_money@2x.png */,
 				42F402D42074A01600A2D03A /* home_money@3x.png */,
@@ -1576,6 +1652,9 @@
 				423C89EE206F7B8E00F78719 /* pay_ali.png */,
 				423C89F0206F7B8F00F78719 /* pay_qq.png */,
 				423C89EF206F7B8F00F78719 /* pay_weChat.png */,
+				420DB5B2207B127600B09FEA /* ali_step_one.jpg */,
+				420DB5B3207B127600B09FEA /* ali_step_three.jpg */,
+				420DB5B4207B127600B09FEA /* ali_step_two.jpg */,
 			);
 			path = PayPage;
 			sourceTree = "<group>";
@@ -1690,6 +1769,46 @@
 				42F402EC2074A73A00A2D03A /* room_cell_four@3x.png */,
 			);
 			path = room_list_icon;
+			sourceTree = "<group>";
+		};
+		42F55711207B928C0057F288 /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				42F55712207B928C0057F288 /* mine_share@2x.png */,
+				42F55713207B928C0057F288 /* mine_setting@2x.png */,
+				42F55714207B928C0057F288 /* mine_wallet@1x.png */,
+				42F55715207B928C0057F288 /* mine_game@3x.png */,
+				42F55716207B928C0057F288 /* mine_agent_open@1x.png */,
+				42F55717207B928C0057F288 /* mine_game@2x.png */,
+				42F55718207B928C0057F288 /* mine_setting@3x.png */,
+				42F55719207B928C0057F288 /* mine_share@3x.png */,
+				42F5571A207B928C0057F288 /* mine_get@3x.png */,
+				42F5571B207B928C0057F288 /* mine_game_list@1x.png */,
+				42F5571C207B928C0057F288 /* mine_history@1x.png */,
+				42F5571D207B928C0057F288 /* mine_agent_background@3x.png */,
+				42F5571E207B928C0057F288 /* mine_about@3x.png */,
+				42F5571F207B928C0057F288 /* mine_backwater@3x.png */,
+				42F55720207B928C0057F288 /* mine_about@2x.png */,
+				42F55721207B928C0057F288 /* mine_backwater@2x.png */,
+				42F55722207B928C0057F288 /* mine_agent_background@2x.png */,
+				42F55723207B928C0057F288 /* mine_get@2x.png */,
+				42F55724207B928C0057F288 /* mine_game_list@3x.png */,
+				42F55725207B928C0057F288 /* mine_get@1x.png */,
+				42F55726207B928C0057F288 /* mine_backwater@1x.png */,
+				42F55727207B928C0057F288 /* mine_about@1x.png */,
+				42F55728207B928C0057F288 /* mine_agent_background@1x.png */,
+				42F55729207B928C0057F288 /* mine_history@3x.png */,
+				42F5572A207B928C0057F288 /* mine_history@2x.png */,
+				42F5572B207B928C0057F288 /* mine_game_list@2x.png */,
+				42F5572C207B928C0057F288 /* mine_agent_open@2x.png */,
+				42F5572D207B928C0057F288 /* mine_game@1x.png */,
+				42F5572E207B928C0057F288 /* mine_wallet@3x.png */,
+				42F5572F207B928C0057F288 /* mine_wallet@2x.png */,
+				42F55730207B928C0057F288 /* mine_agent_open@3x.png */,
+				42F55731207B928C0057F288 /* mine_share@1x.png */,
+				42F55732207B928C0057F288 /* mine_setting@1x.png */,
+			);
+			path = mine;
 			sourceTree = "<group>";
 		};
 		9920A9B192A2CA8F25BC2837 /* Pods */ = {
@@ -1820,10 +1939,11 @@
 			files = (
 				42F402C8207481B200A2D03A /* room_cell_two@2x.png in Resources */,
 				420DB5A6207A2C4B00B09FEA /* GPMsgScoreCell.xib in Resources */,
+				420DB5B9207B1AC500B09FEA /* game_bet_lunch.png in Resources */,
 				427122DB2068CEC70080A50F /* 4.png in Resources */,
+				42F55735207B928C0057F288 /* mine_wallet@1x.png in Resources */,
 				420DB5732078B56B00B09FEA /* index_money_img@2x.png in Resources */,
 				42F4026E2073859A00A2D03A /* wallet_ withdraw_list@1x.png in Resources */,
-				4263B9E42057BD3700103919 /* mine_share.png in Resources */,
 				427122D22068CAEC0080A50F /* GPMsgReceiveCell.xib in Resources */,
 				4263BA182059126F00103919 /* header_bg.png in Resources */,
 				42F402DB2074A01800A2D03A /* home_money@2x.png in Resources */,
@@ -1832,16 +1952,22 @@
 				42CD9A082073752A00F86F21 /* mine_bar_select@1x.png in Resources */,
 				42F40285207386FF00A2D03A /* setting_password_change@3x.png in Resources */,
 				42E7E58A2057772E00119CB0 /* 2.jpg in Resources */,
+				42F55740207B928C0057F288 /* mine_backwater@3x.png in Resources */,
+				42F55748207B928C0057F288 /* mine_about@1x.png in Resources */,
 				42F402F32074B01200A2D03A /* game_bg_img.jpg in Resources */,
 				42F402EA2074A4FE00A2D03A /* room_list_three@2x.png in Resources */,
 				420DB55620785B1C00B09FEA /* global_btn@3x.png in Resources */,
 				42F402DE2074A01800A2D03A /* home_person@2x.png in Resources */,
 				42715AB32064D173000A79FC /* GPBetContentCell.xib in Resources */,
 				420DB5752078B56B00B09FEA /* index_msg_btn@2x.png in Resources */,
+				42F5573F207B928C0057F288 /* mine_about@3x.png in Resources */,
 				42F402682073859A00A2D03A /* wallet_ recharge@1x.png in Resources */,
+				420DB5B6207B127600B09FEA /* ali_step_three.jpg in Resources */,
 				423EBE45205FB7D6006E80ED /* GPChooseBankCell.xib in Resources */,
+				42F55753207B928C0057F288 /* mine_setting@1x.png in Resources */,
 				42CD9A14207375B200F86F21 /* pay_item_normal@2x.png in Resources */,
 				420DB58B2078B94200B09FEA /* GPHomeLeftItemView.xib in Resources */,
+				42F55736207B928C0057F288 /* mine_game@3x.png in Resources */,
 				42CD99FB207374B000F86F21 /* bar_home_normal@2x.png in Resources */,
 				42F402712073859A00A2D03A /* wallet_ withdraw@2x.png in Resources */,
 				42E7E4DD2054B7BE00119CB0 /* LaunchScreen.storyboard in Resources */,
@@ -1865,12 +1991,16 @@
 				42CD9A212073761900F86F21 /* bar_notice_select@2x.png in Resources */,
 				420DB57D2078B56B00B09FEA /* index_back_btn@1x.png in Resources */,
 				4207C04E2077096400680B89 /* service_item@1x.png in Resources */,
+				42F55733207B928C0057F288 /* mine_share@2x.png in Resources */,
 				42E7E52F2054C6F100119CB0 /* bar_mine_choose.png in Resources */,
 				4263BA95205CB9CE00103919 /* game_point_img.png in Resources */,
 				42CD99FE207374B000F86F21 /* bar_home_select@2x.png in Resources */,
+				42F55751207B928C0057F288 /* mine_agent_open@3x.png in Resources */,
+				42F55744207B928C0057F288 /* mine_get@2x.png in Resources */,
 				420DB5762078B56B00B09FEA /* index_back_btn@2x.png in Resources */,
-				4263B9DB2057BBFF00103919 /* mine_wallet.png in Resources */,
 				427122CD2068CAD30080A50F /* GPMsgSystemCell.xib in Resources */,
+				42F55749207B928C0057F288 /* mine_agent_background@1x.png in Resources */,
+				42F55745207B928C0057F288 /* mine_game_list@3x.png in Resources */,
 				427122E92068F7620080A50F /* input_receive_bg.png in Resources */,
 				423C89F2206F7B8F00F78719 /* pay_weChat.png in Resources */,
 				4263BA0B2057CCD700103919 /* login_weChat_btn.png in Resources */,
@@ -1879,27 +2009,31 @@
 				42F40287207386FF00A2D03A /* setting_withdraw_password@1x.png in Resources */,
 				42E7E58520576EED00119CB0 /* arrow_black.png in Resources */,
 				42CD99F22073512100F86F21 /* game_lunch@2x.png in Resources */,
+				42F5574D207B928C0057F288 /* mine_agent_open@2x.png in Resources */,
 				4263BA7F205BBC9D00103919 /* GPBetDetailCell.xib in Resources */,
 				42F40293207386FF00A2D03A /* setting_withdraw_password@3x.png in Resources */,
+				42F55756207B95200057F288 /* lunch_img@2x.png in Resources */,
 				420DB55720785B1C00B09FEA /* global_btn@1x.png in Resources */,
 				42F402B62073CB5E00A2D03A /* GPServiceLageImageView.xib in Resources */,
 				42E7E563205668C500119CB0 /* pay_bank.png in Resources */,
-				4263B9EA2057BD3700103919 /* mine_game_list.png in Resources */,
 				42712300206B2D950080A50F /* GPBetCopyCell.xib in Resources */,
 				42CD9A1F2073761900F86F21 /* bar_notice_select@3x.png in Resources */,
+				42F55738207B928C0057F288 /* mine_game@2x.png in Resources */,
 				4263BA9B205CF92900103919 /* agent_agreement_btn.png in Resources */,
 				42F402702073859A00A2D03A /* wallet_ recharge@2x.png in Resources */,
 				42CD99F12073512100F86F21 /* game_bet_lunch@2x.png in Resources */,
 				423C89AB206C92F200F78719 /* service_add_btn.png in Resources */,
-				4263B9E62057BD3700103919 /* mine_game.png in Resources */,
 				4263BA0C2057CCD700103919 /* login_qq_btn.png in Resources */,
+				42F55734207B928C0057F288 /* mine_setting@2x.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
 				42F402E82074A4FE00A2D03A /* room_list_three@1x.png in Resources */,
+				42F55741207B928C0057F288 /* mine_about@2x.png in Resources */,
 				423C8A11206FADB300F78719 /* GPTransferTypeCell.xib in Resources */,
 				4207C0502077096400680B89 /* service_item@3x.png in Resources */,
 				42715AB72064E862000A79FC /* bet_dissmiss_btn.png in Resources */,
 				42F402CC207481B200A2D03A /* room_cell_three@2x.png in Resources */,
 				42CD99EF2073512100F86F21 /* home_lunch@2x.png in Resources */,
+				42F55737207B928C0057F288 /* mine_agent_open@1x.png in Resources */,
 				42CD9A222073761900F86F21 /* bar_notice_normal@1x.png in Resources */,
 				42F40288207386FF00A2D03A /* setting_phone@3x.png in Resources */,
 				42F4026F2073859A00A2D03A /* wallet_recharge_list@2x.png in Resources */,
@@ -1908,19 +2042,20 @@
 				420DB5742078B56B00B09FEA /* index_money_img@3x.png in Resources */,
 				42F4028F207386FF00A2D03A /* setting_clean@2x.png in Resources */,
 				42F4026D2073859A00A2D03A /* wallet_recharge_list@3x.png in Resources */,
+				42F5574B207B928C0057F288 /* mine_history@2x.png in Resources */,
 				427122E02068CEC70080A50F /* 1.png in Resources */,
 				42E7E55D2056659300119CB0 /* check_seleced.png in Resources */,
 				420DB5862078B87500B09FEA /* index_left_item@3x.png in Resources */,
-				4263B9E92057BD3700103919 /* mine_get.png in Resources */,
+				42F55743207B928C0057F288 /* mine_agent_background@2x.png in Resources */,
 				42F402C7207481B200A2D03A /* room_cell_two@3x.png in Resources */,
 				4263BA4F205A546800103919 /* GPBackWaterCell.xib in Resources */,
 				4263BA66205AA9B400103919 /* game_triangle_btn.png in Resources */,
-				4263B9EB2057BD3700103919 /* mine_about.png in Resources */,
 				42F40290207386FF00A2D03A /* setting_card@3x.png in Resources */,
 				42F4026A2073859A00A2D03A /* wallet_recharge_list@1x.png in Resources */,
 				42F402DD2074A01800A2D03A /* home_money@1x.png in Resources */,
 				42CD99E720731E3D00F86F21 /* GPTrendCell.xib in Resources */,
 				42E7E5362054C70300119CB0 /* bar_pay_choosr.png in Resources */,
+				42F55746207B928C0057F288 /* mine_get@1x.png in Resources */,
 				423C89C2206E475A00F78719 /* GPAgentUserInfoCell.xib in Resources */,
 				423C89B5206C989800F78719 /* GPServiceReciveCell.xib in Resources */,
 				427122E12068CEC70080A50F /* 0.png in Resources */,
@@ -1929,8 +2064,8 @@
 				42715AAA206490C5000A79FC /* GPRoomBetView.xib in Resources */,
 				42F4028C207386FF00A2D03A /* setting_phone@1x.png in Resources */,
 				42CD99F4207354F500F86F21 /* home_banner_placehorder.jpg in Resources */,
+				42F5574C207B928C0057F288 /* mine_game_list@2x.png in Resources */,
 				423EBE562060A005006E80ED /* GPBankCardView.xib in Resources */,
-				4263BA5D205AA6F100103919 /* mine_agent_background.png in Resources */,
 				42F402692073859A00A2D03A /* wallet_ withdraw@1x.png in Resources */,
 				420DB5852078B87500B09FEA /* index_left_item@2x.png in Resources */,
 				42F402DF2074A01800A2D03A /* home_person@3x.png in Resources */,
@@ -1943,9 +2078,10 @@
 				423C89B0206C987F00F78719 /* GPServiceSenderCell.xib in Resources */,
 				42CD99FC207374B000F86F21 /* bar_home_normal@3x.png in Resources */,
 				420DB59B2079FBBB00B09FEA /* index_right_btn.jpg in Resources */,
+				42F5574E207B928C0057F288 /* mine_game@1x.png in Resources */,
 				427122DE2068CEC70080A50F /* 2.png in Resources */,
+				42F55742207B928C0057F288 /* mine_backwater@2x.png in Resources */,
 				420DB5932079E57E00B09FEA /* GPCoverView.xib in Resources */,
-				420DB5A0207A0C0700B09FEA /* game_bet_lunch@1x.png in Resources */,
 				42715A9820633D6E000A79FC /* GPRoomListCell.xib in Resources */,
 				42CD99F02073512100F86F21 /* pay_lunch@2x.png in Resources */,
 				42715A8E20625B77000A79FC /* playlist_person_icon.png in Resources */,
@@ -1953,24 +2089,26 @@
 				42F402D1207481B200A2D03A /* room_cell_one@2x.png in Resources */,
 				423C8A04206F840600F78719 /* GPLinePayRecoedCell.xib in Resources */,
 				42F4028A207386FF00A2D03A /* setting_card@1x.png in Resources */,
+				42F55752207B928C0057F288 /* mine_share@1x.png in Resources */,
 				42E7E52B2054C4E700119CB0 /* bar_home_choose.png in Resources */,
 				42715A9020625CA9000A79FC /* playlist_bottom_cell.png in Resources */,
 				423C89D5206E68D200F78719 /* GPEarningsCell.xib in Resources */,
-				4263B9E52057BD3700103919 /* mine_setting.png in Resources */,
+				42F55747207B928C0057F288 /* mine_backwater@1x.png in Resources */,
 				42F402742073859A00A2D03A /* wallet_card@1x.png in Resources */,
 				4263BA8E205BDE1C00103919 /* GPLinkOpenAccuoutView.xib in Resources */,
 				42CD99DA20730DDE00F86F21 /* room_record_btn.png in Resources */,
 				42CD99FD207374B000F86F21 /* bar_home_normal@1x.png in Resources */,
 				42715AAE20649699000A79FC /* bet_left_btn.png in Resources */,
 				42F402EB2074A4FE00A2D03A /* room_list_two@1x.png in Resources */,
-				4263BA5E205AA6F100103919 /* mine_agent_open.png in Resources */,
 				42F4026C2073859A00A2D03A /* wallet_ withdraw_list2x.png in Resources */,
+				42F55739207B928C0057F288 /* mine_setting@3x.png in Resources */,
 				42CD99DF20730E5000F86F21 /* GPRoomItemAlertView.xib in Resources */,
 				420DB561207874ED00B09FEA /* game_table_img.png in Resources */,
 				42CD9A18207375B300F86F21 /* pay_item_select@1x.png in Resources */,
 				42CD9A0B2073752A00F86F21 /* mine_bar_select2x.png in Resources */,
 				420DB57A2078B56B00B09FEA /* index_wallet_img@2x.png in Resources */,
 				420DB5722078B56B00B09FEA /* index_msg_btn@3x.png in Resources */,
+				42F5573B207B928C0057F288 /* mine_get@3x.png in Resources */,
 				4263BA71205B627C00103919 /* GPBetCell.xib in Resources */,
 				423C89F1206F7B8F00F78719 /* pay_ali.png in Resources */,
 				4263BA0E2057CCD700103919 /* login_back_arrows.png in Resources */,
@@ -1979,22 +2117,26 @@
 				420DB55520785B1C00B09FEA /* global_btn@2x.png in Resources */,
 				42CD99D620730DDE00F86F21 /* room_lunch_img.png in Resources */,
 				42715AA52063825F000A79FC /* home_history_btn.png in Resources */,
-				420DB59F207A0C0700B09FEA /* game_bet_lunch@2x.png in Resources */,
 				427122DF2068CEC70080A50F /* 3.png in Resources */,
 				4263BA92205CB79400103919 /* game_title_img.png in Resources */,
 				42CD9A00207374B000F86F21 /* bar_home_select@3x.png in Resources */,
 				42E7E57D2057623900119CB0 /* GPMineListCell.xib in Resources */,
 				42E7E5322054C6FB00119CB0 /* bar_notice_choose.png in Resources */,
+				420DB5C1207B49E400B09FEA /* GPAlertNoticeView.xib in Resources */,
 				42E7E5262054C10300119CB0 /* bar_home_normal.png in Resources */,
 				420DB5802078B56B00B09FEA /* index_money_img@1x.png in Resources */,
 				423C8A09206F951400F78719 /* GPNormalPayCell.xib in Resources */,
+				42F5573C207B928C0057F288 /* mine_game_list@1x.png in Resources */,
 				42CD9A17207375B300F86F21 /* pay_item_select@3x.png in Resources */,
 				420DB57F2078B56B00B09FEA /* index_msg_btn@1x.png in Resources */,
 				4263BA162059121B00103919 /* user_icon.png in Resources */,
+				420DB5B5207B127600B09FEA /* ali_step_one.jpg in Resources */,
 				42F402CD207481B200A2D03A /* room_list_one@3x.png in Resources */,
 				42F402CF207481B200A2D03A /* room_cell_three@3x.png in Resources */,
+				420DB5B7207B127600B09FEA /* ali_step_two.jpg in Resources */,
 				427122DD2068CEC70080A50F /* 6.png in Resources */,
 				42CD9A0A2073752A00F86F21 /* mine_bar_normal@3x.png in Resources */,
+				42F5573E207B928C0057F288 /* mine_agent_background@3x.png in Resources */,
 				42E7E5492056177000119CB0 /* arrow.png in Resources */,
 				4271231B206B9E900080A50F /* pay_refresh_btn.png in Resources */,
 				42F402662073859A00A2D03A /* wallet_card@2x.png in Resources */,
@@ -2002,32 +2144,36 @@
 				42F402CA207481B200A2D03A /* room_cell_one@3x.png in Resources */,
 				42F402DC2074A01800A2D03A /* home_person@1x.png in Resources */,
 				42F40292207386FF00A2D03A /* setting_withdraw_password@2x.png in Resources */,
-				4263B9E72057BD3700103919 /* mine_backwater.png in Resources */,
 				4263BA57205A78BA00103919 /* GPHistoryCell.xib in Resources */,
-				420DB5A1207A0C0700B09FEA /* game_bet_lunch@3x.png in Resources */,
 				42CD9A16207375B300F86F21 /* pay_item_select@2x.png in Resources */,
 				42CD9A072073752A00F86F21 /* mine_bar_select@3x.png in Resources */,
+				42F5573A207B928C0057F288 /* mine_share@3x.png in Resources */,
 				42F402672073859A00A2D03A /* wallet_card@3x.png in Resources */,
 				42F40286207386FF00A2D03A /* setting_password_change@2x.png in Resources */,
 				4207C05D20770E4100680B89 /* more_item@1x.png in Resources */,
 				42F402EF2074A73A00A2D03A /* room_cell_four@2x.png in Resources */,
 				423C89CD206E601D00F78719 /* GPAgentBenefitAnalysisCell.xib in Resources */,
 				420DB59A2079FBBB00B09FEA /* index_left_btn.jpg in Resources */,
+				42F5574A207B928C0057F288 /* mine_history@3x.png in Resources */,
+				42F55757207B95200057F288 /* lunch_img@3x.png in Resources */,
 				42CD9A232073761900F86F21 /* bar_notice_normal@2x.png in Resources */,
-				4263B9E82057BD3700103919 /* mine_history.png in Resources */,
 				420DB57C2078B56B00B09FEA /* index_wallet_img@1x.png in Resources */,
 				420DB5842078B87500B09FEA /* index_left_item@1x.png in Resources */,
+				42F5574F207B928C0057F288 /* mine_wallet@3x.png in Resources */,
 				4263BA9A205CF92900103919 /* agent_user_btn.png in Resources */,
 				42F40289207386FF00A2D03A /* setting_clean@1x.png in Resources */,
 				42F40291207386FF00A2D03A /* setting_password_change@1x.png in Resources */,
 				42F4028E207386FF00A2D03A /* setting_clean@3x.png in Resources */,
+				42F5573D207B928C0057F288 /* mine_history@1x.png in Resources */,
 				420DB5772078B56B00B09FEA /* index_wallet_img@3x.png in Resources */,
+				42F55750207B928C0057F288 /* mine_wallet@2x.png in Resources */,
 				42F402E62074A4FE00A2D03A /* room_list_two@3x.png in Resources */,
 				42CD9A092073752A00F86F21 /* mine_bar_normal@1x.png in Resources */,
 				42F402DA2074A01800A2D03A /* home_money@3x.png in Resources */,
 				42712308206B631A0080A50F /* GPNoticeCell.xib in Resources */,
 				427122C32068CA620080A50F /* GPMsgEnterRoomCell.xib in Resources */,
 				42F402E72074A4FE00A2D03A /* room_list_three@3x.png in Resources */,
+				420DB5B1207B031B00B09FEA /* GPNormalAliPayCell.xib in Resources */,
 				42CD99D820730DDE00F86F21 /* room_trend_btn.png in Resources */,
 				427122DC2068CEC70080A50F /* 5.png in Resources */,
 				42CD9A13207375B200F86F21 /* pay_item_normal@3x.png in Resources */,
@@ -2152,6 +2298,7 @@
 				4263BAA2205CFD5D00103919 /* GPUserInfoViewController.m in Sources */,
 				4263BA56205A78BA00103919 /* GPHistoryCell.m in Sources */,
 				4263BAB1205F4BE100103919 /* GPUpdatePasswordViewController.m in Sources */,
+				420DB5A9207AFB7000B09FEA /* GPNormalAliPayViewController.m in Sources */,
 				4263BAAB205F4B4D00103919 /* GPBindBancCardViewController.m in Sources */,
 				4263B9F12057BECE00103919 /* GPRegistViewController.m in Sources */,
 				4263BA2120595C5500103919 /* GPBackWaterViewController.m in Sources */,
@@ -2175,8 +2322,10 @@
 				423C89FF206F811100F78719 /* GPLinePayRecordModel.m in Sources */,
 				42CD99C62071EF1400F86F21 /* GPBannerTypeTwoViewController.m in Sources */,
 				423EBE4E205FFFD7006E80ED /* GPRechargeViewController.m in Sources */,
+				420DB5AC207AFB8D00B09FEA /* GPAliPayInfoViewController.m in Sources */,
 				42712307206B631A0080A50F /* GPNoticeCell.m in Sources */,
 				423C89D4206E68D200F78719 /* GPEarningsCell.m in Sources */,
+				420DB5BC207B374B00B09FEA /* GPRoomPlayingRecordViewController.m in Sources */,
 				42715A8B206257E7000A79FC /* GPPlayListCell.m in Sources */,
 				4263B9EE2057BEBF00103919 /* GPLoginViewController.m in Sources */,
 				42F402B42073CB4500A2D03A /* GPServiceLageImageView.m in Sources */,
@@ -2217,12 +2366,14 @@
 				423C8A08206F951400F78719 /* GPNormalPayCell.m in Sources */,
 				427122C22068CA620080A50F /* GPMsgEnterRoomCell.m in Sources */,
 				42E7E57C2057623900119CB0 /* GPMineListCell.m in Sources */,
+				420DB5B0207B031B00B09FEA /* GPNormalAliPayCell.m in Sources */,
 				4263BAA5205CFD7D00103919 /* GPProtocolViewController.m in Sources */,
 				42CD99DD20730E3E00F86F21 /* GPRoomItemAlertView.m in Sources */,
 				42E7E5152054BE3B00119CB0 /* GPHomeViewController.m in Sources */,
 				423EBE5120600036006E80ED /* GPWithdrawListViewController.m in Sources */,
 				42715A7E20620E56000A79FC /* GPProductListModel.m in Sources */,
 				423C89D0206E684100F78719 /* GPEarningsModel.m in Sources */,
+				420DB5C4207B701F00B09FEA /* GPRefreshModel.m in Sources */,
 				423C89DB206F39B000F78719 /* GPBackWaterRulesViewController.m in Sources */,
 				4263BA7A205BBA8000103919 /* GPBetDetailModel.m in Sources */,
 				423C89C8206E5FA900F78719 /* GPAgentBenefitAnalysisModel.m in Sources */,
@@ -2234,6 +2385,7 @@
 				42E7E53B2054D05C00119CB0 /* MNAssistiveBtn.m in Sources */,
 				42712310206B7F6F0080A50F /* GPNoticeDetailViewController.m in Sources */,
 				42CD99E220731A9900F86F21 /* GPTrendViewController.m in Sources */,
+				420DB5BF207B49DA00B09FEA /* GPAlertNoticeView.m in Sources */,
 				423C89BC206E370F00F78719 /* GPNormalUserCell.m in Sources */,
 				42A6FF392060AE5B00977BCD /* GPBankInfoViewController.m in Sources */,
 				423C89F9206F7C8500F78719 /* GPNormalPayViewController.m in Sources */,

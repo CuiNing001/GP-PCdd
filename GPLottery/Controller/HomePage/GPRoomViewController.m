@@ -27,6 +27,8 @@
 #import "GPWalletModel.h"
 #import "GPCoverView.h"
 #import "GPMsgScoreCell.h"
+#import "GPRoomPlayingRecordViewController.h"
+#import "GPRefreshModel.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
@@ -205,7 +207,7 @@ static int scoreViewY; // 分数初始Y值
             
             NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|SUCCESS|%@",resultObject);
             
-            [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
+//            [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
             
             // 获取数据
             [weakSelf loadOddsContentData];
@@ -594,18 +596,28 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 投注按钮
 - (IBAction)betButton:(UIButton *)sender {
     
-    [UIView animateWithDuration:1 animations:^{
+    if ([self.timerLab.text isEqualToString:@"封盘中"]) {
         
-        self.roomBetView.hidden = NO;
+        [ToastView toastViewWithMessage:@"封盘中,暂停下注..." timer:3.0];
         
-        if (self.betCoverCount.integerValue == 1) {
+    }else if ([self.timerLab.text isEqualToString:@"关闭算账"]){
+        
+        [ToastView toastViewWithMessage:@"关闭算账,暂停下注..." timer:3.0];
+    }else{
+        
+        [UIView animateWithDuration:1 animations:^{
             
-            self.coverView.hidden = NO;
-            self.coverView.coverImageView.image = [UIImage imageNamed:@"game_bet_lunch"];
-            [UserDefaults upDataWithBetLunchCount:@"2"];
-        }
-
-    }];
+            self.roomBetView.hidden = NO;
+            
+            if (self.betCoverCount.integerValue == 1) {
+                
+                self.coverView.hidden = NO;
+                self.coverView.coverImageView.image = [UIImage imageNamed:@"game_bet_lunch"];
+                [UserDefaults upDataWithBetLunchCount:@"2"];
+            }
+            
+        }];
+    }
 }
 
 #pragma mark - 获取游戏大厅数据
@@ -660,7 +672,22 @@ static int scoreViewY; // 分数初始Y值
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+//        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        // 数据出错
+        UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"提醒"
+                                                                        message:@"数据连接出错，请稍后再试"
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               
+                                                               [self.navigationController popViewControllerAnimated:YES];
+                                                           }];
+        
+        [alert addAction:action];
+        
+        [self presentViewController:alert animated:YES completion:nil];
         
         NSLog(@"%@",error);
         
@@ -708,9 +735,66 @@ static int scoreViewY; // 分数初始Y值
     }
     
     GPRoomHistoryModel *expectModel = self.historyDataArray.firstObject;
-    self.historyExpectLab.text      = expectModel.expect;
-    self.historyCodeLab.text        = expectModel.code;
-    self.historyCodeTextLab.text    = expectModel.codeText;
+    
+    if ((self.expectLab.text.intValue - expectModel.expect.intValue) == 2) {
+        
+        self.historyExpectLab.text      = [NSString stringWithFormat:@"??????"];
+        self.historyCodeLab.text        = [NSString stringWithFormat:@"?+?+?=?"];
+        self.historyCodeTextLab.text    = [NSString stringWithFormat:@"(类型)"];
+    }else{
+        
+        self.historyExpectLab.text      = expectModel.expect;
+        self.historyCodeLab.text        = expectModel.code;
+        self.historyCodeTextLab.text    = expectModel.codeText;
+    }
+    
+    
+}
+
+#pragma mark - 倒计时结束刷新数据
+- (void)refreshEnterRoomAgain{
+    
+    NSString *refreshLoc = [NSString stringWithFormat:@"%@/index/1/enterRoomAgain",kPlayBaseLocation];
+    NSDictionary *paramDic = @{@"roomId":self.roomIdStr};
+    
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:refreshLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|INDEX-VC-REFRESH|%@",responserObject);
+        
+        NSString *code = [NSString stringWithFormat:@"%@",[responserObject objectForKey:@"code"]];
+        NSString *msg = [responserObject objectForKey:@"msg"];
+        
+        if (code.integerValue == 9200) {
+            
+            NSDictionary *dataDic = [responserObject objectForKey:@"data"];
+            GPRefreshModel *refreshModel = [GPRefreshModel new];
+            [refreshModel setValuesForKeysWithDictionary:dataDic];
+            
+            // 刷新页面数据
+            if (refreshModel.isCloseAccount.integerValue == 0) {
+                
+                // 刷新倒计时时间
+                timerSecond = refreshModel.openTime.intValue;
+                // 封盘结束修改开奖期数
+                weakSelf.expectLab.text = [NSString stringWithFormat:@"%@",refreshModel.expect];
+                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",refreshModel.expect.intValue-1];
+                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
+                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(类型)"];
+            }else{
+                
+                [self.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
+                self.timerLab.text = @"关闭算账";
+            }
+            
+        }else{
+            
+            NSLog(@"|INDEX-VC-REFRESH-CODE|%@",msg);
+        }
+        
+    } enError:^(NSError *error) {
+        
+    }];
     
 }
 
@@ -726,6 +810,8 @@ static int scoreViewY; // 分数初始Y值
  */
 
 - (void)countdown{
+    
+    NSLog(@"%d",timerSecond);
     
      // ^^^^^^^^^^^^北京28倒计时^^^^^^^^^^^^^
     if (self.productIdStr.integerValue == 1) {
@@ -745,26 +831,20 @@ static int scoreViewY; // 分数初始Y值
             
             self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
             
-        }else if (timerSecond<=30){  // 封盘
+        }else if (timerSecond<=30>0){  // 封盘
             
             self.timerLab.text = @"封盘中";
             
             timerSecond--;
             
-            if (timerSecond == 0) {
-                
-                // 封盘结束修改开奖期数
-                self.expectLab.text = [NSString stringWithFormat:@"%d",(self.expectLab.text.intValue+1)];
-                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",self.historyExpectLab.text.intValue+1];
-                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
-                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(?、?)"];
-                
-                timerSecond = 300;
-            }
             
-        }else{   // 封盘
+        }else if(timerSecond == 0){
+            // 刷新数据
+            [self refreshEnterRoomAgain];
             
+        }else{  // 封盘
             self.timerLab.text = @"封盘中";
+            
         }
         
         // ^^^^^^^^^^^^^^^加拿大28倒计时^^^^^^^^^^^^^^^^^
@@ -790,20 +870,15 @@ static int scoreViewY; // 分数初始Y值
             
             timerSecond--;
             
-            if (timerSecond == 0) {
+            if (timerSecond == 0 || timerSecond == -1) {
                 
-                // 封盘结束修改开奖期数
-                self.expectLab.text = [NSString stringWithFormat:@"%d",(self.expectLab.text.intValue+1)];
-                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",self.historyExpectLab.text.intValue+1];
-                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
-                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(?、?)"];
+                // 刷新数据
+                [self refreshEnterRoomAgain];
+            }else{
                 
-                timerSecond =210;
+                self.timerLab.text = @"封盘中";
             }
-            
-        }else{   // 封盘
-            
-            self.timerLab.text = @"封盘中";
+    
         }
     }
 }
@@ -1024,7 +1099,14 @@ static int scoreViewY; // 分数初始Y值
     }else if (messageModel.type.integerValue == 5){  // 封盘
         
         [self.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
-        self.timerLab.text = @"封盘中";
+        self.timerLab.text = @"关闭算账";
+    }else if (messageModel.type.integerValue == 4){  // 开盘
+        
+        // 开启定时器
+        [self.enterTimer setFireDate:[NSDate distantPast]];
+        
+        // 刷新数据
+        [self refreshEnterRoomAgain];
     }
     
     // 添加tableview向上滚动
@@ -1096,6 +1178,8 @@ static int scoreViewY; // 分数初始Y值
 //        NSString *score = [NSString stringWithFormat:@"%d",user.avatar.intValue-self.moneyLab.text.intValue];
         
         int score = user.avatar.intValue-self.moneyLab.text.intValue;
+        
+        NSLog(@"|^^^^^^^^^^^^^^^SCORE^^^^^^^^^^^^^^^^^|%d",score);
         
         // score>0表示赢
         if (score>0) {
@@ -1234,8 +1318,9 @@ static int scoreViewY; // 分数初始Y值
 - (void)turnToHistoryVC{
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    GPGameListViewController *gameListVC = [storyboard instantiateViewControllerWithIdentifier:@"gameListVC"];
-    [self.navigationController pushViewController:gameListVC animated:YES];
+    GPRoomPlayingRecordViewController *playingRecordVC = [storyboard instantiateViewControllerWithIdentifier:@"playingRecordVC"];
+    playingRecordVC.roomId = self.roomIdStr;
+    [self.navigationController pushViewController:playingRecordVC animated:YES];
 }
 
 #pragma mark - 刷新余额
@@ -1303,7 +1388,7 @@ static int scoreViewY; // 分数初始Y值
     
     if (tableView.tag == 1200) {   // historyTableView
         
-        return 50;
+        return 30;
         
     }else{  // 聊天tableview
    

@@ -11,6 +11,7 @@
 #import "GPLinePayRecordViewController.h"
 #import "GPNormalPayViewController.h"
 #import "GPCoverView.h"
+#import "GPNormalAliPayViewController.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -24,8 +25,6 @@ static NSInteger indexNum;
 
 @property (weak, nonatomic) IBOutlet UIImageView *indexZeroImg;  // index0图片
 @property (weak, nonatomic) IBOutlet UIImageView *indexOneImg;   // index1图片
-@property (weak, nonatomic) IBOutlet UIImageView *indexTwoImg;   // index2图片
-@property (weak, nonatomic) IBOutlet UIImageView *indexThreeImg; // index3图片
 @property (strong, nonatomic) UIView   *coverView;            // 遮罩view
 @property (strong, nonatomic) NSString *normalImageName;      // 单选框正常状态
 @property (strong, nonatomic) NSString *selectedImageName;    // 单选框选中状态
@@ -105,9 +104,7 @@ static NSInteger indexNum;
     // 修改单选框图片状态
     self.indexZeroImg.image  = [UIImage imageNamed:self.selectedImageName];
     self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
-    
+  
     // 设置选中按钮
     indexNum = 0;
     
@@ -118,37 +115,11 @@ static NSInteger indexNum;
     // 修改单选框图片状态
     self.indexOneImg.image   = [UIImage imageNamed:self.selectedImageName];
     self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
-    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
-    
+   
     // 设置选中按钮
     indexNum = 1;
 }
 
-- (IBAction)indexTwoTap:(UITapGestureRecognizer *)sender {
-    
-    // 修改单选框图片状态
-    self.indexTwoImg.image   = [UIImage imageNamed:self.selectedImageName];
-    self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
-    self.indexThreeImg.image = [UIImage imageNamed:self.normalImageName];
-    
-    // 设置选中按钮
-    indexNum = 2;
-    
-}
-- (IBAction)indexThreeTap:(UITapGestureRecognizer *)sender {
-    
-    // 修改单选框图片状态
-    self.indexThreeImg.image = [UIImage imageNamed:self.selectedImageName];
-    self.indexOneImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexTwoImg.image   = [UIImage imageNamed:self.normalImageName];
-    self.indexZeroImg.image  = [UIImage imageNamed:self.normalImageName];
-    
-    // 设置选中按钮
-    indexNum = 3;
-    
-}
 
 // 去支付
 - (IBAction)payforButton:(UIButton *)sender {
@@ -177,16 +148,6 @@ static NSInteger indexNum;
         payMoneyVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:payMoneyVC animated:YES];
         
-    }else if (indexNum==2){
-        
-        NSLog(@"QQ钱包支付2");
-        
-        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
-        
-    }else if (indexNum==3){
-        
-        [ToastView toastViewWithMessage:@"暂未开启" timer:3.0];
-        
     }
    
 }
@@ -206,7 +167,13 @@ static NSInteger indexNum;
 
 - (IBAction)sectionTwoRowOneTap:(UITapGestureRecognizer *)sender {
     
-    [ToastView toastViewWithMessage:@"暂未开放" timer:3.0];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPNormalAliPayViewController *normalAliPayVC = [storyboard instantiateViewControllerWithIdentifier:@"normalAliPayVC"];
+    
+    normalAliPayVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:normalAliPayVC animated:YES];
 }
 
 // 查看转账记录

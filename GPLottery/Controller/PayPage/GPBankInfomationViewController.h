@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *bankName;       // 银行名称
 @property (strong, nonatomic) NSString *mesg;   // 提醒信息
 @property (strong, nonatomic) NSString *bankCard;  // 银行卡号
+@property (strong, nonatomic) NSString *bankID;
 
 @end

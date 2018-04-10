@@ -109,6 +109,8 @@ static int touchTag = 0; // 点击出现选择器的view的tag值
     // 游戏类型默认为全部
     self.typeID = @"0";
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     self.title = @"游戏记录";
     
     self.typeTableView.hidden        = YES;

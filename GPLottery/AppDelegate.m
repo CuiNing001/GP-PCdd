@@ -19,8 +19,8 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
 
+    
     // 初始化极光IM
     [JMessage setupJMessage:launchOptions appKey:appKey channel:@"iOS" apsForProduction:NO category:nil messageRoaming:NO];
     
@@ -183,6 +183,8 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+    
 }
 
 

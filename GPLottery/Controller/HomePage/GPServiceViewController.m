@@ -143,12 +143,18 @@
                 [ToastView toastViewWithMessage:@"加入房间成功" timer:3.0];
 
                 [self.conversation allMessages:^(id resultObject, NSError *error) {
-
-                    self.msgDataArray = [NSMutableArray arrayWithArray:resultObject];
+                    
+                    NSMutableArray *dataArr = [NSMutableArray arrayWithArray:resultObject];
+                    // 倒序排列数组(极光数据按最新数据排列)
+                    self.msgDataArray = (NSMutableArray *)[[dataArr reverseObjectEnumerator]allObjects];
 
                     [self.tableView reloadData];
+                    
+                    // 添加tableview向上滚动
+                    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.msgDataArray.count-1 inSection:0];
+                    [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                 }];
-
+                
                 [self loadServiceNetData];
 
             }else{
@@ -166,9 +172,15 @@
         // 获取聊天记录
         [self.conversation allMessages:^(id resultObject, NSError *error) {
 
-            self.msgDataArray = [NSMutableArray arrayWithArray:resultObject];
+            NSMutableArray *dataArr = [NSMutableArray arrayWithArray:resultObject];
+            
+            self.msgDataArray = (NSMutableArray *)[[dataArr reverseObjectEnumerator]allObjects];
 
             [self.tableView reloadData];
+            
+            // 添加tableview向上滚动
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.msgDataArray.count-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }];
 
         [self loadServiceNetData];
@@ -347,13 +359,14 @@
             NSString *msgText = textContent.text;
             
             NSLog(@"|SERVICE-VC|-|send-success|%@",msgText);
-            [ToastView toastViewWithMessage:@"文字发送成功" timer:3.0];
+//            [ToastView toastViewWithMessage:@"文字发送成功" timer:3.0];
+            
             
         }else if (message.contentType == kJMSGContentTypeImage){
             
             NSLog(@"|SERVICE-VC|-|send-success|");
             
-            [ToastView toastViewWithMessage:@"图片发送成功" timer:3.0];
+//            [ToastView toastViewWithMessage:@"图片发送成功" timer:3.0];
             
         }
  
@@ -477,6 +490,8 @@
         
         GPServiceSenderCell *serviceSenderCell = [tableView cellForRowAtIndexPath:indexPath];
         
+        serviceSenderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         // 解决xib复用数据混乱问题  
         if (serviceSenderCell == nil) {
             
@@ -500,6 +515,8 @@
     }else{
         
         GPServiceReciveCell *serviceReceiveCell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        serviceReceiveCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (serviceReceiveCell == nil) {
             

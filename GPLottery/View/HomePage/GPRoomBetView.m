@@ -293,6 +293,18 @@ static int page = 1;
         
         GPOddsInfoModel *oddsModel = self.pageOneDataArray[indexPath.row];
         
+        if (oddsModel.selectState.integerValue == 1) {
+            
+            // 修改选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        }else{
+            
+            // 修改未选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+        
         [betContentCell setDataWithMode:oddsModel];
         
         return betContentCell;
@@ -307,6 +319,18 @@ static int page = 1;
         
         GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
         
+        if (oddsModel.selectState.integerValue == 1) {
+            
+            // 修改选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        }else{
+            
+            // 修改未选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+        
         [betContentCell setDataWithMode:oddsModel];
         
         return betContentCell;
@@ -320,6 +344,18 @@ static int page = 1;
         GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:pageThreeIdentifier forIndexPath:indexPath];
         
         GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
+        
+        if (oddsModel.selectState.integerValue == 1) {
+            
+            // 修改选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        }else{
+            
+            // 修改未选中item的UI
+            betContentCell.bgView.layer.borderWidth = 0.5;
+            betContentCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+        }
         
         if (self.pageThreeDataArray.count>0) {
             
@@ -370,14 +406,26 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.leftCollectionView cellForItemAtIndexPath:indexPath];
-        // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         GPOddsInfoModel *oddsModel = self.pageOneDataArray[indexPath.row];
         self.leftViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
         self.nameStr = oddsModel.name;
         self.oddsStr = oddsModel.odds;
+        oddsModel.selectState = @"1";
+        for (GPOddsInfoModel *oddModel in self.pageOneDataArray) {
+            
+            if (oddModel.selectState.integerValue == 1) {
+                
+                // 修改选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+            }else{
+                oddsModel.selectState = @"0";
+                // 修改未选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+            }
+        }
         
         if (self.selecetItemBlock) {
             
@@ -391,15 +439,29 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.middleCollectionView cellForItemAtIndexPath:indexPath];
-        // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
         
         GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
         self.middleViewResultLab.text = [NSString stringWithFormat:@"中奖号码[%@]",oddsModel.winNumber];
         self.nameStr = oddsModel.name;
         self.oddsStr = oddsModel.odds;
+        oddsModel.selectState = @"1";
         
+        for (GPOddsInfoModel *oddModel in self.pageTwoDataArray) {
+            
+            if (oddModel.selectState.integerValue == 1) {
+                
+                // 修改选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+            }else{
+                oddsModel.selectState = @"0";
+                // 修改未选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+            }
+        }
+
         if (self.selecetItemBlock) {
             
             self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout,oddsModel.maxAmout,oddsModel.name);
@@ -411,15 +473,29 @@ static int page = 1;
         
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.rightCollectionView cellForItemAtIndexPath:indexPath];
-        // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
         
         GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
         self.rightViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
         self.nameStr = oddsModel.name;
         self.oddsStr = oddsModel.odds;
+        oddsModel.selectState = @"1";
         
+        for (GPOddsInfoModel *oddModel in self.pageThreeDataArray) {
+            
+            if (oddModel.selectState.integerValue == 1) {
+                
+                // 修改选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+            }else{
+                oddsModel.selectState = @"0";
+                // 修改未选中item的UI
+                betCell.bgView.layer.borderWidth = 0.5;
+                betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+            }
+        }
+
         if (self.selecetItemBlock) {
             
             self.selecetItemBlock(oddsModel.playingId,oddsModel.minAmout,oddsModel.maxAmout,oddsModel.name);
@@ -428,7 +504,7 @@ static int page = 1;
         NSLog(@"|BETVIEW|-name:%@-odds:%@",self.nameStr,self.oddsStr);
     }
     
-    
+    [collectionView reloadData];
 }
 
 // 取消未选中item的点击状态
@@ -436,8 +512,10 @@ static int page = 1;
 
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
+    GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
+    oddsModel.selectState = @"0";
     GPBetContentCell *betCell = (GPBetContentCell *)[collectionView cellForItemAtIndexPath:indexPath];
-
+//    betCell.selectStatus = @"0";
     betCell.bgView.layer.borderWidth = 0;
     betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
 

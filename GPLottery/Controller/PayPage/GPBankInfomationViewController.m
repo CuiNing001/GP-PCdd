@@ -145,7 +145,7 @@ static int touch = 0;
     NSString *accountName = [NSString stringWithFormat:@"%@",self.accountNameTF.text];
     NSString *bankInfoLoc = [NSString stringWithFormat:@"%@pay/1/fillBankPayInfoSubmit",kBaseLocation];
     
-    NSDictionary *paramDic = @{@"bankName":bankName,@"bankCardAccount":bankNumber,@"amount":amount,@"accountName":accountName,@"transferType":self.type};
+    NSDictionary *paramDic = @{@"bankName":bankName,@"bankCardAccount":bankNumber,@"amount":amount,@"accountName":accountName,@"transferType":self.type,@"type":@"1",@"payId":self.bankID};
     
 //     请求登陆接口
     __weak typeof(self)weakSelf = self;
@@ -231,6 +231,7 @@ static int touch = 0;
 #pragma mark - 输入框代理方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
+    textField.returnKeyType = UIReturnKeyDone;
     // 输入结束回收键盘
     [textField resignFirstResponder];
     

@@ -42,7 +42,7 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     
-    [formatter setDateFormat:@"HH:mm:ss"];
+    [formatter setDateFormat:@"MM-dd HH:mm:ss"];
     
     NSString *msgDate = [formatter stringFromDate:expireTimeDate];
     
@@ -72,7 +72,7 @@
                 [self.cellImageView setImage:[UIImage imageWithData:data]];
                 
             }else{
-                [ToastView toastViewWithMessage:@"图片获取失败" timer:3.0];
+//                [ToastView toastViewWithMessage:@"图片获取失败" timer:3.0];
             }
             
         }];

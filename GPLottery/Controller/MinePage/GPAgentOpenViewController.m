@@ -74,7 +74,7 @@
 #pragma mark - 加载子控件
 - (void)loadSubView{
     
-    if (self.userType.integerValue == 1) {  // 普通用户
+    if (self.userType.integerValue == 1||self.userType.integerValue == 2) {  // 普通用户
         
         self.normalView.hidden = NO;
         
@@ -329,6 +329,8 @@
 #pragma mark - 确定按钮
 - (IBAction)makeSureButton:(UIButton *)sender {
     
+    [self.progressHUD showAnimated:YES];
+    
     // 加载本地数据
     [self loadUserDefaultsData];
     
@@ -350,7 +352,8 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+//            [ToastView toastViewWithMessage:@"注册成功" timer:1.5];
+            [self alertViewWithTitle:@"提醒" message:@"注册成功"];
             
         }else{
             
@@ -462,14 +465,13 @@
     
     UIAlertController *alert  = [UIAlertController alertControllerWithTitle:title
                                                                     message:message
-                                                             preferredStyle:UIAlertControllerStyleActionSheet];
+                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
                                                          style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * _Nonnull action) {
                                                            
-                                                           [self dismissViewControllerAnimated:YES
-                                                                                    completion:nil];
+                                                           [self.navigationController popViewControllerAnimated:YES];
                                                        }];
     
     [alert addAction:action];

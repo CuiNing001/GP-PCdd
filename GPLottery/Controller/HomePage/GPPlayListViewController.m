@@ -149,7 +149,22 @@
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+//        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        // 数据出错
+        UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"提醒"
+                                                                        message:@"数据连接出错，请稍后再试"
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               
+                                                               [self.navigationController popViewControllerAnimated:YES];
+                                                           }];
+        
+        [alert addAction:action];
+        
+        [self presentViewController:alert animated:YES completion:nil];
         
     }];
     

@@ -67,7 +67,7 @@ static int touch = 0;  //  标记不同的tableview数据源
 //    self.headerView.layer.borderWidth = 1;
 
     // 设置轮播图
-    CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height);
+    CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width+38, self.headerView.bounds.size.height);
     SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
                                                                placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];

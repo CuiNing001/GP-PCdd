@@ -107,7 +107,7 @@
     // 获取用户余额
     [self loadUserMoney];
     
-    if (self.userType.integerValue == 1) {     // 普通用户
+    if (self.userType.integerValue == 1||self.userType.integerValue == 2) {     // 普通用户 1:普通用户，2:测试用户
         
         // 初始化list数据
         self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
@@ -118,6 +118,11 @@
         // 初始化list数据
         self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_agent_open",@"mine_agent_background",@"mine_setting",@"mine_about"].mutableCopy;
         self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"代理开户",@"代理后台",@"设置",@"关于"].mutableCopy;
+    }else{
+        
+        // 初始化list数据
+        self.listImageArray = @[@"mine_wallet",@"mine_backwater",@"mine_game",@"mine_history",@"mine_game_list",@"mine_share",@"mine_get",@"mine_setting",@"mine_about"].mutableCopy;
+        self.listTextArray  = @[@"钱包",@"我的回水",@"幸运抽奖",@"帐变记录",@"游戏记录",@"我要分享",@"我的收益",@"设置",@"关于"].mutableCopy;
     }
  
 }
@@ -164,10 +169,13 @@
             
             [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
         }
-        // 刷新cell-index-0
-        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-        [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-
+        
+        if (![weakSelf.money isEqualToString:@"??元宝"]) {
+            
+            // 刷新cell-index-0
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+            [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        }
     } enError:^(NSError *error) {
         
         [weakSelf.progressHUD hideAnimated:YES];

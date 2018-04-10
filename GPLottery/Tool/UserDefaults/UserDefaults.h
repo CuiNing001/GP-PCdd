@@ -11,8 +11,24 @@
 @interface UserDefaults : NSObject
 
 
+///*
+// * 存储应用第一次启动(首次启动添加公告弹窗)
+// */
+//+ (void)addLunchCount;
+//
+///*
+// * 点击公告确认修改次数
+// */
+//+ (void)changeLunchCount;
+//
+//
+///*
+// * 删除启动次数
+// */
+//+ (void)deleateLunchCount;
+
 /*
- * 添加数据
+ * 添加用户信息数据
  */
 + (void)addDataWithUsername:(NSString *)username
                    password:(NSString *)password
@@ -68,5 +84,9 @@
  * 修改群聊房间下注lunch点击次数
  */
 + (void)upDataWithBetLunchCount:(NSString *)betLunchCount;
+/*
+ * 修改公告弹窗点击状态
+ */
++ (void)changeLunchCountWithCount:(NSString *)count;
 
 @end

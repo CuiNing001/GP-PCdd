@@ -64,8 +64,16 @@
 
 - (IBAction)makeSureOrderButton:(UIButton *)sender {
     
-    // 跳转网页支付
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:self.payUrl] options:nil completionHandler:nil];
+    if (self.payUrl.length>0) {
+        
+        // 跳转网页支付
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:self.payUrl] options:nil completionHandler:nil];
+    }else{
+        
+        [ToastView toastViewWithMessage:@"订单信息出错，请稍后再试" timer:3.0];
+    }
+    
+    
 }
 
 #pragma mark - 加载本地数据

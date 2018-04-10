@@ -8,6 +8,7 @@
 
 #import "GPBinfPhoneViewController.h"
 
+static int timer = 60;
 @interface GPBinfPhoneViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumTF;
@@ -16,7 +17,7 @@
 @property (strong, nonatomic) MBProgressHUD *progressHUD;
 @property (strong, nonatomic) GPInfoModel    *infoModel;
 @property (strong, nonatomic) NSString       *token;
-
+@property (strong, nonatomic) NSTimer *timer;  // 获取验证码倒计时
 
 @end
 
@@ -25,9 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
-    
+ 
     [self loadData];
     [self loadSubView];
 }
@@ -66,14 +65,36 @@
     [self.view addSubview:_progressHUD];
     
     // 获取验证码按钮默认不可用
-    [self.getCodeBtn setEnabled:NO];
+//    [self.getCodeBtn setEnabled:NO];
+    self.getCodeBtn.backgroundColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1];
     
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    // 关闭定时器
+    [self.timer setFireDate:[NSDate distantFuture]];
 }
 
 #pragma mark - 加载网络数据
 - (void)loadNetData{
     
     
+}
+
+#pragma mark - 倒计时
+- (void)countdown{
+    
+    timer--;
+    
+    [self.getCodeBtn setTitle:[NSString stringWithFormat:@"%d秒",timer] forState:UIControlStateNormal];
+    
+    if (timer == 0) {
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"获取验证码"] forState:UIControlStateNormal];
+        // 关闭定时器
+        [self.timer setFireDate:[NSDate distantFuture]];
+        timer = 60;
+        [self.getCodeBtn setEnabled:YES];
+        self.getCodeBtn.backgroundColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1];
+    }
 }
 
 #pragma mark - 确定绑定手机号
@@ -132,41 +153,52 @@
 #pragma mark - 获取验证码
 - (IBAction)getCodeButton:(UIButton *)sender {
     
-    [self.progressHUD showAnimated:YES];
-    
-    [self loadUserDefaultsData];
-    
-    NSString *getCodeStr = [NSString stringWithFormat:@"%@user/1/sendCaptcha",kBaseLocation];
-    NSDictionary *paramDic = @{@"phone":self.phoneNumTF.text};
-    
-    // 请求登陆接口
-    __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:getCodeStr paramDic:paramDic token:self.token finish:^(id responserObject) {
+    if (self.phoneNumTF.text.length == 11) {
         
-        NSLog(@"|BINDPHONE-VC|success:%@",responserObject);
+        [self.progressHUD showAnimated:YES];
         
-        [weakSelf.progressHUD hideAnimated:YES];
+        [self loadUserDefaultsData];
         
-        GPRespondModel *respondModel = [GPRespondModel new];
+        NSString *getCodeStr = [NSString stringWithFormat:@"%@user/1/sendCaptcha",kBaseLocation];
+        NSDictionary *paramDic = @{@"phone":self.phoneNumTF.text};
         
-        [respondModel setValuesForKeysWithDictionary:responserObject];
-        
-        if (respondModel.code.integerValue == 9200) {
+        // 请求登陆接口
+        __weak typeof(self)weakSelf = self;
+        [AFNetManager requestPOSTWithURLStr:getCodeStr paramDic:paramDic token:self.token finish:^(id responserObject) {
             
-//            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+            NSLog(@"|BINDPHONE-VC|success:%@",responserObject);
             
-        }else{
+            [weakSelf.progressHUD hideAnimated:YES];
             
-            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
-        }
+            GPRespondModel *respondModel = [GPRespondModel new];
+            
+            [respondModel setValuesForKeysWithDictionary:responserObject];
+            
+            if (respondModel.code.integerValue == 9200) {
+                
+                // 开启定时器
+                [weakSelf.timer setFireDate:[NSDate distantPast]];
+                self.getCodeBtn.backgroundColor = [UIColor lightGrayColor];
+                [weakSelf.getCodeBtn setEnabled:NO];
+            }else{
+                
+                [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
+            }
+            
+        } enError:^(NSError *error) {
+            
+            [weakSelf.progressHUD hideAnimated:YES];
+            
+            [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+            
+        }];
         
-    } enError:^(NSError *error) {
+    }else{
         
-        [weakSelf.progressHUD hideAnimated:YES];
-        
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
-        
-    }];
+        [ToastView toastViewWithMessage:@"请添加手机号" timer:3.0];
+    }
+    
+    
     
 }
 
@@ -191,30 +223,30 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
-    if (textField.tag == 4001 ) {
-        
-        self.getCodeBtn.backgroundColor = [UIColor lightGrayColor];
-        
-        [self.getCodeBtn setEnabled:NO];
-    }
+//    if (textField.tag == 4001 ) {
+//
+//        self.getCodeBtn.backgroundColor = [UIColor lightGrayColor];
+//
+////        [self.getCodeBtn setEnabled:NO];
+//    }
     
     
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField;{
     
-    if (![self.phoneNumTF.text isEqualToString:@""]&&self.phoneNumTF.text.length == 11) {
-        
-        self.getCodeBtn.backgroundColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1];
-        
-        [self.getCodeBtn setEnabled:YES];
-        
-    }else{
-        
-        self.getCodeBtn.backgroundColor = [UIColor lightGrayColor];
-        
-        [self.getCodeBtn setEnabled:NO];
-    }
+//    if (![self.phoneNumTF.text isEqualToString:@""]&&self.phoneNumTF.text.length == 11) {
+//
+//        self.getCodeBtn.backgroundColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1];
+//
+////        [self.getCodeBtn setEnabled:YES];
+//
+//    }else{
+//
+//        self.getCodeBtn.backgroundColor = [UIColor lightGrayColor];
+//
+//        [self.getCodeBtn setEnabled:NO];
+//    }
 }
 
 #pragma mark - 加载本地数据

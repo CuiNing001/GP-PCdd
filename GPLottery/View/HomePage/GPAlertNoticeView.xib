@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GPAlertNoticeView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv0-Bv-tcZ">
+                    <rect key="frame" x="50" y="233" width="275" height="200"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpq-Ix-Uwz">
+                            <rect key="frame" x="125" y="10" width="26" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-Oc-ply">
+                            <rect key="frame" x="88" y="160" width="100" height="30"/>
+                            <color key="backgroundColor" red="0.98823529409999999" green="0.82745098039999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="XWH-FS-EDi"/>
+                            </constraints>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.52549019610000003" green="0.33725490200000002" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="makeSureButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="F3F-3r-3vj"/>
+                            </connections>
+                        </button>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0X-GE-15x">
+                            <rect key="frame" x="10" y="38" width="255" height="112"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </webView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="a0X-GE-15x" secondAttribute="trailing" constant="10" id="15a-4T-96v"/>
+                        <constraint firstItem="7ld-Oc-ply" firstAttribute="top" secondItem="a0X-GE-15x" secondAttribute="bottom" constant="10" id="1J0-ha-445"/>
+                        <constraint firstAttribute="bottom" secondItem="7ld-Oc-ply" secondAttribute="bottom" constant="10" id="2Sx-5S-tcC"/>
+                        <constraint firstItem="a0X-GE-15x" firstAttribute="leading" secondItem="cv0-Bv-tcZ" secondAttribute="leading" constant="10" id="g5N-kU-EMx"/>
+                        <constraint firstItem="Dpq-Ix-Uwz" firstAttribute="top" secondItem="cv0-Bv-tcZ" secondAttribute="top" constant="10" id="hEc-yU-ROD"/>
+                        <constraint firstItem="7ld-Oc-ply" firstAttribute="centerX" secondItem="cv0-Bv-tcZ" secondAttribute="centerX" id="jDo-4T-vUI"/>
+                        <constraint firstItem="Dpq-Ix-Uwz" firstAttribute="centerX" secondItem="cv0-Bv-tcZ" secondAttribute="centerX" id="pyA-cF-Vmh"/>
+                        <constraint firstItem="a0X-GE-15x" firstAttribute="top" secondItem="Dpq-Ix-Uwz" secondAttribute="bottom" constant="10" id="w56-mM-rXh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39993578767123289" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cv0-Bv-tcZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1F4-qa-pQR"/>
+                <constraint firstItem="cv0-Bv-tcZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="Pjb-0G-q2O"/>
+                <constraint firstItem="cv0-Bv-tcZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Q3Q-0E-HQp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cv0-Bv-tcZ" secondAttribute="trailing" constant="50" id="Wb3-vW-u5i"/>
+                <constraint firstItem="cv0-Bv-tcZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="wlU-4Y-Ld3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="noticeTitle" destination="Dpq-Ix-Uwz" id="Zeu-LZ-wf8"/>
+                <outlet property="webView" destination="a0X-GE-15x" id="P2h-rq-Jas"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

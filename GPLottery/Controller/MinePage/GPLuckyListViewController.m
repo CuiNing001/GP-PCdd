@@ -118,6 +118,12 @@
             
 //            [ToastView toastViewWithMessage:msg timer:3.0];
             
+            if (page.integerValue == 1) {
+                
+                // 上拉刷新时清空数据
+                [self.luckyDataArray removeAllObjects];
+            }
+            
             for (NSDictionary *luckyDic in luckyArr) {
                 
                 GPLuckyModel *luckyModel = [GPLuckyModel new];

@@ -27,6 +27,10 @@
 #import "GPWalletViewController.h"
 #import "GPMyMessageViewController.h"
 #import "GPCoverView.h"
+#import "GPWalletModel.h"
+#import "GPAlertNoticeView.h"
+#import "GPNoticeModel.h"
+
 
 static int touch = 0;   // 右侧更多按钮点击次数
 static int leftViewTouch = 0;  // 左侧更多按钮点击次数
@@ -61,6 +65,11 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @property (strong, nonatomic) GPCoverView *coverView;  // 导航遮罩层
 @property (strong, nonatomic) NSString *indexCoverCount; // 首页lunch次数
 
+@property (strong, nonatomic) GPAlertNoticeView *alertNoticeView;  // 公告弹窗
+@property (strong, nonatomic) NSString *noticeAlertCount;  // 公告弹窗点击次数
+@property (strong, nonatomic) GPNoticeModel *noticeModel;  // 公告列表
+@property (strong, nonatomic) NSString *noticeDetailStr;   // 公告详情地址
+
 @end
 
 @implementation GPHomeViewController
@@ -70,7 +79,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
    
     [self loadData];
     [self loadSubView];
-    
+ 
 }
 
 
@@ -211,11 +220,12 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     [self loadUserDefaultsData];
     __weak typeof(self)weakSelf = self;
     
-    // 遮罩层
+    // ^^^^^^^遮罩层^^^^^^^^^
     self.coverView = [[GPCoverView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [[UIApplication sharedApplication].keyWindow addSubview:self.coverView];
     self.coverView.coverImageView.image = [UIImage imageNamed:@"home_lunch"];
     if (self.indexCoverCount.integerValue == 1) {
+        
         // 第一次登陆显示遮罩
         self.coverView.hidden = NO;
     }else{
@@ -228,6 +238,26 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         weakSelf.coverView.hidden = YES;
         // 修改登陆次数
         [UserDefaults upDataWithIndexLunchCount:@"2"];
+    };
+    
+    // ^^^^^^^^^公告弹窗^^^^^^^^^^^^
+    self.alertNoticeView = [[GPAlertNoticeView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.alertNoticeView];
+    if (self.noticeAlertCount.integerValue == 1) {
+        
+        // 公告赋值
+        [self loadNoticeDetailData];
+        
+        self.alertNoticeView.hidden = NO;
+    }else{
+        self.alertNoticeView.hidden = YES;
+    }
+    
+    self.alertNoticeView.dissMissBlock = ^{
+      
+        weakSelf.alertNoticeView.hidden = YES;
+        // 修改是否弹窗状态
+        [UserDefaults changeLunchCountWithCount:@"2"];
     };
     
     // 自定义右侧导航按钮
@@ -246,7 +276,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 //    self.headerView.layer.borderWidth = 1;
     
     // 设置轮播图
-    CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height);
+    CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width+38, self.headerView.bounds.size.height);
     self.scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
                                                                placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];
@@ -254,7 +284,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 //    self.scrollView.localizationImageNamesGroup = @[@"1.jpg",@"2.jpg"];                       // 轮播图本地图片
     self.scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
     self.scrollView.autoScrollTimeInterval      = 3.0;                                        // 轮播图滚动时间间隔
-    self.scrollView.contentMode = UIViewContentModeScaleToFill;
+    self.scrollView.contentMode = UIViewContentModeScaleAspectFit;
     [self.headerView addSubview:self.scrollView];
     
     // 初始化加载框
@@ -281,7 +311,14 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     // ^^^^^^^^^^^^^^^^^^^^^^^^顶部左侧more按钮^^^^^^^^^^^^^^^^^^^^^^^^^^
     self.indexLeftMoreView = [[GPHomeLeftItemView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [[UIApplication sharedApplication].keyWindow addSubview:self.indexLeftMoreView];
-//    [self.navigationController.view addSubview:self.indexLeftMoreView];
+    // 未登陆状态提醒
+    if (![weakSelf.isLogin isEqualToString:@"1"]) {
+        
+    }else{
+        self.indexLeftMoreView.nickNameLab.text = self.infoModel.nickname;
+        [self loadUserMoney];
+    }
+    
     self.indexLeftMoreView.hidden = YES;
     
     // 顶部左侧more按钮 - 返回
@@ -300,13 +337,20 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     // 顶部左侧more按钮 - 充值
     self.indexLeftMoreView.topUpBlock = ^{
         
-        leftViewTouch++;
-        weakSelf.indexLeftMoreView.hidden = YES;
-        
-        UIStoryboard *storyboard       = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        GPPayViewController *payVC     = [storyboard instantiateViewControllerWithIdentifier:@"payVC"];
-        payVC.hidesBottomBarWhenPushed = YES;
-        [weakSelf.navigationController pushViewController:payVC animated:YES];
+        // 未登陆状态提醒
+        if (![weakSelf.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            leftViewTouch++;
+            weakSelf.indexLeftMoreView.hidden = YES;
+            
+            UIStoryboard *storyboard       = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPPayViewController *payVC     = [storyboard instantiateViewControllerWithIdentifier:@"payVC"];
+            payVC.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:payVC animated:YES];
+        }
     };
     // 顶部左侧more按钮 - 提现
     self.indexLeftMoreView.withdrawalBlock = ^{
@@ -338,24 +382,39 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     // 顶部左侧more按钮 - 我的钱包
     self.indexLeftMoreView.myWalletBlock = ^{
         
-        leftViewTouch++;
-        weakSelf.indexLeftMoreView.hidden = YES;
-        
-        UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        GPWalletViewController *walletVC      = [storyboard instantiateViewControllerWithIdentifier:@"walletVC"];
-        walletVC.hidesBottomBarWhenPushed     = YES;
-        [weakSelf.navigationController pushViewController:walletVC animated:YES];
+        // 未登陆状态提醒
+        if (![weakSelf.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            leftViewTouch++;
+            weakSelf.indexLeftMoreView.hidden = YES;
+            
+            UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPWalletViewController *walletVC      = [storyboard instantiateViewControllerWithIdentifier:@"walletVC"];
+            walletVC.hidesBottomBarWhenPushed     = YES;
+            [weakSelf.navigationController pushViewController:walletVC animated:YES];
+        }
+
     };
     // 顶部左侧more按钮 - 我的消息
     self.indexLeftMoreView.myMessageBlock = ^{
         
-        leftViewTouch++;
-        weakSelf.indexLeftMoreView.hidden = YES;
-        
-        UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        GPMyMessageViewController *myMessageVC= [storyboard instantiateViewControllerWithIdentifier:@"myMessageVC"];
-        myMessageVC.hidesBottomBarWhenPushed     = YES;
-        [weakSelf.navigationController pushViewController:myMessageVC animated:YES];
+        // 未登陆状态提醒
+        if (![weakSelf.isLogin isEqualToString:@"1"]) {
+            
+            [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+        }else{
+            
+            leftViewTouch++;
+            weakSelf.indexLeftMoreView.hidden = YES;
+            
+            UIStoryboard *storyboard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            GPMyMessageViewController *myMessageVC= [storyboard instantiateViewControllerWithIdentifier:@"myMessageVC"];
+            myMessageVC.hidesBottomBarWhenPushed     = YES;
+            [weakSelf.navigationController pushViewController:myMessageVC animated:YES];
+        }
     };
 }
 
@@ -616,6 +675,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     self.isLogin = self.infoModel.islogin;
     self.token   = self.infoModel.token;
     self.indexCoverCount = self.infoModel.indexLunchCount;
+    self.noticeAlertCount = self.infoModel.noticeAlertCount;
     
     NSLog(@"|HOME-VC|-[登陆状态]:%@-[token]:%@-[userID]:%@",self.isLogin,self.infoModel.token,self.infoModel.userID);
 
@@ -833,6 +893,92 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     playListVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:playListVC animated:YES];
+}
+
+#pragma mark - 获取用户余额
+- (void)loadUserMoney{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    NSString *walletLoc = [NSString stringWithFormat:@"%@user/1/money",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:walletLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|MINE-VC-MONEY-REFSH|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            GPWalletModel *walletModel = [GPWalletModel new];
+            
+            [walletModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 刷新钱包金额
+            weakSelf.indexLeftMoreView.moneyLab.text = walletModel.moneyNum;
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
+}
+
+
+#pragma mark - 获取第一条公告信息详情
+- (void)loadNoticeDetailData{
+    
+    NSString *contentLoc = [NSString stringWithFormat:@"%@notice/1/noticeDetail",kBaseLocation];
+    
+    NSDictionary *paramDic = @{@"id":@"x"};
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:contentLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|NOTICE-ALERT-CONTENT-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            weakSelf.noticeDetailStr = [respondModel.data objectForKey:@"content"];
+            weakSelf.alertNoticeView.noticeTitle = [respondModel.data objectForKey:@"title"];
+            // 详情内容不为空时加载数据
+            if (weakSelf.noticeDetailStr.length != 0) {
+                
+                [weakSelf.alertNoticeView loadDataWithString:weakSelf.noticeDetailStr];
+            }
+        }else{
+            
+//            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - storyboard controller
