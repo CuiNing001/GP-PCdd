@@ -18,7 +18,9 @@
 
 - (void)setDataWithModel:(GPRoonListModel *)model{
     
-    self.onlineNumRoomLab.text = [NSString stringWithFormat:@"在线%@人",model.onlineNumRoom];
+    int number = arc4random()%6;
+    
+    self.onlineNumRoomLab.text = [NSString stringWithFormat:@"在线%d人",model.onlineNumRoom.intValue+number];
     self.roomNameLab.text = model.name;
     self.roomID = [NSString stringWithFormat:@"%@",model.roomId];
     

@@ -29,6 +29,7 @@
 #import "GPMsgScoreCell.h"
 #import "GPRoomPlayingRecordViewController.h"
 #import "GPRefreshModel.h"
+#import "GPMsgNoticeCell.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
@@ -291,6 +292,9 @@ static int scoreViewY; // 分数初始Y值
     
     // 开奖消息cell
     [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgScoreCell" bundle:nil] forCellReuseIdentifier:@"scoreCell"];
+    
+    // 倒计时60秒提醒cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"GPMsgNoticeCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
     
     // 初始化加载框
     self.progressHUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
@@ -699,7 +703,7 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 房间数据赋值
 - (void)updataForRoomContent{
     
-    self.moneyLab.text = [NSString stringWithFormat:@"%@",self.roomInfoModel.moneyNum];  // 用户元宝数
+    self.moneyLab.text = [NSString stringWithFormat:@"%@.00元宝",self.roomInfoModel.moneyNum];  // 用户元宝数
     NSDictionary *comingDic = [NSDictionary dictionaryWithDictionary:self.roomInfoModel.coming];  // 下期数据
     self.expectLab.text = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"expect"]]; // 即将开奖期数
     self.openTime = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"openTime"]];  // 倒计时秒数
@@ -740,7 +744,7 @@ static int scoreViewY; // 分数初始Y值
     
     if ((self.expectLab.text.intValue - expectModel.expect.intValue) == 2) {
         
-        self.historyExpectLab.text      = [NSString stringWithFormat:@"??????"];
+        self.historyExpectLab.text      = [NSString stringWithFormat:@"第%d期",self.expectLab.text.intValue-1];
         self.historyCodeLab.text        = [NSString stringWithFormat:@"?+?+?=?"];
         self.historyCodeTextLab.text    = [NSString stringWithFormat:@"(类型)"];
     }else{
@@ -800,6 +804,20 @@ static int scoreViewY; // 分数初始Y值
     
 }
 
+#pragma mark - 倒计时60秒时添加提醒消息
+- (void)addNoticeMessage{
+    
+    NSDictionary *noticeDic = @{@"expect":self.expectLab.text,@"type":@"9"};
+    GPMessageModel *messageModel = [GPMessageModel new];
+    [messageModel setValuesForKeysWithDictionary:noticeDic];
+    [self.receiveMessageArray addObject:messageModel];
+    [self.tableView reloadData];
+    
+    // 添加tableview向上滚动
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 #pragma mark - 倒计时
 /*
  * @param openTime:进入房间获取剩余倒计时时间
@@ -833,19 +851,26 @@ static int scoreViewY; // 分数初始Y值
             
             self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
             
-        }else if (timerSecond<=30>0){  // 封盘
+            // 倒计时60秒时添加提醒消息
+            if (timerSecond == 90) {
+                
+                [self addNoticeMessage];
+            }
+            
+        }else if (timerSecond<=30){  // 封盘
             
             self.timerLab.text = @"封盘中";
             
             timerSecond--;
             
-            
-        }else if(timerSecond == 0){
-            // 刷新数据
-            [self refreshEnterRoomAgain];
-            
-        }else{  // 封盘
-            self.timerLab.text = @"封盘中";
+            if (timerSecond == 0 || timerSecond == -1) {
+                
+                // 刷新数据
+                [self refreshEnterRoomAgain];
+            }else{
+                
+                self.timerLab.text = @"封盘中";
+            }
             
         }
         
@@ -865,6 +890,12 @@ static int scoreViewY; // 分数初始Y值
                 second = timerSecond-15;
             }
             self.timerLab.text = [NSString stringWithFormat:@"%d分%d秒",minute,second];
+            
+            // 倒计时60秒时添加提醒消息
+            if (timerSecond == 75) {
+                
+                [self addNoticeMessage];
+            }
             
         }else if (timerSecond<=15){  // 封盘
             
@@ -947,10 +978,17 @@ static int scoreViewY; // 分数初始Y值
 
 #pragma mark - 确定投注
 - (void)makeSureBetWithAmount:(NSString *)betAmount{
-
-    NSString *nowDate = [self loadNowDate];
     
-//    NSDictionary *betDic = @{@"betAmount":betAmount,@"date":nowDate,@"expect":self.expectLab.text,@"level":self.infoModel.level,@"name":self.infoModel.nickname,@"playingId":self.playingId,@"playingType":self.productIdStr,@"type":@"1"};
+    if ([self.timerLab.text isEqualToString:@"封盘中"]) {
+        
+        [ToastView toastViewWithMessage:@"封盘中,暂停下注..." timer:3.0];
+        
+    }else if ([self.timerLab.text isEqualToString:@"关闭算账"]){
+        
+        [ToastView toastViewWithMessage:@"关闭算账,暂停下注..." timer:3.0];
+    }else{
+  
+    NSString *nowDate = [self loadNowDate];
     
     NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"betAmount":betAmount,@"playingId":self.playingId,@"productId":self.productIdStr,@"expect":self.expectLab.text};
     
@@ -1012,12 +1050,17 @@ static int scoreViewY; // 分数初始Y值
             NSLog(@"|JMSENDMESSAGE|-|SEND|%@",sendMessage);
             [weakSelf.tableView reloadData];
             
+            // 添加tableview向上滚动
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            
             // 投注成功关闭betContentView
             [weakSelf.roomBetView.betTextField resignFirstResponder];
             weakSelf.roomBetView.betBottom.constant = 10;
             weakSelf.roomBetView.hidden = YES;
             [weakSelf.inputTextView resignFirstResponder];
             weakSelf.chatViewBottom.constant = 0;
+            
             
         }else{
             
@@ -1034,6 +1077,8 @@ static int scoreViewY; // 分数初始Y值
         [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
         
     }];
+        
+    }
 }
 
 
@@ -1176,8 +1221,6 @@ static int scoreViewY; // 分数初始Y值
     
     if (user.avatar.length>0) {
         
-        self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
-        
 //        NSString *score = [NSString stringWithFormat:@"%d",user.avatar.intValue-self.moneyLab.text.intValue];
         
         int score = user.avatar.intValue-self.moneyLab.text.intValue;
@@ -1187,6 +1230,7 @@ static int scoreViewY; // 分数初始Y值
         // score>0表示赢
         if (score>0) {
             NSLog(@"|^^^^^^^^^^^^^^^赢SCORE^^^^^^^^^^^^^^^^^|%d",score);
+            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
             self.scoreView.hidden = NO;
             CGPoint centerPoint = self.view.center;
             CGMutablePathRef path = CGPathCreateMutable();
@@ -1197,9 +1241,10 @@ static int scoreViewY; // 分数初始Y值
             animation.duration = 3.0;
             [self.scoreView.layer addAnimation:animation forKey:@"position"];
             
-            self.topScoreLab.text = [NSString stringWithFormat:@"↑%d",score];
+            self.topScoreLab.text = [NSString stringWithFormat:@"↑赢%d",score];
         }else{
             NSLog(@"|^^^^^^^^^^^^^^^输SCORE^^^^^^^^^^^^^^^^^|%d",score);
+            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
             self.scoreView.hidden = NO;
             CGPoint centerPoint = self.view.center;
             CGMutablePathRef path = CGPathCreateMutable();
@@ -1209,7 +1254,7 @@ static int scoreViewY; // 分数初始Y值
             animation.path = path;
             animation.duration = 3.0;
             [self.scoreView.layer addAnimation:animation forKey:@"position"];
-            self.topScoreLab.text = [NSString stringWithFormat:@"↓%d",score];
+            self.topScoreLab.text = [NSString stringWithFormat:@"↓输%d",score];
         }
     }
     
@@ -1424,6 +1469,10 @@ static int scoreViewY; // 分数初始Y值
         }else if([messageModel.type isEqualToString:@"3"]){
             
             return 80;
+        }else if([messageModel.type isEqualToString:@"9"]){
+            
+            return 50;
+            
         }else{
             
             return 0.01;
@@ -1508,6 +1557,14 @@ static int scoreViewY; // 分数初始Y值
                 [scoreCell setDataWithModel:messageModel];
                 
                 return scoreCell;
+                
+            }else if ([messageModel.type isEqualToString:@"9"]){  // 倒计时60秒提醒消息
+                
+                GPMsgNoticeCell *noticeCell = [tableView dequeueReusableCellWithIdentifier:@"noticeCell" forIndexPath:indexPath];
+                noticeCell.backgroundColor = [UIColor clearColor];
+                [noticeCell setdataWithModel:messageModel];
+                
+                return noticeCell;
                 
             }else{
                 

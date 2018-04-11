@@ -71,6 +71,13 @@
         
         self.tabBarController.selectedIndex = 0;
     }
+    
+    //延迟加载VersionBtn - 避免wimdow还没出现就往上加控件造成的crash
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        // 获取用户余额
+        [self loadUserMoney];
+    });
 }
 
 

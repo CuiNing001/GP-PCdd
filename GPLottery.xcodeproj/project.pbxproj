@@ -63,6 +63,8 @@
 		42148AAE2061FD0C007D44E8 /* GPLuckyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AAD2061FD0C007D44E8 /* GPLuckyModel.m */; };
 		42148AB22061FD65007D44E8 /* GPLuckyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42148AB02061FD65007D44E8 /* GPLuckyCell.m */; };
 		42148AB32061FD65007D44E8 /* GPLuckyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42148AB12061FD65007D44E8 /* GPLuckyCell.xib */; };
+		421A2407207E014600976C34 /* GPMsgNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 421A2405207E014600976C34 /* GPMsgNoticeCell.m */; };
+		421A2408207E014600976C34 /* GPMsgNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421A2406207E014600976C34 /* GPMsgNoticeCell.xib */; };
 		423C89AB206C92F200F78719 /* service_add_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 423C89AA206C92F100F78719 /* service_add_btn.png */; };
 		423C89AF206C987F00F78719 /* GPServiceSenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423C89AD206C987F00F78719 /* GPServiceSenderCell.m */; };
 		423C89B0206C987F00F78719 /* GPServiceSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423C89AE206C987F00F78719 /* GPServiceSenderCell.xib */; };
@@ -491,6 +493,9 @@
 		42148AAF2061FD65007D44E8 /* GPLuckyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPLuckyCell.h; sourceTree = "<group>"; };
 		42148AB02061FD65007D44E8 /* GPLuckyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPLuckyCell.m; sourceTree = "<group>"; };
 		42148AB12061FD65007D44E8 /* GPLuckyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPLuckyCell.xib; sourceTree = "<group>"; };
+		421A2404207E014600976C34 /* GPMsgNoticeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMsgNoticeCell.h; sourceTree = "<group>"; };
+		421A2405207E014600976C34 /* GPMsgNoticeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMsgNoticeCell.m; sourceTree = "<group>"; };
+		421A2406207E014600976C34 /* GPMsgNoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GPMsgNoticeCell.xib; sourceTree = "<group>"; };
 		423C89AA206C92F100F78719 /* service_add_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_add_btn.png; sourceTree = "<group>"; };
 		423C89AC206C987F00F78719 /* GPServiceSenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPServiceSenderCell.h; sourceTree = "<group>"; };
 		423C89AD206C987F00F78719 /* GPServiceSenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPServiceSenderCell.m; sourceTree = "<group>"; };
@@ -1456,6 +1461,9 @@
 				427122EA2069146F0080A50F /* GPMsgSenderCell.h */,
 				427122EB2069146F0080A50F /* GPMsgSenderCell.m */,
 				427122EC2069146F0080A50F /* GPMsgSenderCell.xib */,
+				421A2404207E014600976C34 /* GPMsgNoticeCell.h */,
+				421A2405207E014600976C34 /* GPMsgNoticeCell.m */,
+				421A2406207E014600976C34 /* GPMsgNoticeCell.xib */,
 				427122F2206A2A4C0080A50F /* GPRoomHistoryCell.h */,
 				427122F3206A2A4C0080A50F /* GPRoomHistoryCell.m */,
 				427122F4206A2A4C0080A50F /* GPRoomHistoryCell.xib */,
@@ -2055,6 +2063,7 @@
 				42F55734207B928C0057F288 /* mine_setting@2x.png in Resources */,
 				42E7E4DA2054B7BE00119CB0 /* Assets.xcassets in Resources */,
 				42F402E82074A4FE00A2D03A /* room_list_three@1x.png in Resources */,
+				421A2408207E014600976C34 /* GPMsgNoticeCell.xib in Resources */,
 				42F55741207B928C0057F288 /* mine_about@2x.png in Resources */,
 				423C8A11206FADB300F78719 /* GPTransferTypeCell.xib in Resources */,
 				4207C0502077096400680B89 /* service_item@3x.png in Resources */,
@@ -2302,6 +2311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421A2407207E014600976C34 /* GPMsgNoticeCell.m in Sources */,
 				423EBE592060A632006E80ED /* GPBankInfoModel.m in Sources */,
 				4263BA1E20595C3600103919 /* GPWalletViewController.m in Sources */,
 				4263BAB7205F688200103919 /* GPUserStatusModel.m in Sources */,

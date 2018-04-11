@@ -116,6 +116,12 @@
         
         if (code.integerValue == 9200) {
             
+            if (page.integerValue == 1) {
+                
+                // 上拉刷新时清空数据
+                [weakSelf.dataSourceArray removeAllObjects];
+            }
+            
 //            [ToastView toastViewWithMessage:msg timer:3.0];
             
             for (NSDictionary *luckyDic in luckyArr) {

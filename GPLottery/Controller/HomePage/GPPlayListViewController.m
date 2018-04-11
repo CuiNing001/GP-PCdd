@@ -247,7 +247,7 @@
         return self.dataArray.count;
     }else{
         
-         return 1;
+         return 3;
     }
 }
 

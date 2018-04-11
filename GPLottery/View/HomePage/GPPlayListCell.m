@@ -17,12 +17,14 @@
 
 - (void)setDataWithModel:(GPPlayListModel *)model{
     
+    int number = arc4random()%6;
+    
 //    NSString *imageLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,model.playingImageUrl];
     
 //    [self.bgImage sd_setImageWithURL:[NSURL URLWithString:imageLoc]];
     self.playTypeLab.text  = [NSString stringWithFormat:@"%@",model.playingTypeName];
     self.remarkLab.text    = [NSString stringWithFormat:@"%@",model.remarkExplain];
-    self.onlineNumLab.text = [NSString stringWithFormat:@"%@",model.onlineNum];
+    self.onlineNumLab.text = [NSString stringWithFormat:@"%d",model.onlineNum.intValue+number];
     
 }
 

@@ -146,6 +146,11 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 #pragma mark - 顶部左侧item
 - (IBAction)leftMoreItem:(UIBarButtonItem *)sender {
     
+    if (![self.isLogin isEqualToString:@"1"]) {
+        
+        [ToastView toastViewWithMessage:@"请先登陆" timer:3.0];
+    }else{
+    
     leftViewTouch++;
         CATransition *transition = [CATransition animation];
         transition.duration = 0.5;
@@ -153,6 +158,11 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         transition.subtype  = kCATransitionFromBottom;
         self.indexLeftMoreView.hidden = NO;
         [self.indexLeftMoreView.layer addAnimation:transition forKey:@"animation"];
+        // 刷新用户数据
+        self.indexLeftMoreView.nickNameLab.text = self.infoModel.nickname;
+        [self loadUserMoney];
+        
+    }
 }
 
 #pragma mark - 页面即将出现
@@ -311,13 +321,6 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     // ^^^^^^^^^^^^^^^^^^^^^^^^顶部左侧more按钮^^^^^^^^^^^^^^^^^^^^^^^^^^
     self.indexLeftMoreView = [[GPHomeLeftItemView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [[UIApplication sharedApplication].keyWindow addSubview:self.indexLeftMoreView];
-    // 未登陆状态提醒
-    if (![weakSelf.isLogin isEqualToString:@"1"]) {
-        
-    }else{
-        self.indexLeftMoreView.nickNameLab.text = self.infoModel.nickname;
-        [self loadUserMoney];
-    }
     
     self.indexLeftMoreView.hidden = YES;
     
@@ -943,6 +946,9 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 
 #pragma mark - 获取用户余额
 - (void)loadUserMoney{
+    
+    // 刷新钱包金额
+    self.indexLeftMoreView.moneyLab.text = @"??元宝";
     
     [self.progressHUD showAnimated:YES];
     

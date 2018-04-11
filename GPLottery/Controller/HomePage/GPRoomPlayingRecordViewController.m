@@ -119,6 +119,11 @@
         
         if (code.integerValue == 9200) {
             
+            if (page.integerValue == 1) {  // 上拉刷新前清空之前数据
+                
+                [weakSelf.dataArray removeAllObjects];
+            }
+            
             for (NSDictionary *dataDic in gameArray) {
                 
                 GPBetDetailModel *detaileModel = [[GPBetDetailModel alloc]init];

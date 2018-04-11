@@ -173,7 +173,7 @@
         return self.dataArray.count;
     }
     
-    return 1;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
