@@ -10,6 +10,7 @@
 #import "GPRoonListModel.h"
 #import "GPRoomListCell.h"
 #import "GPRoomViewController.h"
+#import "GPWalletModel.h"
 
 @interface GPRoomListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -19,7 +20,7 @@
 @property (strong, nonatomic) NSString           *token;
 @property (strong, nonatomic) NSMutableArray     *dataArray;
 @property (strong, nonatomic) NSMutableArray     *imageArray;   // 背景图片数组
-
+@property (strong, nonatomic) NSString           *userMoney;    // 用户余额
 
 @end
 
@@ -47,11 +48,13 @@
 
 - (void)loadData{
     
-    
-    
     self.title = @"房间列表";
     
+    // 获取房间数据
     [self loadNetData];
+    
+    // 获取用户余额
+    [self loadUserMoney];
     
     self.imageArray = @[@"room_cell_one",@"room_cell_two",@"room_cell_three",@"room_cell_four"].mutableCopy;
 
@@ -165,13 +168,55 @@
     
 }
 
+#pragma mark - 获取用户余额
+- (void)loadUserMoney{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    NSString *walletLoc = [NSString stringWithFormat:@"%@user/1/money",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:walletLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|MINE-VC-MONEY-REFSH|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            GPWalletModel *walletModel = [GPWalletModel new];
+            
+            [walletModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 获取余额
+            weakSelf.userMoney = walletModel.moneyNum;
+            
+        }else{
+            
+//            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
+}
+
 #pragma mark - collection 代理方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    if (self.dataArray.count>0) {
-        
-        return self.dataArray.count;
-    }
+//    if (self.dataArray.count>0) {
+//
+//        return self.dataArray.count;
+//    }
     
     return 4;
 }
@@ -180,15 +225,16 @@
     
     GPRoomListCell *roomListCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"roomListCell" forIndexPath:indexPath];
     
+    NSString *image = self.imageArray[indexPath.row];
+    
+    roomListCell.bgImageView.image = [UIImage imageNamed:image];
+    
     if (self.dataArray.count>0) {
         
         GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
         
         [roomListCell setDataWithModel:roomListModel];
         
-        NSString *image = self.imageArray[indexPath.row];
-        
-        roomListCell.bgImageView.image = [UIImage imageNamed:image];
     }
     
     return roomListCell;
@@ -196,24 +242,32 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
-    
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (self.dataArray.count>0) {
         
-        GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
-        
-        roomVC.roomIdStr = [NSString stringWithFormat:@"%@",roomListModel.roomId];
-        
-        roomVC.productIdStr = self.productIdStr;
-        
-        roomVC.playID = self.playID;
-    
-    if (roomVC.roomIdStr.length>0) {
-        
-        [self.navigationController pushViewController:roomVC animated:YES];
+        if (self.userMoney.intValue<self.lowestMoneyNum.intValue) { // 用户余额小于房间最低金额
+            
+            NSString *msg = [NSString stringWithFormat:@"请保证余额不低于%@",self.lowestMoneyNum];
+            
+            [ToastView toastViewWithMessage:msg timer:3.0];
+        }else{
+            
+            GPRoonListModel *roomListModel = self.dataArray[indexPath.row];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            GPRoomViewController *roomVC = [storyboard instantiateViewControllerWithIdentifier:@"roomVC"];
+            
+            roomVC.roomIdStr = [NSString stringWithFormat:@"%@",roomListModel.roomId];
+            
+            roomVC.productIdStr = self.productIdStr;
+            
+            roomVC.playID = self.playID;
+            
+            [self.navigationController pushViewController:roomVC animated:YES];
+        }
     }else{
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据加载中，请稍后再试" timer:3.0];
     }
     
     

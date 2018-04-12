@@ -242,13 +242,13 @@
 #pragma mark - tableview 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.dataArray.count>0) {
-        
-        return self.dataArray.count;
-    }else{
-        
+//    if (self.dataArray.count>0) {
+//
+//        return self.dataArray.count;
+//    }else{
+    
          return 3;
-    }
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -262,6 +262,10 @@
 
     playListCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    NSString *image = self.imageArray[indexPath.row];
+    
+    playListCell.bgImage.image = [UIImage imageNamed:image];
+    
     if (self.dataArray.count>0) {
         
         GPPlayListModel *playListModel = self.dataArray[indexPath.row];
@@ -274,11 +278,6 @@
             
             [self loadOddInstrotionDataWithID:[NSString stringWithFormat:@"%@",playListModel.id]];
         };
-        
-        NSString *image = self.imageArray[indexPath.row];
-        
-        playListCell.bgImage.image = [UIImage imageNamed:image];
-    
     }
     
     return playListCell;
@@ -286,25 +285,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    GPRoomListViewController *roomListVC = [storyboard instantiateViewControllerWithIdentifier:@"roomListVC"];
-
+    if (self.dataArray.count>0) {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        GPRoomListViewController *roomListVC = [storyboard instantiateViewControllerWithIdentifier:@"roomListVC"];
+        
         GPPlayListModel *playListModel = self.dataArray[indexPath.row];
         
         roomListVC.playID = [NSString stringWithFormat:@"%@",playListModel.id];
         
         roomListVC.productIdStr = self.productID;
-    
-    if (roomListVC.playID.length>0) {
+        
+        roomListVC.lowestMoneyNum = [NSString stringWithFormat:@"%@",playListModel.lowestMoneyNum];
         
         [self.navigationController pushViewController:roomListVC animated:YES];
     }else{
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据加载中，请稍后再试" timer:3.0];
     }
-
-    
 }
 
 #pragma mark - 懒加载

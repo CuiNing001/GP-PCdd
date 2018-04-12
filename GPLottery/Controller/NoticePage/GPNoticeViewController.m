@@ -262,8 +262,8 @@ static int touch = 0;  //  标记不同的tableview数据源
     [self.noticeDataArr removeAllObjects];
     
     // 点击按钮切换选中颜色，底部view颜色修改
-    self.noticeBtnView.backgroundColor = [UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1];
-     [self.noticeBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    self.noticeBtnView.backgroundColor = [UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1];
+     [self.noticeBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     
     self.msgBtnView.backgroundColor = [UIColor whiteColor];
     [self.msgBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -284,8 +284,8 @@ static int touch = 0;  //  标记不同的tableview数据源
     self.noticeBtnView.backgroundColor = [UIColor whiteColor];
     [self.noticeBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
-    self.msgBtnView.backgroundColor = [UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1];
-    [self.msgBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    self.msgBtnView.backgroundColor = [UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1];
+    [self.msgBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadMyMsgDataWithPage:@"1" rows:@"10"];
     

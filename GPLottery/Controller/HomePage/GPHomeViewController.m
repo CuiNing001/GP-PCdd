@@ -87,13 +87,15 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 - (void)customNavigationBarItem{
     
     // 导航栏右侧按钮
-    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
+    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 50)];
     
     self.itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    _itemBtn.frame = CGRectMake(0, 10, 50, 30);
+    _itemBtn.frame = CGRectMake(0, 10, 40, 30);
     
     [_itemBtn setImage:[UIImage imageNamed:@"service_item"] forState:UIControlStateNormal];
+    
+    [_itemBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     
     [_itemBtn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -101,9 +103,11 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     UIButton *webBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    webBtn.frame = CGRectMake(50, 10, 50, 30);
+    webBtn.frame = CGRectMake(40, 10, 40, 30);
     
     [webBtn setImage:[UIImage imageNamed:@"more_item"] forState:UIControlStateNormal];
+    
+    [webBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     
     [webBtn addTarget:self action:@selector(turnToChooseView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -153,7 +157,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     leftViewTouch++;
         CATransition *transition = [CATransition animation];
-        transition.duration = 0.5;
+        transition.duration = 0.3;
         transition.type     = kCATransitionMoveIn;
         transition.subtype  = kCATransitionFromBottom;
         self.indexLeftMoreView.hidden = NO;

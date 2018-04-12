@@ -108,8 +108,6 @@ static int scoreViewY; // 分数初始Y值
     
     [self loadSubView];
     
-    
-    
     if (self.productIdStr.integerValue == 1) {
         
         self.title = @"北京28";
@@ -125,23 +123,27 @@ static int scoreViewY; // 分数初始Y值
 - (void)customNavigationBarItem{
     
     // 导航栏右侧按钮
-    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
+    self.itemView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 50)];
     
     self.itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    _itemBtn.frame = CGRectMake(0, 10, 50, 30);
+    _itemBtn.frame = CGRectMake(0, 10, 40, 30);
     
     [_itemBtn setImage:[UIImage imageNamed:@"service_item"] forState:UIControlStateNormal];
     
     [_itemBtn addTarget:self action:@selector(turnToService:) forControlEvents:UIControlEventTouchUpInside];
     
+    [_itemBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+    
     [_itemView addSubview:_itemBtn];
     
     UIButton *webBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    webBtn.frame = CGRectMake(50, 10, 50, 30);
+    webBtn.frame = CGRectMake(40, 10, 40, 30);
     
     [webBtn setImage:[UIImage imageNamed:@"more_item"] forState:UIControlStateNormal];
+    
+    [webBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     
     [webBtn addTarget:self action:@selector(turnToChooseView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -185,6 +187,7 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 页面即将出现进入聊天室
 - (void)viewWillAppear:(BOOL)animated{
     
+    
 //    [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];
@@ -195,7 +198,23 @@ static int scoreViewY; // 分数初始Y值
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
         
-        [self enterChatRoom];
+//        [self enterChatRoom];
+        // 加入聊天室（不判定是否加入成功）
+        [self enterRoom];
+    }
+}
+
+#pragma mark - 进入房间（无判定）
+- (void)enterRoom{
+    
+    [JMSGChatRoom enterChatRoomWithRoomId:self.roomIdStr completionHandler:nil];
+    
+    // 获取大厅数据
+    [self loadOddsContentData];
+    
+    if (self.receiveMessageArray.count>0) {
+        
+        [self.receiveMessageArray removeLastObject];
     }
 }
 
@@ -215,11 +234,20 @@ static int scoreViewY; // 分数初始Y值
             // 获取数据
             [weakSelf loadOddsContentData];
             
+//            if (self.receiveMessageArray.count>0) {
+//
+//                [self.receiveMessageArray removeLastObject];
+//            }
+            
         }else{ // 加入聊天室失败
             
             NSLog(@"|ROOMLIST-VC|-|ENTER-CHATROOM|-|ERROR|%@",error);
-            [self.progressHUD hideAnimated:YES];
-            [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
+//            [self.progressHUD hideAnimated:YES];
+//            [ToastView toastViewWithMessage:@"加入房间失败，请稍后再试" timer:3.0];
+            
+            
+            
+            
         }
         
     }];
@@ -227,26 +255,26 @@ static int scoreViewY; // 分数初始Y值
 
 #pragma mark - 关闭页面退出聊天室
 - (void)viewDidDisappear:(BOOL)animated{
-    
-    // 退出聊天室
-    [JMSGChatRoom leaveChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
-       
-        if (!error) {
-            
-            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|SUCCESS|%@",resultObject);
-            
-        }else{
-            
-            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|error|%@",error);
-        }
-    }];
-    
+
+//    // 退出聊天室
+//    [JMSGChatRoom leaveChatRoomWithRoomId:self.roomIdStr completionHandler:^(id resultObject, NSError *error) {
+//
+//        if (!error) {
+//
+//            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|SUCCESS|%@",resultObject);
+//
+//        }else{
+//
+//            NSLog(@"|ROOM-VC|-|LEAVE-CHATROOM|-|error|%@",error);
+//        }
+//    }];
+
     // 销毁定时器
     [self.enterTimer invalidate];
     self.enterTimer = nil;
-    
+
     // 清除聊天数据
-    [self.receiveMessageArray removeAllObjects];
+//    [self.receiveMessageArray removeAllObjects];
 }
 
 #pragma mark - 加载子控件
@@ -731,6 +759,11 @@ static int scoreViewY; // 分数初始Y值
     // 设置开奖历史数据
     NSMutableArray *historyArr = [NSMutableArray arrayWithArray:self.roomInfoModel.history];
     
+    if (self.historyDataArray.count>0) {
+        
+        [self.historyDataArray removeAllObjects];
+    }
+    
     for (NSDictionary *codeDic in historyArr) {
         
         GPRoomHistoryModel *historyModel = [GPRoomHistoryModel new];
@@ -807,7 +840,23 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 倒计时60秒时添加提醒消息
 - (void)addNoticeMessage{
     
-    NSDictionary *noticeDic = @{@"expect":self.expectLab.text,@"type":@"9"};
+    NSString *noticeStr = [NSString stringWithFormat:@" 【%@】距封盘还有60秒，请抓紧时间下注  ",self.expectLab.text];
+    NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
+    GPMessageModel *messageModel = [GPMessageModel new];
+    [messageModel setValuesForKeysWithDictionary:noticeDic];
+    [self.receiveMessageArray addObject:messageModel];
+    [self.tableView reloadData];
+    
+    // 添加tableview向上滚动
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+#pragma mark - 封盘提醒消息
+- (void)addEndMessage{
+    
+    NSString *noticeStr = [NSString stringWithFormat:@" 【%@】已封盘，下注结果以系统开奖为准，如有异议请及时联系客服  ",self.expectLab.text];
+    NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
     GPMessageModel *messageModel = [GPMessageModel new];
     [messageModel setValuesForKeysWithDictionary:noticeDic];
     [self.receiveMessageArray addObject:messageModel];
@@ -861,6 +910,12 @@ static int scoreViewY; // 分数初始Y值
             
             self.timerLab.text = @"封盘中";
             
+            if (timerSecond == 30) {
+                
+                // 添加封盘消息
+                [self addEndMessage];
+            }
+            
             timerSecond--;
             
             if (timerSecond == 0 || timerSecond == -1) {
@@ -901,6 +956,12 @@ static int scoreViewY; // 分数初始Y值
             
             self.timerLab.text = @"封盘中";
             
+            if (timerSecond == 15) {
+                
+                // 添加封盘消息
+                [self addEndMessage];
+            }
+            
             timerSecond--;
             
             if (timerSecond == 0 || timerSecond == -1) {
@@ -924,6 +985,21 @@ static int scoreViewY; // 分数初始Y值
     NSMutableArray *dataThirdArr = [playListDic objectForKey:@"dateThird"];   // page1数据
     NSMutableArray *dateFirstArr = [playListDic objectForKey:@"dateFirst"];   // page2数据
     NSMutableArray *dateSecondArr = [playListDic objectForKey:@"dateSecond"]; // page3数据
+    
+    if (self.pageOneDataArray.count>0) {
+        
+        [self.pageOneDataArray removeAllObjects];
+    }
+    
+    if (self.pageTwoDataArray.count>0) {
+        
+        [self.pageTwoDataArray removeAllObjects];
+    }
+    
+    if (self.pageThreeDataArray.count>0) {
+        
+        [self.pageThreeDataArray removeAllObjects];
+    }
     
     // page1
     for (NSDictionary *oddsDic in dateFirstArr) {
@@ -1242,6 +1318,7 @@ static int scoreViewY; // 分数初始Y值
             [self.scoreView.layer addAnimation:animation forKey:@"position"];
             
             self.topScoreLab.text = [NSString stringWithFormat:@"↑赢%d",score];
+            self.topScoreLab.textColor = [UIColor redColor];
         }else{
             NSLog(@"|^^^^^^^^^^^^^^^输SCORE^^^^^^^^^^^^^^^^^|%d",score);
             self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
@@ -1254,7 +1331,8 @@ static int scoreViewY; // 分数初始Y值
             animation.path = path;
             animation.duration = 3.0;
             [self.scoreView.layer addAnimation:animation forKey:@"position"];
-            self.topScoreLab.text = [NSString stringWithFormat:@"↓输%d",score];
+            self.topScoreLab.text = [NSString stringWithFormat:@"↓亏%d",score];
+            self.topScoreLab.textColor = [UIColor greenColor];
         }
     }
     
@@ -1471,7 +1549,7 @@ static int scoreViewY; // 分数初始Y值
             return 80;
         }else if([messageModel.type isEqualToString:@"9"]){
             
-            return 50;
+            return 65;
             
         }else{
             

@@ -66,6 +66,16 @@
     }
 }
 
+#pragma mark - 底部关闭页面按钮
+- (IBAction)bottomDissmissButton:(UIButton *)sender {
+    
+    if (self.dissmissBlock) {
+        
+        self.dissmissBlock();
+    }
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

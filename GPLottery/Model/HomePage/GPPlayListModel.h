@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *onlineNum;       // 在线人数
 @property (strong, nonatomic) NSString *playingImageUrl; // 背景图地址
 @property (strong, nonatomic) NSString *remarkExplain;   // 左下角文字
+@property (strong, nonatomic) NSString *lowestMoneyNum;  // 当前玩法进入房间最低金额
 
 @end

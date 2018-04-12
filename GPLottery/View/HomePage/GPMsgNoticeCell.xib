@@ -19,10 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwR-8Z-cdF">
-                        <rect key="frame" x="143.5" y="10" width="33" height="23"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwR-8Z-cdF">
+                        <rect key="frame" x="30" y="10" width="260" height="23"/>
                         <color key="backgroundColor" red="0.72549019609999998" green="0.82352941180000006" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -32,8 +32,10 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="qwR-8Z-cdF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="64S-9k-XlX"/>
                     <constraint firstItem="qwR-8Z-cdF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Iw8-rQ-LCh"/>
                     <constraint firstAttribute="bottom" secondItem="qwR-8Z-cdF" secondAttribute="bottom" constant="10" id="Ndk-4Y-wDu"/>
+                    <constraint firstAttribute="trailing" secondItem="qwR-8Z-cdF" secondAttribute="trailing" constant="30" id="mke-nH-N8f"/>
                     <constraint firstItem="qwR-8Z-cdF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wha-xy-Wtr"/>
                     <constraint firstItem="qwR-8Z-cdF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yJL-hI-VPv"/>
                 </constraints>

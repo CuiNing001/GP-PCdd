@@ -106,6 +106,14 @@ static int touchTag = 0; // 点击出现选择器的view的tag值
 
 - (void)loadSubView{
     
+    // 修改选择日期为当天
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *nowDateStr = [dateFormatter stringFromDate:nowDate];
+    self.startTimeLab.text = nowDateStr;
+    self.endTimeLab.text   = nowDateStr;
+    
     // 游戏类型默认为全部
     self.typeID = @"0";
     

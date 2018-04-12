@@ -309,7 +309,7 @@
     
     self.linkView.hidden = YES;
     self.accountBtn.backgroundColor = [UIColor whiteColor];
-    [self.accountBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.accountBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     self.linkAccountBtn.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1];
     [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -320,7 +320,7 @@
     
     self.linkView.hidden = NO;
     self.linkAccountBtn.backgroundColor = [UIColor whiteColor];
-    [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.linkAccountBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     self.accountBtn.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1];
     [self.accountBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
 }

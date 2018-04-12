@@ -178,7 +178,7 @@
     // 修改点击状态
     self.settlementBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
     self.noSettlementBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.settlementBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.settlementBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadNetDataWithPage:@"1" rows:@"10" status:self.status];
@@ -192,7 +192,7 @@
     // 修改点击状态
     self.noSettlementBtn.backgroundColor    = [UIColor colorWithRed:223/255.0 green:229/255.0 blue:233/255.0 alpha:1];
     self.settlementBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.noSettlementBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     [self.settlementBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
     [self loadNetDataWithPage:@"1" rows:@"10" status:self.status];

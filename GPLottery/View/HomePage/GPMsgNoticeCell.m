@@ -17,7 +17,7 @@
 
 - (void)setdataWithModel:(GPMessageModel *)model{
     
-    self.noticeMsgLab.text = [NSString stringWithFormat:@" 【%@】距封盘还有60秒，请抓紧时间下注  ",model.expect];
+    self.noticeMsgLab.text = [NSString stringWithFormat:@"%@",model.expect];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

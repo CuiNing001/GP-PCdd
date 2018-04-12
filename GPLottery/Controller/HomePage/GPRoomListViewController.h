@@ -10,7 +10,8 @@
 
 @interface GPRoomListViewController : UIViewController
 
-@property (strong, nonatomic) NSString *playID;       // 玩法id
-@property (strong, nonatomic) NSString *productIdStr; // 产品id
+@property (strong, nonatomic) NSString *playID;        // 玩法id
+@property (strong, nonatomic) NSString *productIdStr;  // 产品id
+@property (strong, nonatomic) NSString *lowestMoneyNum;// 进入房间最低金额
 
 @end

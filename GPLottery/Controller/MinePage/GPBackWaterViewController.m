@@ -229,7 +229,7 @@
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.highRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -249,7 +249,7 @@
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     [self.highRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -269,7 +269,7 @@
     self.highRoomBtn.backgroundColor   = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.middleRoomBtn.backgroundColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
     self.lowRoomBtn.backgroundColor    = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:1];
-    [self.highRoomBtn setTitleColor:[UIColor colorWithRed:56/255.0 green:135/255.0 blue:234/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.highRoomBtn setTitleColor:[UIColor colorWithRed:35/255.0 green:198/255.0 blue:164/255.0 alpha:1] forState:UIControlStateNormal];
     [self.middleRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     [self.lowRoomBtn setTitleColor:[UIColor colorWithRed:69/255.0 green:69/255.0 blue:69/255.0 alpha:1] forState:UIControlStateNormal];
     
