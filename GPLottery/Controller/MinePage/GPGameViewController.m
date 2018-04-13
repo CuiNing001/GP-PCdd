@@ -91,8 +91,8 @@
             
 //            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
-            weakSelf.money = [respondModel.data objectForKey:@"money"];
-            weakSelf.level = [respondModel.data objectForKey:@"level"];
+            weakSelf.money = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"money"]];
+            weakSelf.level = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"level"]];
             
         }else{
             
@@ -201,7 +201,7 @@
     
     // 动画结束后弹窗
 //    [ToastView toastViewWithMessage:self.dataArray[self.randomNum] timer:2];
-    NSString *bonus = [NSString stringWithFormat:@"㊗️💐恭喜获得%@奖金",self.money];
+    NSString *bonus = [NSString stringWithFormat:@"㊗️💐恭喜获得%@元宝",self.money];
     [self alertViewWithTitle:@"中奖提示" message:bonus];
 }
 

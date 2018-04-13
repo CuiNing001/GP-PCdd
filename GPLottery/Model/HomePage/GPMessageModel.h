@@ -12,7 +12,7 @@
 
 @property(nonatomic, assign, readonly) JMSGContentType contentType; // 消息类型
 
-
+@property (strong, nonatomic) NSString *uuid;       
 @property (strong, nonatomic) NSString *playingId; // 下注号
 @property (strong, nonatomic) NSString *date;    // 时间
 @property (strong, nonatomic) NSString *level;   // 用户等级

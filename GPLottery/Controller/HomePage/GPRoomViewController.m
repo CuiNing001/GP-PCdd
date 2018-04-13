@@ -695,7 +695,23 @@ static int scoreViewY; // 分数初始Y值
             
         }else{
             
-            [ToastView toastViewWithMessage:msg timer:3.0];
+//            [ToastView toastViewWithMessage:msg timer:3.0];
+            
+            // 数据出错
+            UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"提醒"
+                                                                            message:msg
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction     *action = [UIAlertAction actionWithTitle:@"确定"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   
+                                                                   [self.navigationController popToRootViewControllerAnimated:YES];
+                                                               }];
+            
+            [alert addAction:action];
+            
+            [self presentViewController:alert animated:YES completion:nil];
         }
         [weakSelf.historyTableView reloadData];
         // 刷新数据
@@ -840,7 +856,7 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 倒计时60秒时添加提醒消息
 - (void)addNoticeMessage{
     
-    NSString *noticeStr = [NSString stringWithFormat:@" 【%@】距封盘还有60秒，请抓紧时间下注  ",self.expectLab.text];
+    NSString *noticeStr = [NSString stringWithFormat:@" 【%@期】距封盘还有60秒，请抓紧时间下注  ",self.expectLab.text];
     NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
     GPMessageModel *messageModel = [GPMessageModel new];
     [messageModel setValuesForKeysWithDictionary:noticeDic];
@@ -855,7 +871,7 @@ static int scoreViewY; // 分数初始Y值
 #pragma mark - 封盘提醒消息
 - (void)addEndMessage{
     
-    NSString *noticeStr = [NSString stringWithFormat:@" 【%@】已封盘，下注结果以系统开奖为准，如有异议请及时联系客服  ",self.expectLab.text];
+    NSString *noticeStr = [NSString stringWithFormat:@" 【%@期】已封盘，下注结果以系统开奖为准，如有异议请及时联系客服  ",self.expectLab.text];
     NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
     GPMessageModel *messageModel = [GPMessageModel new];
     [messageModel setValuesForKeysWithDictionary:noticeDic];

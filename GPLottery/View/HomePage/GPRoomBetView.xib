@@ -338,7 +338,6 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ai3-Db-zsR">
                     <rect key="frame" x="0.0" y="20" width="365" height="303.5"/>
-                    <state key="normal" image="bet_dissmiss_btn.png"/>
                     <connections>
                         <action selector="dissmissBetView:" destination="iN0-l3-epB" eventType="touchUpInside" id="aTB-dk-rb5"/>
                     </connections>
@@ -378,7 +377,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bet_dissmiss_btn.png" width="32" height="32"/>
         <image name="bet_left_btn.png" width="11" height="18"/>
         <image name="bet_right_btn.png" width="11" height="18"/>
     </resources>

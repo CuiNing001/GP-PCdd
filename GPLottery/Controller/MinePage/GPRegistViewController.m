@@ -96,6 +96,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 返回页面
+- (IBAction)dissmissButton:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - 注册按钮
 - (IBAction)registButton:(UIButton *)sender {
     
@@ -217,7 +223,7 @@
         
         if ([RegexPattern validateNickname:self.nicknameTF.text]) {
             
-            [ToastView toastViewWithMessage:@"昵称格式不正确" timer:1.5];
+//            [ToastView toastViewWithMessage:@"昵称格式不正确" timer:1.5];
         }
         
     }else if (textField.tag == 2006){

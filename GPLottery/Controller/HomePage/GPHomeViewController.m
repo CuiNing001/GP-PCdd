@@ -31,7 +31,7 @@
 #import "GPAlertNoticeView.h"
 #import "GPNoticeModel.h"
 
-static int errorState = 0;  // 数据连接状态
+static int errorState = 1;  // 数据连接状态
 static int touch = 0;   // 右侧更多按钮点击次数
 static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @interface GPHomeViewController ()<SDCycleScrollViewDelegate,UITabBarControllerDelegate>
@@ -69,6 +69,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @property (strong, nonatomic) NSString *noticeAlertCount;  // 公告弹窗点击次数
 @property (strong, nonatomic) GPNoticeModel *noticeModel;  // 公告列表
 @property (strong, nonatomic) NSString *noticeDetailStr;   // 公告详情地址
+@property (strong, nonatomic) NSMutableArray *bannerLocArray; // 轮播图地址
 
 @end
 
@@ -293,7 +294,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     CGRect rect = CGRectMake(self.headerView.bounds.origin.x, self.headerView.bounds.origin.y, self.headerView.bounds.size.width+38, self.headerView.bounds.size.height);
     self.scrollView = [SDCycleScrollView cycleScrollViewWithFrame:rect
                                                                        delegate:self
-                                                               placeholderImage:[UIImage imageNamed:@"home_banner_placehorder.jpg"]];
+                                                               placeholderImage:[UIImage imageNamed:@"notice_scroll_img_one.jpg"]];
     //    scrollView.imageURLStringsGroup = self.bannerListArrya;                            // 轮播图网络图片
 //    self.scrollView.localizationImageNamesGroup = @[@"1.jpg",@"2.jpg"];                       // 轮播图本地图片
     self.scrollView.scrollDirection             = UICollectionViewScrollDirectionHorizontal;; // 轮播图滚动方向（左右滚动）
@@ -527,7 +528,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }];
 }
@@ -583,7 +584,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 //            NSSortDescriptor *bannerSD = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
 //            weakSelf.bannerListArray = [[indexModel.bannerList sortedArrayUsingDescriptors:@[bannerSD]]mutableCopy];
             
-            NSMutableArray *bannerLocArray = [NSMutableArray array];
+//            NSMutableArray *bannerLocArray = [NSMutableArray array];
             // 获取轮播图数据
             for (NSDictionary *bannerDic in indexModel.bannerList) {
                 
@@ -593,19 +594,21 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 
                 [bannerModel setValuesForKeysWithDictionary:bannerDic];
                 
-                [weakSelf.bannerListArray addObject:bannerModel];
-                
                 NSString *bannerLoc = [NSString stringWithFormat:@"%@%@",kImageLoction,bannerModel.imagePath];
                 
-                [bannerLocArray addObject:bannerLoc];
+                [self.bannerLocArray addObject:bannerLoc];
                 
-                NSLog(@"|HOME-BANNER-TYPE|%@",bannerModel.type);
+                [weakSelf.bannerListArray addObject:bannerModel];
+
+                NSLog(@"|bannerLoc|%@%@",kImageLoction,bannerModel.imagePath);
+                
+                NSLog(@"|HOME-BANNER-TYPE|type:%@--%@%@",bannerModel.type,kImageLoction,bannerModel.imagePath);
                 
             }
             
             
             // 设置轮播图地址
-            self.scrollView.imageURLStringsGroup = bannerLocArray;
+            self.scrollView.imageURLStringsGroup = self.bannerLocArray;
             
             // 获取产品数据
             for (NSDictionary *productDic in indexModel.productList) {
@@ -641,7 +644,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         // 设置数据连接状态
         errorState = 1;
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
         NSLog(@"|HOME-VC|-|home-error|%@",error);
         
@@ -732,7 +735,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         bannerModel = self.bannerListArray[index];
         
-        NSLog(@"|HOME-BANNER-点击事件|%@",bannerModel.type);
+        NSLog(@"|HOME-BANNER-点击事件|type:%@--imagePath:http://128.14.128.207:8815/28/%@",bannerModel.type,bannerModel.imagePath);
         
         if (bannerModel.type.integerValue == -1) {   // 无作用
             
@@ -780,7 +783,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }else{
         
@@ -804,7 +807,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }else{
         
@@ -833,7 +836,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }else{
         
@@ -857,7 +860,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     
     if (errorState == 1) {  // 数据连接出错
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }else{
         
@@ -926,7 +929,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }];
     
@@ -1032,7 +1035,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         [weakSelf.progressHUD hideAnimated:YES];
         
-        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
         
     }];
 }
@@ -1106,6 +1109,15 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         self.rightProductModel = [GPProductListModel new];
     }
     return _rightProductModel;
+}
+
+- (NSMutableArray *)bannerLocArray{
+    
+    if (!_bannerLocArray) {
+        
+        self.bannerLocArray = [NSMutableArray array];
+    }
+    return _bannerLocArray;
 }
 
 - (void)didReceiveMemoryWarning {

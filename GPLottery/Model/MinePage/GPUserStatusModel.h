@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *luckTurntableStatus;   // 转盘抽奖次数
 @property (strong, nonatomic) NSString *userExchange;          // 提现密码绑定状态
 @property (strong, nonatomic) NSString *bankStatus;            // 银行卡绑定状态
+@property (strong, nonatomic) NSString *lowestMoneyNum;        // 用户进入房间最低金额
 
 @end

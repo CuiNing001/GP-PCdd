@@ -42,7 +42,7 @@
         [manger.requestSerializer setValue:token forHTTPHeaderField:@"token"];
     }
     // 设置超时时间
-    manger.requestSerializer.timeoutInterval = 10.0f;
+    manger.requestSerializer.timeoutInterval = 30.0f;
     
 //    manger.responseSerializer = [AFHTTPResponseSerializer serializer];
     

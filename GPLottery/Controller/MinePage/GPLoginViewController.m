@@ -62,6 +62,12 @@
                       @"password"  :self.password};
 }
 
+#pragma mark - 关闭按钮
+- (IBAction)dissmissButton:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - 返回按钮
 - (IBAction)backTohomePage:(UIButton *)sender {
     

@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="201" height="114.5"/>
                     <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="充值" image="wallet_ recharge.png">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.13725490200000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="rechargeButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="BRJ-3Q-7En"/>
@@ -37,7 +37,7 @@
                     <rect key="frame" x="0.0" y="115.5" width="201" height="114.5"/>
                     <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="提现" image="wallet_ withdraw.png">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.13725490200000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="withdrawButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="bLS-zf-lfx"/>

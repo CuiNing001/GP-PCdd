@@ -24,7 +24,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="投注记录" image="room_record_btn.png">
-                                <color key="titleColor" red="0.35294117650000001" green="0.63137254899999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.13725490200000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="recordBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="VXo-fv-dKC"/>
@@ -35,7 +35,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="玩法说明" image="room_ins_btn.png">
-                                <color key="titleColor" red="0.35294117650000001" green="0.63137254899999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.13725490200000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="insBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="s0i-MB-nav"/>
@@ -46,7 +46,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="走势图   " image="room_trend_btn.png">
-                                <color key="titleColor" red="0.3529411764705882" green="0.63137254901960782" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.13725490200000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="trendBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="LOt-hc-Uuz"/>

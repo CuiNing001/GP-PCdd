@@ -20,23 +20,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58x-hw-F5g">
-                        <rect key="frame" x="10" y="1" width="105" height="39.5"/>
+                        <rect key="frame" x="0.0" y="1" width="111.5" height="39.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVz-rb-20b">
-                        <rect key="frame" x="116" y="1" width="105" height="39.5"/>
+                        <rect key="frame" x="112.5" y="1" width="112" height="39.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nb-kv-pjs">
-                        <rect key="frame" x="222" y="1" width="105" height="39.5"/>
+                        <rect key="frame" x="225.5" y="1" width="111.5" height="39.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -49,11 +49,11 @@
                     <constraint firstItem="58x-hw-F5g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="SKP-dQ-EBc"/>
                     <constraint firstItem="tVz-rb-20b" firstAttribute="leading" secondItem="58x-hw-F5g" secondAttribute="trailing" constant="1" id="YGP-Zd-mdU"/>
                     <constraint firstItem="tVz-rb-20b" firstAttribute="width" secondItem="58x-hw-F5g" secondAttribute="width" id="YzS-vX-1Id"/>
-                    <constraint firstItem="58x-hw-F5g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dR3-cY-jzo"/>
+                    <constraint firstItem="58x-hw-F5g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="dR3-cY-jzo"/>
                     <constraint firstItem="tVz-rb-20b" firstAttribute="centerY" secondItem="58x-hw-F5g" secondAttribute="centerY" id="feb-g6-yad"/>
                     <constraint firstItem="1nb-kv-pjs" firstAttribute="centerY" secondItem="58x-hw-F5g" secondAttribute="centerY" id="jQe-iE-4bJ"/>
                     <constraint firstItem="tVz-rb-20b" firstAttribute="height" secondItem="58x-hw-F5g" secondAttribute="height" id="u5b-wy-haf"/>
-                    <constraint firstAttribute="trailing" secondItem="1nb-kv-pjs" secondAttribute="trailing" constant="10" id="v6B-Dw-4Zg"/>
+                    <constraint firstAttribute="trailing" secondItem="1nb-kv-pjs" secondAttribute="trailing" id="v6B-Dw-4Zg"/>
                     <constraint firstItem="1nb-kv-pjs" firstAttribute="leading" secondItem="tVz-rb-20b" secondAttribute="trailing" constant="1" id="vnD-fK-Erq"/>
                 </constraints>
             </tableViewCellContentView>
