@@ -305,9 +305,12 @@ static int page = 1;
         
         GPBetContentCell *betContentCell = [collectionView dequeueReusableCellWithReuseIdentifier:pageTwoIdentifier forIndexPath:indexPath];
         
-        GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
-        
-        [betContentCell setDataWithMode:oddsModel];
+        if (self.pageTwoDataArray.count > indexPath.row) {
+            
+            GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
+            
+            [betContentCell setDataWithMode:oddsModel];
+        }
         
         return betContentCell;
         
