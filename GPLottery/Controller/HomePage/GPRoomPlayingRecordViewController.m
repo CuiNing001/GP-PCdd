@@ -103,7 +103,7 @@
     [self loadUserDefaultsData];
     
     NSString *gameDetailLoc = [NSString stringWithFormat:@"%@user/1/playingRecord",kBaseLocation];
-    NSDictionary *paramDic = @{@"roomId":self.roomId};
+    NSDictionary *paramDic = @{@"roomId":self.roomId,@"page":page,@"rows":rows};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;

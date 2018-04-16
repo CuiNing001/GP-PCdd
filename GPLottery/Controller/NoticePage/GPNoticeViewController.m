@@ -11,6 +11,7 @@
 #import "GPNoticeModel.h"
 #import "GPNoticeCell.h"
 #import "GPNoticeDetailViewController.h"
+#import "UITabBar+RedCircle.h"
 
 static int touch = 0;  //  标记不同的tableview数据源
 @interface GPNoticeViewController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -40,6 +41,7 @@ static int touch = 0;  //  标记不同的tableview数据源
 
     [self loadSubView];
     [self loadData];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -129,13 +131,43 @@ static int touch = 0;  //  标记不同的tableview数据源
         }
     }];
     
+    
 }
+
 
 #pragma mark - 加载数据
 - (void)loadData{
     
     // 加载第一页公告数据
     [self loadNetDataWithPage:@"1" rows:@"10"];
+}
+
+#pragma mark - 获取notice读取状态
+- (void)loadNoticeStautsWithString:(NSString *)idStr model:(GPNoticeModel *)model{
+    
+    NSArray *idArray = [UserDefaults searchNoticeStauts];
+    NSLog(@"%@",idArray);
+    if (idArray.count==0) {  // 未存储数据所有消息为未读
+        
+        // 未存储过的消息为未读
+        [model setValue:@"0" forKey:@"status"];
+    }else{
+        // 判断idArray是否包含消息id
+        if ([idArray containsObject:idStr]) {
+            
+//            NSLog(@"包含%@",idStr);
+                // 已经存储过的消息为已读
+                [model setValue:@"1" forKey:@"status"];
+            }else{
+//            NSLog(@"不包含%@",idStr);
+                // 未存储过的消息为未读
+                [model setValue:@"0" forKey:@"status"];
+            }
+        
+        
+    }
+    
+    
 }
 
 #pragma mark - 加载公告数据
@@ -178,6 +210,8 @@ static int touch = 0;  //  标记不同的tableview数据源
                 
                 [noticeModel setValuesForKeysWithDictionary:dataDic];
                 
+                [weakSelf loadNoticeStautsWithString:[NSString stringWithFormat:@"%@",noticeModel.id] model:noticeModel];
+             
                 [weakSelf.noticeDataArr addObject:noticeModel];
             }
             [self.tableView reloadData];
@@ -338,6 +372,25 @@ static int touch = 0;  //  标记不同的tableview数据源
     
     GPNoticeModel *noticeModel = self.noticeDataArr[indexPath.row];
     
+    // 点击后修改读取状态
+    [noticeModel setValue:@"1" forKey:@"status"];
+    
+    // 存储读取状态
+    [UserDefaults upDataNoticeStautsWithMsgId:[NSString stringWithFormat:@"%@",noticeModel.id]];
+    
+    [self.tableView reloadData];
+    
+    // 通知公告消息提醒
+    if (touch == 0) {
+        
+        // 已读消息数量和所有公告消息数量相等时关闭小红点
+        NSArray *locaArr = [UserDefaults searchNoticeStauts];
+        if (locaArr.count == self.noticeDataArr.count) {
+            
+            // 隐藏小红点
+            [self.tabBarController.tabBar hideBadgeOnItemIndex:2];
+        }
+    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     GPNoticeDetailViewController *noticeDetailVC = [storyboard instantiateViewControllerWithIdentifier:@"noticeDetailVC"];

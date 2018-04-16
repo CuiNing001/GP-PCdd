@@ -39,6 +39,9 @@ static NSString *appKey = @"65ae5c02bed5052256476fc4";
     [UIApplication sharedApplication].idleTimerDisabled=YES;
     
     
+    
+    
+    
     return YES;
 }
 

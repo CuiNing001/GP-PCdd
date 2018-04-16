@@ -12,6 +12,7 @@
 #import "GPNormalPayViewController.h"
 #import "GPCoverView.h"
 #import "GPNormalAliPayViewController.h"
+#import "GPPayNoticeView.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -25,13 +26,14 @@ static NSInteger indexNum;
 
 @property (weak, nonatomic) IBOutlet UIImageView *indexZeroImg;  // index0图片
 @property (weak, nonatomic) IBOutlet UIImageView *indexOneImg;   // index1图片
-@property (strong, nonatomic) UIView   *coverView;            // 遮罩view
+@property (strong, nonatomic) GPPayNoticeView   *coverView;            // 遮罩view
 @property (strong, nonatomic) NSString *normalImageName;      // 单选框正常状态
 @property (strong, nonatomic) NSString *selectedImageName;    // 单选框选中状态
 
 @property (strong, nonatomic) GPInfoModel *infoModel;            // 本地数据
 @property (strong, nonatomic) MBProgressHUD *progressHUD;
 @property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *notice;
 
 
 @end
@@ -96,6 +98,48 @@ static NSInteger indexNum;
     
     self.token   = self.infoModel.token;
     
+}
+
+#pragma mark - 获取充值须知
+- (NSString *)loadPayNotice{
+    
+    NSString *payNoticeLoc = [NSString stringWithFormat:@"%@1/payNotice",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:payNoticeLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|PAY-NOTICE-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+//            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            // 获取充值须知
+            self.notice = [respondModel.data objectForKey:@"payNotice"];
+            
+            [self.coverView setDataWithString:self.notice];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+    
+    return self.notice;
 }
 
 #pragma mark - section one check-box 单选框点击事件
@@ -192,19 +236,23 @@ static NSInteger indexNum;
 #pragma mark - 遮罩层view
 - (void)initCoverView{
     
+    NSString *notice = [self loadPayNotice];
+    
     // 添加提醒遮罩
-    self.coverView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.coverView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3];
+    self.coverView = [[GPPayNoticeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
     [[UIApplication sharedApplication].keyWindow addSubview:self.coverView];  // 把遮罩层添加到keyWindow上
     
     // 添加点击事件
     UITapGestureRecognizer *hiddenTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenCover)];
     [self.coverView addGestureRecognizer:hiddenTap];
     
-    // 遮罩上添加图片
-    UIImageView *tipImage = [[UIImageView alloc]initWithFrame:self.view.frame];
-    tipImage.image = [UIImage imageNamed:@"pay_lunch@2x"];
-    [self.coverView addSubview:tipImage];
+    
+    
+//    // 遮罩上添加图片
+//    UIImageView *tipImage = [[UIImageView alloc]initWithFrame:self.view.frame];
+//    tipImage.image = [UIImage imageNamed:@"pay_lunch@2x"];
+//    [self.coverView addSubview:tipImage];
 }
 
 #pragma mark - 点击屏幕隐藏遮罩

@@ -82,6 +82,7 @@
         self.cellImageView.hidden = YES;
         JMSGTextContent *textContent = (JMSGTextContent *)message.content;
         NSString *msgText = textContent.text;
+        msgText=[msgText stringByReplacingOccurrencesOfString:@"<br/>"withString:@"\n"];
         self.textLab.text = msgText;
         
         
@@ -176,7 +177,7 @@
         
         JMSGTextContent *textContent = (JMSGTextContent *)model.content;
         NSString *msgText = textContent.text;
-        
+        msgText=[msgText stringByReplacingOccurrencesOfString:@"<br/>"withString:@"\n"];
         // 获取文字的宽高
         CGSize textSize             = [msgText boundingRectWithSize:CGSizeMake(200, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0]} context:nil].size;
         // 文字lable的宽度

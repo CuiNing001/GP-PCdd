@@ -372,6 +372,10 @@
  
         [self.msgDataArray addObject:message];
         [self.tableView reloadData];
+        
+        // 添加tableview向上滚动
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.msgDataArray.count-1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }else{
         
         NSLog(@"|SERVICE-VC|-|send-error|%@",error);
@@ -391,6 +395,10 @@
             [self.msgDataArray addObject:message];
             
             [self.tableView reloadData];
+            
+            // 添加tableview向上滚动
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.msgDataArray.count-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
         
     }else{  // 消息接收失败
@@ -402,7 +410,7 @@
 
 - (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages{
     
-    [ToastView toastViewWithMessage:@"离线消息" timer:3.0];
+//    [ToastView toastViewWithMessage:@"离线消息" timer:3.0];
 }
 
 #pragma mark - 获取图片
@@ -438,25 +446,34 @@
 #pragma mark - textview代理方法
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    textView.returnKeyType = UIReturnKeySend;
     if ([text isEqualToString:@"\n"]) {
         
-        // 发送消息
-        JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:self.inputTextView.text];
-        JMSGMessage *sendMessage = [JMSGMessage createSingleMessageWithContent:content username:kAdminUsername];
-        [JMSGMessage sendMessage:sendMessage];
-//        NSError *error;
-//        [self onSendMessageResponse:sendMessage error:error];
+        if ([self.inputTextView.text isEqualToString:@""]) {
+            
+            [ToastView toastViewWithMessage:@"请输入文字" timer:3.0];
+        }else{
+            
+            // 发送消息
+            JMSGTextContent *content = [[JMSGTextContent alloc]initWithText:self.inputTextView.text];
+            JMSGMessage *sendMessage = [JMSGMessage createSingleMessageWithContent:content username:kAdminUsername];
+            sendMessage.fromName = [NSString stringWithFormat:@"%@",self.infoModel.nickname];
+            [JMSGMessage sendMessage:sendMessage];
+            //        NSError *error;
+            //        [self onSendMessageResponse:sendMessage error:error];
+            
+            
+            // 发送成功后回收键盘，清空输入框
+            self.inputTextView.text = @"";
+            [textView resignFirstResponder];
+            // 取消键盘后还原view的frame
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                self.bottomHeight.constant = 0;
+            }];
+            return NO;
+        }
         
-        
-        // 发送成功后回收键盘，清空输入框
-        self.inputTextView.text = @"";
-        [textView resignFirstResponder];
-        // 取消键盘后还原view的frame
-        [UIView animateWithDuration:0.5 animations:^{
-
-            self.bottomHeight.constant = 0;
-        }];
-        return NO;
     }
     return YES;
 }
@@ -468,19 +485,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     JMSGMessage *sendMessage = self.msgDataArray[indexPath.row];
-    
-    if (sendMessage.contentType == kJMSGContentTypeText) {
         
-        return 120;
-    }else{
-        
-        return 200;
-    }
-    
-    
+        if (sendMessage.contentType == kJMSGContentTypeText) {
+            
+            return 120;
+        }else{
+            
+            return 200;
+            
+        }
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -509,7 +526,7 @@
         serviceSenderCell.backgroundColor = [UIColor clearColor];
         
         [serviceSenderCell setDataWithMessage:sendMessage];
-        
+
         return serviceSenderCell;
         
     }else{
@@ -534,6 +551,8 @@
         serviceReceiveCell.backgroundColor = [UIColor clearColor];
         
         [serviceReceiveCell setDataWithMessage:sendMessage];
+        
+        [serviceReceiveCell cellHeightWithModel:sendMessage];
         
         return serviceReceiveCell;
     }

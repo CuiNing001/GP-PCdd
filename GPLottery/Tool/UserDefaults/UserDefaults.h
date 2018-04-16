@@ -10,22 +10,30 @@
 
 @interface UserDefaults : NSObject
 
+/* ^^^^^^用户消息读取状态^^^^^^ */
 
-///*
-// * 存储应用第一次启动(首次启动添加公告弹窗)
-// */
-//+ (void)addLunchCount;
-//
-///*
-// * 点击公告确认修改次数
-// */
-//+ (void)changeLunchCount;
-//
-//
-///*
-// * 删除启动次数
-// */
-//+ (void)deleateLunchCount;
+/*
+ * @param:idArray:存储noticeMsg读取状态
+ */
++ (void)addNoticeStautsWithidArray:(NSMutableArray *)idArray;
+
+/*
+ * 获取noticeMsg读取状态
+ */
++ (NSMutableArray *)searchNoticeStauts;
+
+/*
+ * 修改idArray
+ */
++ (void)upDataNoticeStautsWithMsgId:(NSString *)msgId;
+
+/*
+ * 删除未读消息读取状态
+ */
++ (void)deleateNoticeStauts;
+
+
+/* ^^^^^^用户基础信息^^^^^^ */
 
 /*
  * 添加用户信息数据

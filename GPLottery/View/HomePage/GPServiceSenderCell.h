@@ -28,7 +28,8 @@
 - (void)setDataWithMessage:(JMSGMessage *)message;
 
 // 自定义高度
-- (void)cellHeightWithModel:(JMSGMessage *)messageModel;
+- (CGFloat)cellHeightWithModel:(JMSGMessage *)messageModel;
+
 
 @property (strong, nonatomic) GPInfoModel *infoModel;       // 本地数据
 

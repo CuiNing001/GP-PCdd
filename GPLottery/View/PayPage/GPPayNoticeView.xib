@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GPPayNoticeView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97f-Ma-l3c">
+                    <rect key="frame" x="164" y="20" width="46" height="647"/>
+                    <connections>
+                        <action selector="dissmissButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="gow-sW-SU5"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RR-8A-lR2">
+                    <rect key="frame" x="10" y="523" width="355" height="44"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay_bank.png" translatesAutoresizingMaskIntoConstraints="NO" id="yoI-Jb-wgv">
+                            <rect key="frame" x="40" y="11" width="35" height="22"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行转账" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9u-Yt-3PS">
+                            <rect key="frame" x="105" y="12" width="69.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="SQ6-ff-QIo"/>
+                        <constraint firstItem="r9u-Yt-3PS" firstAttribute="centerY" secondItem="0RR-8A-lR2" secondAttribute="centerY" id="XKI-9F-dZV"/>
+                        <constraint firstItem="yoI-Jb-wgv" firstAttribute="leading" secondItem="0RR-8A-lR2" secondAttribute="leading" constant="40" id="dOE-fN-UUv"/>
+                        <constraint firstItem="r9u-Yt-3PS" firstAttribute="leading" secondItem="yoI-Jb-wgv" secondAttribute="trailing" constant="30" id="oJO-Gc-JB6"/>
+                        <constraint firstItem="yoI-Jb-wgv" firstAttribute="centerY" secondItem="0RR-8A-lR2" secondAttribute="centerY" id="qJZ-HM-g2d"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay_cover_arrows.png" translatesAutoresizingMaskIntoConstraints="NO" id="aMh-pS-csK">
+                    <rect key="frame" x="174.5" y="473" width="26" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="dlX-Wq-msP"/>
+                        <constraint firstAttribute="width" constant="26" id="h0x-nR-9M2"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcD-iz-uN5">
+                    <rect key="frame" x="10" y="273" width="355" height="200"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线下银行转账有惊喜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4I-Cf-sWt">
+                            <rect key="frame" x="108" y="10" width="138" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hob-zR-qx4">
+                            <rect key="frame" x="20" y="38" width="315" height="1"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Wr3-QM-s1F"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brx-4h-ecc">
+                            <rect key="frame" x="20" y="49" width="315" height="141"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </webView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.13725490196078433" green="0.77647058823529413" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="brx-4h-ecc" secondAttribute="bottom" constant="10" id="3ec-FK-vK2"/>
+                        <constraint firstAttribute="trailing" secondItem="hob-zR-qx4" secondAttribute="trailing" constant="20" id="5x5-pr-y6n"/>
+                        <constraint firstItem="hob-zR-qx4" firstAttribute="top" secondItem="e4I-Cf-sWt" secondAttribute="bottom" constant="10" id="F2k-ER-RAk"/>
+                        <constraint firstItem="brx-4h-ecc" firstAttribute="top" secondItem="hob-zR-qx4" secondAttribute="bottom" constant="10" id="I6v-hT-VFx"/>
+                        <constraint firstItem="e4I-Cf-sWt" firstAttribute="top" secondItem="LcD-iz-uN5" secondAttribute="top" constant="10" id="LjM-UH-A9d"/>
+                        <constraint firstItem="brx-4h-ecc" firstAttribute="leading" secondItem="LcD-iz-uN5" secondAttribute="leading" constant="20" id="UEF-bD-dIF"/>
+                        <constraint firstItem="e4I-Cf-sWt" firstAttribute="centerX" secondItem="LcD-iz-uN5" secondAttribute="centerX" id="cG2-VG-M5F"/>
+                        <constraint firstAttribute="trailing" secondItem="brx-4h-ecc" secondAttribute="trailing" constant="20" id="cqo-p6-lg1"/>
+                        <constraint firstItem="hob-zR-qx4" firstAttribute="leading" secondItem="LcD-iz-uN5" secondAttribute="leading" constant="20" id="jO5-Cz-DsI"/>
+                        <constraint firstAttribute="height" constant="200" id="uxe-dS-YuG"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0RR-8A-lR2" secondAttribute="trailing" constant="10" id="27Z-8J-iSN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LcD-iz-uN5" secondAttribute="trailing" constant="10" id="A6m-OF-zXB"/>
+                <constraint firstItem="97f-Ma-l3c" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CZD-hb-9Ne"/>
+                <constraint firstItem="0RR-8A-lR2" firstAttribute="top" secondItem="aMh-pS-csK" secondAttribute="bottom" constant="30" id="FRU-ah-gVz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="97f-Ma-l3c" secondAttribute="bottom" id="H5i-8H-cp5"/>
+                <constraint firstItem="LcD-iz-uN5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="NEk-z2-GW5"/>
+                <constraint firstItem="0RR-8A-lR2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="OPZ-Kk-f7z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0RR-8A-lR2" secondAttribute="bottom" constant="100" id="hr4-gs-jby"/>
+                <constraint firstItem="97f-Ma-l3c" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="164" id="i3L-Fl-ftp"/>
+                <constraint firstItem="aMh-pS-csK" firstAttribute="top" secondItem="LcD-iz-uN5" secondAttribute="bottom" id="jHX-Ca-05t"/>
+                <constraint firstItem="aMh-pS-csK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qh1-tB-j44"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="97f-Ma-l3c" secondAttribute="trailing" constant="165" id="sCT-f6-aNZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="noticeViewContentHeight" destination="uxe-dS-YuG" id="4oS-mq-mxF"/>
+                <outlet property="webView" destination="brx-4h-ecc" id="siV-Ce-WmZ"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pay_bank.png" width="35" height="22"/>
+        <image name="pay_cover_arrows.png" width="52" height="40"/>
+    </resources>
+</document>

@@ -10,35 +10,51 @@
 
 @implementation UserDefaults
 
+/*
+ * @param:idArray:存储noticeMsg读取状态
+ */
++ (void)addNoticeStautsWithidArray:(NSMutableArray *)idArray{
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:idArray forKey:@"status"];
+    [userDefault synchronize];
+}
 
-///*
-// * 存储页面启动次数
-// */
-//+ (void)addLunchCount{
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    [userDefault setObject:@"1" forKey:@"count"];
-//    [userDefault synchronize];
-//}
-//
-///*
-// * 点击公告确认修改次数
-// */
-//+ (void)changeLunchCount{
-//
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    [userDefault setObject:@"2" forKey:@"count"];
-//    [userDefault synchronize];
-//}
-//
-///*
-// * 删除启动次数
-// */
-//+ (void)deleateLunchCount{
-//
-//    NSUserDefaults *userDefale = [NSUserDefaults standardUserDefaults];
-//    [userDefale removeObjectForKey:@"count"];
-//    [userDefale synchronize];
-//}
+/*
+ * 获取noticeMsg读取状态
+ */
++ (NSArray *)searchNoticeStauts{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *newIdArray = [NSMutableArray arrayWithArray:[userDefaults objectForKey:@"status"]];
+    // 数组去重
+    NSSet *set = [NSSet setWithArray:newIdArray];
+    NSArray *setArr = [set allObjects];
+    
+    return setArr;
+    
+}
+
+/*
+ * 修改idArray
+ */
++ (void)upDataNoticeStautsWithMsgId:(NSString *)msgId{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *newIdArray = [NSMutableArray arrayWithArray:[userDefaults objectForKey:@"status"]];
+    [newIdArray addObject:msgId];
+    [userDefaults setObject:newIdArray forKey:@"status"];
+    [userDefaults synchronize];
+}
+
+/*
+ * 删除未读消息读取状态
+ */
++ (void)deleateNoticeStauts{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"status"];
+}
 
 /*
  * 添加数据

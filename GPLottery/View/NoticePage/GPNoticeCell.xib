@@ -34,7 +34,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice_statuse_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="HeR-8w-V2A">
                         <rect key="frame" x="10" y="27.5" width="12" height="12"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="7" id="GeM-Me-PvO"/>
                             <constraint firstAttribute="height" constant="12" id="HKw-RK-t2a"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="7" id="Hat-Qv-gDM"/>
                             <constraint firstAttribute="width" constant="12" id="p6S-n3-Ll1"/>
                         </constraints>
                     </imageView>

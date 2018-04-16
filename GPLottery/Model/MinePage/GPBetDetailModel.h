@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSString *title;        // 标题
 @property (strong, nonatomic) NSString *openTime;     // 开奖时间
 @property (strong, nonatomic) NSString *openType;     // 中奖玩法
+@property (strong, nonatomic) NSString *expect;       // 游戏期数
 
 @end

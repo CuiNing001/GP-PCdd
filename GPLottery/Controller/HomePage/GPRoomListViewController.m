@@ -11,6 +11,7 @@
 #import "GPRoomListCell.h"
 #import "GPRoomViewController.h"
 #import "GPWalletModel.h"
+#import "GPUserStatusModel.h"
 
 @interface GPRoomListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray     *dataArray;
 @property (strong, nonatomic) NSMutableArray     *imageArray;   // 背景图片数组
 @property (strong, nonatomic) NSString           *userMoney;    // 用户余额
+@property (strong, nonatomic) GPUserStatusModel  *userStatusModel;   // 用户公共信息
 
 @end
 
@@ -52,6 +54,9 @@
     
     // 获取房间数据
     [self loadNetData];
+    
+    // 更新用户等级
+    [self loadUserStatus];
     
     // 获取用户余额
     [self loadUserMoney];
@@ -86,6 +91,58 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [self.progressHUD showAnimated:YES];
     });
+}
+
+#pragma mark - 获取用户公共信息
+/*
+ * @param phoneStatus:手机绑定状态  // 0:未绑定，1:已绑定
+ * @param luckTurntableStatus:转盘抽奖次数
+ * @param userExchange:提现密码绑定状态
+ * @param bankStatus:银行卡绑定状态
+ */
+- (void)loadUserStatus{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *userStatusLoc = [NSString stringWithFormat:@"%@user/1/userCommon",kBaseLocation];
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:userStatusLoc paramDic:nil token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|HOME-VC-WIDTHRAW|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            // [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            
+            weakSelf.userStatusModel = [GPUserStatusModel new];
+            
+            [weakSelf.userStatusModel setValuesForKeysWithDictionary:respondModel.data];
+            
+            // 更新用户昵称
+            [UserDefaults upDataWithLevel:weakSelf.userStatusModel.level];
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接超时，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - 加载网络数据

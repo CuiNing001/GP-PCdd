@@ -19,7 +19,7 @@
     
     self.noticeLab.text = noticeModel.title;
     self.noticeTimeLab.text = noticeModel.createDate;
-    if ([noticeModel.status isEqualToString:@"0"]) {
+    if (noticeModel.status.integerValue == 0) {
         self.noticeStatusImageView.hidden = NO;     // 未读
     }else{
         self.noticeStatusImageView.hidden = YES;    // 已读

@@ -30,6 +30,7 @@
 #import "GPWalletModel.h"
 #import "GPAlertNoticeView.h"
 #import "GPNoticeModel.h"
+#import "UITabBar+RedCircle.h"
 
 static int errorState = 1;  // 数据连接状态
 static int touch = 0;   // 右侧更多按钮点击次数
@@ -71,6 +72,8 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 @property (strong, nonatomic) NSString *noticeDetailStr;   // 公告详情地址
 @property (strong, nonatomic) NSMutableArray *bannerLocArray; // 轮播图地址
 
+@property (strong, nonatomic) NSMutableArray *noticeDataArr;   // 公告数据
+
 @end
 
 @implementation GPHomeViewController
@@ -80,7 +83,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
    
     [self loadData];
     [self loadSubView];
- 
+    
 }
 
 
@@ -170,11 +173,77 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     }
 }
 
+#pragma mark - 加载公告数据
+- (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *noticeLoc = [NSString stringWithFormat:@"%@notice/1/allNotice",kBaseLocation];
+    
+    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:noticeLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|NOTICE-VC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        NSString *code = [NSString stringWithFormat:@"%@",[responserObject objectForKey:@"code"]];
+        NSString *msg = [responserObject objectForKey:@"msg"];
+        
+        if (code.integerValue == 9200) {
+            
+            NSMutableArray *dataArr = [responserObject objectForKey:@"data"];
+            
+            for (NSDictionary *dataDic in dataArr) {
+                
+                GPNoticeModel *noticeModel = [GPNoticeModel new];
+                
+                [noticeModel setValuesForKeysWithDictionary:dataDic];
+                
+                [weakSelf.noticeDataArr addObject:noticeModel];
+            }
+            
+            // 已读消息数量和所有公告消息数量相等时关闭小红点
+            NSArray *locaArr = [UserDefaults searchNoticeStauts];
+            if (locaArr.count != self.noticeDataArr.count) {
+                
+                // 显示小红点
+                [self.tabBarController.tabBar showBadgeOnItemIndex:2];
+            }
+            
+        }else{
+            
+            [ToastView toastViewWithMessage:msg timer:3.0];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
+
+}
+
 #pragma mark - 页面即将出现
 -(void)viewWillAppear:(BOOL)animated{
     
     // 加载本地数据
     [self loadUserDefaultsData];
+    
+    // 已登录状态加载公告数据判断是否添加提示小红点
+    if (self.token.length>0) {
+        
+        [self loadNetDataWithPage:@"1" rows:@"10"];
+    }
+
+    
     
     // 验证token
 //    [self checkToken];
@@ -433,6 +502,9 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     self.isLogin = self.infoModel.islogin;
     
     [self loadNetData];
+    
+    // 获取用户信息
+    [self loadUserStatus];
 }
 
 #pragma mark - 充值
@@ -513,7 +585,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         
         if (respondModel.code.integerValue == 9200) {
             
-            //            [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
+            // [ToastView toastViewWithMessage:respondModel.msg timer:1.5];
             
             self.userStatusModel = [GPUserStatusModel new];
             
@@ -1118,6 +1190,15 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
         self.bannerLocArray = [NSMutableArray array];
     }
     return _bannerLocArray;
+}
+
+- (NSMutableArray *)noticeDataArr{
+    
+    if (!_noticeDataArr) {
+        
+        self.noticeDataArr = [NSMutableArray array];
+    }
+    return _noticeDataArr;
 }
 
 - (void)didReceiveMemoryWarning {

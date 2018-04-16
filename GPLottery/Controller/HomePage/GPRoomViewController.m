@@ -30,6 +30,7 @@
 #import "GPRoomPlayingRecordViewController.h"
 #import "GPRefreshModel.h"
 #import "GPMsgNoticeCell.h"
+#import "GPBetDetailModel.h"
 
 static int isShow = 0; // 历史开奖记录view
 static int minute;     // 倒计时分钟
@@ -38,6 +39,7 @@ static int timerSecond;  // 倒计时秒数
 static int itemAlertTouch = 0; // 更多按钮点击次数
 static int scoreViewX; // 分数初始X值
 static int scoreViewY; // 分数初始Y值
+static int mathBetMoney;  // 当期投注输赢金额
 
 @interface GPRoomViewController ()<UITextViewDelegate,JMSGConversationDelegate,JMessageDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -95,6 +97,12 @@ static int scoreViewY; // 分数初始Y值
 @property (strong, nonatomic) GPCoverView *coverView;  // 导航遮罩层
 @property (strong, nonatomic) NSString *roomCoverCount; // 首页lunch次数
 @property (strong, nonatomic) NSString *betCoverCount; // 首页lunch次数
+
+@property (strong, nonatomic) NSString *msgMinAmount;  // 最小下注金额(进入房间提醒消息)
+@property (strong, nonatomic) NSString *msgMaxAmount;  // 最大下注金额(进入房间提醒消息)
+@property (strong, nonatomic) NSString *msgRoundBetAmount; // 总注(进入房间提醒消息)
+
+@property (strong, nonatomic) NSString *flowBetViewExcept;  // 跟投期数
 
 @end
 
@@ -452,9 +460,22 @@ static int scoreViewY; // 分数初始Y值
     // 确定跟投
     self.betCopyView.makeSuerBtnBlock = ^{
         
-        [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
-        
-        weakSelf.betCopyView.hidden = YES;
+        if ([weakSelf.timerLab.text isEqualToString:@"封盘中"]) {
+            // 判断当前是否封盘
+            [ToastView toastViewWithMessage:@"当期已封盘，请重新投注" timer:3.0];
+            
+        }else{
+            // 判断当前期数是否过期
+            if (weakSelf.flowBetViewExcept.integerValue == self.expectLab.text.integerValue) {
+                
+                [weakSelf makeSureBetWithAmount:weakSelf.betAmountStr];
+                
+                weakSelf.betCopyView.hidden = YES;
+            }else{
+                
+                [ToastView toastViewWithMessage:@"当前期数已过期" timer:3.0];
+            }
+        }
     };
     
     // 取消跟投
@@ -804,6 +825,26 @@ static int scoreViewY; // 分数初始Y值
     }
     
     
+    
+    if (self.productIdStr.integerValue == 1) { // 北京28
+        
+        
+        
+        if (timerSecond>30) {
+            
+            // 获取房间最小最大下注金额发送提醒消息
+            [self roomMinAndMaxAmount];
+        }
+        
+    }else if (self.productIdStr.integerValue == 2){ // 加拿大28
+    
+        
+        if (timerSecond>15) {
+            
+            // 获取房间最小最大下注金额发送提醒消息
+            [self roomMinAndMaxAmount];
+        }
+    }
 }
 
 #pragma mark - 倒计时结束刷新数据
@@ -833,13 +874,18 @@ static int scoreViewY; // 分数初始Y值
                 timerSecond = refreshModel.openTime.intValue;
                 // 封盘结束修改开奖期数
                 weakSelf.expectLab.text = [NSString stringWithFormat:@"%@",refreshModel.expect];
-                self.historyExpectLab.text = [NSString stringWithFormat:@"%d",refreshModel.expect.intValue-1];
-                self.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
-                self.historyCodeTextLab.text = [NSString stringWithFormat:@"(类型)"];
+                weakSelf.historyExpectLab.text = [NSString stringWithFormat:@"%d",refreshModel.expect.intValue-1];
+                weakSelf.historyCodeLab.text = [NSString stringWithFormat:@"?+?+?"];
+                weakSelf.historyCodeTextLab.text = [NSString stringWithFormat:@"(类型)"];
+                
+                if (timerSecond>0) {
+                    // 发送开盘提醒消息
+                    [weakSelf roomMinAndMaxAmount];
+                }
             }else{
                 
-                [self.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
-                self.timerLab.text = @"关闭算账";
+                [weakSelf.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
+                weakSelf.timerLab.text = @"关闭算账";
             }
             
         }else{
@@ -851,6 +897,52 @@ static int scoreViewY; // 分数初始Y值
         
     }];
     
+}
+
+#pragma mark - 获取房间最小下注和最大下注金额
+- (void)roomMinAndMaxAmount{
+    
+    [self.progressHUD showAnimated:YES];
+    
+    [self loadUserDefaultsData];
+    
+    NSString *betLowstMoneyLoc = [NSString stringWithFormat:@"%@/index/1/betLowestMoneyNum",kPlayBaseLocation];
+    
+    NSDictionary *paramDic = @{@"playingMerchantId":self.playID};
+    
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:betLowstMoneyLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        NSLog(@"|MIN-MAX-AMOUNT-ROOMVC|success:%@",responserObject);
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        GPRespondModel *respondModel = [GPRespondModel new];
+        
+        [respondModel setValuesForKeysWithDictionary:responserObject];
+        
+        if (respondModel.code.integerValue == 9200) {
+            
+            // 最大最小下注金额赋值
+            weakSelf.msgMinAmount = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"minAmount"]];
+            weakSelf.msgMaxAmount = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"maxAmount"]];
+            weakSelf.msgRoundBetAmount = [NSString stringWithFormat:@"%@",[respondModel.data objectForKey:@"roundBetAmount"]];
+                
+            [weakSelf addBetingNoticeMessage];
+            
+        }else{
+            
+//            [ToastView toastViewWithMessage:respondModel.msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+//        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - 倒计时60秒时添加提醒消息
@@ -881,6 +973,65 @@ static int scoreViewY; // 分数初始Y值
     // 添加tableview向上滚动
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
     [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+#pragma mark - 进入房间时和封盘结束时提醒消息
+- (void)addBetingNoticeMessage{
+    
+    if (self.playID.integerValue == 1 || self.playID.integerValue == 4) {
+        
+        self.msgRoundBetAmount = @"80000";
+        
+    }else if (self.playID.integerValue == 2 || self.playID.integerValue == 5){
+        
+        self.msgRoundBetAmount = @"100000";
+        
+    }else if (self.playID.integerValue == 3 || self.playID.integerValue == 6){
+        
+        self.msgRoundBetAmount = @"100000";
+    }
+    
+    NSString *noticeStr = [NSString stringWithFormat:@" 【%@期】单住%@起,%@封顶,总注%@封顶\n☆☆现在可以下注☆☆  ",self.expectLab.text,self.msgMinAmount,self.msgMaxAmount,self.msgRoundBetAmount];
+    NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
+    GPMessageModel *messageModel = [GPMessageModel new];
+    [messageModel setValuesForKeysWithDictionary:noticeDic];
+    [self.receiveMessageArray addObject:messageModel];
+    [self.tableView reloadData];
+    
+    // 添加tableview向上滚动
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+#pragma mark - 停售提醒消息
+- (void)addEndBetMessage{
+    
+    if (self.productIdStr.integerValue == 1) { // 北京28
+        
+        NSString *noticeStr = [NSString stringWithFormat:@"各位老板，本游戏现在处于停售阶段，想要继续娱乐的老板请到隔壁加拿大28房间娱乐"];
+        NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
+        GPMessageModel *messageModel = [GPMessageModel new];
+        [messageModel setValuesForKeysWithDictionary:noticeDic];
+        [self.receiveMessageArray addObject:messageModel];
+        [self.tableView reloadData];
+        
+        // 添加tableview向上滚动
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        
+    }else if (self.productIdStr.integerValue == 2){ // 加拿大28
+        
+        NSString *noticeStr = [NSString stringWithFormat:@"各位老板，本游戏现在处于停售阶段，想要继续娱乐的老板请到隔壁北京28房间娱乐"];
+        NSDictionary *noticeDic = @{@"expect":noticeStr,@"type":@"9"};
+        GPMessageModel *messageModel = [GPMessageModel new];
+        [messageModel setValuesForKeysWithDictionary:noticeDic];
+        [self.receiveMessageArray addObject:messageModel];
+        [self.tableView reloadData];
+        
+        // 添加tableview向上滚动
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 #pragma mark - 倒计时
@@ -1237,10 +1388,15 @@ static int scoreViewY; // 分数初始Y值
         [self.historyDataArray removeObject:self.historyDataArray.lastObject];
         [self.historyTableView reloadData];
         
+        // 计算当期盈亏
+        [self mathBetMoney];
+        
     }else if (messageModel.type.integerValue == 5){  // 封盘
         
         [self.enterTimer setFireDate:[NSDate distantFuture]]; // 封盘关闭定时器
         self.timerLab.text = @"关闭算账";
+        // 发送停售提醒
+        [self addEndBetMessage];
     }else if (messageModel.type.integerValue == 4){  // 开盘
         
         // 开启定时器
@@ -1254,12 +1410,11 @@ static int scoreViewY; // 分数初始Y值
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.receiveMessageArray.count-1 inSection:0];
     [self.tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
-
     NSLog(@"========^receive^text^^========%@",msgText);
         
     }else{
         
-        NSLog(@"^^^^^^^^^其他聊天室消息^^^^^^^^^%@",[messages.lastObject.target roomID]);
+//        NSLog(@"^^^^^^^^^其他聊天室消息^^^^^^^^^%@",[messages.lastObject.target roomID]);
     }
 }
 
@@ -1297,7 +1452,6 @@ static int scoreViewY; // 分数初始Y值
             // 删除本地数据
             [UserDefaults deleateData];
             
-            
         }];
         
         [alertVC addAction:action];
@@ -1317,42 +1471,151 @@ static int scoreViewY; // 分数初始Y值
         
         int score = user.avatar.intValue-self.moneyLab.text.intValue;
         
+        // 更新余额
+        self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
+        
         NSLog(@"|^^^^^^^^^^^^^^^SCORE^^^^^^^^^^^^^^^^^|%d",score);
         
-        // score>0表示赢
-        if (score>0) {
-            NSLog(@"|^^^^^^^^^^^^^^^赢SCORE^^^^^^^^^^^^^^^^^|%d",score);
-            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
-            self.scoreView.hidden = NO;
-            CGPoint centerPoint = self.view.center;
-            CGMutablePathRef path = CGPathCreateMutable();
-            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
-            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
-            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-            animation.path = path;
-            animation.duration = 3.0;
-            [self.scoreView.layer addAnimation:animation forKey:@"position"];
-            
-            self.topScoreLab.text = [NSString stringWithFormat:@"↑赢%d",score];
-            self.topScoreLab.textColor = [UIColor redColor];
-        }else{
-            NSLog(@"|^^^^^^^^^^^^^^^输SCORE^^^^^^^^^^^^^^^^^|%d",score);
-            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
-            self.scoreView.hidden = NO;
-            CGPoint centerPoint = self.view.center;
-            CGMutablePathRef path = CGPathCreateMutable();
-            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
-            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
-            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-            animation.path = path;
-            animation.duration = 3.0;
-            [self.scoreView.layer addAnimation:animation forKey:@"position"];
-            self.topScoreLab.text = [NSString stringWithFormat:@"↓亏%d",score];
-            self.topScoreLab.textColor = [UIColor greenColor];
-        }
+//        // score>0表示赢
+//        if (score>0) {
+//            NSLog(@"|^^^^^^^^^^^^^^^赢SCORE^^^^^^^^^^^^^^^^^|%d",score);
+//            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
+//            self.scoreView.hidden = NO;
+//            CGPoint centerPoint = self.view.center;
+//            CGMutablePathRef path = CGPathCreateMutable();
+//            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
+//            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
+//            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+//            animation.path = path;
+//            animation.duration = 3.0;
+//            [self.scoreView.layer addAnimation:animation forKey:@"position"];
+//
+//            self.topScoreLab.text = [NSString stringWithFormat:@"↑赢%d",score];
+//            self.topScoreLab.textColor = [UIColor redColor];
+//        }else{
+//            NSLog(@"|^^^^^^^^^^^^^^^输SCORE^^^^^^^^^^^^^^^^^|%d",score);
+//            self.moneyLab.text = [NSString stringWithFormat:@"%@",user.avatar];
+//            self.scoreView.hidden = NO;
+//            CGPoint centerPoint = self.view.center;
+//            CGMutablePathRef path = CGPathCreateMutable();
+//            CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);
+//            CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);///添加一个控制点和结束点
+//            CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+//            animation.path = path;
+//            animation.duration = 3.0;
+//            [self.scoreView.layer addAnimation:animation forKey:@"position"];
+//            self.topScoreLab.text = [NSString stringWithFormat:@"↓亏%d",score];
+//            self.topScoreLab.textColor = [UIColor greenColor];
+//        }
     }
+ 
+}
+
+#pragma mark - 查看游戏记录计算输赢金额
+- (void)mathBetMoney{
     
+    [self.progressHUD showAnimated:YES];
     
+    [self loadUserDefaultsData];
+    
+    NSString *gameDetailLoc = [NSString stringWithFormat:@"%@user/1/playingRecord",kBaseLocation];
+    NSDictionary *paramDic = @{@"roomId":self.roomIdStr,@"page":@"1",@"rows":@"10"};
+    // 请求登陆接口
+    __weak typeof(self)weakSelf = self;
+    [AFNetManager requestPOSTWithURLStr:gameDetailLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        NSString *code = [NSString stringWithFormat:@"%@",[responserObject objectForKey:@"code"]];
+        NSString *msg = [responserObject objectForKey:@"msg"];
+        NSMutableArray *gameArray = [responserObject objectForKey:@"data"];
+        
+        if (code.integerValue == 9200) {
+            
+            // 获取当期投注
+            NSMutableArray *mathArr = [NSMutableArray array];
+            for (NSDictionary *dataDic in gameArray) {
+                
+                GPBetDetailModel *detaileModel = [[GPBetDetailModel alloc]init];
+                [detaileModel setValuesForKeysWithDictionary:dataDic];
+                
+                if (detaileModel.expect.integerValue == self.historyExpectLab.text.integerValue) {
+                    
+                    [mathArr addObject:detaileModel];
+                }
+            }
+            
+            // 计算当期投注金额
+            if (mathArr.count>0) {
+                
+                mathBetMoney = 0;
+                
+                for (GPBetDetailModel *model in mathArr) {
+                    
+                    mathBetMoney += (model.rewardNum.intValue-model.betAmout.intValue);
+                }
+                NSLog(@"=========当期盈亏===========%d",mathBetMoney);
+                
+                if (mathBetMoney>0) {  // 赢
+                    
+                    // 添加动画
+                    self.scoreView.hidden = NO;
+                    self.topScoreLab.text = @"上期赢";
+                    self.topScoreLab.font = [UIFont systemFontOfSize:20];
+                    CGPoint centerPoint = self.view.center;
+                    CGMutablePathRef path = CGPathCreateMutable(); // 可变路径
+                    CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);  // 设置起点
+                    CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);// 添加弧度路径
+                    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"]; // 设置动画
+                    animation.path = path;  // 添加路径
+                    animation.duration = 3.0; // 动画时长
+                    [self.scoreView.layer addAnimation:animation forKey:@"position"];  // 添加到view
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        self.topScoreLab.font = [UIFont systemFontOfSize:13];
+                        self.topScoreLab.text = [NSString stringWithFormat:@"↑%d",mathBetMoney];  // 修改金额
+                    });
+     
+                }else if (mathBetMoney<0){  // 亏
+                    
+                    // 添加动画
+                    self.scoreView.hidden = NO;
+                    self.topScoreLab.text = @"上期亏";
+                    self.topScoreLab.font = [UIFont systemFontOfSize:20];
+                    CGPoint centerPoint = self.view.center;
+                    CGMutablePathRef path = CGPathCreateMutable(); // 可变路径
+                    CGPathMoveToPoint(path, nil, centerPoint.x, centerPoint.y);  // 设置起点
+                    CGPathAddQuadCurveToPoint(path, nil, centerPoint.x+100, centerPoint.y-100, scoreViewX, scoreViewY);// 添加弧度路径
+                    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"]; // 设置动画
+                    animation.path = path;  // 添加路径
+                    animation.duration = 3.0; // 动画时长
+                    [self.scoreView.layer addAnimation:animation forKey:@"position"];  // 添加到view
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        self.topScoreLab.font = [UIFont systemFontOfSize:13];
+                        self.topScoreLab.text = [NSString stringWithFormat:@"↓%d",mathBetMoney];  // 修改金额
+                    });
+                    
+                    
+                }else{  // 平
+                    
+                    self.scoreView.hidden = YES;
+                }
+            }
+            
+            [weakSelf.tableView reloadData];
+        }else{
+            
+            [ToastView toastViewWithMessage:msg timer:2.5];
+        }
+        
+    } enError:^(NSError *error) {
+        
+        [weakSelf.progressHUD hideAnimated:YES];
+        
+        [ToastView toastViewWithMessage:@"数据连接出错，请稍后再试" timer:3.0];
+        
+    }];
 }
 
 #pragma mark - 赔率说明
@@ -1679,7 +1942,7 @@ static int scoreViewY; // 分数初始Y值
 
         GPMessageModel *messageModel = self.receiveMessageArray[indexPath.row];
 
-        if (![messageModel.sendType isEqualToString:@"sender"]) {
+//        if (![messageModel.sendType isEqualToString:@"sender"]) {
 
             if (messageModel.type.integerValue ==1) {
 
@@ -1690,16 +1953,17 @@ static int scoreViewY; // 分数初始Y值
 
                     self.betCopyView.hidden = NO;
                     self.playingType = messageModel.playingType;
-                    self.betCopyView.betInfoArray = @[messageModel.level,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
+                    self.betCopyView.betInfoArray = @[messageModel.name,messageModel.expect,messageModel.playingType,messageModel.betAmount].mutableCopy;
                     self.playingId = messageModel.playingId;
                     self.betAmountStr = [NSString stringWithFormat:@"%@",messageModel.betAmount];
-
+                    
                     [self.betCopyView.tableView reloadData];
-
+                    // 保存当前跟投期数
+                    self.flowBetViewExcept = messageModel.expect;
 
                 }
             }
-        }
+//        }
     }
     
 }

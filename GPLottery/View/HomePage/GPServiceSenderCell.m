@@ -96,9 +96,11 @@
 }
 
 // 自定义高度
-- (void)cellHeightWithModel:(JMSGMessage *)messageModel{
+- (CGFloat)cellHeightWithModel:(JMSGMessage *)messageModel{
     
     [self layoutIfNeeded];
+    
+    CGFloat cellHeight;
     
     if (messageModel.contentType == kJMSGContentTypeText) {
         
@@ -112,6 +114,8 @@
         self.contentWidth.constant  = bubbleViewW;
         // 修改contentview的高
         self.contentHeight.constant = bubbleViewH;
+        
+        cellHeight = bubbleViewH+10;
     }else{
         // 获取图片略缩图size
         JMSGImageContent *imageContent = (JMSGImageContent *)messageModel.content;
@@ -135,7 +139,10 @@
         self.contentWidth.constant  = retSize.width;
         self.contentHeight.constant = retSize.height;
         
+        cellHeight = retSize.height;
     }
+    
+    return cellHeight;
 }
 
 #pragma mark - 设置背景图片的约束
