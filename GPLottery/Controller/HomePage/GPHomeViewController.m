@@ -84,7 +84,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     [self loadData];
     [self loadSubView];
     
-    [UserDefaults deleateNoticeStauts];
+//    [UserDefaults deleateNoticeStauts];
 }
 
 
