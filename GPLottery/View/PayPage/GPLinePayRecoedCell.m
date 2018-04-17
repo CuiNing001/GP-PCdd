@@ -37,21 +37,21 @@
         self.statusLab.text = @"拒绝";
     }
     // 银行
-    self.bankNameLab.text = model.bankName;
+    self.bankNameLab.text = [NSString stringWithFormat:@"%@",model.bankName];
     // 收款人
-    self.receiveAccountNameLab.text = model.receiveAccountName;
+    self.receiveAccountNameLab.text = [NSString stringWithFormat:@"%@",model.receiveAccountName];
     // 开户行
-    self.receiveBankAddressLab.text = model.receiveBankAddress;
+    self.receiveBankAddressLab.text = [NSString stringWithFormat:@"%@",model.receiveBankAddress];
     // 收款账号
-    self.receiveBankCardLab.text = model.receiveBankCardAccount;
+    self.receiveBankCardLab.text = [NSString stringWithFormat:@"%@",model.receiveBankCardAccount];
     // 存款人姓名
-    self.accountNameLab.text = model.accountName;
+    self.accountNameLab.text = [NSString stringWithFormat:@"%@",model.accountName];
     // 存款人卡号
     self.bankCardAccountLab.text = [NSString stringWithFormat:@"***************%@",model.bankCardAccount];
     // 支付金额
-    self.amountLab.text = model.amount;
+    self.amountLab.text = [NSString stringWithFormat:@"%@",model.amount];
     // 存款时间
-    self.dateTimeLab.text = model.dateTime;
+    self.dateTimeLab.text = [NSString stringWithFormat:@"%@",model.dateTime];
     // 存款方式
     // 转账类型
     if (model.type.integerValue == 1) {

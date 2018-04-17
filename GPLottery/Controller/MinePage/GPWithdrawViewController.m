@@ -115,7 +115,7 @@
     [self.progressHUD showAnimated:YES];
     
     NSString *makeSureWithdrawLoc = [NSString stringWithFormat:@"%@user/1/withdrawIng",kBaseLocation];
-    NSDictionary *paramDic = @{@"exchangePassword":self.moneyTF.text,@"amount":self.passwordTF.text};
+    NSDictionary *paramDic = @{@"exchangePassword":self.passwordTF.text,@"amount":self.moneyTF.text};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
@@ -131,9 +131,7 @@
         
         if (respondModel.code.integerValue == 9200) {
             
-//            [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
-
-            [self.navigationController popViewControllerAnimated:YES];
+            [self alertNotice];
         }else{
             
             [ToastView toastViewWithMessage:respondModel.msg timer:3.0];
@@ -197,6 +195,21 @@
     self.bankNameLab.text        = model.bankName;         // 银行名称
     [self.instructionsWebView loadHTMLString:model.withdrawExplain baseURL:nil]; // 提现须知
     [self.remindWebView loadHTMLString:model.withdrawRemind baseURL:nil];        // 提醒
+}
+
+#pragma mark - 提现成功提醒
+- (void)alertNotice{
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提醒" message:@"提现申请已提交" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [alertVC addAction:action];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

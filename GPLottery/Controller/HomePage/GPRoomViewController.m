@@ -768,7 +768,7 @@ static int mathBetMoney;  // 当期投注输赢金额
 #pragma mark - 房间数据赋值
 - (void)updataForRoomContent{
     
-    self.moneyLab.text = [NSString stringWithFormat:@"%@元宝",self.roomInfoModel.moneyNum];  // 用户元宝数
+    self.moneyLab.text = [NSString stringWithFormat:@"%@.00",self.roomInfoModel.moneyNum];  // 用户元宝数
     NSDictionary *comingDic = [NSDictionary dictionaryWithDictionary:self.roomInfoModel.coming];  // 下期数据
     self.expectLab.text = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"expect"]]; // 即将开奖期数
     self.openTime = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"openTime"]];  // 倒计时秒数
@@ -1258,7 +1258,7 @@ static int mathBetMoney;  // 当期投注输赢金额
             [ToastView toastViewWithMessage:@"投注成功" timer:3.0];
             
             // 下注成功后修改余额
-            self.moneyLab.text = [NSString stringWithFormat:@"%d",self.moneyLab.text.intValue-betAmount.intValue];
+            self.moneyLab.text = [NSString stringWithFormat:@"%d.00",self.moneyLab.text.intValue-betAmount.intValue];
             
             /*
             // 添加动画

@@ -17,10 +17,10 @@
 
 - (void)setDataWithModel:(GPBackWaterModel *)model{
     
-    self.timeLab.text     = model.createDate;
-    self.moneyNumLab.text = model.backWaterNum;
-    self.backWaterLab.text = model.backWaterRate;
-    if ([model.status isEqualToString:@"1"]) {
+    self.timeLab.text     = [NSString stringWithFormat:@"%@",model.createDate];
+    self.moneyNumLab.text = [NSString stringWithFormat:@"%@",model.backWaterNum];
+    self.backWaterLab.text = [NSString stringWithFormat:@"%@",model.backWaterRate];
+    if (model.status.integerValue == 1) {
         
         self.stateLab.text = @"满足";
     }else{

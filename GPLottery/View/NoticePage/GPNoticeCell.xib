@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPN-or-Lh7">
-                        <rect key="frame" x="32" y="25" width="31" height="18"/>
+                        <rect key="frame" x="30" y="25" width="31" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -31,14 +31,19 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice_statuse_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="HeR-8w-V2A">
-                        <rect key="frame" x="10" y="27.5" width="12" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HeR-8w-V2A">
+                        <rect key="frame" x="10" y="28.5" width="10" height="10"/>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="7" id="GeM-Me-PvO"/>
-                            <constraint firstAttribute="height" constant="12" id="HKw-RK-t2a"/>
+                            <constraint firstAttribute="height" constant="10" id="HKw-RK-t2a"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="7" id="Hat-Qv-gDM"/>
-                            <constraint firstAttribute="width" constant="12" id="p6S-n3-Ll1"/>
+                            <constraint firstAttribute="width" constant="10" id="p6S-n3-Ll1"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -59,7 +64,4 @@
             <point key="canvasLocation" x="-214" y="66.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="notice_statuse_img.png" width="12" height="12"/>
-    </resources>
 </document>

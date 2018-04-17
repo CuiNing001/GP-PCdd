@@ -121,6 +121,12 @@
             
 //            [ToastView toastViewWithMessage:msg timer:1.5];
             
+            if (page.integerValue == 1) {
+                
+                // 上拉刷新时清空数据
+                [weakSelf.datSourceArray removeAllObjects];
+            }
+            
             for (NSDictionary *dataDic in recordArr) {
                 
                 GPLinePayRecordModel *recordModel = [GPLinePayRecordModel new];

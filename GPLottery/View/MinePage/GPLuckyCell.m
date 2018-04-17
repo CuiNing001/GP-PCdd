@@ -18,7 +18,7 @@
 - (void)setDataWithModel:(GPLuckyModel *)model{
     
     self.creatTimeLab.text      = model.createTime;
-    self.luckMoneyLevelLab.text = model.luckyMoneyLevel;
+    self.luckMoneyLevelLab.text = [NSString stringWithFormat:@"%@星红包",model.luckyMoneyLevel];
     self.extractAmountLab.text  = model.extractAmount;
 }
 

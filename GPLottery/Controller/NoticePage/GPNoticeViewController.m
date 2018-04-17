@@ -262,6 +262,12 @@ static int touch = 0;  //  标记不同的tableview数据源
             
 //            [ToastView toastViewWithMessage:msg timer:3.0];
             
+            if (page.integerValue == 1) {
+                
+                // 上拉刷新时清空数据
+                [weakSelf.noticeDataArr removeAllObjects];
+            }
+            
             NSMutableArray *dataArr = [responserObject objectForKey:@"data"];
             
             for (NSDictionary *dataDic in dataArr) {

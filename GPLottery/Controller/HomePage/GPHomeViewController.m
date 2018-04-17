@@ -84,6 +84,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
     [self loadData];
     [self loadSubView];
     
+    [UserDefaults deleateNoticeStauts];
 }
 
 
@@ -176,17 +177,19 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
 #pragma mark - 加载公告数据
 - (void)loadNetDataWithPage:(NSString *)page rows:(NSString *)rows{
     
+    [self.noticeDataArr removeAllObjects];
+    
     [self.progressHUD showAnimated:YES];
     
     [self loadUserDefaultsData];
     
     NSString *noticeLoc = [NSString stringWithFormat:@"%@notice/1/allNotice",kBaseLocation];
     
-    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
+//    NSDictionary *paramDic = @{@"page":page,@"rows":rows};
     
     // 请求登陆接口
     __weak typeof(self)weakSelf = self;
-    [AFNetManager requestPOSTWithURLStr:noticeLoc paramDic:paramDic token:self.token finish:^(id responserObject) {
+    [AFNetManager requestPOSTWithURLStr:noticeLoc paramDic:nil token:self.token finish:^(id responserObject) {
         
         NSLog(@"|NOTICE-VC|success:%@",responserObject);
         
@@ -210,6 +213,7 @@ static int leftViewTouch = 0;  // 左侧更多按钮点击次数
             
             // 已读消息数量和所有公告消息数量相等时关闭小红点
             NSArray *locaArr = [UserDefaults searchNoticeStauts];
+            NSLog(@"==========%lu=======%lu",(unsigned long)locaArr.count,(unsigned long)self.noticeDataArr.count);
             if (locaArr.count != self.noticeDataArr.count) {
                 
                 // 显示小红点
