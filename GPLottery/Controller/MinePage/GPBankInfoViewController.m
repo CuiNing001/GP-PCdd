@@ -91,7 +91,7 @@
     
     self.title = self.pageTitle;
     
-    self.bankCardView = [[GPBankCardView alloc]initWithFrame:CGRectMake(0, 0, kSize_width, kSize_height)];
+    self.bankCardView = [[GPBankCardView alloc]initWithFrame:CGRectMake(0, 84, kSize_width, kSize_height)];
     [self.view addSubview:_bankCardView];
     
     // 初始化加载框

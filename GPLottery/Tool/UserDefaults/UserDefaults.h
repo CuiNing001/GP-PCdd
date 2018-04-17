@@ -97,4 +97,9 @@
  */
 + (void)changeLunchCountWithCount:(NSString *)count;
 
+/*
+ * 查询用户名
+ */
++ (NSString *)searchLoginName;
+
 @end

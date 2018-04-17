@@ -85,6 +85,28 @@
         [self.view addGestureRecognizer:tap];
 }
 
+#pragma mark - 复制账户
+- (IBAction)accountCopyButton:(UIButton *)sender {
+    
+    UIPasteboard *pastboard = [UIPasteboard generalPasteboard];
+    
+    pastboard.string = self.accountLab.text;
+    
+    [ToastView toastViewWithMessage:@"收款账户已复制" timer:3.0];
+    
+}
+#pragma mark - 复制户名
+- (IBAction)nameCopyButton:(UIButton *)sender {
+    
+    UIPasteboard *pastboard = [UIPasteboard generalPasteboard];
+    
+    pastboard.string = self.accountNameLab.text;
+    
+    [ToastView toastViewWithMessage:@"收款人姓名已复制" timer:3.0];
+    
+}
+
+
 #pragma mark - 加载本地数据
 - (void)loadUserDefaultsData{
     

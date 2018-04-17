@@ -284,7 +284,7 @@
 {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:@"loginName"];
+//    [userDefaults removeObjectForKey:@"loginName"];
     [userDefaults removeObjectForKey:@"password"];
     [userDefaults removeObjectForKey:@"token"];
     [userDefaults removeObjectForKey:@"nickname"];
@@ -302,6 +302,17 @@
     [userDefaults synchronize];
 
 
+}
+
+/*
+ * 查询用户名
+ */
++ (NSString *)searchLoginName{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *loginName = [userDefaults objectForKey:@"loginName"];
+    
+    return loginName;
 }
 
 

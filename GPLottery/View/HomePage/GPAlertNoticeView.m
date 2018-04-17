@@ -39,8 +39,8 @@
     // web view 样式
     self.webView.scrollView.showsVerticalScrollIndicator = NO;
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-    self.webView.scrollView.scrollEnabled = NO;
-    self.webView.userInteractionEnabled = NO;
+//    self.webView.scrollView.scrollEnabled = NO;
+//    self.webView.userInteractionEnabled = NO;
     
     [self.webView loadHTMLString:urlStr baseURL:nil];
 }

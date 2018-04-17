@@ -38,6 +38,14 @@
 #pragma mark - 添加子控件
 - (void)loadSubView{
     
+    // 填写默认用户名
+    NSString *locationLoginName = [UserDefaults searchLoginName];
+    
+    if (locationLoginName.length>0) {
+        
+        self.usernameTF.text = locationLoginName;
+    }
+    
     self.automaticallyAdjustsScrollViewInsets = false;
     
     [self setTextFieldDelegate];

@@ -204,6 +204,9 @@ static int touch = 0;  //  标记不同的tableview数据源
             
             NSMutableArray *dataArr = [responserObject objectForKey:@"data"];
             
+            // 倒序
+            dataArr = (NSMutableArray *)[[dataArr reverseObjectEnumerator] allObjects];
+            
             for (NSDictionary *dataDic in dataArr) {
                 
                 GPNoticeModel *noticeModel = [GPNoticeModel new];

@@ -768,7 +768,7 @@ static int mathBetMoney;  // 当期投注输赢金额
 #pragma mark - 房间数据赋值
 - (void)updataForRoomContent{
     
-    self.moneyLab.text = [NSString stringWithFormat:@"%@.00元宝",self.roomInfoModel.moneyNum];  // 用户元宝数
+    self.moneyLab.text = [NSString stringWithFormat:@"%@元宝",self.roomInfoModel.moneyNum];  // 用户元宝数
     NSDictionary *comingDic = [NSDictionary dictionaryWithDictionary:self.roomInfoModel.coming];  // 下期数据
     self.expectLab.text = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"expect"]]; // 即将开奖期数
     self.openTime = [NSString stringWithFormat:@"%@",[comingDic objectForKey:@"openTime"]];  // 倒计时秒数
@@ -1787,6 +1787,14 @@ static int mathBetMoney;  // 当期投注输赢金额
     
 }
 
+#pragma mark - 关闭历史记录
+- (IBAction)dissmissHistoryView:(UIButton *)sender {
+    
+    isShow++;
+    self.historyView.hidden  = YES;
+    
+}
+
 #pragma mark - table view 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -1964,6 +1972,10 @@ static int mathBetMoney;  // 当期投注输赢金额
                 }
             }
 //        }
+    }else if (tableView.tag == 1200){
+        
+        isShow++;
+        self.historyView.hidden  = YES;
     }
     
 }

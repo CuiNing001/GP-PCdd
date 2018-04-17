@@ -13,6 +13,7 @@
 #import "GPCoverView.h"
 #import "GPNormalAliPayViewController.h"
 #import "GPPayNoticeView.h"
+#import "GPServiceViewController.h"
 
 /*
  * indexNum==0  QQ支付    ==>默认状态
@@ -22,7 +23,8 @@
  */
 static NSInteger indexNum;
 @interface GPPayViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *checkRecordBtn;
+@property (weak, nonatomic) IBOutlet UIButton *checkRecordBtn; // 转账记录
+@property (weak, nonatomic) IBOutlet UIButton *serviceBtn;     // 跳转客服
 
 @property (weak, nonatomic) IBOutlet UIImageView *indexZeroImg;  // index0图片
 @property (weak, nonatomic) IBOutlet UIImageView *indexOneImg;   // index1图片
@@ -84,6 +86,9 @@ static NSInteger indexNum;
     
     self.checkRecordBtn.layer.borderWidth = 1;
     self.checkRecordBtn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1].CGColor;
+    
+    self.serviceBtn.layer.borderWidth = 1;
+    self.serviceBtn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:198/255.0 blue:133/255.0 alpha:1].CGColor;
     
 }
 
@@ -220,7 +225,7 @@ static NSInteger indexNum;
     [self.navigationController pushViewController:normalAliPayVC animated:YES];
 }
 
-// 查看转账记录
+#pragma mark - 查看转账记录
 - (IBAction)viewTransferRecord:(UIButton *)sender {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -232,6 +237,19 @@ static NSInteger indexNum;
     [self.navigationController pushViewController:linePayVC animated:YES];
     
 }
+
+#pragma mark - 跳转客服
+- (IBAction)turnToService:(UIButton *)sender {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    GPServiceViewController *serviceVC = [storyboard instantiateViewControllerWithIdentifier:@"serviceVC"];
+    
+    serviceVC.hidesBottomBarWhenPushed = YES;
+    
+    [self presentViewController:serviceVC animated:YES completion:nil];
+}
+
 
 #pragma mark - 遮罩层view
 - (void)initCoverView{

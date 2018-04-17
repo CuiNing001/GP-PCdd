@@ -236,7 +236,7 @@ static int page = 1;
     [middleFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     middleFlowLayout.minimumLineSpacing = 25;
     middleFlowLayout.minimumInteritemSpacing = 10;
-    middleFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-60)/7, 50);
+    middleFlowLayout.itemSize = CGSizeMake((self.leftCollectionView.frame.size.width-60)/5, 50);
     middleFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.middleCollectionView.collectionViewLayout = middleFlowLayout;
 //    self.middleCollectionView.delaysContentTouches = false;
@@ -245,10 +245,10 @@ static int page = 1;
     // rightCollectionView布局
     UICollectionViewFlowLayout *rightFlowLayout = [[UICollectionViewFlowLayout alloc]init];
     [rightFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    rightFlowLayout.minimumLineSpacing = 25;
+    rightFlowLayout.minimumLineSpacing = 10;
     rightFlowLayout.minimumInteritemSpacing = 10;
-    rightFlowLayout.itemSize = CGSizeMake(80, 80);
-    rightFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    rightFlowLayout.itemSize = CGSizeMake(kSize_width/3, kSize_width/3);
+    rightFlowLayout.sectionInset = UIEdgeInsetsMake(10, 15, 10, 20);
     self.rightCollectionView.collectionViewLayout = rightFlowLayout;
 //    self.rightCollectionView.delaysContentTouches = false;
     
@@ -330,29 +330,27 @@ static int page = 1;
                 
                 betContentCell.nameLab.backgroundColor = [UIColor redColor];
                 betContentCell.nameLab.layer.masksToBounds = YES;
-                betContentCell.nameLab.layer.cornerRadius = 20;
+                betContentCell.nameLab.layer.cornerRadius = kSize_width/3/4;
             }else if (indexPath.row == 1){
                 
                 betContentCell.nameLab.backgroundColor = [UIColor greenColor];
                 betContentCell.nameLab.layer.masksToBounds = YES;
-                betContentCell.nameLab.layer.cornerRadius = 20;
+                betContentCell.nameLab.layer.cornerRadius = kSize_width/3/4;
             }else if (indexPath.row == 2){
                 
                 betContentCell.nameLab.backgroundColor = [UIColor blueColor];
                 betContentCell.nameLab.layer.masksToBounds = YES;
-                betContentCell.nameLab.layer.cornerRadius = 20;
+                betContentCell.nameLab.layer.cornerRadius = kSize_width/3/4;
             }else{
                 
                 betContentCell.nameLab.backgroundColor = [UIColor orangeColor];
                 betContentCell.nameLab.layer.masksToBounds = YES;
-                betContentCell.nameLab.layer.cornerRadius = 20;
+                betContentCell.nameLab.layer.cornerRadius = kSize_width/3/4;
             }
         }
         
         [betContentCell setDataWithMode:oddsModel];
-        
-        
-        
+   
         return betContentCell;
     }
 }
@@ -374,8 +372,8 @@ static int page = 1;
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.leftCollectionView cellForItemAtIndexPath:indexPath];
         // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+//        betCell.bgView.layer.borderWidth = 0.5;
+//        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         GPOddsInfoModel *oddsModel = self.pageOneDataArray[indexPath.row];
         self.leftViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
@@ -395,8 +393,8 @@ static int page = 1;
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.middleCollectionView cellForItemAtIndexPath:indexPath];
         // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+//        betCell.bgView.layer.borderWidth = 0.5;
+//        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         GPOddsInfoModel *oddsModel = self.pageTwoDataArray[indexPath.row];
         self.middleViewResultLab.text = [NSString stringWithFormat:@"中奖号码[%@]",oddsModel.winNumber];
@@ -415,8 +413,8 @@ static int page = 1;
         // 获取当前选中的item
         GPBetContentCell *betCell = (GPBetContentCell *)[self.rightCollectionView cellForItemAtIndexPath:indexPath];
         // 修改选中item的UI
-        betCell.bgView.layer.borderWidth = 0.5;
-        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
+//        betCell.bgView.layer.borderWidth = 0.5;
+//        betCell.bgView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         GPOddsInfoModel *oddsModel = self.pageThreeDataArray[indexPath.row];
         self.rightViewResultLab.text = [NSString stringWithFormat:@"中奖和值[%@]",oddsModel.winNumber];
@@ -437,18 +435,20 @@ static int page = 1;
 // 取消未选中item的点击状态
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
-    GPBetContentCell *betCell = (GPBetContentCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    
-    betCell.bgView.layer.borderWidth = 0;
-    betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+//    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//
+//    GPBetContentCell *betCell = (GPBetContentCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    
+//    betCell.bgView.layer.borderWidth = 0;
+//    betCell.bgView.layer.borderColor = [UIColor clearColor].CGColor;
     
 }
 
 
 #pragma mark - textfield代理方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    textField.returnKeyType = UIReturnKeyDone;
     
     [self.betTextField resignFirstResponder];
     
